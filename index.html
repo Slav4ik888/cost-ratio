@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+  <meta charset="utf8">
+  <title>EasyEnglish - тренировка по изучению слов!</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css">
+  <meta name="description" content="Учебный полигон - ОСНОВЫ">
+</head>
+
+<body  >
+
+		<header class="header">
+			<p class="logo"> Да-Телеком </p>
+			<!-- <label class="find-words">
+				<input type="text" class="input input-word" placeholder="Найти слово..."/>
+			</label>
+			<div class="buttons">
+
+        <span class="add-word"></span>
+				<button class="button button-primary button-add-word">
+					<span class="button-train-svg"></span>
+					<span class="button-text">Добавить слово</span>
+        </button>
+
+        <span class="training"></span>
+				<button class="button button-primary button-train">
+					<span class="button-train-svg"></span>
+					<span class="button-text">Тренировка</span>
+        </button>
+        
+				<span class="user-name"></span>
+				<button class="button button-primary button-auth">
+					<span class="button-auth-svg"></span>
+					<span class="button-text">Войти</span>
+				</button>
+				
+				<button class="button button-primary button-out">
+					<span class="button-text">Выйти</span>
+					<span class="button-out-svg"></span>
+				</button>
+			</div> -->
+		</header>
+  
+  <!-- ПОЛУЧЕНИЕ ДАННЫХ ОТ АЛТЕГРО -->
+  <section>
+    <center_box>
+      <form onsubmit="return false">
+        <h1>Данные от Алтегры:</h1>
+        <p><textarea id="arrFromAltegra" rows="10" cols="85" placeholder="Вставьте скопированные данные от Алтегры" name="text"></textarea></p>
+        <p><input type="submit" onclick="init()" value="Обработать"></p>
+      </form>
+    </center_box>
+
+    <!-- <center_box>
+      <form onsubmit="return false">
+        <h1>Для списка проектов и названий компаний:</h1>
+        <p><textarea id="arrProject" rows="10" cols="85" placeholder="Вставьте список компани со станциями и проектами" name="text"></textarea></p>
+        <p><input type="submit" onclick="madeInit()" value="Обработать"></p>
+      </form>
+    </center_box> -->
+  </section>
+
+  <!-- ВЫВОД ОБРАБОТАННЫХ ОТ АЛТЕГРО ДАННЫХ -->
+
+  <section>
+    <center_box>
+      <div class="result">
+        <div class="resultCard arrFromAltegraResMb aFARM"></div>
+        <div class="resultCard arrFromAltegraResSprite aFARS"></div>
+
+      </div>
+    </center_box>
+  </section>
+
+  <!-- ВЫВОД СВОДНОЙ ТАБЛИЦЫ -->
+
+  <section>
+    <center_box>
+      <div id="res" class="result storage">
+        
+      </div>
+    </center_box>
+  </section>
+
+
+  <!-- ВЫВОД ИТОГОВОЙ ТАБЛИЦЫ -->
+
+  <section>
+    <center_box>
+      <div class="result finish">
+        
+      </div>
+    </center_box>
+  </section>
+        
+
+  <!-- ОБЛАСТЬ ДЛЯ ВЫВОДА ИНФОРМАЦИИ -->
+  <!-- <section id="transform">
+    <center_box>
+      <a href="#transform" onclick='transformIdStorageWords()'>Вывести результат</a>
+      <div id="placeTransformStr"></div>
+    </center_box>
+  </section>
+
+    -->
+  
+  <script src="./js/init.js"></script>
+    
+</body>
+
+</html>
