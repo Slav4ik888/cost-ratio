@@ -1,20 +1,4 @@
-"use strict";
 
-
-/**************************************/
-/*         КНОПКИ ВЕРХНЕГО МЕНЮ       */
-/**************************************/
-
-// логотип
-const logo = document.querySelector('.logo');
-
-// поиск
-const inputSearch = document.querySelector('.input-search');
-// тренировка
-const buttonTrain = document.querySelector('.button-train');
-
-// 
-const arrFromAltegra = document.getElementById('arrFromAltegra');
 
 
 let arrayOfProject = [
@@ -294,145 +278,6 @@ let objSiteID = {
 }
 
 
-/************************************************/
-/* ПРИНИМАЕМ И СОЗДАЁМ МАССИВ ИЗ ДАННЫХ АЛТЕГРЫ */
-/************************************************/
-function madeProject() {
-    
-    // принимаем текст и создаём из него массив слов
-    let str = document.getElementById('arrProject').value;
-    str = str.replace(/\n/g,'*'); // добавляем * в конце строки
-  
-    // Запускаем цикл преобразование полученных данных в строки
-    let arr = [];
-    let obj = {
-        siteID: ``,
-        project: ``, 
-        organization: ``, 
-    }
-  
-    while (true) {
-        if ( str.indexOf('\t') == -1 ) break; //если нет табуляции, значит строки закончились
-  
-        obj.siteID = str.slice(0, str.indexOf('\t') );
-        str = str.slice( str.indexOf('\t') + 1 ); // удаляем его из строки
-  
-        obj.project = str.slice(0, str.indexOf('\t') );
-        str = str.slice( str.indexOf('\t') + 1 ); // удаляем его из строки
-  
-        // ищем и сохраняем прайс
-        // если последняя строка, отдаём всё слово до конца, тк не даёт последний символ
-        if ( str.indexOf('*') === -1 ) { 
-            obj.organization = str;
-        } else {
-            // Последнее слово берём всё до звёздочки
-            obj.organization = str.slice(0, str.indexOf('*') );
-            str = str.slice( str.indexOf('*') + 1 ); // удаляем его из строки
-        }
-        arr.push(obj); // результат obj добавляем в массив
-        obj = {};
-    }
-    console.log('arr: ', arr);
-    return arr;
-}
-
-function madeInit() {
-
-    let arr = madeProject();
-
-    // Прочитать все объекты из базы 
-    // добавить к ним ID и вывести все строки
-    let str = "";
-    for(let item of  arr) {
-        str += `{siteID: '${item.siteID}', project: '${item.project}', organization: '${item.organization}'}, <br/>`;
-    }
-    document.getElementById('res').innerHTML = str;
-
-}
-
-
-
-/************************************************/
-/* ПРИНИМАЕМ И СОЗДАЁМ МАССИВ ИЗ ДАННЫХ АЛТЕГРЫ */
-/************************************************/
-function getArrFromAltegra() {
-    
-    // принимаем текст и создаём из него массив слов
-    let str = document.getElementById('arrFromAltegra').value;
-    str = str.replace(/\n/g,'*'); // добавляем * в конце строки
-  
-    // Запускаем цикл преобразование полученных данных в строки
-    let arr = [];
-    let obj = {
-        siteID: ``,
-        trafficType: ``, 
-        trafficMb: ``, 
-        price: ``,
-    }
-  
-    while (true) {
-        if ( str.indexOf('\t') == -1 ) break; //если нет табуляции, значит строки закончились
-  
-        obj.siteID = str.slice(0, str.indexOf('\t') );
-        str = str.slice( str.indexOf('\t') + 1 ); // удаляем его из строки
-  
-        obj.trafficType = str.slice(0, str.indexOf('\t') );
-        str = str.slice( str.indexOf('\t') + 1 ); // удаляем его из строки
-  
-        obj.trafficMb = str.slice(0, str.indexOf('\t') );
-        obj.trafficMb = transformSpace( obj.trafficMb ); // удаляем пробелы из трафика
-        str = str.slice( str.indexOf('\t') + 1 ); // удаляем его из строки
-  
-        // ищем и сохраняем прайс
-        // если последняя строка, отдаём всё слово до конца, тк не даёт последний символ
-        if ( str.indexOf('*') === -1 ) { 
-            obj.price = str;
-        } else {
-            // Последнее слово берём всё до звёздочки
-            obj.price = str.slice(0, str.indexOf('*') );
-            str = str.slice( str.indexOf('*') + 1 ); // удаляем его из строки
-        }
-        arr.push(obj); // результат obj добавляем в массив
-        obj = {};
-    }
-    return arr;
-}
-
-  
-// убираем пробелы
-function transformSpace( text ) {
-    let value;
-    value = text.replace(/\s/g,'');
-    return value;
-}
-
-
-/************************************************/
-/*    Объединяем входящий и исходящий трафик    */
-/************************************************/
-
-function joinTraffic( arr ) {
-    let arrNew = [];
-    let sum = 0;
-    let obj = {};
-  
-    for(let i=0; i<arr.length; i++) {
-        sum = +arr[i].trafficMb; // начальное значение
-
-        // если уже обработали этот siteID, то пропускаем
-        if (!arrNew.find( item => item.siteID == arr[i].siteID) ) {
-            for(let j=i+1; j<arr.length; j++) {
-                if (arr[i].siteID === arr[j].siteID) sum += +arr[j].trafficMb;
-            }
-            obj = arr[i];
-            obj.trafficMb = sum.toFixed(2);
-            arrNew.push(obj);
-            obj = {};
-        }
-    }
-
-    return arrNew;
-}
 
 
 // меняем точку на запятую 
@@ -445,28 +290,7 @@ function transformToNumber( arr ) {
 
 
 
-// Возвращает массив помегабайтного
-function returnArrMb( arr ) {
-    let newArr = [];
-    for(let item of arr) {
-        if (!item.siteID.endsWith("-2") ) newArr.push(item);
-    }
-    return newArr;
-}
 
-
-
-// Возвращает массив полосной
-function returnArrSprite( arr ) {
-    let newArr = [];
-    for(let item of arr) {
-        if (item.siteID.endsWith("-2") ) {
-            item.siteID = item.siteID.slice(0,-2);
-            newArr.push(item);
-        }
-    }
-    return newArr;
-}
 
 
 
@@ -542,17 +366,17 @@ function collectTableFinish( title, arr ) {
 /**************************************/
 
 function init() {
-    let arr = getArrFromAltegra();
+    //let arr = getArrFromAltegra();
 
-    let newArr = joinTraffic(arr); // Объединяем траффик
+    //let newArr = joinTraffic(arr); // Объединяем траффик
 
 
     // формируем таблицы и выводим её
-    const aFARM = document.querySelector('.aFARM');
-    aFARM.textContent = "";
+    // const aFARM = document.querySelector('.aFARM');
+    // aFARM.textContent = "";
 
-    const aFARS = document.querySelector('.aFARS');
-    aFARS.textContent = "";
+    // const aFARS = document.querySelector('.aFARS');
+    // aFARS.textContent = "";
 
     // Помегабайтный
     const mbSiteId = returnArrMb( newArr ); 

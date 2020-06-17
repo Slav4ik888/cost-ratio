@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import s from './App.module.css';
-import cl from 'classnames';
+// import s from './App.module.css';
+// import cl from 'classnames';
 
-import Tasks from './pages/Tasks';
+import CostRatio from './pages/CostRatio/cost-ratio.jsx';
 
-import { Spin, Layout } from 'antd';
+import {Layout} from 'antd';
 
 // import {ReactComponent as ReactLogoSvg} from './logo.svg';
 // import {ReactComponent as wordsList} from './components/Cards/wordsList.js';
@@ -18,17 +18,18 @@ class App extends Component {
 
         return (
             <>
-                <div className={s.container}>
+                {/* <div className={s.container}>
                     <div className={s.header}>
                         
                         <Layout>
-                            <Content>
-                               <Tasks />
-                            </Content>
+                            <Content> */}
+                               <CostRatio />
+                               
+                            {/* </Content>
                             <Footer style={{ textAlign: 'center' }}> © 2020 Created by Slav4ik888</Footer>
                         </Layout>
                     </div>
-                </div>
+                </div> */}
 
             </>
         );
