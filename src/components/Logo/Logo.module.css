@@ -1,0 +1,23 @@
+.logo {
+    display: block;
+    /* width : 140px; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 900;
+    color: #1f5b79;
+    padding: 20px 0 0 0;
+    background-color: rgba(208, 222, 223, 0.5);
+
+    /* background-color: blueviolet; */
+
+}
+.label {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 400;
+    color: #1f5b79;
+    background-color: rgba(208, 222, 223, 0.5);
+    padding: 0 0 20px 0;
+
+}

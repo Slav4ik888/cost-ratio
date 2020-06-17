@@ -1,0 +1,78 @@
+.cover {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    position: relative;
+    text-align: center;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+
+    /* background-color:  #e6fde1; */
+
+    background-image: url(./img/background.jpg);
+
+    /* background-image: linear-gradient( to top, rgb(253, 255, 255), rgb(187, 224, 226)  ); */
+
+    
+}
+
+.cover::after {
+    content: '';
+    display: block;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+
+} 
+
+.cover .wrap {
+    position: relative;
+    z-index: 1;
+}
+
+/* .cover img {
+    width: 100px;
+ 
+} */
+
+/* .bg {
+    width: 100%;
+    height: max-content;
+    background: linear-gradient( rgb(253, 255, 255), #beddeb);
+
+}
+
+.wrap {
+    width: 960px;
+    background: #ffffff;
+    margin: 0 auto;
+
+} */
+/* .header{
+    padding: 24px 0px;
+    font-size: 68px;
+    background: #d2dbe0;
+    color: #0e6ba8;
+    letter-spacing: 1px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, .3);
+
+}; */
+
+/* .decr {
+    color: #193968;
+    /* padding: 15px 0 15px 0; */
+    /* font-size: 20px; */
+    /* line-height: 1.55; */
+    /* background: #37708f; */
+
+
+/* } */ 
+

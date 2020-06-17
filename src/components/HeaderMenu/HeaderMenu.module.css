@@ -1,0 +1,165 @@
+.cover {
+    width: 100%;
+    /* height: 200px; */
+    display: block;
+    /* flex-wrap: nowrap; 
+    justify-content: center;
+    align-items: center; */
+    /* overflow: hidden; */
+    position: relative;
+    text-align: center;
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(208, 222, 223, 0.5);
+    padding: 30px;
+    /* background-attachment: fixed; */
+    /* background-color:  #fdfdfd; */
+    /* background: linear-gradient( rgb(253, 255, 255), #e1fcfd); */
+}
+
+.cover svg {
+    width: 100px;
+    vertical-align: middle;
+    /* position: absolute;
+    top: 10px;
+    left: 0px; */
+
+}
+
+.cover svg g {
+    fill: #1f5b79;
+}
+
+/* крутящийся элемент*/
+.spin {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    animation: spin 10s linear infinite;
+}
+  /* .spin:hover {
+      animation: spin 5s linear infinite;
+  } */
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+
+.container {
+  width: 960px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+
+.logo {
+  color: rgb(4, 42, 92);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.inputLabel {
+  flex: 0.8;
+}
+
+.input {
+  background-color: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 8px 8px 8px 45px;
+  background-repeat: no-repeat;
+  background-position: left 11px center;
+}
+
+.inputEng {
+  width: 100%;
+  background-size: 20px 20px;
+  background-image: url(./img/translate.svg);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.userName{
+  display: none;
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.0015);
+  border-radius: 2px;
+  color: #595959;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.button:hover {
+  background: #1890ff;
+  border: 1px solid #1890ff;
+  color: #fff;
+}
+
+.buttonAuth {
+  margin-right: 10px;
+  color: #a4a6a8;
+}
+
+.buttonPrimary {
+  background: #1890ff;
+  border: 1px solid #1890ff;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.buttonPrimary:hover {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  color: #595959;
+}
+
+.buttonPrimary .buttonAuthSvg {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  -webkit-mask: url(./img/user.svg) no-repeat 50% 50%;
+  mask: url(./img/user.svg) no-repeat 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.buttonPrimary:hover .buttonAuthSvg {
+  background-color: #595959;
+}
+
+.buttonOut {
+  display: none;
+  margin: 0 5px;
+}
+
+.buttonText {
+  
+}
+
