@@ -11,7 +11,6 @@ import {Layout} from 'antd';
 
 const { Content, Footer } = Layout;
 
-
 class App extends Component {
 
     render() {

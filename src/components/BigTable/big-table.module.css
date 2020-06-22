@@ -1,0 +1,36 @@
+.centerBox {
+  font-size: 10pt;
+  /*border: 1px solid #dfe2e5;*/
+  border-radius: 3px;
+  /*background: #fdfcea;*/
+
+  padding: 10px;
+  width: 1400px;
+  min-height: 100px;
+  display: block;
+}
+
+.result {
+  display: flex;
+  flex-wrap: wrap; /* не в столбик */
+  align-items: flex-start; /*Выравнивание текста по вертикали */
+  justify-items: center;
+  height: 600px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  
+}
+
+.resultCard {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; не в столбик */
+   /* Выравнивание текста по вертикали */
+  justify-items: left;
+  width: 400px;
+  /* background: #928f58; */
+  margin-left: 20px;
+
+}
+
+
