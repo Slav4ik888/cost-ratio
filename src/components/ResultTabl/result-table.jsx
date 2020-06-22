@@ -28,7 +28,7 @@ const ResultTabl = ({ arr }) => {
 									<tbody>
 										
 											{arr.map( (item, i) => (
-												<tr key={item.project+i}>
+												<tr key={item.result+i}>
 														<td>{item.project}</td>
 														<td>{item.result}</td>
 												</tr>

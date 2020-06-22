@@ -11,7 +11,7 @@ import getFromGoogleSheet from '../../components/getFromGoogleSheet/get-from-goo
 import FromGoogleSheet from '../../components/FromGoogleSheet/from-google-sheet.jsx';
 
 
-import arrayOfProject from '../../mocks/company-project.js';
+// import arrayOfProject from '../../mocks/company-project.js';
 
 
 class CostRatio extends React.PureComponent {
@@ -31,6 +31,7 @@ class CostRatio extends React.PureComponent {
             arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
             arrForBigTable: [], // большая сводная таблица
             arrResult:[], // конечная таблица для загрузки в 1С
+            arrayOfProject: [], // данный загруженные с service desk
 
             mbSiteId: [], //
             striteSiteId: [], 
@@ -108,7 +109,7 @@ class CostRatio extends React.PureComponent {
     /************************************************/
 
     makeBigArr() {
-        const {mbSiteId, striteSiteId} = this.state;
+        const {mbSiteId, striteSiteId, arrayOfProject} = this.state;
 
         let storage = [];
         let objSiteID = {};
@@ -204,19 +205,26 @@ class CostRatio extends React.PureComponent {
         }
 
         // siteId в arrayOfProject (Это данные по организациям и проектам)
-        for(let item of storage) {
-            let result = arrayOfProject.find( it => it.siteID === item.siteID);
-            if (result) {
-                item.project = result.project;
-                item.organization = result.organization;
+        // console.log('arrayOfProject: ', arrayOfProject);
+        if (arrayOfProject) {
+            for(let item of storage) {
+
+                let result = arrayOfProject.find( it => it.siteID === item.siteID);
+                
+                if (result) {
+                    item.project = result.project;
+                    item.organization = result.organization;
+                }
             }
         }
-
+        // console.log('storage: ', storage);
+        
         this.setState({
             factura: factura,
             mbCostAll: mbCostAll.toFixed(2),
             spTrafficAll: spTrafficAll.toFixed(2),
             arrForBigTable: storage,
+            
         });
     }
 
@@ -270,17 +278,41 @@ class CostRatio extends React.PureComponent {
 
     // В стёйт добавляем полученный массив данных и обрабатываем его
     handleSetArr = arr => {
+        let url = "https://script.google.com/macros/s/AKfycbxX_iYuZt9Qco482UepKO4l3ZnRgPv88Zq4ZHFUEGhTmqJKCt0/exec";
         
-        this.joinTraffic(arr);
-        setTimeout(()=> this.makeBigArr(), 100);
-        setTimeout(()=> this.makeResult(), 100);
+        let arrFetch = [];
+        let obj = {};
+        let json = '';
 
-        let companyProject = getFromGoogleSheet("https://script.google.com/macros/s/AKfycbxX_iYuZt9Qco482UepKO4l3ZnRgPv88Zq4ZHFUEGhTmqJKCt0/exec");
-        console.log('companyProject: ', companyProject);
-        
-        this.setState({
-            isMadeArr: true,
-        });
+        fetch(url)
+            .then(response => {
+                return json = response.json();
+                })
+                .then( res => {
+
+                    for(let item of res.result) {
+                        obj.siteID = item[0];
+                        obj.siteID = obj.siteID.split(' ').join('');
+                        obj.project = item[2];
+                        obj.organization = item[1];
+                        arrFetch.push(obj);
+                        
+                        obj = {};
+                    }
+                    console.log('arrFetch: ', arrFetch);
+
+                    this.setState({
+                        arrayOfProject: arrFetch,
+                    });
+            
+                    this.joinTraffic(arr);
+                    setTimeout(()=> this.makeBigArr(), 100);
+                    setTimeout(()=> this.makeResult(), 100);
+
+                    this.setState({
+                        isMadeArr: true,
+                    });
+                })
     }
 
 
