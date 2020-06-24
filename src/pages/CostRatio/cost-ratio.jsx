@@ -6,12 +6,18 @@ import Section from '../../components/Section/section.jsx';
 import TextareaFromAltegra from '../../components/TextareaFromAltegra/textarea-from-altegra.jsx';
 import TwoServicies from '../../components/TwoServicies/two-servicies.jsx';
 import BigTable from '../../components/BigTable/big-table.jsx';
+import {makeResultForFinishTable} from '../../utils/make-result-for-finish-table.js';
+
+
 import ResultTabl from '../../components/ResultTabl/result-table.jsx';
+import {getGoogleSheet} from '../../utils/get-google-data.js';
+
 import getFromGoogleSheet from '../../components/getFromGoogleSheet/get-from-google-sheet.jsx';
 import FromGoogleSheet from '../../components/FromGoogleSheet/from-google-sheet.jsx';
 
 
 // import arrayOfProject from '../../mocks/company-project.js';
+
 
 
 class CostRatio extends React.PureComponent {
@@ -23,7 +29,6 @@ class CostRatio extends React.PureComponent {
         this.returnArrMb = this.returnArrMb.bind(this); // Возвращает массив помегабайтного
         this.returnArrSprite = this.returnArrSprite.bind(this); // Возвращает массив полосной
         this.makeBigArr = this.makeBigArr.bind(this); // Подготавливаем данные для большой таблицы
-        this.makeResult = this.makeResult.bind(this);
         
     
         this.state = {
@@ -206,10 +211,16 @@ class CostRatio extends React.PureComponent {
 
         // siteId в arrayOfProject (Это данные по организациям и проектам)
         // console.log('arrayOfProject: ', arrayOfProject);
+        console.log('storage: ', storage);
         if (arrayOfProject) {
+            console.log('arrayOfProject: ', arrayOfProject);
             for(let item of storage) {
+                
+                
 
                 let result = arrayOfProject.find( it => it.siteID === item.siteID);
+                console.log('result: ', result);
+                
                 
                 if (result) {
                     item.project = result.project;
@@ -229,90 +240,32 @@ class CostRatio extends React.PureComponent {
     }
 
 
-    /**********************************************************/
-    /*   Ищем совпадения проектов и создаём итоговую таблицу  */
-    /**********************************************************/
-
-    makeResult() {
-        const {arrForBigTable} = this.state;
-        let lastBigStore = [], newStorage = [];
-        
-        for(let i=0; i<arrForBigTable.length; i++) {
-            let obj = {};
-            obj.project = arrForBigTable[i].project;
-
-            let res = +arrForBigTable[i].result;
-
-            if (!newStorage.find( it => it.project === arrForBigTable[i].project)) {
-                for(let j=i+1; j<arrForBigTable.length; j++) {
-
-                    if (arrForBigTable[i].project === arrForBigTable[j].project) {
-                        res += +arrForBigTable[j].result;
-                    }
-                }
-                obj.result = res.toFixed(2);
-                newStorage.push(obj);
-                obj = {};
-            }
-
-        }
-
-        // Меняем точку на запятую в итоговой ячейке
-        lastBigStore = arrForBigTable.concat();
-        
-        lastBigStore.forEach( item => item.result = item.result.replace(/\./g,','));
-
-        
-        
-        newStorage.forEach( item => item.result = item.result.replace(/\./g,','));
-        console.log('newStorage: ', newStorage);
-
-        
-        this.setState({
-            arrForBigTable: lastBigStore,
-            arrResult: newStorage,
-        });
-    }
-
-
-
     // В стёйт добавляем полученный массив данных и обрабатываем его
     handleSetArr = arr => {
-        let url = "https://script.google.com/macros/s/AKfycbxX_iYuZt9Qco482UepKO4l3ZnRgPv88Zq4ZHFUEGhTmqJKCt0/exec";
         
-        let arrFetch = [];
-        let obj = {};
-        let json = '';
+        const arrFetch = getGoogleSheet();
+        
+        this.setState({
+            arrayOfProject: arrFetch,
+        });
 
-        fetch(url)
-            .then(response => {
-                return json = response.json();
-                })
-                .then( res => {
+        setTimeout(()=> this.joinTraffic(arr), 100);
 
-                    for(let item of res.result) {
-                        obj.siteID = item[0];
-                        obj.siteID = obj.siteID.split(' ').join('');
-                        obj.project = item[2];
-                        obj.organization = item[1];
-                        arrFetch.push(obj);
-                        
-                        obj = {};
-                    }
-                    console.log('arrFetch: ', arrFetch);
+        setTimeout(()=> this.makeBigArr(), 100);
 
-                    this.setState({
-                        arrayOfProject: arrFetch,
-                    });
-            
-                    this.joinTraffic(arr);
-                    setTimeout(()=> this.makeBigArr(), 100);
-                    setTimeout(()=> this.makeResult(), 100);
+        setTimeout(()=> {
+            const {lastBigStore, newStorage} = makeResultForFinishTable(this.state.arrForBigTable);
+        
+            this.setState({
+                arrForBigTable: lastBigStore,
+                arrResult: newStorage,
+            });
+        }, 100);
 
-                    this.setState({
-                        isMadeArr: true,
-                    });
-                })
+        this.setState({
+            isMadeArr: true,
+        });
+                
     }
 
 
