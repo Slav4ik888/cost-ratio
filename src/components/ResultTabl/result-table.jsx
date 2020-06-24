@@ -3,7 +3,7 @@ import s from './result-table.module.css';
 
 
 
-const ResultTabl = ({ arr }) => {
+export const ResultTabl = ({ arr }) => {
 		// console.log('BigTable', arr);
 		
 		const arrTh = [
@@ -43,5 +43,3 @@ const ResultTabl = ({ arr }) => {
         </>
     )
 }
-
-export default ResultTabl;

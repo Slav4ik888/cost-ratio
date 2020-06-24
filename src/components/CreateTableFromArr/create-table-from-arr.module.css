@@ -6,10 +6,10 @@
 
 .table {
   border-collapse: collapse;
-}
-.table tr:hover{
-  background-color: #e7e7e7;
 
+}
+.table td:hover{
+  background-color: #f1feff;
 }
 
 .table th,
@@ -24,3 +24,8 @@
 .table th {
   font-weight: 900;
 } 
+
+.table .active {
+  /* border-bottom: 2px solid #965656; */
+  color: #921505;
+}

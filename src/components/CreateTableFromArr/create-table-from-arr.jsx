@@ -1,8 +1,11 @@
 import React from 'react';
 import s from './create-table-from-arr.module.css'; 
+import cl from 'classnames';
+
+import {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE} from '../../consts/consts.js';
 
 
-const CreateTableFromArr = ({ arr, arrTitle, arrTh  }) => {
+const CreateTableFromArr = ({ arr, arrTitle, onSort, sortType, sortField, onRowSelect}) => {
 		
 	return (
 			<>
@@ -10,14 +13,24 @@ const CreateTableFromArr = ({ arr, arrTitle, arrTh  }) => {
 				<table className={s.table}>
 					<thead>
 						<tr>
-							{arrTh.map( (item, i) => <th key={item+i}>{item}</th> )}
+							{TITLE_BIG_TABLE.map( (item, i) => <th key={item+i} 
+								onClick={onSort.bind(null, {item})}
+								className={cl({[s.active]: sortField === TITLE_BIG_TABLE_VALUE[i]})}
+								>
+									{item} 
+									{sortField === TITLE_BIG_TABLE_VALUE[i] ? 
+										sortType === 'asc'  ? ' ▲' : 
+										sortType === 'desc' ? ' ▼' : null : null}
+								</th> )}
 						</tr>
 					</thead>
 					
 					<tbody>
 						
 							{arr.map( (item, i) => (
-								<tr key={item.siteID+i}>
+								<tr key={item.siteID+i} 
+									onClick={onRowSelect.bind(null, item)}
+								>
 										<td>{item.siteID}</td>
 										<td>{item.project}</td>
 										<td>{item.organization}</td>

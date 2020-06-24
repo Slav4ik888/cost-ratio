@@ -3,31 +3,21 @@ import s from './big-table.module.css';
 import CreateTableFromArr from '../CreateTableFromArr/create-table-from-arr.jsx';
 
 
-
-const BigTable = ({ arr }) => {
+const BigTable = ({ arr, onSort, sortType, sortField, onRowSelect }) => {
 		// console.log('BigTable', arr);
-		
-		const arrTh = [
-			`SiteID`, 
-			`Проект`,
-			`Клиент`, 
-			`Стоимость Мб`,
-			`Затраты из сч/ф`, 
-			`Трафик (вне полосы)`,
-			`Входящие затраты по трафику`, 
-			`Затраты скорректированные`,
-			`Трафик с полосы`, 
-			`Затраты с полосы`,
-			`Затраты итого`,
-		];
 		
     return (
         <>
-
 					<div className={s.centerBox}>
 						<div className={s.result}>
 							<div className={s.resultCard}>
-								<CreateTableFromArr arr={arr} arrTitle={`Сводная таблица`} arrTh={arrTh}/>
+								<CreateTableFromArr arr={arr} 
+									arrTitle={`Сводная таблица`} 
+									onSort={onSort}
+									sortType={sortType}
+									sortField={sortField}
+									onRowSelect={onRowSelect}
+								/>
 							</div>
 						</div>
 					</div>

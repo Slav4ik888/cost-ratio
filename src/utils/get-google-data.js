@@ -1,13 +1,13 @@
 //**
 // ПОЛУЧАЕМ ДАННЫЕ С ГУГЛ ТАБЛИЦЫ О КЛИЕНТАХ, ПРОЕКТАХ И СТАНЦИЯХ
 //
+
 export const getGoogleSheet = () => {
     // const url = process.env.GOOGLE_SHEET_URL_OLD;
     // console.log(url);
     const url = 'https://script.google.com/macros/s/AKfycbxX_iYuZt9Qco482UepKO4l3ZnRgPv88Zq4ZHFUEGhTmqJKCt0/exec';
   
     let arrFetch = [];
-    let key = [];
     let obj = {};
     let json = '';
   
@@ -24,18 +24,13 @@ export const getGoogleSheet = () => {
                     obj.organization = item[1];
                     arrFetch.push(obj);
                     
-                    
                     obj = {};
                 }
             });
   
-      console.log('arrFetchKey: ', arrFetch);
-      for(let item in arrFetch) {
-          key.push(item);
-      }
-      
-      console.log('key: ', key);
-      console.log('key: ', typeof(key));
-    
+      console.log('arrFetch: ', arrFetch);
+      console.log('arrFetch[20]: ', arrFetch[20]);
+
+         
     return arrFetch
   }
