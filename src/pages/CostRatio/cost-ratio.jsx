@@ -14,7 +14,7 @@ import {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE} from '../../consts/consts.js';
 import {getTitle} from '../../utils/get-title.js';
 import {DetailRowView} from '../../components/DetailRowView/detail-row-view.jsx';
 
-// import {getGoogleSheet} from '../../utils/get-google-data.js';
+import {getGoogleSheet} from '../../utils/get-google-data.js';
 // import getFromGoogleSheet from '../../components/getFromGoogleSheet/get-from-google-sheet.jsx';
 // import FromGoogleSheet from '../../components/FromGoogleSheet/from-google-sheet.jsx';
 // import arrFromAltegra from '../../mocks/arr-from-altegra';
@@ -29,6 +29,9 @@ class CostRatio extends React.PureComponent {
     constructor (props) {
         super(props);
         this.handleSetArr = this.handleSetArr.bind(this); 
+        this.onRowSelect = this.onRowSelect.bind(this); 
+        this.onSortBigTabl = this.onSortBigTabl.bind(this); 
+
     
         this.state = {
             isLoading: false,  // загрузились ли данные из service desk
@@ -53,36 +56,17 @@ class CostRatio extends React.PureComponent {
 
     async componentDidMount() {
         // Читаем данные из Гугл
-        let url = "https://script.google.com/macros/s/AKfycbxX_iYuZt9Qco482UepKO4l3ZnRgPv88Zq4ZHFUEGhTmqJKCt0/exec";
-                
-        let arrFetch = [];
-        let obj = {};
-        let json = '';
-
-        const response = await fetch(url);
-        const data = await response.json();
-
-        for(let item of data.result) {
-            obj.siteID = item[0];
-            obj.siteID = obj.siteID.split(' ').join('');
-            obj.project = item[2];
-            obj.organization = item[1];
-            arrFetch.push(obj);
-            
-            obj = {};
-        }
-        console.log('arrFetchOLD: ', arrFetch);
+        const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
+        const arrayOfProject = await getGoogleSheet(url);
 
         this.setState({
-            arrayOfProject: arrFetch,
+            arrayOfProject,
             isLoading: true,
         });
     }
 
     // Принимаем массив текста В стёйт добавляем полученный массив данных и обрабатываем его
     handleSetArr = arr => {
-        // const arrFetchEXP = getGoogleSheet();
-        // console.log('arrFetchEXP: ', arrFetchEXP);
         
         //  Объединяем входящий и исходящий трафик 
         setTimeout(() => {
@@ -116,11 +100,14 @@ class CostRatio extends React.PureComponent {
         }, 0);
     }
 
+
+    // Устанавливаем выбранную строку
     onRowSelect = row => {
         console.log(row);
         this.setState({row});
     }
 
+    // Сортировка "Сводной таблицы"
     onSortBigTabl = sortField => {
         const {sortType, arrForBigTable} = this.state;
         sortField = getTitle(sortField.item, TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE);
