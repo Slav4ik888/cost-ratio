@@ -3,7 +3,7 @@ import s from './big-table.module.css';
 import CreateTableFromArr from '../CreateTableFromArr/create-table-from-arr.jsx';
 
 
-const BigTable = ({ arr, onSort, sortType, sortField, onRowSelect }) => {
+const BigTable = ({ arr, onSort, sortType, sortField, onRowSelect, onHandleChangeCost }) => {
 		// console.log('BigTable', arr);
 		
     return (
@@ -17,6 +17,7 @@ const BigTable = ({ arr, onSort, sortType, sortField, onRowSelect }) => {
 									sortType={sortType}
 									sortField={sortField}
 									onRowSelect={onRowSelect}
+									onHandleChangeCost={onHandleChangeCost}
 								/>
 							</div>
 						</div>

@@ -31,8 +31,8 @@ class CostRatio extends React.PureComponent {
         this.handleSetArr = this.handleSetArr.bind(this); 
         this.onRowSelect = this.onRowSelect.bind(this); 
         this.onSortBigTabl = this.onSortBigTabl.bind(this); 
-
     
+
         this.state = {
             isLoading: false,  // загрузились ли данные из service desk
             isMadeArr: false,  // получены данные от Алтегры
@@ -126,6 +126,8 @@ class CostRatio extends React.PureComponent {
           })
     }
 
+    
+    
     render() {
         const {isLoading, isMadeArr, 
             arrForBigTable, 
@@ -159,6 +161,7 @@ class CostRatio extends React.PureComponent {
                         sortType={sortType}
                         sortField={sortField}
                         onRowSelect={this.onRowSelect}
+                        onHandleChangeCost={this.handleChangeCost}
                     />
                 }
                 {/* выводим нажатую строчку */}
