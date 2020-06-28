@@ -17,34 +17,23 @@ class CreateTableFromArr extends PureComponent {
 		}
 	}
 
-	handleChangeCost = (event) => {
-		const value = event.target.value;
-		console.log(`value - `, value);
 
+	// обработка изменений ввода
+	handleChangeCost = (event) => {
+		let value = event.target.value;
 		const id = event.target.id;
 
-		console.log(`id - `, id);
-
-		
 		this.setState((state) => {
-			// console.log('state: ', state);
-
 			let arr = state.newArr.concat();
-			console.log('arr[id].mbCostServicies: ', arr[id].mbCostServicies);
-
 			arr[id].mbCostServicies = value;
-			console.log('arr[id].mbCostServicies: ', arr[id].mbCostServicies);
-
-			// const arr = [ ...state.newArr.slice[event.target.id],  ];
-			// event.target.value.mbCostServicies
 			return {newArr: arr}
 		});
 
 	}
 
 	handleSubmit(event) {
-		console.log(`Нажали Submit`);
 		event.preventDefault();
+		this.props.onSetNewArr(this.state.newArr);
 	}
 
 	render() {
@@ -78,7 +67,7 @@ class CreateTableFromArr extends PureComponent {
 						<tbody>
 								{arr.map( (item, i) => (
 									<tr key={item.siteID+i} 
-										// onClick={onRowSelect.bind(null, item)}
+										onClick={onRowSelect.bind(null, item)}
 									>
 											<td>{item.siteID}</td>
 											<td>{item.project}</td>

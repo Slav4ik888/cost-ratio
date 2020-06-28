@@ -9,7 +9,7 @@ import BigTable from '../../components/BigTable/big-table.jsx';
 import {ResultTabl} from '../../components/ResultTabl/result-table.jsx';
 import {joinTraffic} from '../../utils/join-traffic.js';
 import {makeResultForFinishTable} from '../../utils/make-result-for-finish-table.js';
-import {makeBigArr} from '../../utils/make-data-for-bigtable.js';
+import {makeBigArr, updateBigArr} from '../../utils/make-data-for-bigtable.js';
 import {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE} from '../../consts/consts.js';
 import {getTitle} from '../../utils/get-title.js';
 import {DetailRowView} from '../../components/DetailRowView/detail-row-view.jsx';
@@ -31,7 +31,7 @@ class CostRatio extends React.PureComponent {
         this.handleSetArr = this.handleSetArr.bind(this); 
         this.onRowSelect = this.onRowSelect.bind(this); 
         this.onSortBigTabl = this.onSortBigTabl.bind(this); 
-    
+        this.handleSetNewArr = this.handleSetNewArr.bind(this);
 
         this.state = {
             isLoading: false,  // загрузились ли данные из service desk
@@ -45,7 +45,7 @@ class CostRatio extends React.PureComponent {
             striteSiteId: [],  // массив полосного трафика
 
             factura: {}, // Данные со счёт-фактуры
-            mbCostAll: 0,// Общие затраты по трафику рассчитанные
+            mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
             spTrafficAll: 0,// Общий трафик в полосе
 
             sortType: 'asc',  // 'desc'
@@ -126,6 +126,20 @@ class CostRatio extends React.PureComponent {
           })
     }
 
+
+    handleSetNewArr(newArr) {
+        console.log('COST newArr: ', newArr);
+
+        // Рассчитываем данные для "Сводной таблицы"
+        const {factura} = this.state;
+        const {storage} = updateBigArr(newArr, factura);
+        // console.log('storage: ', storage);
+        this.setState((state) => ({
+            arrForBigTable: storage,
+            
+        }));
+        
+    }
     
     
     render() {
@@ -148,11 +162,11 @@ class CostRatio extends React.PureComponent {
                 }
 
                 {/* формируем таблицы и выводим Помегабайтный и Полосной */}
-                {isMadeArr && 
+                {/* {isMadeArr && 
                     <Section>
                         <TwoServicies arrThMb={mbSiteId} arrThSprite={striteSiteId}/>
                     </Section>
-                }
+                } */}
 
                 {/* формируем таблицы и выводим Большую таблицу */}
                 {isMadeArr && 
@@ -161,7 +175,7 @@ class CostRatio extends React.PureComponent {
                         sortType={sortType}
                         sortField={sortField}
                         onRowSelect={this.onRowSelect}
-                        onHandleChangeCost={this.handleChangeCost}
+                        onSetNewArr={this.handleSetNewArr}
                     />
                 }
                 {/* выводим нажатую строчку */}
