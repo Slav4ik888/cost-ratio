@@ -3,25 +3,6 @@
 /************************************************/
 
 
-
-// Создаём данный счёт-фактуры
-export const makeFactura = () => {
-  // Присваиваем данные из сч/фактуры
-  let factura = {};
-  factura.value = 779797.36;
-  console.log('Со сч/ф value: ', factura.value);
-  
-  factura.sprite = 205887.1;
-  console.log('Со сч/ф sprite: ', factura.sprite);
-
-  factura.mb = factura.value - factura.sprite;
-  console.log('Со сч/ф mb: ', factura.mb);
-
-  return factura;
-};
-
-
-
 // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies
 // пересчитываем
 export const updateBigArr = (arr, factura)  => {
@@ -53,7 +34,7 @@ const calcMbCostAll = arr => {
 
 
 // Создаём первоначальную "Сводную таблицу", наполняем её данными
-export const makeBigArr = (mbSiteId, striteSiteId, arrayOfProject) => {
+export const makeBigArr = (mbSiteId, striteSiteId, arrayOfProject, factura) => {
   let storage = [];
   let objSiteID = {};
 
@@ -101,10 +82,6 @@ export const makeBigArr = (mbSiteId, striteSiteId, arrayOfProject) => {
         
     }
   }
-
-
-  // Присваиваем данные из сч/фактуры
-  let factura = makeFactura();
 
   // Подсчёт общих затрат по Мб трафику + сч/ф
   let mbCostAll = calcMbCostAll(storage);

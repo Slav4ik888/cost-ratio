@@ -1,15 +1,11 @@
 import React from 'react';
-import s from './result-table.module.css'; 
+import s from './result-analis-table.module.css'; 
+import {TITLE_RES_ANALIS_TABLE} from '../../consts/consts.js';
 
 
 
-export const ResultTabl = ({ arr }) => {
+export const ResultAnalisTabl = ({ arr }) => {
 		// console.log('BigTable', arr);
-		
-		const arrTh = [
-			`Проект`,
-			`Затраты итого`,
-		];
 		
     return (
         <>
@@ -18,11 +14,11 @@ export const ResultTabl = ({ arr }) => {
 						<div className={s.result}>
 							<div className={s.resultCard}>
 
-								<div className={s.capt}>Итоговая таблица для 1С</div>
+								<div className={s.capt}>Итоговая таблица для анализа</div>
 								<table className={s.table}>
 									<thead>
 										<tr>
-											{arrTh.map( (item, i) => <th key={item+i}>{item}</th> )}
+											{TITLE_RES_ANALIS_TABLE.map( (item, i) => <th key={item+i}>{item}</th> )}
 										</tr>
 									</thead>
 									<tbody>
@@ -30,6 +26,8 @@ export const ResultTabl = ({ arr }) => {
 											{arr.map( (item, i) => (
 												<tr key={item.result+i}>
 														<td>{item.project}</td>
+														<td>{item.sumMbCost}</td>
+														<td>{item.sumSpCost}</td>
 														<td>{item.result}</td>
 												</tr>
 												))}
@@ -42,4 +40,4 @@ export const ResultTabl = ({ arr }) => {
 					
         </>
     )
-}
+};

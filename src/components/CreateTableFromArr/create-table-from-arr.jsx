@@ -9,45 +9,49 @@ class CreateTableFromArr extends PureComponent {
 	constructor (props) {
 		super(props);
 		this.handleChangeCost = this.handleChangeCost.bind(this); 
-		this.handleSubmit = this.handleSubmit.bind(this); 
+		// this.handleSubmit = this.handleSubmit.bind(this); 
 
 
-		this.state = {
-			newArr: this.props.arr.concat(),
-		}
+		// this.state = {
+		// 	newArr: this.props.arr.concat(),
+		// }
 	}
 
 
 	// обработка изменений ввода
+	// handleChangeCost = (event) => {
+	// 	let value = event.target.value;
+	// 	const id = event.target.id;
+
+	// 	this.setState((state) => {
+	// 		let arr = state.newArr.concat();
+	// 		arr[id].mbCostServicies = value;
+	// 		return {newArr: arr}
+	// 	});
+
+	// }
+
 	handleChangeCost = (event) => {
-		let value = event.target.value;
-		const id = event.target.id;
-
-		this.setState((state) => {
-			let arr = state.newArr.concat();
-			arr[id].mbCostServicies = value;
-			return {newArr: arr}
-		});
-
+		
+		this.props.onChangeMbCost(event);
 	}
 
-	handleSubmit(event) {
-		event.preventDefault();
-		this.props.onSetNewArr(this.state.newArr);
-	}
+	// handleSubmit(event) {
+	// 	event.preventDefault();
+	// 	this.props.onSetNewArr(this.state.newArr);
+	// }
 
 	render() {
-		const { arrTitle, 
-		onSort, sortType, sortField, onRowSelect,
+		const { arr, arrTitle, 
+						onSort, sortType, sortField, onRowSelect,
 		} = this.props;
 
-		const arr = this.state.newArr;
 
 		return (
 			<>
 				<form onSubmit={this.handleSubmit}>
 					<div className={s.capt}>{arrTitle}</div>
-					<input className={s.button} type="submit" value="Пересчитать" />
+					{/* <input className={s.button} type="submit" value="Пересчитать" /> */}
 
 					<table className={s.table}>
 						<thead>

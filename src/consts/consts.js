@@ -1,4 +1,4 @@
-const TITLE_BIG_TABLE = [
+export const TITLE_BIG_TABLE = [
   `SiteID`, 
   `Проект`,
   `Клиент`, 
@@ -12,7 +12,7 @@ const TITLE_BIG_TABLE = [
   `Затраты итого`,
     ];
 
-const TITLE_BIG_TABLE_VALUE = [
+export const TITLE_BIG_TABLE_VALUE = [
     'siteID',
     'project',
     'organization',
@@ -26,4 +26,9 @@ const TITLE_BIG_TABLE_VALUE = [
     'result',
 ];
 
-export {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE};
+export const TITLE_RES_ANALIS_TABLE = [
+  `Проект`,
+  `Затраты Мб`,
+  `Затраты Полоса`,
+  `Затраты итого`,
+];

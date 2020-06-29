@@ -14,11 +14,11 @@ export const getGoogleSheet = (url) => {
 
     let arr = [];
     let obj = {};
-    let json = '';
+    // let json = '';
   
     return fetch(url)
         .then(response => {
-            return json = response.json();
+            return response.json();
             })
             .then( res => {
   

@@ -1,6 +1,6 @@
 import React from 'react';
-import s from './textarea-from-altegra.module.css';
-import mockAltegra from '../../mocks/arr-from-altegra.js';
+// import s from './textarea-from-altegra.module.css';
+// import mockAltegra from '../../mocks/arr-from-altegra.js';
 
 
 /************************************************/
@@ -15,18 +15,18 @@ class TextareaFromAltegra extends React.PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-      strFromAltegra: mockAltegra, //  принятый текст для создания массива слов
+      strFromAltegra: [], //mockAltegra, //  принятый текст для создания массива слов
       arrFromAltegra: [], // созданный массив 
     };
   }
  
 
   // Запускаем мок
-  componentDidMount() {
-    // создаём массив из полученных данных и отправляем его
-    const {onHandleSetArr} = this.props;
-    onHandleSetArr(this.madeArray());
-  }
+  // componentDidMount() {
+  //   // создаём массив из полученных данных и отправляем его
+  //   const {onHandleSetArr} = this.props;
+  //   onHandleSetArr(this.madeArray());
+  // }
 
 
 
@@ -51,7 +51,7 @@ class TextareaFromAltegra extends React.PureComponent {
     return value;
   }
 
-  // Запускаем цикл преобразование полученных данных в строки
+  // Запускаем цикл преобразования полученных данных в строки
   madeArray = () => {
     let str = this.state.strFromAltegra;
     str = str.replace(/\n/g,'*'); // добавляем * в конце строки
