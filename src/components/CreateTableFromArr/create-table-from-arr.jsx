@@ -9,37 +9,17 @@ class CreateTableFromArr extends PureComponent {
 	constructor (props) {
 		super(props);
 		this.handleChangeCost = this.handleChangeCost.bind(this); 
-		// this.handleSubmit = this.handleSubmit.bind(this); 
-
-
-		// this.state = {
-		// 	newArr: this.props.arr.concat(),
-		// }
+		
 	}
 
 
-	// обработка изменений ввода
-	// handleChangeCost = (event) => {
-	// 	let value = event.target.value;
-	// 	const id = event.target.id;
-
-	// 	this.setState((state) => {
-	// 		let arr = state.newArr.concat();
-	// 		arr[id].mbCostServicies = value;
-	// 		return {newArr: arr}
-	// 	});
-
-	// }
 
 	handleChangeCost = (event) => {
 		
 		this.props.onChangeMbCost(event);
 	}
 
-	// handleSubmit(event) {
-	// 	event.preventDefault();
-	// 	this.props.onSetNewArr(this.state.newArr);
-	// }
+	
 
 	render() {
 		const { arr, arrTitle, 

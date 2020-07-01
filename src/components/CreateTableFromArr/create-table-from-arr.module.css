@@ -6,12 +6,30 @@
 }
 
 .table {
+  table-layout: fixed;
   border-collapse: collapse;
-
+  height: 100vh;
 }
+
+/* .table tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: calc(100vh - 30px);
+} */
+
 .table td:hover{
   background-color: #f1feff;
 }
+
+/* .table thead tr {
+  display: block;
+  position: relative;
+} */
+
+.table th {
+  font-weight: 900;
+} 
 
 .table th,
 .table td {
@@ -22,16 +40,19 @@
   border-bottom: 0;
 }
 
-.table th {
-  font-weight: 900;
-} 
+
+.table .tit1 tr th{
+  width: 300px;
+  background-color: #41a4b6;
+}
+
 
 .table .active {
   /* border-bottom: 2px solid #965656; */
   color: #921505;
 }
 .table input {
-  width: 100px;
+  width: 80px;
 }
 
 
@@ -54,3 +75,39 @@ form {
   background-color: #82cedb;
   
 }
+
+/* 
+.tableFixedHead {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  height: 100vh;
+}
+
+.tableFixedHead th,
+.tableFixedHead td {
+  padding: 5px;
+  text-align: center;
+  width: 33.333vw;
+}
+
+.tableFixedHead thead {
+  background-color: #333;
+  color: #FDFDFD;
+}
+
+.tableFixedHead thead tr {
+  display: block;
+  position: relative;
+}
+
+.tableFixedHead tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: calc(100vh - 30px);
+}
+
+.tableFixedHead tbody tr:nth-child(even) {
+  background-color: #DDD;
+} */
