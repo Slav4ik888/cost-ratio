@@ -10,7 +10,7 @@ import {makeResultForFinishTable} from '../../utils/make-result-for-finish-table
 import {makeBigArr, updateBigArr} from '../../utils/make-data-for-bigtable.js';
 
 import {getGoogleSheet} from '../../utils/get-google-data.js';
-import {ResultAnalisTabl} from '../../components/ResultAnalisTabl/result-analis-table.jsx';
+import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-table.jsx';
 import {Header} from '../../components/Header/header.jsx';
 
 
@@ -19,9 +19,8 @@ class CostRatio extends React.PureComponent {
   constructor (props) {
       super(props);
       this.handleSetArr = this.handleSetArr.bind(this); 
-      this.handleChangeItem = this.handleChangeItem.bind(this);
+      this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
       this.handleSetFactura = this.handleSetFactura.bind(this);
-      this.handleArrForBigTable = this.handleArrForBigTable.bind(this);
       this.calcAnalisTabl = this.calcAnalisTabl.bind(this);
       this.calcFinishTabl = this.calcFinishTabl.bind(this);
 
@@ -102,39 +101,9 @@ class CostRatio extends React.PureComponent {
 
 
 
-  // Меняем значения по mbCostServicies и пересчитываем итоговые значения
-  handleChangeItem(event) {
-    const {arrForBigTable, factura} = this.state;
-    let arr = arrForBigTable.concat();
-
-    const target = event.target;
-    console.log('target.name: ', target.name);
-    const id = target.id;
-    let value;
-
-    switch (target.name) {
-      case 'siteID':
-        value = target.value;
-        arr[id].siteID = value;
-        break;
-
-      case 'project':
-        value = target.value;
-        arr[id].project = value;
-        break;
-
-      case 'organization':
-        value = target.value;
-        arr[id].organization = value;
-        break;
-
-      case 'mbCostServicies':
-        value = +target.value;
-        arr[id].mbCostServicies = value;
-        break;
-  
-      default: break;
-    };
+  // Меняем значения на пришедшие из таблицы и пересчитываем итоговые значения
+  handleUpdateBigArr(arr) {
+    const {factura} = this.state;
 
     // Рассчитываем данные для "Сводной таблицы"
     const storage = updateBigArr(arr, factura);
@@ -166,11 +135,11 @@ class CostRatio extends React.PureComponent {
 
 
   // Меняем arrForBigTable на отсортированный/изменённый массив
-  handleArrForBigTable(newArr) {
-    this.setState({
-      arrForBigTable: newArr,
-    })
-  }
+  // handleArrForBigTable(newArr) {
+  //   this.setState({
+  //     arrForBigTable: newArr,
+  //   })
+  // }
   
   render() {
     const { isLoading, isMadeArr,
@@ -207,24 +176,16 @@ class CostRatio extends React.PureComponent {
         {/* формируем таблицы и выводим Большую таблицу */}
         {isMadeArr && 
             <BigTable arr={arrForBigTable} 
-                onChangeItem={this.handleChangeItem}
-                onHandleArrForBigTable={this.handleArrForBigTable}
+                onHandleUpdateBigArr={this.handleUpdateBigArr}
+                // onHandleArrForBigTable={this.handleArrForBigTable}
             />
         }
-        {/* выводим нажатую строчку */}
-        {
-            // isMadeArr &&
-            // row ? 
-            // <Section> 
-            //     <DetailRowView company={row} /> 
-            // </Section>
-            // : null
-        }
+        
         
         {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
         {isMadeArr &&
             <Section>
-                <ResultAnalisTabl arr={arrResult}/>
+                <ResultAnalisTabl arr={arrResult} arrBig={arrForBigTable}/>
             </Section>
         }
 

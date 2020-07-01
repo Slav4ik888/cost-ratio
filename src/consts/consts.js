@@ -32,3 +32,10 @@ export const TITLE_RES_ANALIS_TABLE = [
   `Затраты Полоса`,
   `Затраты итого`,
 ];
+
+export const TITLE_RES_ANALIS_TABLE_VALUE = [
+  `project`,
+  `sumMbCost`,
+  `sumSpCost`,
+  `result`,
+];

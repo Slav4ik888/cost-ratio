@@ -3,6 +3,7 @@
   font-size: 24px;
   font-weight: 400;
   display: block;
+  margin-bottom: 20px;
 }
 
 .table {
@@ -79,20 +80,34 @@ form {
   /* height: max-content; */
 }
 
-.button {
+.butAdd {
   width: max-content;
   /* height: 30px; */
   font-size: 1.3em;
   color: rgb(17, 17, 17);
-  background-color: #adccd1;
+  background-color: #ccd6d8;
   margin: 10px 0;
   padding: 8px 15px 7px 15px;
 }
 
-.button:hover {
+.butAdd:hover {
   color: rgb(7, 11, 12);
   background-color: #c2d3d6;
-  
+}
+
+.butUpdate {
+  width: max-content;
+  /* height: 30px; */
+  font-size: 1.3em;
+  color: rgb(17, 17, 17);
+  background-color: #ccd6d8;
+  margin: 10px 0 0 40px;
+  padding: 8px 15px 7px 15px;
+}
+
+.butUpdate:hover {
+  color: rgb(7, 11, 12);
+  background-color: #c2d3d6;
 }
 
 /* 

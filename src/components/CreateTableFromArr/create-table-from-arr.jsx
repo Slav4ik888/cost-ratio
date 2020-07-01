@@ -13,17 +13,16 @@ class CreateTableFromArr extends PureComponent {
 		super(props);
 		this.handleChangeItem = this.handleChangeItem.bind(this); 
 
-		// this.handleChangeCost = this.handleChangeCost.bind(this); 
-		// this.handleChangeProject = this.handleChangeProject.bind(this);
-
 		this.handleRowSelect = this.handleRowSelect.bind(this); 
 		this.handleSortTabl = this.handleSortTabl.bind(this); 
 		this.handleHandleAddRow = this.handleHandleAddRow.bind(this);
-
+		this.handleHandleUpdate = this.handleHandleUpdate.bind(this);
 		// this.textInput = createRef();
 		// this.focusTextInput = this.focusTextInput.bind(this);
 		
 		this.state = {
+			tableArr: [], 
+
 			sortType: 'asc',  // 'desc'
 			sortField: 'siteID', // поле по умолчанию
 			row: null, // нажатая выбранная строка
@@ -32,19 +31,69 @@ class CreateTableFromArr extends PureComponent {
 		}
 	}
 
-	// componentDidUpdate() {
-	// 	this.focusTextInput();
-	// }
+	componentDidMount() {
+	
+	}
+
+
+	componentDidUpdate(prevProps) {
+		// this.focusTextInput();
+		if (this.props.arr !== prevProps.arr) {
+			console.log(`DIDUP`);
+			const {arr} = this.props;
+			this.setState({
+				tableArr: arr, // переданный массив
+				
+			});
+		}
+		
+	}
+
+
+	handleHandleUpdate() {
+		this.props.onHandleUpdateBigArr(this.state.tableArr);
+	}
 
 	// Изменение индивидуальных значений сч/ф
 	handleChangeItem = (event) => {
-		this.props.onChangeItem(event);
-	}
+		// this.props.onChangeItem(event);
+		const {tableArr} = this.state;
+    let arr = tableArr.concat();
 
-	// // Изменение индивидуальных значений сч/ф
-	// handleChangeProject = (event) => {
-	// 	this.props.onChangeProject(event);
-	// }
+    const target = event.target;
+    console.log('target.name: ', target.name);
+    const id = target.id;
+    let value;
+
+    switch (target.name) {
+      case 'siteID':
+        value = target.value;
+        arr[id].siteID = value;
+        break;
+
+      case 'project':
+        value = target.value;
+        arr[id].project = value;
+        break;
+
+      case 'organization':
+        value = target.value;
+        arr[id].organization = value;
+        break;
+
+      case 'mbCostServicies':
+        value = +target.value;
+        arr[id].mbCostServicies = value;
+        break;
+  
+      default: break;
+    };
+
+
+    this.setState({
+			tableArr: arr,
+    });
+	}
 
 
 	// Устанавливаем выбранную строку
@@ -58,27 +107,28 @@ class CreateTableFromArr extends PureComponent {
 
 	// Сортировка "Таблицы"
   handleSortTabl = sortField => {
-		const {sortType} = this.state;
-		const {arr, onHandleArrForBigTable} = this.props;
+		const {tableArr, sortType} = this.state;
 
 		sortField = getTitle(sortField.item, TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE);
 
-		const cloneData = arr.concat();
+		const cloneData = tableArr.concat();
 		// Проверяем что у нас сейчас в сортировке
 		const sortT = sortType === 'asc' ? 'desc' : 'asc';
 		// Сортируем
 		const orderedData = _.orderBy(cloneData, sortField, sortT);
 		this.setState({
+			tableArr: orderedData,
 			sortType: sortT,
 			sortField: sortField,
 		});
+		
 		// Отправляем данные в Cost-ratio чтобы поменять значение в таблице
-		onHandleArrForBigTable(orderedData);
+		// onHandleArrForBigTable(orderedData);
 	};
 
 	// Добавляем новую строку
 	handleHandleAddRow() {
-		const {arr, onHandleArrForBigTable} = this.props;
+		const {tableArr} = this.state;
 		let newArr = [{
 			siteID: '',
 			project: '',
@@ -91,14 +141,12 @@ class CreateTableFromArr extends PureComponent {
 			spTraffic: 0,
 			spCostTraffic: 0,
 			result: 0,
-		}, ...arr];
+		}, ...tableArr];
 
-		// this.setState({
-		// 	lastFocus: 0, // Сохраняет текущий фокус input
-		// });
+		this.setState({
+			tableArr: newArr,
+		});
 
-		onHandleArrForBigTable(newArr);
-		
 	}
 
 	focusTextInput() {
@@ -108,19 +156,21 @@ class CreateTableFromArr extends PureComponent {
 	}
 	
 	
-
+ 
 	render() {
-		const {sortType, sortField, lastFocus} = this.state;
-		const {arr, arrTitle} = this.props;
+		const {tableArr, sortType, sortField, lastFocus} = this.state;
 
 		return (
 			<>
 				<form>
-					<div className={s.capt}>{arrTitle}</div>
-					<input className={s.button} type="button" value="Добавить строку" 
+					<div className={s.capt}>Сводная таблица</div>
+					<input className={s.butAdd} type="button" value="Добавить строку" 
 						onClick={this.handleHandleAddRow}
 					/>
-					
+					<input className={s.butUpdate} type="button" value="Пересчитать" 
+						onClick={this.handleHandleUpdate}
+					/>
+
 					<table className={s.table}>
 						<thead>
 							<tr>
@@ -137,7 +187,7 @@ class CreateTableFromArr extends PureComponent {
 						</thead>
 						
 						<tbody>
-								{arr.map( (item, i) => (
+								{tableArr.map( (item, i) => (
 									<tr key={item.siteID+i} 
 										onClick={this.handleRowSelect.bind(null, item, i)}
 									>

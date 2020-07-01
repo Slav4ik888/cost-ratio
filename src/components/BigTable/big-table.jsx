@@ -3,7 +3,7 @@ import s from './big-table.module.css';
 import CreateTableFromArr from '../CreateTableFromArr/create-table-from-arr.jsx';
 
 
-const BigTable = ({ arr, onChangeItem, onHandleArrForBigTable}) => {
+const BigTable = ({ arr, onHandleUpdateBigArr}) => {
 		// console.log('BigTable', arr);
 		
     return (
@@ -12,10 +12,9 @@ const BigTable = ({ arr, onChangeItem, onHandleArrForBigTable}) => {
 						<div className={s.centerBox}>
 							<div className={s.result}>
 								<div className={s.resultCard}>
-									<CreateTableFromArr arr={arr} 
-										arrTitle={`Сводная таблица`} 
-										onChangeItem={onChangeItem}
-										onHandleArrForBigTable={onHandleArrForBigTable}
+									<CreateTableFromArr
+										arr={arr} 
+										onHandleUpdateBigArr={onHandleUpdateBigArr}
 									/>
 								</div>
 							</div>

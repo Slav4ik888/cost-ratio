@@ -41,11 +41,11 @@ export const makeResultForFinishTable = arr => {
   lastBigStore = arr.concat();
   lastBigStore.forEach( item => item.result = item.result.replace(/\./g,','));
   
-  newStorage.forEach( item => {
-    item.sumMbCost = item.sumMbCost.replace(/\./g,',');
-    item.sumSpCost = item.sumSpCost.replace(/\./g,',');
-    item.result = item.result.replace(/\./g,',');
-  });
+  // newStorage.forEach( item => {
+  //   item.sumMbCost = item.sumMbCost.replace(/\./g,',');
+  //   item.sumSpCost = item.sumSpCost.replace(/\./g,',');
+  //   item.result = item.result.replace(/\./g,',');
+  // });
 
   return {lastBigStore, newStorage}
 }

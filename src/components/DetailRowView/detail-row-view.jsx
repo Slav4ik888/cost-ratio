@@ -1,9 +1,10 @@
 import React from 'react';
 
-export const DetailRowView = ({company}) => (
+export const DetailRowView = ({result}) => (
    <div>
-      <p>Компания<b>{company.organization}</b></p>
-      <p>SiteID:<b>{company.siteID}</b></p>
-      <p>Проект: <b>{company.project}</b></p>
+      {result.map((item, i) => 
+         <p key={item.siteID + i}>SiteID<b>{item.siteID}</b></p>
+      )}
+      
    </div>
-)
+);
