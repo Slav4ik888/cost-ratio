@@ -19,7 +19,7 @@ class CostRatio extends React.PureComponent {
   constructor (props) {
       super(props);
       this.handleSetArr = this.handleSetArr.bind(this); 
-      this.handleChangeMbCost = this.handleChangeMbCost.bind(this);
+      this.handleChangeItem = this.handleChangeItem.bind(this);
       this.handleSetFactura = this.handleSetFactura.bind(this);
       this.handleArrForBigTable = this.handleArrForBigTable.bind(this);
       this.calcAnalisTabl = this.calcAnalisTabl.bind(this);
@@ -103,27 +103,49 @@ class CostRatio extends React.PureComponent {
 
 
   // Меняем значения по mbCostServicies и пересчитываем итоговые значения
-  handleChangeMbCost(event) {
-      let value = event.target.value;
-      // console.log('value: ', value);
-      const id = event.target.id;
-      // console.log('id: ', id);
+  handleChangeItem(event) {
+    const {arrForBigTable, factura} = this.state;
+    let arr = arrForBigTable.concat();
 
-      const {arrForBigTable, factura} = this.state;
+    const target = event.target;
+    console.log('target.name: ', target.name);
+    const id = target.id;
+    let value;
 
-      let arr = arrForBigTable.concat();
-      arr[id].mbCostServicies = value;
+    switch (target.name) {
+      case 'siteID':
+        value = target.value;
+        arr[id].siteID = value;
+        break;
 
-      // Рассчитываем данные для "Сводной таблицы"
-      const storage = updateBigArr(arr, factura);
+      case 'project':
+        value = target.value;
+        arr[id].project = value;
+        break;
 
-      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      const { newStorage } = makeResultForFinishTable(storage);
+      case 'organization':
+        value = target.value;
+        arr[id].organization = value;
+        break;
 
-      this.setState({
-          arrForBigTable: storage,
-          arrResult: newStorage,
-  });
+      case 'mbCostServicies':
+        value = +target.value;
+        arr[id].mbCostServicies = value;
+        break;
+  
+      default: break;
+    };
+
+    // Рассчитываем данные для "Сводной таблицы"
+    const storage = updateBigArr(arr, factura);
+
+    // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+    const { newStorage } = makeResultForFinishTable(storage);
+
+    this.setState({
+        arrForBigTable: storage,
+        arrResult: newStorage,
+    });
   }
   
   // Присвоение значений сч/фактуры
@@ -185,7 +207,7 @@ class CostRatio extends React.PureComponent {
         {/* формируем таблицы и выводим Большую таблицу */}
         {isMadeArr && 
             <BigTable arr={arrForBigTable} 
-                onChangeMbCost={this.handleChangeMbCost}
+                onChangeItem={this.handleChangeItem}
                 onHandleArrForBigTable={this.handleArrForBigTable}
             />
         }

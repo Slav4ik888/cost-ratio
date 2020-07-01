@@ -12,6 +12,11 @@ export const updateBigArr = (arr, factura)  => {
 
   // Рассчитываем Затраты скорректированные
   for(let obj of arr) {
+    if (!obj.mbCostTraffic) obj.mbCostTraffic = 0;
+    // if (!obj.mbCostServicies) obj.mbCostServicies = 0;
+    if (!factura.mb) factura.mb = 1;
+    if (!mbCostAll) mbCostAll = 1;
+
     //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
       obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb).toFixed(2);
   }
@@ -26,7 +31,7 @@ export const updateBigArr = (arr, factura)  => {
 
 // Подсчёт общих затрат по Мб трафику + сч/ф
 const calcMbCostAll = arr => {
-  let mbCostAll = arr.reduce((sum, obj) => sum + +obj.mbCostTraffic + +obj.mbCostServicies, 0);
+  let mbCostAll = arr.reduce((sum, obj) => sum + +obj.mbCostTraffic + (+obj.mbCostServicies || 0), 0);
   mbCostAll = mbCostAll.toFixed(2);
   return mbCostAll;
 }

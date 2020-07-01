@@ -3,7 +3,7 @@ import s from './big-table.module.css';
 import CreateTableFromArr from '../CreateTableFromArr/create-table-from-arr.jsx';
 
 
-const BigTable = ({ arr, onChangeMbCost, onHandleArrForBigTable}) => {
+const BigTable = ({ arr, onChangeItem, onHandleArrForBigTable}) => {
 		// console.log('BigTable', arr);
 		
     return (
@@ -14,7 +14,7 @@ const BigTable = ({ arr, onChangeMbCost, onHandleArrForBigTable}) => {
 								<div className={s.resultCard}>
 									<CreateTableFromArr arr={arr} 
 										arrTitle={`Сводная таблица`} 
-										onChangeMbCost={onChangeMbCost}
+										onChangeItem={onChangeItem}
 										onHandleArrForBigTable={onHandleArrForBigTable}
 									/>
 								</div>
