@@ -15,18 +15,18 @@ class TextareaFromAltegra extends React.PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-      strFromAltegra: mockAltegra, //  принятый текст для создания массива слов
+      strFromAltegra: '', // mockAltegra, //  принятый текст для создания массива слов
       arrFromAltegra: [], // созданный массив 
     };
   }
  
 
   // Запускаем мок
-  componentDidMount() {
-    // создаём массив из полученных данных и отправляем его
-    const {onHandleSetArr} = this.props;
-    onHandleSetArr(this.madeArray());
-  }
+  // componentDidMount() {
+  //   // создаём массив из полученных данных и отправляем его
+  //   const {onHandleSetArr} = this.props;
+  //   onHandleSetArr(this.madeArray());
+  // }
 
 
 

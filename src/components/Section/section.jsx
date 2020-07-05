@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './section.module.css'; 
+import s from './section1.module.css'; 
 
 
 // children это деструктурированный ...props 

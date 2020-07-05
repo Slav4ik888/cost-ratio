@@ -56,9 +56,14 @@
   color: #921505;
 }
 .inpProject,
-.inpMbCostServicies,
-.inpSiteID {
+.inpMbCostServicies {
   width: 80px;
+  border: 0px;
+  background-color: unset;
+
+}
+.inpSiteID {
+  width: 120px;
   border: 0px;
   background-color: unset;
 
