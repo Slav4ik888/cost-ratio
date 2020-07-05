@@ -1,6 +1,6 @@
 import React from 'react';
 // import s from './textarea-from-altegra.module.css';
-import mockAltegra from '../../mocks/arr-from-altegra.js';
+// import mockAltegra from '../../mocks/arr-from-altegra.js';
 
 
 /************************************************/

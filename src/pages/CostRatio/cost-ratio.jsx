@@ -14,6 +14,7 @@ import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-ta
 import {Header} from '../../components/Header/header.jsx';
 
 
+
 class CostRatio extends React.PureComponent {
 
   constructor (props) {

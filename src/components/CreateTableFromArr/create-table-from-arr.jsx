@@ -1,4 +1,4 @@
-import React, {createRef, PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import s from './create-table-from-arr.module.css'; 
 import cl from 'classnames';
 import {getTitle} from '../../utils/get-title.js';
@@ -158,7 +158,7 @@ class CreateTableFromArr extends PureComponent {
 	
  
 	render() {
-		const {tableArr, sortType, sortField, lastFocus} = this.state;
+		const {tableArr, sortType, sortField} = this.state;
 
 		return (
 			<>
