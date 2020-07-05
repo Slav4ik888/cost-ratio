@@ -3,7 +3,7 @@ import s from './result-table.module.css';
 
 
 
-const ResultTabl = ({ arr }) => {
+export const ResultTabl = ({ arr }) => {
 		// console.log('BigTable', arr);
 		
 		const arrTh = [
@@ -18,7 +18,7 @@ const ResultTabl = ({ arr }) => {
 						<div className={s.result}>
 							<div className={s.resultCard}>
 
-								<div className={s.capt}>Итоговая таблица</div>
+								<div className={s.capt}>Итоговая таблица для 1С</div>
 								<table className={s.table}>
 									<thead>
 										<tr>
@@ -43,5 +43,3 @@ const ResultTabl = ({ arr }) => {
         </>
     )
 }
-
-export default ResultTabl;

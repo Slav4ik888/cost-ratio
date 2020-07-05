@@ -1,3 +1,16 @@
+.section {
+  font-size: 10pt;
+  color:#000000;
+  background: linear-gradient( #f6fcff, #d7e9f0);
+  border: 1px solid #dfe2e5;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, .3);
+  /* border-radius: 3px; */
+  margin: 10px auto;
+  padding: 30px;
+  width: 100%;
+  display: block;
+}
+
 .centerBox {
   font-size: 10pt;
   /*border: 1px solid #dfe2e5;*/
@@ -32,5 +45,6 @@
   margin-left: 20px;
 
 }
+
 
 

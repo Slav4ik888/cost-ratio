@@ -2,6 +2,11 @@
 /*   Ищем совпадения проектов и создаём итоговую таблицу  */
 /**********************************************************/
 
+
+// Подсчёт Затрат Мб
+// const 
+
+
 export const makeResultForFinishTable = arr => {
   let lastBigStore = [], newStorage = [];
   
@@ -9,16 +14,25 @@ export const makeResultForFinishTable = arr => {
     let obj = {};
     obj.project = arr[i].project;
 
-    let res = +arr[i].result;
+    let sumMbCost = +arr[i].mbCostCorrect;
+    let sumSpCost = +arr[i].spCostTraffic;
+
+    let sumResult = +arr[i].result;
 
     if (!newStorage.find( it => it.project === arr[i].project)) {
-      console.log('Нет совпадения');
       for(let j=i+1; j<arr.length; j++) {
         if (arr[i].project === arr[j].project) {
-          res += +arr[j].result;
+
+          sumMbCost += +arr[j].mbCostCorrect;
+          sumSpCost += +arr[j].spCostTraffic;
+          sumResult += +arr[j].result;
         }
       }
-      obj.result = res.toFixed(2);
+
+      obj.sumMbCost = sumMbCost.toFixed(2);
+      obj.sumSpCost = sumSpCost.toFixed(2);
+      obj.result = sumResult.toFixed(2);
+
       newStorage.push(obj);
       obj = {};
     }
@@ -27,8 +41,11 @@ export const makeResultForFinishTable = arr => {
   lastBigStore = arr.concat();
   lastBigStore.forEach( item => item.result = item.result.replace(/\./g,','));
   
-  newStorage.forEach( item => item.result = item.result.replace(/\./g,','));
-  console.log('newStorage: ', newStorage);
+  // newStorage.forEach( item => {
+  //   item.sumMbCost = item.sumMbCost.replace(/\./g,',');
+  //   item.sumSpCost = item.sumSpCost.replace(/\./g,',');
+  //   item.result = item.result.replace(/\./g,',');
+  // });
 
   return {lastBigStore, newStorage}
 }
