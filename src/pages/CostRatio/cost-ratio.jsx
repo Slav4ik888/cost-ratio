@@ -36,11 +36,11 @@ class CostRatio extends React.PureComponent {
           mbSiteId: [], // массив помегабатного трафика
           striteSiteId: [],  // массив полосного трафика
 
-          factura: {
+          factura: { // Данные со счёт-фактуры
               value: 779797.3,
               sprite: 205887.1,
               mb: 573910.2,
-          }, // Данные со счёт-фактуры
+          }, 
           // isFactura: false, //Заполнены ли данные из сч/ф
           mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
           spTrafficAll: 0,// Общий трафик в полосе
@@ -51,6 +51,7 @@ class CostRatio extends React.PureComponent {
       // Читаем данные из Гугл
       const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
       const arrayOfProject = await getGoogleSheet(url);
+      console.log('arrayOfProject: ', arrayOfProject);
       this.setState({
           arrayOfProject,
           isLoading: true,
@@ -134,20 +135,13 @@ class CostRatio extends React.PureComponent {
 
   }
 
-
-  // Меняем arrForBigTable на отсортированный/изменённый массив
-  // handleArrForBigTable(newArr) {
-  //   this.setState({
-  //     arrForBigTable: newArr,
-  //   })
-  // }
   
   render() {
     const { isLoading, isMadeArr,
             arrForBigTable, factura,
+            arrayOfProject,
             // mbSiteId, striteSiteId, 
             arrResult, 
-            // sortType, sortField, row
     } = this.state;
 
     if (!isLoading) {
@@ -176,9 +170,10 @@ class CostRatio extends React.PureComponent {
 
         {/* формируем таблицы и выводим Большую таблицу */}
         {isMadeArr && 
-            <BigTable arr={arrForBigTable} 
-                onHandleUpdateBigArr={this.handleUpdateBigArr}
-                // onHandleArrForBigTable={this.handleArrForBigTable}
+            <BigTable
+              arr={arrForBigTable} 
+              onHandleUpdateBigArr={this.handleUpdateBigArr}
+              arrayOfProject={arrayOfProject}
             />
         }
         

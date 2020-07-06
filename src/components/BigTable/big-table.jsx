@@ -3,7 +3,7 @@ import s from './big-table.module.css';
 import CreateTableFromArr from '../CreateTableFromArr/create-table-from-arr.jsx';
 
 
-const BigTable = ({ arr, onHandleUpdateBigArr}) => {
+const BigTable = ({ arr, onHandleUpdateBigArr, arrayOfProject}) => {
 		// console.log('BigTable', arr);
 		
     return (
@@ -13,6 +13,7 @@ const BigTable = ({ arr, onHandleUpdateBigArr}) => {
 									<CreateTableFromArr
 										arr={arr} 
 										onHandleUpdateBigArr={onHandleUpdateBigArr}
+										arrayOfProject={arrayOfProject}
 									/>
 						</div>
 					</div>
