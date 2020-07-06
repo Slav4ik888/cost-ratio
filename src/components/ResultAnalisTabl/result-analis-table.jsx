@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react';
 import s from './result-analis-table.module.css'; 
 import cl from 'classnames';
-import Section from '../Section/section.jsx';
 import {DetailRowView} from '../DetailRowView/detail-row-view.jsx';
 import {getTitle} from '../../utils/get-title.js';
 

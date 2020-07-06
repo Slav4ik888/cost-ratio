@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CostRatio from './pages/CostRatio/cost-ratio.jsx';
+import Footer from './components/Footer/footer.jsx';
 
 // import {Layout} from 'antd';
 
@@ -14,6 +15,7 @@ class App extends Component {
         return (
             <>
                 <CostRatio />
+                <Footer style={{ textAlign: 'center' }}> © 2020 Created by Slav4ik888 - version 2020-07-06 15:00</Footer>
             </>
         );
     }
