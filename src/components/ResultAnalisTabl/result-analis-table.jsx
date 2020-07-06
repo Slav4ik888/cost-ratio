@@ -30,8 +30,6 @@ class ResultAnalisTabl extends PureComponent {
 	componentDidUpdate(prevProps) {
 		if (this.props.arr !== prevProps.arr) {
 			const {arr, arrBig} = this.props;
-			console.log('arrBig: ', arrBig);
-			console.log(`DIDUP`, arr);
 
 			let newArr = arr.concat();
 			newArr.forEach(item => {

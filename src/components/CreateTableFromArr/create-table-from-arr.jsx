@@ -84,6 +84,7 @@ class CreateTableFromArr extends PureComponent {
 	// Устанавливаем выбранную строку
   handleRowSelect = row => {this.setState({row})};
 
+
 	// Сортировка "Таблицы"
   handleSortTabl = sortField => {
 		const {tableArr, sortType} = this.state;
@@ -127,7 +128,6 @@ class CreateTableFromArr extends PureComponent {
 	render() {
 		const {tableArr, sortType, sortField} = this.state;
 
-		const styleAlarm = {backgroundColor: '#f59c81'};
 		return (
 			<>
 				{/* <form> */}
@@ -161,20 +161,18 @@ class CreateTableFromArr extends PureComponent {
 									>
 											<td>
 												<input 
-													className={s.inpSiteID}
-													style={item.siteID ? null : styleAlarm}
+													className={cl(s.inpSiteID, {[s.alarm] : !item.siteID})}
 													type="text" 
 													name="siteID"
 													value={item.siteID}
 													onChange={this.handleChangeItem}
 													id={i}
-												/>
+													/>
 												{/* {item.siteID} */}
 											</td>
 											<td>
 												<input 
-													className={s.inpProject}
-													style={item.project ? null : styleAlarm}
+													className={cl(s.inpProject, {[s.alarm] : !item.project})}
 													type="text" 
 													name="project"
 													value={item.project}
@@ -185,8 +183,7 @@ class CreateTableFromArr extends PureComponent {
 											</td>
 											<td className={s.tdOrganization}>
 												<input 
-													className={s.inpOrganization}
-													style={item.organization ? null : styleAlarm}
+													className={cl(s.inpOrganization, {[s.alarm] : !item.organization})}
 													type="text" 
 													name="organization"
 													value={item.organization}
