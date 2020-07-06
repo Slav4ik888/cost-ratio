@@ -12,8 +12,8 @@ class CreateTableFromArr extends PureComponent {
 		this.handleChangeItem = this.handleChangeItem.bind(this); 
 		this.handleRowSelect = this.handleRowSelect.bind(this); 
 		this.handleSortTabl = this.handleSortTabl.bind(this); 
-		this.handleHandleAddRow = this.handleHandleAddRow.bind(this);
-		this.handleHandleUpdate = this.handleHandleUpdate.bind(this);
+		this.handleAddRow = this.handleAddRow.bind(this);
+		this.handleUpdate = this.handleUpdate.bind(this);
 		
 		this.state = {
 			tableArr: [], 
@@ -35,7 +35,7 @@ class CreateTableFromArr extends PureComponent {
 	}
 
 
-	handleHandleUpdate() {
+	handleUpdate() {
 		this.props.onHandleUpdateBigArr(this.state.tableArr);
 	}
 
@@ -102,7 +102,7 @@ class CreateTableFromArr extends PureComponent {
 	};
 
 	// Добавляем новую строку
-	handleHandleAddRow() {
+	handleAddRow() {
 		const {tableArr} = this.state;
 		let newArr = [{
 			siteID: '',
@@ -130,13 +130,13 @@ class CreateTableFromArr extends PureComponent {
 
 		return (
 			<>
-				{/* <form> */}
+				<form>
 					<div className={s.capt}>Сводная таблица</div>
 					<input className={s.butAdd} type="button" value="Добавить строку" 
-						onClick={this.handleHandleAddRow}
+						onClick={this.handleAddRow}
 					/>
 					<input className={s.butUpdate} type="button" value="Пересчитать" 
-						onClick={this.handleHandleUpdate}
+						onClick={this.handleUpdate}
 					/>
 
 					<table className={s.table}>
@@ -214,7 +214,7 @@ class CreateTableFromArr extends PureComponent {
 									))}
 						</tbody>
 					</table>
-				{/* </form> */}
+				</form>
 
 			</>
 		)
