@@ -37,9 +37,9 @@ class CostRatio extends React.PureComponent {
           striteSiteId: [],  // массив полосного трафика
 
           factura: { // Данные со счёт-фактуры
-              value: 779797.3,
-              sprite: 205887.1,
-              mb: 573910.2,
+              value: '', // 779797.3,
+              sprite: '', // 205887.1,
+              mb: '', // 573910.2,
           }, 
           // isFactura: false, //Заполнены ли данные из сч/ф
           mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
@@ -51,7 +51,6 @@ class CostRatio extends React.PureComponent {
       // Читаем данные из Гугл
       const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
       const arrayOfProject = await getGoogleSheet(url);
-      console.log('arrayOfProject: ', arrayOfProject);
       this.setState({
           arrayOfProject,
           isLoading: true,

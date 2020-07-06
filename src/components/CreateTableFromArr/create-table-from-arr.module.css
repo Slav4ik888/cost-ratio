@@ -91,7 +91,7 @@ form {
   font-size: 1.3em;
   color: rgb(17, 17, 17);
   background-color: #ccd6d8;
-  margin: 10px 0;
+  margin: 10px 20px 0 0;
   padding: 8px 15px 7px 15px;
 }
 
@@ -105,14 +105,14 @@ form {
   /* height: 30px; */
   font-size: 1.3em;
   color: rgb(17, 17, 17);
-  background-color: #ccd6d8;
+  background-color: #bed8dd;
   margin: 10px 0 0 40px;
   padding: 8px 15px 7px 15px;
 }
 
 .butUpdate:hover {
   color: rgb(7, 11, 12);
-  background-color: #c2d3d6;
+  background-color: rgb(214, 239, 243);
 }
 
 .alarm {

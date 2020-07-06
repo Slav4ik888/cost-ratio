@@ -3,6 +3,7 @@ import s from './create-table-from-arr.module.css';
 import cl from 'classnames';
 import {getTitle} from '../../utils/get-title.js';
 import {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE} from '../../consts/consts.js';
+import ModalChangeRow from '../ModalChangeRow/modal-change-row.jsx';
 import _ from 'lodash';
 
 
@@ -14,9 +15,13 @@ class CreateTableFromArr extends PureComponent {
 		this.handleSortTabl = this.handleSortTabl.bind(this); 
 		this.handleAddRow = this.handleAddRow.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
+		this.handleModalInfo = this.handleModalInfo.bind(this);
+		this.handleModalOut = this.handleModalOut.bind(this);
 		
 		this.state = {
 			tableArr: [], 
+
+			// isModal: false,
 
 			sortType: 'asc',  // 'desc'
 			sortField: 'siteID', // поле по умолчанию
@@ -41,12 +46,10 @@ class CreateTableFromArr extends PureComponent {
 
 	// Изменение индивидуальных значений сч/ф
 	handleChangeItem = (event) => {
-		// this.props.onChangeItem(event);
 		const {tableArr} = this.state;
     let arr = tableArr.concat();
 
     const target = event.target;
-    console.log('target.name: ', target.name);
     const id = target.id;
     let value;
 
@@ -82,7 +85,13 @@ class CreateTableFromArr extends PureComponent {
 
 
 	// Устанавливаем выбранную строку
-  handleRowSelect = row => {this.setState({row})};
+  handleRowSelect = row => {
+		console.log(row);
+		this.setState({
+			row,
+			isModal: true,
+		});
+	};
 
 
 	// Сортировка "Таблицы"
@@ -125,16 +134,60 @@ class CreateTableFromArr extends PureComponent {
 	}
 
  
+	// Открываем модальное окно
+	handleModalInfo() {
+		this.setState({
+			isModal: true,
+		});
+	};
+
+	
+
+	// Обрабатываем закрытие модального окна
+	handleModalOut(obj) {
+		// console.log('obj: ', obj);
+		if (obj) {
+			const {tableArr} = this.state;
+			let newArr = [];
+			console.log('newArr: ', newArr);
+			let result = tableArr.findIndex(item => item.siteID.toUpperCase() === obj.siteID.toUpperCase());
+			console.log('result: ', result);
+			if (result !== -1) {
+				console.log(`Old Row`);
+				newArr = [...tableArr.slice(0, result), obj, ...tableArr.slice(result + 1)];
+			} else {
+				console.log(`New Row`);
+				newArr = [obj, ...tableArr.slice(1)];
+				
+			}
+			this.setState({
+				tableArr: newArr,
+			});
+			console.log('newArr: ', newArr);
+		};
+		this.setState({
+			isModal: false,
+		});
+	};
+
+
 	render() {
-		const {tableArr, sortType, sortField} = this.state;
+		const {arrayOfProject} = this.props;
+		const {tableArr, sortType, sortField,
+			isModal, row,
+		} = this.state;
 
 		return (
 			<>
-				<form>
+				{/* <form> */}
 					<div className={s.capt}>Сводная таблица</div>
-					<input className={s.butAdd} type="button" value="Добавить строку" 
+					<input className={s.butAdd} type="button" value="+ строку" 
 						onClick={this.handleAddRow}
 					/>
+					{/* Редактирование строки */}
+					{isModal && <ModalChangeRow callback={this.handleModalOut} element={row} arrayOfProject={arrayOfProject}/>}
+
+
 					<input className={s.butUpdate} type="button" value="Пересчитать" 
 						onClick={this.handleUpdate}
 					/>
@@ -156,41 +209,17 @@ class CreateTableFromArr extends PureComponent {
 						
 						<tbody>
 								{tableArr.map( (item, i) => (
-									<tr key={item.siteID+i} 
-										onClick={this.handleRowSelect.bind(null, item)}
-									>
-											<td>
-												<input 
-													className={cl(s.inpSiteID, {[s.alarm] : !item.siteID})}
-													type="text" 
-													name="siteID"
-													value={item.siteID}
-													onChange={this.handleChangeItem}
-													id={i}
-													/>
-												{/* {item.siteID} */}
+									<tr key={item.siteID + i}	>
+											<td onClick={this.handleRowSelect.bind(null, item)}>
+												{item.siteID}
 											</td>
-											<td>
-												<input 
-													className={cl(s.inpProject, {[s.alarm] : !item.project})}
-													type="text" 
-													name="project"
-													value={item.project}
-													onChange={this.handleChangeItem}
-													id={i}
-													/>
-													{/* {item.project} */}
+											<td onClick={this.handleRowSelect.bind(null, item)}>
+													{item.project}
 											</td>
-											<td className={s.tdOrganization}>
-												<input 
-													className={cl(s.inpOrganization, {[s.alarm] : !item.organization})}
-													type="text" 
-													name="organization"
-													value={item.organization}
-													onChange={this.handleChangeItem}
-													id={i}
-												/>
-												{/* {item.organization} */}
+											<td className={s.tdOrganization}
+												onClick={this.handleRowSelect.bind(null, item)}
+											>
+												{item.organization}
 											</td>
 											<td>{item.mbPrice}</td>
 											<td>
@@ -202,7 +231,6 @@ class CreateTableFromArr extends PureComponent {
 													onChange={this.handleChangeItem}
 													id={i}
 												/>
-													
 											</td>
 											<td>{item.mbTraffic}</td>
 											<td>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
@@ -214,7 +242,7 @@ class CreateTableFromArr extends PureComponent {
 									))}
 						</tbody>
 					</table>
-				</form>
+				{/* </form> */}
 
 			</>
 		)

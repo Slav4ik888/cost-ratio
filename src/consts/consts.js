@@ -42,7 +42,7 @@ export const TITLE_RES_ANALIS_TABLE_VALUE = [
 
 export const TITLE_DETAIL_ROW_TABLE = [
   `Клиент`,
-  `Проект`,
+  `SiteID`,
   `Затраты Мб`,
   `Затраты Полоса`,
   `Затраты итого`,
