@@ -93,11 +93,7 @@ class ResultAnalisTabl extends PureComponent {
 				{/* выводим нажатую строчку */}
 				{
 					rowResult &&
-					row ? 
-						<Section> 
-								<DetailRowView result={rowResult} /> 
-						</Section>
-						: null
+					row ? <DetailRowView result={rowResult} /> : null
 				}
 				<div className={s.centerBox}>
 					<div className={s.result}>

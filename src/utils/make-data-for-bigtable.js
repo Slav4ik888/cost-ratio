@@ -52,7 +52,7 @@ export const makeBigArr = (mbSiteId, striteSiteId, arrayOfProject, factura) => {
       objSiteID.mbPrice = 0.132;
       objSiteID.mbCostServicies = '';
       objSiteID.mbTraffic = obj.trafficMb;
-      objSiteID.mbCostTraffic = (objSiteID.mbTraffic * objSiteID.mbPrice);
+      objSiteID.mbCostTraffic = (objSiteID.mbTraffic * objSiteID.mbPrice).toFixed(2);
       objSiteID.mbCostCorrect = '';
 
       objSiteID.spTraffic = '';

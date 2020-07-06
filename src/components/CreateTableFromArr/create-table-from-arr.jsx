@@ -236,7 +236,7 @@ class CreateTableFromArr extends PureComponent {
 													
 											</td>
 											<td>{item.mbTraffic}</td>
-											<td>{item.mbCostTraffic ? item.mbCostTraffic.toFixed(2) : 0}</td>
+											<td>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
 											<td>{item.mbCostCorrect}</td>
 											<td>{item.spTraffic}</td>
 											<td>{item.spCostTraffic}</td>

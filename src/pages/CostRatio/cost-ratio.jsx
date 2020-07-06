@@ -37,9 +37,9 @@ class CostRatio extends React.PureComponent {
           striteSiteId: [],  // массив полосного трафика
 
           factura: {
-              value: '', // 779797.3,
-              sprite: '', // 205887.1,
-              mb: '',
+              value: 779797.3,
+              sprite: 205887.1,
+              mb: 573910.2,
           }, // Данные со счёт-фактуры
           // isFactura: false, //Заполнены ли данные из сч/ф
           mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги

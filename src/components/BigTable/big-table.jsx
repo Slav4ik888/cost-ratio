@@ -10,14 +10,10 @@ const BigTable = ({ arr, onHandleUpdateBigArr}) => {
         <>
 					<div className={s.section}>
 						<div className={s.centerBox}>
-							<div className={s.result}>
-								<div className={s.resultCard}>
 									<CreateTableFromArr
 										arr={arr} 
 										onHandleUpdateBigArr={onHandleUpdateBigArr}
 									/>
-								</div>
-							</div>
 						</div>
 					</div>
         </>
