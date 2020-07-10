@@ -27,6 +27,7 @@ export const TITLE_BIG_TABLE_VALUE = [
 ];
 
 export const TITLE_RES_ANALIS_TABLE = [
+  `№ проекта`,
   `Проект`,
   `Затраты Мб`,
   `Затраты Полоса`,
@@ -35,6 +36,7 @@ export const TITLE_RES_ANALIS_TABLE = [
 
 export const TITLE_RES_ANALIS_TABLE_VALUE = [
   `project`,
+  'organization',
   `sumMbCost`,
   `sumSpCost`,
   `result`,

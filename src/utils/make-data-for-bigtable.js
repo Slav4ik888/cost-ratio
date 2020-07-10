@@ -117,9 +117,18 @@ export const makeBigArr = (mbSiteId, striteSiteId, arrayOfProject, factura) => {
   // Итоговые затраты
   storage.forEach( obj => obj.result = (+obj.spCostTraffic + +obj.mbCostCorrect).toFixed(2));
 
+  // Обновляем данными из Гугл
+  storage = makeDataFromGoogle(storage, arrayOfProject);
+
+  return {factura, mbCostAll, spTrafficAll, storage}
+};
+
+
+// Обновляем полученный массив, данными из массива от Гугл
+export const makeDataFromGoogle = (arr, arrayOfProject) => {
   // siteId в arrayOfProject (Это данные по организациям и проектам)
   if (arrayOfProject) {
-    for(let obj of storage) {
+    for(let obj of arr) {
 
       let result = arrayOfProject.find( it => it.siteID === obj.siteID);
       
@@ -129,6 +138,5 @@ export const makeBigArr = (mbSiteId, striteSiteId, arrayOfProject, factura) => {
       }
     }
   }
-
-  return {factura, mbCostAll, spTrafficAll, storage}
+  return arr;
 };

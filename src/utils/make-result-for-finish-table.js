@@ -3,16 +3,15 @@
 /**********************************************************/
 
 
-// Подсчёт Затрат Мб
-// const 
-
-
+// Расчёт данных для таблицы "Итоговой таблицы Анализа и 1C"
 export const makeResultForFinishTable = arr => {
   let lastBigStore = [], newStorage = [];
   
   for(let i=0; i<arr.length; i++) {
     let obj = {};
     obj.project = arr[i].project;
+    obj.organization = arr[i].organization; // Название организации берём только первое
+
 
     let sumMbCost = +arr[i].mbCostCorrect;
     let sumSpCost = +arr[i].spCostTraffic;

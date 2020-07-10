@@ -25,3 +25,159 @@
   overflow-y: scroll;
 }
 
+.capt {
+  /* background-color: #e7e7e7; */
+  font-size: 24px;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  height: 100vh;
+}
+
+/* .table tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: calc(100vh - 30px);
+} */
+.table tbody tr:nth-child(even) {
+  background: #edf3f3;
+}
+
+.table tbody tr:hover{
+  background-color: #f1feff;
+}
+
+/* .table thead tr {
+  display: block;
+  position: relative;
+} */
+
+.table th {
+  font-weight: 900;
+} 
+
+.table th,
+.table td {
+  border-bottom: 1px solid #cecfd5;
+  padding: 5px 10px;
+}
+.table tfoot tr:last-child td {
+  border-bottom: 0;
+}
+
+
+.table .tit1 tr th{
+  width: 300px;
+  background-color: #41a4b6;
+}
+
+
+.table .active {
+  /* border-bottom: 2px solid #965656; */
+  color: #921505;
+}
+.inpProject,
+.inpMbCostServicies {
+  width: 80px;
+  border: 0px;
+  background-color: unset;
+
+}
+.inpSiteID {
+  width: 120px;
+  border: 0px;
+  background-color: unset;
+
+}
+
+.inpOrganization {
+  border: 0px;
+  background-color: unset;
+  
+}
+
+.tdOrganization {
+  width: 400px;
+}
+
+
+form {
+  width: 600px;
+  /* height: max-content; */
+}
+
+.butAdd {
+  width: max-content;
+  /* height: 30px; */
+  font-size: 1.3em;
+  color: rgb(17, 17, 17);
+  background-color: #ccd6d8;
+  margin: 10px 20px 0 0;
+  padding: 8px 15px 7px 15px;
+}
+
+.butAdd:hover {
+  color: rgb(7, 11, 12);
+  background-color: #c2d3d6;
+}
+
+.butUpdate {
+  width: max-content;
+  /* height: 30px; */
+  font-size: 1.3em;
+  color: rgb(17, 17, 17);
+  background-color: #bed8dd;
+  margin: 10px 0 0 40px;
+  padding: 8px 15px 7px 15px;
+}
+
+.butUpdate:hover {
+  color: rgb(7, 11, 12);
+  background-color: rgb(214, 239, 243);
+}
+
+.alarm {
+  background-color: #f59c81;
+}
+
+/* 
+.tableFixedHead {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  height: 100vh;
+}
+
+.tableFixedHead th,
+.tableFixedHead td {
+  padding: 5px;
+  text-align: center;
+  width: 33.333vw;
+}
+
+.tableFixedHead thead {
+  background-color: #333;
+  color: #FDFDFD;
+}
+
+.tableFixedHead thead tr {
+  display: block;
+  position: relative;
+}
+
+.tableFixedHead tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: calc(100vh - 30px);
+}
+
+.tableFixedHead tbody tr:nth-child(even) {
+  background-color: #DDD;
+} */

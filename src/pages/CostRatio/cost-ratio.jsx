@@ -7,7 +7,7 @@ import BigTable from '../../components/BigTable/big-table.jsx';
 import {ResultTabl} from '../../components/ResultTabl/result-table.jsx';
 import {joinTraffic} from '../../utils/join-traffic.js';
 import {makeResultForFinishTable} from '../../utils/make-result-for-finish-table.js';
-import {makeBigArr, updateBigArr} from '../../utils/make-data-for-bigtable.js';
+import {makeBigArr, updateBigArr, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
 
 import {getGoogleSheet} from '../../utils/get-google-data.js';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-table.jsx';
@@ -19,6 +19,8 @@ class CostRatio extends React.PureComponent {
 
   constructor (props) {
       super(props);
+      this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
+      this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
       this.handleSetArr = this.handleSetArr.bind(this); 
       this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
       this.handleSetFactura = this.handleSetFactura.bind(this);
@@ -37,9 +39,12 @@ class CostRatio extends React.PureComponent {
           striteSiteId: [],  // массив полосного трафика
 
           factura: { // Данные со счёт-фактуры
-              value: '', // 779797.3,
-              sprite: '', // 205887.1,
-              mb: '', // 573910.2,
+            value: 779797.3,
+            sprite: 205887.1,
+            mb: 573910.2,
+            // value: '', //779797.3,
+            // sprite: '', // 205887.1,
+            // mb: '', // 573910.2,
           }, 
           // isFactura: false, //Заполнены ли данные из сч/ф
           mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
@@ -47,17 +52,41 @@ class CostRatio extends React.PureComponent {
       };
   }
 
-  async componentDidMount() {
-      // Читаем данные из Гугл
-      const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
-      const arrayOfProject = await getGoogleSheet(url);
-      this.setState({
-          arrayOfProject,
-          isLoading: true,
-      });
+
+  componentDidMount() {
+    this.getArrFromGoogle();
   }
 
-  // Рассчитываем данные для "Сводной таблицы"
+  // Читаем данные из Гугл
+  async getArrFromGoogle() {
+    const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
+    const arrayOfProject = await getGoogleSheet(url);
+    this.setState({
+      arrayOfProject,
+      isLoading: true,
+    });
+  };
+
+  // Обновляем все данные при повторном запроосе к Google 
+  async handleUpdateFromGoogle(arr) {
+    console.log(`updateFromGoogle`);
+    // Выставляем загрузку
+    this.setState({
+      isLoading: false,
+    });
+    await this.getArrFromGoogle();
+
+    this.setState({
+      arrForBigTable: makeDataFromGoogle(arr, this.state.arrayOfProject),
+    });
+    
+
+    // this.handleUpdateBigArr(arr);
+
+  }
+
+
+  // Первоначально рассчитываем данные для "Сводной таблицы"
   calcAnalisTabl = () => {
     const { arrayOfProject, factura, mbSiteId, striteSiteId } = this.state;
     const { mbCostAll, spTrafficAll, storage } = makeBigArr(mbSiteId, striteSiteId, arrayOfProject, factura);
@@ -66,7 +95,7 @@ class CostRatio extends React.PureComponent {
       spTrafficAll: spTrafficAll,
       arrForBigTable: storage,
     });
-  }
+  };
 
 
   // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
@@ -77,7 +106,7 @@ class CostRatio extends React.PureComponent {
       arrForBigTable: lastBigStore,
       arrResult: newStorage,
     });
-  }
+  };
 
   
 
@@ -98,7 +127,7 @@ class CostRatio extends React.PureComponent {
       this.calcFinishTabl(); 
         
     }, 0);
-  }
+  };
 
 
 
@@ -106,7 +135,7 @@ class CostRatio extends React.PureComponent {
   handleUpdateBigArr(arr) {
     const {factura} = this.state;
 
-    // Рассчитываем данные для "Сводной таблицы"
+    // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
     const storage = updateBigArr(arr, factura);
 
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
@@ -116,7 +145,7 @@ class CostRatio extends React.PureComponent {
         arrForBigTable: storage,
         arrResult: newStorage,
     });
-  }
+  };
   
   // Присвоение значений сч/фактуры
   handleSetFactura(factura) {
@@ -173,6 +202,7 @@ class CostRatio extends React.PureComponent {
               arr={arrForBigTable} 
               onHandleUpdateBigArr={this.handleUpdateBigArr}
               arrayOfProject={arrayOfProject}
+              onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
             />
         }
         
@@ -180,7 +210,9 @@ class CostRatio extends React.PureComponent {
         {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
         {isMadeArr &&
             <Section>
-                <ResultAnalisTabl arr={arrResult} arrBig={arrForBigTable}/>
+                <ResultAnalisTabl
+                  arr={arrResult}
+                  arrBig={arrForBigTable}/>
             </Section>
         }
 
