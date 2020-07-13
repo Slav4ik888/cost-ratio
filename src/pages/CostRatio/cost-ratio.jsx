@@ -6,7 +6,7 @@ import TextareaFromAltegra from '../../components/TextareaFromAltegra/textarea-f
 import BigTable from '../../components/BigTable/big-table.jsx';
 import {ResultTabl} from '../../components/ResultTabl/result-table.jsx';
 import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-processing-from-alterga.js';
-import {makeResultForFinishTable} from '../../utils/make-result-for-finish-table.js';
+import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table.js';
 import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
   makeDataForBigTable, updateBigArr, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
 
@@ -57,9 +57,12 @@ class CostRatio extends React.PureComponent {
   }
 
 
+
   componentDidMount() {
     this.getArrFromGoogle();
   }
+
+
 
   // Читаем данные из Гугл
   async getArrFromGoogle() {
@@ -71,6 +74,8 @@ class CostRatio extends React.PureComponent {
     });
   };
 
+
+
   // Обновляем все данные при повторном запроосе к Google 
   async handleUpdateFromGoogle(arr) {
     console.log(`updateFromGoogle`);
@@ -80,13 +85,12 @@ class CostRatio extends React.PureComponent {
     });
     await this.getArrFromGoogle();
 
+    // Не помню зачем это))
     this.setState({
       arrForBigTable: makeDataFromGoogle(arr, this.state.arrayOfProject),
     });
-    
 
     // this.handleUpdateBigArr(arr);
-
   }
 
 
@@ -105,56 +109,82 @@ class CostRatio extends React.PureComponent {
       const mbSiteId = returnArrMb(arrFromAltegra);
       const striteSiteId = returnArrSprite(arrFromAltegra);
 
+      // Рассчитываем данные для "Сводной таблицы"
+      const { arrayOfProject, factura, mbPrice } = this.state;
+
+      // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
+      const arr = pushArrBmAndStriteTraffic(mbSiteId, striteSiteId, mbPrice);
+
+      // Подсчёт общих затрат по Мб трафику + сч/ф
+      const {mbCostAll} = calcMbCostAll(arr);
+      console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
+
+      // Подсчёт общего трафика полосы
+      const {spTrafficAll} = calcSpTrafficAll(arr);
+      console.log('Общий трафик в полосе рассчитанный: ', spTrafficAll);
+
+      let {arrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
+
+      // Обновляем arrForBigTable, данными из массива от Гугл
+      arrForBigTable = makeDataFromGoogle(arrForBigTable, arrayOfProject);
+  
       this.setState({
         arrFromAltegra, mbSiteId, striteSiteId,
         isMadeArr: true,
+        mbCostAll,
+        spTrafficAll,
       });
 
-      // Рассчитываем данные для "Сводной таблицы"
-      this.calcAnalisTabl(); 
       // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      this.calcFinishTabl(); 
-        
+      const {newStorage} = makeResultForFinishTable(arrForBigTable);
+
+      // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+      const lastBigStore = changePointToComma(arrForBigTable, `result`);
+
+      this.setState({
+        arrForBigTable: lastBigStore,
+        arrResult: newStorage,
+      });
     }, 0);
   };
 
-// Первоначально рассчитываем данные для "Сводной таблицы"
-calcAnalisTabl = () => {
-  const { arrayOfProject, factura, mbSiteId, striteSiteId, mbPrice } = this.state;
+  // Первоначально рассчитываем данные для "Сводной таблицы"
+  calcAnalisTabl = () => {
+    // const { arrayOfProject, factura, mbSiteId, striteSiteId, mbPrice } = this.state;
 
-  // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
-  const arr = pushArrBmAndStriteTraffic(mbSiteId, striteSiteId, mbPrice);
+    // // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
+    // const arr = pushArrBmAndStriteTraffic(mbSiteId, striteSiteId, mbPrice);
 
-  // Подсчёт общих затрат по Мб трафику + сч/ф
-  const {mbCostAll} = calcMbCostAll(arr);
-  console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
+    // // Подсчёт общих затрат по Мб трафику + сч/ф
+    // const {mbCostAll} = calcMbCostAll(arr);
+    // console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
 
-  // Подсчёт общего трафика полосы
-  const {spTrafficAll} = calcSpTrafficAll(arr);
-  console.log('Общий трафик в полосе рассчитанный: ', spTrafficAll);
+    // // Подсчёт общего трафика полосы
+    // const {spTrafficAll} = calcSpTrafficAll(arr);
+    // console.log('Общий трафик в полосе рассчитанный: ', spTrafficAll);
 
-  let {arrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
+    // let {arrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
 
-  // Обновляем данными из Гугл
-  arrForBigTable = makeDataFromGoogle(arrForBigTable, arrayOfProject);
+    // // Обновляем arrForBigTable, данными из массива от Гугл
+    // arrForBigTable = makeDataFromGoogle(arrForBigTable, arrayOfProject);
 
-  this.setState({
-    mbCostAll,
-    spTrafficAll,
-    arrForBigTable,
-  });
-};
+    // this.setState({
+    //   mbCostAll,
+    //   spTrafficAll,
+    //   arrForBigTable,
+    // });
+  };
 
 
-// Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-calcFinishTabl = () => {
-  const {arrForBigTable} = this.state;
-  const {lastBigStore, newStorage} = makeResultForFinishTable(arrForBigTable);
-  this.setState({
-    arrForBigTable: lastBigStore,
-    arrResult: newStorage,
-  });
-};
+  // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+  calcFinishTabl = () => {
+    // const {arrForBigTable} = this.state;
+    // const {lastBigStore, newStorage} = makeResultForFinishTable(arrForBigTable);
+    // this.setState({
+    //   arrForBigTable: lastBigStore,
+    //   arrResult: newStorage,
+    // });
+  };
 
   // Меняем значения на пришедшие из таблицы и пересчитываем итоговые значения
   handleUpdateBigArr(arr) {

@@ -1,30 +1,30 @@
-/**********************************************************/
-/*   Ищем совпадения проектов и создаём итоговую таблицу  */
-/**********************************************************/
+/**
+ * Ищем совпадения проектов, расчитываем и создаём "Итоговой таблицы Анализа и 1C"
+ *
+ * @param {array} arrForBigTable - массив "Сводной таблицы"
+ * 
+ * @return {array} newStorage  
+ */
 
-
-// Расчёт данных для таблицы "Итоговой таблицы Анализа и 1C"
-export const makeResultForFinishTable = arr => {
-  let lastBigStore = [], newStorage = [];
+export const makeResultForFinishTable = arrForBigTable => {
+  let newStorage = [];
   
-  for(let i=0; i<arr.length; i++) {
+  for(let i=0; i<arrForBigTable.length; i++) {
     let obj = {};
-    obj.project = arr[i].project;
-    obj.organization = arr[i].organization; // Название организации берём только первое
+    obj.project = arrForBigTable[i].project;
+    obj.organization = arrForBigTable[i].organization; // Название организации берём только первое
 
+    let sumMbCost = +arrForBigTable[i].mbCostCorrect;
+    let sumSpCost = +arrForBigTable[i].spCostTraffic;
+    let sumResult = +arrForBigTable[i].result;
 
-    let sumMbCost = +arr[i].mbCostCorrect;
-    let sumSpCost = +arr[i].spCostTraffic;
+    if (!newStorage.find( it => it.project === arrForBigTable[i].project)) {
+      for(let j=i+1; j<arrForBigTable.length; j++) {
+        if (arrForBigTable[i].project === arrForBigTable[j].project) {
 
-    let sumResult = +arr[i].result;
-
-    if (!newStorage.find( it => it.project === arr[i].project)) {
-      for(let j=i+1; j<arr.length; j++) {
-        if (arr[i].project === arr[j].project) {
-
-          sumMbCost += +arr[j].mbCostCorrect;
-          sumSpCost += +arr[j].spCostTraffic;
-          sumResult += +arr[j].result;
+          sumMbCost += +arrForBigTable[j].mbCostCorrect;
+          sumSpCost += +arrForBigTable[j].spCostTraffic;
+          sumResult += +arrForBigTable[j].result;
         }
       }
 
@@ -36,9 +36,6 @@ export const makeResultForFinishTable = arr => {
       obj = {};
     }
   }
-  // Меняем точку на запятую в итоговой ячейке
-  lastBigStore = arr.concat();
-  lastBigStore.forEach( item => item.result = item.result.replace(/\./g,','));
   
   // newStorage.forEach( item => {
   //   item.sumMbCost = item.sumMbCost.replace(/\./g,',');
@@ -46,5 +43,25 @@ export const makeResultForFinishTable = arr => {
   //   item.result = item.result.replace(/\./g,',');
   // });
 
-  return {lastBigStore, newStorage}
+  return {newStorage}
 }
+
+
+/**
+ * Меняем точку на запятую в переданном свойстве объекта
+ *
+ * @param {array} arr - массив объектов
+ * @param {string} attribute - свойство объекта
+ * 
+ * 
+ * @return {array} newArr  
+ */
+
+export const changePointToComma = (arr, attribute) => {
+
+
+  arr.forEach( item => item.result = item[attribute].replace(/\./g,','));
+
+
+  return arr;
+};
