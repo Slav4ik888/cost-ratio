@@ -37,6 +37,7 @@ export class Header extends PureComponent {
 
   render() {
     const { allSum, spriteSum, mbSum } = this.state;
+    const {mbCostAll, spTrafficAll} = this.props;
 
     return (
       <>
@@ -72,13 +73,13 @@ export class Header extends PureComponent {
                           onChange={this.handleOnChange}
                           />
                       </td>
-                      <td>Общий трафик (по Мб) рассчитанный:</td>
+                      <td>Общий трафик Мб (помегаб) рассчитанный:</td>
                       <td>
                         {}
                       </td>
                       <td>Общие затраты по трафику рассчитанные:</td>
                       <td>
-                        {}
+                        {mbCostAll}
                       </td>
                     </tr>
 
@@ -92,9 +93,9 @@ export class Header extends PureComponent {
                           onChange={this.handleOnChange}
                           />
                       </td>
-                      <td>Общий трафик (в полосе) рассчитанный:</td>
+                      <td>Общий трафик Мб (в полосе) рассчитанный:</td>
                       <td>
-                        {}
+                        {spTrafficAll}
                       </td>
                       <td>Общие затраты по трафику рассчитанные:</td>
                       <td>

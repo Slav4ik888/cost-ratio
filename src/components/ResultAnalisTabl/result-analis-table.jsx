@@ -31,6 +31,7 @@ class ResultAnalisTabl extends PureComponent {
 		if (this.props.arr !== prevProps.arr) {
 			const {arr, arrBig} = this.props;
 
+			// Переводим в цифры
 			let newArr = arr.concat();
 			newArr.forEach(item => {
 				return (
@@ -120,6 +121,7 @@ class ResultAnalisTabl extends PureComponent {
 											onClick={this.handleRowSelect.bind(null, item, i)}
 										>
 											<td>{item.project}</td>
+											<td>{item.organization}</td>
 											<td>{item.sumMbCost}</td>
 											<td>{item.sumSpCost}</td>
 											<td>{item.result}</td>

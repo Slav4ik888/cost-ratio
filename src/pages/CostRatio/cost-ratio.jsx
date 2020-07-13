@@ -5,11 +5,12 @@ import Section from '../../components/Section/section.jsx';
 import TextareaFromAltegra from '../../components/TextareaFromAltegra/textarea-from-altegra.jsx';
 import BigTable from '../../components/BigTable/big-table.jsx';
 import {ResultTabl} from '../../components/ResultTabl/result-table.jsx';
-import {joinTraffic} from '../../utils/join-traffic.js';
-import {makeResultForFinishTable} from '../../utils/make-result-for-finish-table.js';
-import {makeBigArr, updateBigArr} from '../../utils/make-data-for-bigtable.js';
+import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-processing-from-alterga.js';
+import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table.js';
+import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
+  makeDataForBigTable, updateBigArr, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
 
-import {getGoogleSheet} from '../../utils/get-google-data.js';
+import {getFromGoogleData} from '../../utils/get-from-google-data.js';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-table.jsx';
 import {Header} from '../../components/Header/header.jsx';
 
@@ -19,27 +20,35 @@ class CostRatio extends React.PureComponent {
 
   constructor (props) {
       super(props);
+      this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
+      this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
       this.handleSetArr = this.handleSetArr.bind(this); 
       this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
       this.handleSetFactura = this.handleSetFactura.bind(this);
-      this.calcAnalisTabl = this.calcAnalisTabl.bind(this);
-      this.calcFinishTabl = this.calcFinishTabl.bind(this);
+      // this.calcBigTabl = this.calcBigTabl.bind(this);
+      // this.calcFinishTabl = this.calcFinishTabl.bind(this);
 
       this.state = {
-          isLoading: false,  // загрузились ли данные из service desk
+          isLoading: false,  // загрузились данные из Google - service desk
           isMadeArr: false,  // получены данные от Алтегры
+
           arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
-          arrForBigTable: [], // большая сводная таблица (по SiteID)
+          arrayOfProject: [], // загруженны массив с service desk
+          arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
           arrResult:[], // конечный массив (по Project)
-          arrayOfProject: [], // данный загруженные с service desk
 
           mbSiteId: [], // массив помегабатного трафика
           striteSiteId: [],  // массив полосного трафика
 
+          mbPrice: 0.132, // Базовая стоимость Мб
+
           factura: { // Данные со счёт-фактуры
-              value: '', // 779797.3,
-              sprite: '', // 205887.1,
-              mb: '', // 573910.2,
+            // value: 779797.3,
+            // sprite: 205887.1,
+            // mb: 573910.2,
+            value: '', //779797.3,
+            sprite: '', // 205887.1,
+            mb: '', // 573910.2,
           }, 
           // isFactura: false, //Заполнены ли данные из сч/ф
           mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
@@ -47,91 +56,158 @@ class CostRatio extends React.PureComponent {
       };
   }
 
-  async componentDidMount() {
-      // Читаем данные из Гугл
-      const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
-      const arrayOfProject = await getGoogleSheet(url);
+
+
+  componentDidMount() {
+    this.getArrFromGoogle();
+  }
+
+
+
+  // Читаем данные из Гугл
+  async getArrFromGoogle() {
+    const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
+    const arrayOfProject = await getFromGoogleData(url);
+    this.setState({
+      arrayOfProject,
+      isLoading: true, // Убираем "загрузку"
+    });
+  };
+
+
+
+  // Обновляем все данные при повторном запроосе к Google 
+  async handleUpdateFromGoogle(arr) {
+    this.setState({
+      isLoading: false, // Выставляем "загрузку"
+    });
+    await this.getArrFromGoogle()
+    .then(() => {
+
+      let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
+      this.handleUpdateBigArr(newArrForBigTable);
+      
+    });
+  }
+
+
+  /**
+   * Принимаем массив из обработанной таблицы от Алтегры
+   * Объединяем входящий и исходящий трафик 
+   *
+   * @param {array} arr - массив из обработанной таблицы от Алтегры
+   * 
+   * @return {array} arrFromAltegra  
+   */
+
+  handleSetArr = arrFromAltegra => {
+    setTimeout(() => {
+      arrFromAltegra = joinTraffic(arrFromAltegra);
+      const mbSiteId = returnArrMb(arrFromAltegra);
+      const striteSiteId = returnArrSprite(arrFromAltegra);
+
+      // Рассчитываем данные для "Сводной таблицы"
+      const { arrayOfProject, factura, mbPrice } = this.state;
+
+      // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
+      const arr = pushArrBmAndStriteTraffic(mbSiteId, striteSiteId, mbPrice);
+
+      // Подсчёт общих затрат по Мб трафику + сч/ф
+      const mbCostAll = calcMbCostAll(arr);
+      // console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
+
+      // Подсчёт общего трафика полосы
+      const spTrafficAll = calcSpTrafficAll(arr);
+      // console.log('Общий трафик в полосе рассчитанный: ', spTrafficAll);
+
+      // Рассчитываем Затраты скорректированные
+      let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
+
+      // Обновляем arrForBigTable, данными из массива от Гугл
+      newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
+  
       this.setState({
-          arrayOfProject,
-          isLoading: true,
+        arrFromAltegra, mbSiteId, striteSiteId,
+        isMadeArr: true,
+        mbCostAll,
+        spTrafficAll,
       });
-  }
-
-  // Рассчитываем данные для "Сводной таблицы"
-  calcAnalisTabl = () => {
-    const { arrayOfProject, factura, mbSiteId, striteSiteId } = this.state;
-    const { mbCostAll, spTrafficAll, storage } = makeBigArr(mbSiteId, striteSiteId, arrayOfProject, factura);
-    this.setState({
-      mbCostAll: mbCostAll,
-      spTrafficAll: spTrafficAll,
-      arrForBigTable: storage,
-    });
-  }
 
 
-  // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-  calcFinishTabl = () => {
-    const {arrForBigTable} = this.state;
-    const {lastBigStore, newStorage} = makeResultForFinishTable(arrForBigTable);
-    this.setState({
-      arrForBigTable: lastBigStore,
-      arrResult: newStorage,
-    });
-  }
+      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+      const {arrResult} = makeResultForFinishTable(newArrForBigTable);
+
+      // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+      const lastBigStore = changePointToComma(newArrForBigTable, `result`);
+
+      this.setState({
+        arrForBigTable: lastBigStore,
+        arrResult,
+      });
+    }, 0);
+  };
 
   
 
-  // Принимаем массив текста Алтегры в стёйт добавляем полученный массив данных и обрабатываем его
-  handleSetArr = arr => {
-    setTimeout(() => {
-      //  Объединяем входящий и исходящий трафик 
-      const {arrNew, mbSiteId, striteSiteId} = joinTraffic(arr);
-      this.setState({
-          arrFromAltegra: arrNew,
-          mbSiteId, striteSiteId,
-          isMadeArr: true,
-      });
-
-      // Рассчитываем данные для "Сводной таблицы"
-      this.calcAnalisTabl(); 
-      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      this.calcFinishTabl(); 
-        
-    }, 0);
-  }
-
-
-
   // Меняем значения на пришедшие из таблицы и пересчитываем итоговые значения
   handleUpdateBigArr(arr) {
-    const {factura} = this.state;
+    const {factura, spTrafficAll} = this.state;
 
-    // Рассчитываем данные для "Сводной таблицы"
-    const storage = updateBigArr(arr, factura);
+    // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
+    let mbCostAll = calcMbCostAll(arr);
+    // Рассчитываем Затраты скорректированные
+    let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
 
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { newStorage } = makeResultForFinishTable(storage);
+    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
+
+    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+    const lastBigStore = changePointToComma(newArrForBigTable, `result`);
 
     this.setState({
-        arrForBigTable: storage,
-        arrResult: newStorage,
+        arrForBigTable: lastBigStore,
+        mbCostAll,
+        arrResult,
     });
-  }
+  };
   
   // Присвоение значений сч/фактуры
   handleSetFactura(factura) {
     setTimeout(() => {
-      this.setState(() => ({
-        factura,
-        // isFactura: true,
-      }));
-
+      const {arrForBigTable, arrayOfProject} = this.state;
       // Рассчитываем данные для "Сводной таблицы"
-      this.calcAnalisTabl(); 
-      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      this.calcFinishTabl(); 
-    }, 0);
 
+      // Подсчёт общих затрат по Мб трафику + сч/ф
+      const mbCostAll = calcMbCostAll(arrForBigTable);
+      // Подсчёт общего трафика полосы
+      const spTrafficAll = calcSpTrafficAll(arrForBigTable);
+
+      // Рассчитываем Затраты скорректированные
+      let {newArrForBigTable} = makeDataForBigTable(arrForBigTable, factura, mbCostAll, spTrafficAll);
+
+      // Обновляем newArrForBigTable, данными из массива от Гугл
+      newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
+  
+      this.setState({
+        arrForBigTable: newArrForBigTable,
+        isMadeArr: true,
+        mbCostAll,
+        spTrafficAll,
+        factura,
+      });
+
+
+      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+      const {arrResult} = makeResultForFinishTable(arrForBigTable);
+
+      // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+      const lastBigStore = changePointToComma(arrForBigTable, `result`);
+
+      this.setState({
+        arrForBigTable: lastBigStore,
+        arrResult,
+      });
+    }, 0);
   }
 
   
@@ -140,6 +216,7 @@ class CostRatio extends React.PureComponent {
             arrForBigTable, factura,
             arrayOfProject,
             // mbSiteId, striteSiteId, 
+            mbCostAll, spTrafficAll,
             arrResult, 
     } = this.state;
 
@@ -150,7 +227,12 @@ class CostRatio extends React.PureComponent {
     return (
       <>
         <Section>
-          <Header factura={factura} onSetFactura={this.handleSetFactura}/>
+          <Header
+            factura={factura}
+            onSetFactura={this.handleSetFactura}
+            mbCostAll={mbCostAll}
+            spTrafficAll={spTrafficAll}
+          />
         </Section>
         
 
@@ -173,6 +255,7 @@ class CostRatio extends React.PureComponent {
               arr={arrForBigTable} 
               onHandleUpdateBigArr={this.handleUpdateBigArr}
               arrayOfProject={arrayOfProject}
+              onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
             />
         }
         
@@ -180,7 +263,9 @@ class CostRatio extends React.PureComponent {
         {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
         {isMadeArr &&
             <Section>
-                <ResultAnalisTabl arr={arrResult} arrBig={arrForBigTable}/>
+                <ResultAnalisTabl
+                  arr={arrResult}
+                  arrBig={arrForBigTable}/>
             </Section>
         }
 
