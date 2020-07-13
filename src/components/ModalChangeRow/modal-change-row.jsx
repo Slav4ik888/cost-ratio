@@ -2,56 +2,52 @@ import React from 'react';
 import s from './modal-change-row.module.css';
 import cl from 'classnames';
 
-class GoogleRow extends React.Component {
-  render() {
-    const {item} = this.props;
+const GoogleRow = (props) => {
+  const {item} = props;
 
-    return (
-      <tr>
-        <td>{item.siteID}</td>
-        <td>{item.project}</td>
-        <td>{item.organization}</td>
-      </tr>
-    );
-  }
+  return (
+    <tr>
+      <td>{item.siteID}</td>
+      <td>{item.project}</td>
+      <td>{item.organization}</td>
+    </tr>
+  );
 }
 
-class GoogleTable extends React.Component {
-  render() {
-    const {searchText, arr} = this.props;
+const GoogleTable = (props) => {
+  const {searchText, arr} = props;
 
-    const rows = [];
+  const rows = [];
 
-    arr.forEach((item, i) => {
-      
-      if ((item.siteID.indexOf(searchText.toUpperCase()) === -1) &&
-        (item.organization.indexOf(searchText) === -1)
-      )
-      {
-        return;
-      }
-      
-      rows.push(
-        <GoogleRow
-          item={item}
-          key={item.siteID + i}
-        />
-      );
-    });
-
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>SiteID</th>
-            <th>Проект</th>
-            <th>Клиент</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
+  arr.forEach((item, i) => {
+    
+    if ((item.siteID.indexOf(searchText.toUpperCase()) === -1) &&
+      (item.organization.indexOf(searchText) === -1)
+    )
+    {
+      return;
+    }
+    
+    rows.push(
+      <GoogleRow
+        item={item}
+        key={item.siteID + i}
+      />
     );
-  }
+  });
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>SiteID</th>
+          <th>Проект</th>
+          <th>Клиент</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+  );
 }
 
 class ModalChangeRow extends React.PureComponent {

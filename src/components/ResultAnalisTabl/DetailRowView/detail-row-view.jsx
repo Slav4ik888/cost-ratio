@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './detail-row-view.module.css'; 
-import {TITLE_DETAIL_ROW_TABLE} from '../../consts/consts.js';
+import {TITLE_DETAIL_ROW_TABLE} from '../../../consts/consts.js';
 
 
 export const DetailRowView = ({result}) => (

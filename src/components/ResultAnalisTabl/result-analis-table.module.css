@@ -27,7 +27,7 @@
   /* flex-wrap: wrap; не в столбик */
    /* Выравнивание текста по вертикали */
   justify-items: left;
-  width: 400px;
+  width: 700px;
   /* background: #928f58; */
   margin-left: 20px;
 
@@ -53,6 +53,27 @@
 
 .table th {
   font-weight: 900;
+  text-align: center;
+
 } 
 
+.tdProject {
+  width: 100px;
+  border: 0px;
+  text-align: center;
+}
 
+.tdOrganization {
+  width: 200px;
+  border: 0px;
+  text-align: left;
+}
+
+.tdSumMbCost,
+.tdSumSpCost,
+.tdResult {
+  width: 150px;
+
+  text-align: right;
+
+}

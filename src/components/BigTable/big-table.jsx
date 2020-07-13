@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import s from './big-table.module.css'; 
 import cl from 'classnames';
-import {getTitle} from '../../utils/get-title.js';
+import {getTitle} from '../../utils/untils.js';
 import {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE} from '../../consts/consts.js';
 import ModalChangeRow from '../ModalChangeRow/modal-change-row.jsx';
 import _ from 'lodash';

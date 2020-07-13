@@ -8,7 +8,7 @@ import {ResultTabl} from '../../components/ResultTabl/result-table.jsx';
 import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-processing-from-alterga.js';
 import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table.js';
 import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
-  makeDataForBigTable, updateBigArr, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
+  makeDataForBigTable, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
 
 import {getFromGoogleData} from '../../utils/get-from-google-data.js';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-table.jsx';

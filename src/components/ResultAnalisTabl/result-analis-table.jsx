@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import s from './result-analis-table.module.css'; 
 import cl from 'classnames';
-import {DetailRowView} from '../DetailRowView/detail-row-view.jsx';
-import {getTitle} from '../../utils/get-title.js';
+// import {DetailRowView} from '../DetailRowView/detail-row-view.jsx';
+import ModalAnalisBlock from './ModalAnalisBlock/modal-analis-block.jsx';
+import {getTitle} from '../../utils/untils.js';
+import {addSpaceToNumber} from '../../utils/untils.js';
 
 import {TITLE_RES_ANALIS_TABLE, TITLE_RES_ANALIS_TABLE_VALUE} from '../../consts/consts.js';
 import _ from 'lodash';
@@ -12,7 +14,7 @@ import _ from 'lodash';
 class ResultAnalisTabl extends PureComponent {
 	constructor (props) {
 		super(props);
-
+		this.handleModalOut = this.handleModalOut.bind(this);
 		this.handleRowSelect = this.handleRowSelect.bind(this); 
 		this.handleSortTabl = this.handleSortTabl.bind(this); 
 		
@@ -83,6 +85,14 @@ class ResultAnalisTabl extends PureComponent {
 	};
 
 
+	// Обрабатываем закрытие модального окна
+	handleModalOut(obj) {
+		this.setState({
+			row: null,
+			rowResult: null,
+		});
+	};
+
 	render() {
 		const {tableArr, sortType, sortField, row, rowResult} = this.state;
 
@@ -91,7 +101,11 @@ class ResultAnalisTabl extends PureComponent {
 				{/* выводим нажатую строчку */}
 				{
 					rowResult &&
-					row ? <DetailRowView result={rowResult} /> : null
+					row ? 
+					// <DetailRowView result={rowResult} /> : null
+
+					<ModalAnalisBlock callback={this.handleModalOut} result={rowResult} /> : null
+
 				}
 				<div className={s.centerBox}>
 					<div className={s.result}>
@@ -120,11 +134,11 @@ class ResultAnalisTabl extends PureComponent {
 										<tr key={item.result+i}
 											onClick={this.handleRowSelect.bind(null, item, i)}
 										>
-											<td>{item.project}</td>
-											<td>{item.organization}</td>
-											<td>{item.sumMbCost}</td>
-											<td>{item.sumSpCost}</td>
-											<td>{item.result}</td>
+											<td className={s.tdProject}>{item.project}</td>
+											<td className={s.tdOrganization}>{item.organization}</td>
+											<td className={s.tdSumMbCost}>{addSpaceToNumber(item.sumMbCost, 0, ',')} p.</td>
+											<td className={s.tdSumSpCost}>{addSpaceToNumber(item.sumSpCost, 0, ',')} p.</td>
+											<td className={s.tdResult}>{addSpaceToNumber(item.result, 0, ',')} p.</td>
 										</tr>
 										))}
 									
