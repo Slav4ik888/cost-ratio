@@ -71,20 +71,20 @@ export const pushArrBmAndStriteTraffic = (mbSiteId, striteSiteId, mbPrice) => {
 export const calcMbCostAll = arr => {
   let mbCostAll = arr.reduce((sum, obj) => sum + +obj.mbCostTraffic + (+obj.mbCostServicies || 0), 0);
   mbCostAll = mbCostAll.toFixed(2);
-  return {mbCostAll};
+  return mbCostAll;
 };
 
 // Подсчёт общего трафика полосы
 export const calcSpTrafficAll = arr => {
   let spTrafficAll = arr.reduce((sum, obj) => sum + +obj.spTraffic, 0);
   spTrafficAll = spTrafficAll.toFixed(2);
-  return {spTrafficAll};
+  return spTrafficAll;
 };
 
 
 
 /**
- * Рассчитываем Затраты скорректированные "Сводную таблицу", наполняем её данными
+ * Рассчитываем Затраты скорректированные для "Сводной таблицы
  *
  * @param {array} mbSiteId - массив помегаб трафика
  * @param {array} striteSiteId - массив полосного трафика
@@ -100,7 +100,7 @@ export const makeDataForBigTable = (arrForBigTable, factura, mbCostAll, spTraffi
 
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
-    if (obj.mbCostTraffic / mbCostAll * factura.mb) {
+    if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb) {
     //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
       obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb).toFixed(2);
     }
@@ -117,17 +117,18 @@ export const makeDataForBigTable = (arrForBigTable, factura, mbCostAll, spTraffi
   
   // Итоговые затраты
   arrForBigTable.forEach( obj => obj.result = (+obj.spCostTraffic + +obj.mbCostCorrect).toFixed(2));
-
-  return {arrForBigTable};
+  const newArrForBigTable = arrForBigTable.concat();
+  return {newArrForBigTable};
 };
 
 
 
 // Обновляем полученный массив, данными из массива от Гугл
 export const makeDataFromGoogle = (arrForBigTable, arrayOfProject) => {
+  let arr = arrForBigTable.concat();
   // siteId в arrayOfProject (Это данные по организациям и проектам)
   if (arrayOfProject) {
-    for(let obj of arrForBigTable) {
+    for(let obj of arr) {
 
       let result = arrayOfProject.find( it => it.siteID === obj.siteID);
       
@@ -137,30 +138,35 @@ export const makeDataFromGoogle = (arrForBigTable, arrayOfProject) => {
       }
     }
   }
-  return arrForBigTable;
+  return arr;
 };
 
 
 // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies
 // пересчитываем
-export const updateBigArr = (arr, factura)  => {
+// export const updateBigArr = (arrForBigTable, spTrafficAll, factura)  => {
 
-  let mbCostAll = calcMbCostAll(arr);
-  console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
+//   let mbCostAll = calcMbCostAll(arrForBigTable);
+//   // console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
 
-  // Рассчитываем Затраты скорректированные
-  for(let obj of arr) {
-    if (!obj.mbCostTraffic) obj.mbCostTraffic = 0;
-    // if (!obj.mbCostServicies) obj.mbCostServicies = 0;
-    if (!factura.mb) factura.mb = 1;
-    if (!mbCostAll) mbCostAll = 1;
+//   // Рассчитываем Затраты скорректированные
+//   for(let obj of arrForBigTable) {
+//     if (!obj.mbCostTraffic) obj.mbCostTraffic = 0;
+//     // if (!obj.mbCostServicies) obj.mbCostServicies = 0;
+//     if (!factura.mb) factura.mb = 1;
+//     if (!mbCostAll) mbCostAll = 1;
 
-    //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
-      obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb).toFixed(2);
-  }
+//     if (obj.mbCostTraffic / mbCostAll * factura.mb) {
+//       //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
+//         obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb).toFixed(2);
+//       }
+//   }
 
-  // Итоговые затраты
-  arr.forEach( obj => obj.result = (+obj.spCostTraffic + +obj.mbCostCorrect).toFixed(2));
+//   // Стоимость пропорционально общей сумме затрат за полосу
+//   arrForBigTable.forEach(obj => obj.spCostTraffic = (+obj.spTraffic / spTrafficAll * factura.sprite).toFixed(2));
 
-  return arr
-};
+//   // Итоговые затраты
+//   arrForBigTable.forEach( obj => obj.result = (+obj.spCostTraffic + +obj.mbCostCorrect).toFixed(2));
+
+//   return arrForBigTable
+// };

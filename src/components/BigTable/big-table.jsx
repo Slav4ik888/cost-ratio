@@ -32,7 +32,6 @@ class BigTable extends PureComponent {
 
 	componentDidUpdate(prevProps) {
 		if (this.props.arr !== prevProps.arr) {
-			console.log(`DIDUP`);
 			const {arr} = this.props;
 			this.setState({
 				tableArr: arr, // переданный массив

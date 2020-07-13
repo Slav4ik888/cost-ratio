@@ -37,7 +37,7 @@ export class Header extends PureComponent {
 
   render() {
     const { allSum, spriteSum, mbSum } = this.state;
-    const {mbCostAll, spTrafficAll, factura} = this.props;
+    const {mbCostAll, spTrafficAll} = this.props;
 
     return (
       <>

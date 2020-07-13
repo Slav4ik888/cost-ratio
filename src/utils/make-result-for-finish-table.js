@@ -7,7 +7,7 @@
  */
 
 export const makeResultForFinishTable = arrForBigTable => {
-  let newStorage = [];
+  let arrResult = [];
   
   for(let i=0; i<arrForBigTable.length; i++) {
     let obj = {};
@@ -18,7 +18,7 @@ export const makeResultForFinishTable = arrForBigTable => {
     let sumSpCost = +arrForBigTable[i].spCostTraffic;
     let sumResult = +arrForBigTable[i].result;
 
-    if (!newStorage.find( it => it.project === arrForBigTable[i].project)) {
+    if (!arrResult.find( it => it.project === arrForBigTable[i].project)) {
       for(let j=i+1; j<arrForBigTable.length; j++) {
         if (arrForBigTable[i].project === arrForBigTable[j].project) {
 
@@ -32,18 +32,18 @@ export const makeResultForFinishTable = arrForBigTable => {
       obj.sumSpCost = sumSpCost.toFixed(2);
       obj.result = sumResult.toFixed(2);
 
-      newStorage.push(obj);
+      arrResult.push(obj);
       obj = {};
     }
   }
   
-  // newStorage.forEach( item => {
+  // arrResult.forEach( item => {
   //   item.sumMbCost = item.sumMbCost.replace(/\./g,',');
   //   item.sumSpCost = item.sumSpCost.replace(/\./g,',');
   //   item.result = item.result.replace(/\./g,',');
   // });
 
-  return {newStorage}
+  return {arrResult}
 }
 
 
