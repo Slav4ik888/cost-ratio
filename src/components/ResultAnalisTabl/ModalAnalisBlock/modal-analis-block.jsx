@@ -9,19 +9,26 @@ class ModalAnalisBlock extends React.PureComponent {
 		super(props);
     this.handleOk = this.handleOk.bind(this); 
     this.handleCancel = this.handleCancel.bind(this);
-    
+    this.handleKeyPressed = this.handleKeyPressed.bind(this);
+
     this.state = {
       element: this.props.element,
       visible: false, // модальное окно
     };
   }
 
+  
   componentDidMount() {
     document.body.style.overflow = 'hidden';
+    document.addEventListener("keydown", this.handleKeyPressed);
+
     this.setState({
       visible: true,
     });
   }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPressed);
+  } 
 
   handleOk = (e) => {
     // e.preventDefault();
@@ -45,7 +52,20 @@ class ModalAnalisBlock extends React.PureComponent {
     if (this.props.callback) this.props.callback();
   }
   
+  // Обработка нажатий клавиш
+  handleKeyPressed(e) {
+    console.log(e.keyCode);
+    switch (e.keyCode) {
+      case 27:
+        this.handleCancel();
+        break;
+      case 13:
+        this.handleOk();
+        break;
 
+      default: return;
+    }
+  }
 
   render() {
     const {visible} = this.state;
@@ -54,13 +74,16 @@ class ModalAnalisBlock extends React.PureComponent {
 
     return (
       <>
-        <div className={cl(s.modal, {[s.isOpen]: visible})}>
+        <div 
+          className={cl(s.modal, {[s.isOpen]: visible})}
+          
+        >
           <div className={cl(s.modalDialog, s.modalDialogAuth)}> 
             <div className={s.modalBody}>
               <div className={s.modalTitle}>Станции в проекте</div>
-              <div className={s.child}>              
+              <div className={s.child} onKeyDown={this.handleKeyPressed}>              
                 <div>
-                  <table className={s.table}>
+                  <table className={s.table} >
                     <thead>
                       <tr>
                         {TITLE_DETAIL_ROW_TABLE.map( (item, i) => <th key={item+i} className={s.thTitle}>

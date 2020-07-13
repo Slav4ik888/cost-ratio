@@ -56,6 +56,7 @@ class ModalChangeRow extends React.PureComponent {
     this.handleChangeItem = this.handleChangeItem.bind(this); 
     this.handleOk = this.handleOk.bind(this); 
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleKeyPressed = this.handleKeyPressed.bind(this);
     
     this.state = {
       element: this.props.element,
@@ -66,10 +67,16 @@ class ModalChangeRow extends React.PureComponent {
 
   componentDidMount() {
     document.body.style.overflow = 'hidden';
+    document.addEventListener("keydown", this.handleKeyPressed);
+
     this.setState({
       visible: true,
     });
   }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPressed);
+  } 
 
   handleOk = (e) => {
     // e.preventDefault();
@@ -91,6 +98,7 @@ class ModalChangeRow extends React.PureComponent {
     });
     if (this.props.callback) this.props.callback();
   }
+
   // Изменение индивидуальных значений сч/ф
 	handleChangeItem = (event) => {
 		const {element} = this.state;
@@ -138,7 +146,20 @@ class ModalChangeRow extends React.PureComponent {
     });
   }
   
+  // Обработка нажатий клавиш
+  handleKeyPressed(e) {
+    console.log(e.keyCode);
+    switch (e.keyCode) {
+      case 27:
+        this.handleCancel();
+        break;
+      case 13:
+        this.handleOk();
+        break;
 
+      default: return;
+    }
+  }
 
   render() {
     const {element, visible, searchText} = this.state;

@@ -98,14 +98,11 @@ class ResultAnalisTabl extends PureComponent {
 
 		return (
 			<>
-				{/* выводим нажатую строчку */}
+				{/* выводим модалку нажатой строки */}
 				{
 					rowResult &&
 					row ? 
-					// <DetailRowView result={rowResult} /> : null
-
-					<ModalAnalisBlock callback={this.handleModalOut} result={rowResult} /> : null
-
+						<ModalAnalisBlock callback={this.handleModalOut} result={rowResult} /> : null
 				}
 				<div className={s.centerBox}>
 					<div className={s.result}>
