@@ -57,11 +57,14 @@ class ModalChangeRow extends React.PureComponent {
     this.handleOk = this.handleOk.bind(this); 
     this.handleCancel = this.handleCancel.bind(this);
     this.handleKeyPressed = this.handleKeyPressed.bind(this);
-    
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleFocusBlur = this.handleFocusBlur.bind(this);
+
     this.state = {
       element: this.props.element,
       visible: false, // модальное окно
       searchText: '', // значение поиска
+      searchFocus: false,
     };
   }
 
@@ -145,6 +148,19 @@ class ModalChangeRow extends React.PureComponent {
       element: obj,
     });
   }
+
+  // При входе в InputSearch
+  handleFocus() {
+    this.setState({
+      searchFocus: true,
+    });
+  }
+  // При выходе из InputSearch
+  handleFocusBlur() {
+    this.setState({
+      searchFocus: false,
+    });
+  }
   
   // Обработка нажатий клавиш
   handleKeyPressed(e) {
@@ -162,7 +178,7 @@ class ModalChangeRow extends React.PureComponent {
   }
 
   render() {
-    const {element, visible, searchText} = this.state;
+    const {element, visible, searchText, searchFocus} = this.state;
     const {children, arrayOfProject} = this.props;
     // console.log('arrayOfProject: ', arrayOfProject);
 
@@ -175,67 +191,79 @@ class ModalChangeRow extends React.PureComponent {
               <div className={s.child}>              
                 <form onSubmit={this.handleOk}>
                   <div >
-                    Поиск в ServiceDesk
-                       
                     <input
+                      className={s.inputSearch}
                       type="text"
                       name="search"
-                      placeholder="Поиск по SiteID"
+                      placeholder="Поиск в ServiceDesk по SiteID"
                       value={searchText}
+                      autoComplete="off"
+                      ref={this.searchRef}
                       onChange={this.handleChangeItem}
+                      onFocus={this.handleFocus}
+                      onBlur={this.handleFocusBlur}
                     />
                   </div>
 
                   <div className={s.search}>
-                    <GoogleTable searchText={searchText} arr={arrayOfProject}/>
+                    {searchFocus &&
+                      <GoogleTable searchText={searchText} arr={arrayOfProject}/>
+                    }
                   </div>    
-
                   <table className={s.table}>
                     <tbody>
                       
                       
-                      <tr>
-                        <td>SiteID</td>
+                      <tr className={s.trInput}>
+                        <td className={s.tdTitle}>SiteID</td>
                         <td>
                           <input
+                            className={s.tdInputValue}
                             type="text"
                             name="siteID"
                             placeholder="SiteID"
+                            autoComplete="off"
                             value={element.siteID}
                             onChange={this.handleChangeItem}
                           />
                         </td>
                       </tr>
-                      <tr>
+                      <tr className={s.trInput}>
                         <td>Проект</td>
                         <td>
                           <input 
+                            className={s.tdInputValue}
                             type="text" 
                             name="project"
                             placeholder="Проект"
+                            autoComplete="off"
                             value={element.project}
                             onChange={this.handleChangeItem}
                           /> 
                         </td>
                       </tr>
-                      <tr>
+                      <tr className={s.trInput}>
                         <td>Клиент</td>
                         <td>
                           <input 
+                            className={s.tdInputValue}
                             type="text" 
                             name="organization"
+                            autoComplete="off"
                             placeholder="Название клиента"
                             value={element.organization}
                             onChange={this.handleChangeItem}
                           />
                         </td>
                       </tr>
-                      <tr>
+                      <tr className={s.trInput}>
                         <td>Затраты из счёт фактуры</td>
                         <td>
                           <input 
+                            className={s.tdInputValue}
                             type="number" 
                             name="mbCostServicies"
+                            autoComplete="off"
                             placeholder="Данные из счёт фактуры"
                             value={element.mbCostServicies}
                             onChange={this.handleChangeItem}

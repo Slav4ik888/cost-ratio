@@ -25,9 +25,9 @@
   /* flex-wrap: wrap; не в столбик */
    /* Выравнивание текста по вертикали */
   justify-items: left;
-  width: 400px;
+  width: 100%;
   /* background: #928f58; */
-  margin-left: 20px;
+  /* margin-left: 20px; */
 
 }
 
@@ -59,15 +59,29 @@
   font-weight: 900;
 } 
 
-
-.table input {
+/* .table input {
   width: 100px;
-}
+} */
 
-.table .title th {
-  width: 300px;
-}
+
 
 .button {
   margin: 20px 0 0 0;
+}
+
+/* Колонки */
+
+.facturaTitle {
+  width: 300px;
+  /* background-color: aqua; */
+}
+thead .facturaTitleValue {
+  width: 300px;
+}
+
+thead .trafficTitle {
+  width: 300px;
+}
+thead .trafficTitleValue {
+  width: 300px;
 }

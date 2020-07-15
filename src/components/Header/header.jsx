@@ -43,89 +43,84 @@ export class Header extends PureComponent {
       <>
         <div className={s.centerBox}>
           <div className={s.result}>
-            <div className={s.resultCard}>
-              <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
+              {/* <div className={s.capt}></div> */}
+              <table className={s.table}>
+                <thead>
+                  <tr>
+                    <th className={s.facturaTitle} scope="col">Данные из сч./фактуры</th> 
+                    <th className={s.facturaTitleValue} scope="col"></th>
 
-                {/* <div className={s.capt}></div> */}
+                    <th className={s.trafficTitle} scope="col">Расчётные данные</th> 
+                    <th className={s.trafficTitleValue} scope="col"></th>
+                    <th className={s.trafficTitle} scope="col"></th>
+                    <th className={s.trafficTitleValue} scope="col"></th>
 
-                <table className={s.table}>
-                  <thead>
-                    <tr>
-                      <th className={s.title} >Данные из сч./фактуры</th> 
-                      <th></th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  <tr>
+                    <td>Общая сумма:</td>
+                    <td>
+                      <input 
+                        type="number"
+                        name="allSum"
+                        value={allSum}
+                        onChange={this.handleOnChange}
+                        />
+                    </td>
+                    <td>Общий трафик Мб (помегаб):</td>
+                    <td>
+                      {}
+                    </td>
+                    <td>Общие затраты по трафику:</td>
+                    <td>
+                      {mbCostAll}
+                    </td>
+                  </tr>
 
-                      <th className={s.title} >Расчётные данные</th> 
-                      <th></th>
-                      <th></th>
-                      <th></th>
+                  <tr>
+                    <td>За полосу:</td>
+                    <td>
+                      <input 
+                        type="number"
+                        name="spriteSum"
+                        value={spriteSum}
+                        onChange={this.handleOnChange}
+                        />
+                    </td>
+                    <td>Общий трафик Мб (в полосе):</td>
+                    <td>
+                      {spTrafficAll}
+                    </td>
+                    <td>Общие затраты по трафику:</td>
+                    <td>
+                      {}
+                    </td>
+                  </tr>
 
-                    </tr>
-                  </thead>
-                  
-                  <tbody>
-                    <tr>
-                      <td>Общая сумма:</td>
-                      <td>
-                        <input 
-                          type="number"
-                          name="allSum"
-                          value={allSum}
-                          onChange={this.handleOnChange}
-                          />
-                      </td>
-                      <td>Общий трафик Мб (помегаб) рассчитанный:</td>
-                      <td>
-                        {}
-                      </td>
-                      <td>Общие затраты по трафику рассчитанные:</td>
-                      <td>
-                        {mbCostAll}
-                      </td>
-                    </tr>
+                  <tr>
+                    <td>Помегабайтно:</td>
+                    <td>
+                      {mbSum}
+                    </td>
+                    <td></td>
+                    <td>
+                      {}
+                    </td>
+                    <td></td>
+                    <td>
+                      {}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-                    <tr>
-                      <td>За полосу:</td>
-                      <td>
-                        <input 
-                          type="number"
-                          name="spriteSum"
-                          value={spriteSum}
-                          onChange={this.handleOnChange}
-                          />
-                      </td>
-                      <td>Общий трафик Мб (в полосе) рассчитанный:</td>
-                      <td>
-                        {spTrafficAll}
-                      </td>
-                      <td>Общие затраты по трафику рассчитанные:</td>
-                      <td>
-                        {}
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>Помегабайтно:</td>
-                      <td>
-                        {mbSum}
-                      </td>
-                      <td></td>
-                      <td>
-                        {}
-                      </td>
-                      <td></td>
-                      <td>
-                        {}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <input className={s.button} type="submit" value="Обновить значения" />
-              </form>
-            </div>
+              <input className={s.button} type="submit" value="Обновить значения" />
+            </form>
           </div>
         </div>
-        
       </>
     );
   };

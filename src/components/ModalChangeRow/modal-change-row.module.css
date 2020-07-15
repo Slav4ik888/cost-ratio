@@ -6,7 +6,7 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     display: none;
-    z-index: 999;
+    z-index: 900;
 }
 
 .modalDialog {
@@ -47,8 +47,8 @@
 
 .child {
     display: block;
-    font-size: 22px;
-    margin: 30px;
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
 .child span {
@@ -117,6 +117,10 @@ button {
     display: flex;
 }
 
+.trInput {
+    height: 40px;
+}
+
 input::placeholder {
     transition: 0.5s; /* Время трансформации */
     color: #aaa; /* Цвет подсказки */
@@ -125,10 +129,26 @@ input:focus::placeholder {
     font-size: 10px; /* Размер шрифта */
     transform: translateY(-16px); /* Сдвигаем вверх */
 }
+input { 
+    border: 1px solid #bebebe;
+}
+input:focus { 
+    outline: none;
+    border: 1px solid #4fa8b6;
+    box-shadow: 1px 1px 2px #4fa8b6;
 
+}
 .table {
     table-layout: fixed;
     border-collapse: collapse;
+}
+
+.inputSearch{
+    width: 100%;
+    margin: 5px 0 120px 0;
+    font-size: 18px;
+
+    height: 38px;
 }
 
 .search  {
@@ -138,5 +158,23 @@ input:focus::placeholder {
     border-bottom: 1px solid #cecfd5;
     scroll-behavior: smooth;
     overflow-y: scroll;
-    max-height: 200px;
+    max-height: 100px;
+    max-width: 600px;
+    min-width: 600px;
+
+        
+    position: absolute;
+    left: 35px;
+    top: 115px;
+    z-index: 999;
+    
+}
+
+.tdTitle {
+    width: 300px;
+}
+
+.tdInputValue {
+    width: 300px;
+    
 }
