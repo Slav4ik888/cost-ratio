@@ -9,6 +9,9 @@
   padding: 30px;
   width: 100%;
   display: block;
+  /* overflow: hidden;  */
+  height: 100vh;
+
 }
 
 .centerBox {
@@ -18,11 +21,19 @@
   /* background: #f59c81; */
 
   padding: 10px;
-  width: 1400px;
-  height: 80vh;
+  /* width: 1400px; */
+  height: 90vh;
   display: block;
-  scroll-behavior: smooth;
-  overflow-y: scroll;
+
+  /* scroll-behavior: smooth;
+  overflow-y: scroll; */
+}
+
+.buttonsSprite {
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+
 }
 
 .capt {
@@ -33,7 +44,7 @@
   margin-bottom: 20px;
 }
 
-.table {
+/* .table {
   table-layout: fixed;
   border-collapse: collapse;
   height: 100vh;
@@ -45,20 +56,20 @@
   width: 100%;
   height: calc(100vh - 30px);
 } */
-.table tbody tr:nth-child(even) {
+/* .table tbody tr:nth-child(even) {
   background: #edf3f3;
 }
 
 .table tbody tr:hover{
   background-color: #f1feff;
-}
+} */
 
 /* .table thead tr {
   display: block;
   position: relative;
 } */
 
-.table th {
+/* .table th {
   font-weight: 900;
 } 
 
@@ -75,13 +86,50 @@
 .table .tit1 tr th{
   width: 300px;
   background-color: #41a4b6;
-}
+} */
 
 
-.table .active {
+/* .table .active { */
   /* border-bottom: 2px solid #965656; */
-  color: #921505;
+  /* color: #921505;
+} */
+
+.widthSiteId{
+  width: 120px;
 }
+
+.widthProject{
+  width: 80px;
+}
+.widthOrganization{
+  width: 240px;
+}
+.widthMbPrice{
+  width: 80px;
+}
+.widthFactura{
+  width: 100px;
+}
+.widthMbTraffic{
+  width: 100px;
+}
+.widthMbTrafficCost{
+  width: 100px;
+}
+.widthCostCorrect{
+  width: 100px;
+}
+.widthSpTraffic{
+  width: 100px;
+}
+.widthSpTrafficCost{
+  width: 100px;
+}
+.widthCostResult{
+  width: 100px;
+}
+
+
 .inpProject,
 .inpMbCostServicies {
   width: 80px;
@@ -90,7 +138,7 @@
 
 }
 .inpSiteID {
-  width: 120px;
+  /* width: 120px; */
   border: 0px;
   background-color: unset;
 
@@ -103,7 +151,7 @@
 }
 
 .tdOrganization {
-  width: 400px;
+  /* width: 400px; */
 }
 
 
@@ -112,6 +160,7 @@ form {
   /* height: max-content; */
 }
 
+/* ----- КНОПКИ  ------ */
 .butAdd {
   width: max-content;
   /* height: 30px; */
@@ -133,7 +182,7 @@ form {
   font-size: 1.3em;
   color: rgb(17, 17, 17);
   background-color: #bed8dd;
-  margin: 10px 0 0 40px;
+  margin: 10px 20px 0 20px;
   padding: 8px 15px 7px 15px;
 }
 
@@ -142,28 +191,39 @@ form {
   background-color: rgb(214, 239, 243);
 }
 
+.butSearch {
+  width: 200px;
+  font-size: 1.3em;
+  color: rgb(7, 11, 12);
+  margin: 10px 20px 0 20px;
+  padding: 8px 15px 7px 15px;
+}
+
 .alarm {
   background-color: #f59c81;
 }
 
-/* 
+/* ------ ТАБЛИЦА С ЗАКРЕПЛЁННЫМ ЗАГОЛОВКОМ------- */
+
 .tableFixedHead {
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
-  height: 100vh;
+  /* height: 100vh; */
+
 }
 
 .tableFixedHead th,
 .tableFixedHead td {
   padding: 5px;
   text-align: center;
-  width: 33.333vw;
+  /* width: 33.333vw; */
 }
 
 .tableFixedHead thead {
-  background-color: #333;
-  color: #FDFDFD;
+  background-color: #d9ecf3;
+  color: #263a3f;
+  font-weight: 800;
 }
 
 .tableFixedHead thead tr {
@@ -175,9 +235,14 @@ form {
   display: block;
   overflow: auto;
   width: 100%;
-  height: calc(100vh - 30px);
+  /* height: 80vh; */
+  height: calc(100vh - 260px);
 }
 
 .tableFixedHead tbody tr:nth-child(even) {
-  background-color: #DDD;
-} */
+  background-color: #f4f8f8;
+}
+
+.tableFixedHead tbody tr:hover{
+  background-color: #f1feff;
+}

@@ -6,7 +6,7 @@ import ModalAnalisBlock from './ModalAnalisBlock/modal-analis-block.jsx';
 import {getTitle} from '../../utils/untils.js';
 import {addSpaceToNumber} from '../../utils/untils.js';
 
-import {TITLE_RES_ANALIS_TABLE, TITLE_RES_ANALIS_TABLE_VALUE} from '../../consts/consts.js';
+import {ANALIS_TITLE, ANALIS_TITLE_CLASS, ANALIS_SORT} from '../../consts/consts.js';
 import _ from 'lodash';
 
 
@@ -69,7 +69,7 @@ class ResultAnalisTabl extends PureComponent {
   handleSortTabl = sortField => {
 		const {tableArr, sortType} = this.state;
 
-		sortField = getTitle(sortField.item, TITLE_RES_ANALIS_TABLE, TITLE_RES_ANALIS_TABLE_VALUE);
+		sortField = getTitle(sortField.item, ANALIS_TITLE, ANALIS_SORT);
 
 		const cloneData = tableArr.concat();
 		// Проверяем что у нас сейчас в сортировке
@@ -109,20 +109,38 @@ class ResultAnalisTabl extends PureComponent {
 						<div className={s.resultCard}>
 									
 							<div className={s.capt}>Итоговая таблица для анализа</div>
-							<table className={s.table}>
+							<table className={s.tableFixedHead}>
 								<thead>
 									<tr>
-										{TITLE_RES_ANALIS_TABLE.map( (item, i) => <th key={item+i}
+										{ANALIS_TITLE.map( (item, i) => <th key={item+i}
 										onClick={this.handleSortTabl.bind(null, {item})}
-										className={cl({[s.active]: sortField === TITLE_RES_ANALIS_TABLE_VALUE[i]})}
+										className={cl({[s.active]: sortField === ANALIS_SORT[i]}, s[ANALIS_TITLE_CLASS[i]])}
 
 										>
 											{item}
-											{sortField === TITLE_RES_ANALIS_TABLE_VALUE[i] ? 
+											{sortField === ANALIS_SORT[i] ? 
 												sortType === 'asc'  ? ' ▲' : 
 												sortType === 'desc' ? ' ▼' : null : null}
 										</th> )}
 									</tr>
+									{/* <tr>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[0]}, s[ANALIS_TITLE_CLASS[0]])}>
+											№ проекта
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[1]}, s[ANALIS_TITLE_CLASS[1]])} >
+											Проект
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[2]}, s[ANALIS_TITLE_CLASS[2]])} >
+											Затраты (Помегаб)
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[3]}, s[ANALIS_TITLE_CLASS[3]])} >
+											Затраты (Полоса)	
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[4]}, s[ANALIS_TITLE_CLASS[4]])} >
+											Затраты итого
+										</th>
+										
+									</tr> */}
 								</thead>
 								<tbody>
 									

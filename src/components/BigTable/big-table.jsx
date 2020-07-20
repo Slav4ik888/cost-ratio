@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import s from './big-table.module.css'; 
 import cl from 'classnames';
 import {getTitle} from '../../utils/untils.js';
-import {TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE} from '../../consts/consts.js';
+import {BIG_TITLE, BIG_TITLE_CLASS, BIG_SORT} from '../../consts/consts.js';
 import ModalChangeRow from '../ModalChangeRow/modal-change-row.jsx';
 import _ from 'lodash';
 
@@ -18,11 +18,15 @@ class BigTable extends PureComponent {
 		this.handleGoogleUpdate = this.handleGoogleUpdate.bind(this);
 		this.handleModalInfo = this.handleModalInfo.bind(this);
 		this.handleModalOut = this.handleModalOut.bind(this);
-		
+		this.handleSearchItem = this.handleSearchItem.bind(this);
+		this.handleSearchClear = this.handleSearchClear.bind(this);
+
 		this.state = {
 			tableArr: [], 
 
-			// isModal: false,
+			// Поиск по SiteID
+			searchText: ``,
+			tableArrFiltred: [],
 
 			sortType: 'asc',  // 'desc'
 			sortField: 'siteID', // поле по умолчанию
@@ -35,6 +39,7 @@ class BigTable extends PureComponent {
 			const {arr} = this.props;
 			this.setState({
 				tableArr: arr, // переданный массив
+				tableArrFiltred: arr, // массив для вывода отфильтрованных значений
 			});
 		}
 	}
@@ -50,14 +55,47 @@ class BigTable extends PureComponent {
 		this.props.onHandleUpdateFromGoogle(this.state.tableArr);
 	}
 
+	// Поиск в таблице по SiteID
+	handleSearchItem = event => {
+		const value = event.target.value;
+		const arr = [];
+
+		this.state.tableArr.forEach((item, i) => {
+			if ((item.siteID.indexOf(value.toUpperCase()) === -1) &&
+				// (item.project.indexOf(value) === -1) &&
+				(item.organization.indexOf(value) === -1)) {
+					return
+			}
+			arr.push(item);
+		});
+	
+		this.setState({
+			searchText: value,
+			tableArrFiltred: arr, 
+		});
+
+		console.log(value);
+	};
+
+	// При выходе из Search поле очищается
+	handleSearchClear = () => {
+		this.setState({
+			searchText: ``,
+			tableArrFiltred: this.state.tableArr, // Возвращаем целый  массив
+		});
+	};
 
 	// Изменение индивидуальных значений сч/ф
-	handleChangeItem = (event) => {
+	// Меняем в tableArr но ищем пришедший ID из tableArrFiltred
+	handleChangeItem = event => {
 		const {tableArr} = this.state;
 		let arr = tableArr.concat();
 
 		const target = event.target;
-		const id = target.id;
+		const filtredSiteId = this.state.tableArrFiltred[event.target.id].siteID;
+		const id = arr.findIndex(item => item.siteID === filtredSiteId);
+		if (id === -1) {return}
+
 		let value;
 
 		switch (target.name) {
@@ -84,7 +122,6 @@ class BigTable extends PureComponent {
 			default: break;
 		};
 
-
 		this.setState({
 			tableArr: arr,
 		});
@@ -104,7 +141,7 @@ class BigTable extends PureComponent {
 	// Сортировка "Таблицы"
 	handleSortTabl = sortField => {
 		const {tableArr, sortType} = this.state;
-		sortField = getTitle(sortField.item, TITLE_BIG_TABLE, TITLE_BIG_TABLE_VALUE);
+		sortField = getTitle(sortField.item, BIG_TITLE, BIG_SORT);
 		const cloneData = tableArr.concat();
 		// Проверяем что у нас сейчас в сортировке
 		const sortT = sortType === 'asc' ? 'desc' : 'asc';
@@ -124,7 +161,7 @@ class BigTable extends PureComponent {
 			siteID: '',
 			project: '',
 			organization: '',
-			mbPrice: 0.132,
+			mbPrice: this.props.mbPrice,
 			mbTraffic: 0,
 			mbCostServicies: '',
 			mbCostTraffic: 0,
@@ -136,6 +173,7 @@ class BigTable extends PureComponent {
 
 		this.setState({
 			tableArr: newArr,
+			tableArrFiltred: newArr,
 		});
 
 	}
@@ -152,11 +190,10 @@ class BigTable extends PureComponent {
 
 	// Обрабатываем закрытие модального окна
 	handleModalOut(obj) {
-		// console.log('obj: ', obj);
 		if (obj) {
 			const {tableArr} = this.state;
 			let newArr = [];
-			console.log('newArr: ', newArr);
+			// Проверяем внесли ли изменения в существующий SiteID
 			let result = tableArr.findIndex(item => item.siteID.toUpperCase() === obj.siteID.toUpperCase());
 			console.log('result: ', result);
 			if (result !== -1) {
@@ -165,97 +202,119 @@ class BigTable extends PureComponent {
 			} else {
 				console.log(`New Row`);
 				newArr = [obj, ...tableArr.slice(1)];
-				
 			}
+
 			this.setState({
 				tableArr: newArr,
 			});
-			console.log('newArr: ', newArr);
 		};
 		this.setState({
 			isModal: false,
 		});
+		setTimeout(() => this.handleSearchClear(),0); // Очищаем строку поиска
+
 	};
 
 
 	render() {
 		const {arrayOfProject} = this.props;
-		const {tableArr, sortType, sortField,
+		const {
+			// tableArr,
+			tableArrFiltred,
+			sortType, sortField,
 			isModal, row,
+			searchText,
 		} = this.state;
 
 		return (
 			<>
-			<	div className={s.section}>
-				<div className={s.centerBox}>
-					{/* <form> */}
+				<	div className={s.section}>
+					<div className={s.centerBox}>
+						{/* <form> */}
 						<div className={s.capt}>Сводная таблица</div>
-						<input className={s.butAdd} type="button" value="+ строку" 
-							onClick={this.handleAddRow}
-						/>
-						<input className={s.butUpdate} type="button" value="Пересчитать" 
-							onClick={this.handleUpdate}
-						/>
-						<input className={s.butUpdate} type="button" value="Синхронизировать данные с ServiceDesk"
-							onClick={this.handleGoogleUpdate}
-						/>
-						{/* Редактирование строки */}
-						{isModal && <ModalChangeRow callback={this.handleModalOut} element={row} arrayOfProject={arrayOfProject}/>}
 
+						<div className={s.buttonsSprite}>
+							<input className={s.butAdd} type="button" value="+ строку" 
+								onClick={this.handleAddRow}
+							/>
+							<input className={s.butUpdate} type="button" value="Пересчитать" 
+								onClick={this.handleUpdate}
+							/>
+							<input
+								className={s.butSearch}
+								type="text" 
+								name="search"
+								placeholder="Поиск по SiteID"
+								value={searchText}
+								autoComplete="off"
+								onChange={this.handleSearchItem}
+								// onBlur={this.handleSearchBlur}
 
-						
+							/>
+							<input className={s.butUpdate} type="button" value="Синхронизировать данные с ServiceDesk"
+								onClick={this.handleGoogleUpdate}
+							/>
+						</div>
 
-						<table className={s.table}>
-							<thead>
-								<tr>
-									{TITLE_BIG_TABLE.map( (item, i) => <th key={item+i} 
-										onClick={this.handleSortTabl.bind(null, {item})}
-										className={cl({[s.active]: sortField === TITLE_BIG_TABLE_VALUE[i]})}
-										>
-											{item} 
-											{sortField === TITLE_BIG_TABLE_VALUE[i] ? 
-												sortType === 'asc'  ? ' ▲' : 
-												sortType === 'desc' ? ' ▼' : null : null}
-										</th> )}
-								</tr>
-							</thead>
+							{/* Редактирование строки */}
+							{isModal && <ModalChangeRow callback={this.handleModalOut} element={row} arrayOfProject={arrayOfProject}/>}
+
 							
-							<tbody>
-									{tableArr.map( (item, i) => (
-										<tr key={item.siteID + i}	>
-												<td onClick={this.handleRowSelect.bind(null, item)}>
-													{item.siteID}
-												</td>
-												<td onClick={this.handleRowSelect.bind(null, item)}>
-														{item.project}
-												</td>
-												<td className={s.tdOrganization}
-													onClick={this.handleRowSelect.bind(null, item)}
-												>
-													{item.organization}
-												</td>
-												<td>{item.mbPrice}</td>
-												<td>
-													<input 
-														className={s.inpMbCostServicies}
-														type="number"
-														name="mbCostServicies"
-														value={item.mbCostServicies}
-														onChange={this.handleChangeItem}
-														id={i}
-													/>
-												</td>
-												<td>{item.mbTraffic}</td>
-												<td>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
-												<td>{item.mbCostCorrect}</td>
-												<td>{item.spTraffic}</td>
-												<td>{item.spCostTraffic}</td>
-												<td>{item.result || 0}</td>
-										</tr>
-										))}
-							</tbody>
-						</table>
-					{/* </form> */}
+
+							<table className={s.tableFixedHead}>
+								<thead>
+									<tr>
+										{BIG_TITLE.map( (item, i) => <th key={item+i} 
+											onClick={this.handleSortTabl.bind(null, {item})}
+											className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
+											>
+												{item} 
+												{sortField === BIG_SORT[i] ? 
+													sortType === 'asc'  ? ' ▲' : 
+													sortType === 'desc' ? ' ▼' : null : null}
+											</th> )}
+									</tr>
+								</thead>
+								
+								<tbody>
+										{tableArrFiltred.map( (item, i) => (
+											<tr key={item.siteID + i}	>
+													<td className={s.widthSiteId}
+														onClick={this.handleRowSelect.bind(null, item)}>
+														{item.siteID}
+													</td>
+													<td className={s.widthProject}
+														onClick={this.handleRowSelect.bind(null, item)}>
+															{item.project}
+													</td>
+													<td className={cl(s.tdOrganization, s.widthOrganization)}
+														onClick={this.handleRowSelect.bind(null, item)}
+													>
+														{item.organization}
+													</td>
+													<td className={s.widthMbPrice}>{item.mbPrice}</td>
+													<td className={s.widthFactura}>
+														<input 
+															className={s.inpMbCostServicies}
+															type="number"
+															name="mbCostServicies"
+															value={item.mbCostServicies}
+															onChange={this.handleChangeItem}
+															onBlur={this.handleSearchClear}
+															id={i}
+														/>
+													</td>
+													<td className={s.widthMbTraffic}>{item.mbTraffic}</td>
+													<td className={s.widthMbTrafficCost}>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
+													<td className={s.widthCostCorrect}>{item.mbCostCorrect}</td>
+													<td className={s.widthSpTraffic}>{item.spTraffic}</td>
+													<td className={s.widthSpTrafficCost}>{item.spCostTraffic}</td>
+													<td className={s.widthCostResult}>{item.result || 0}</td>
+											</tr>
+											))}
+								</tbody>
+							</table>
+						{/* </form> */}
 					</div>
 				</div>
 			</>

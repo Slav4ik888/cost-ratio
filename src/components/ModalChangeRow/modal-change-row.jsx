@@ -2,9 +2,7 @@ import React from 'react';
 import s from './modal-change-row.module.css';
 import cl from 'classnames';
 
-const GoogleRow = (props) => {
-  const {item} = props;
-
+const GoogleRow = ({item}) => {
   return (
     <tr>
       <td>{item.siteID}</td>
@@ -14,17 +12,14 @@ const GoogleRow = (props) => {
   );
 }
 
-const GoogleTable = (props) => {
-  const {searchText, arr} = props;
-
+const GoogleTable = ({searchText, arr}) => {
   const rows = [];
 
   arr.forEach((item, i) => {
     
     if ((item.siteID.indexOf(searchText.toUpperCase()) === -1) &&
       (item.organization.indexOf(searchText) === -1)
-    )
-    {
+    ) {
       return;
     }
     
@@ -38,13 +33,15 @@ const GoogleTable = (props) => {
 
   return (
     <table>
-      <thead>
-        <tr>
-          <th>SiteID</th>
-          <th>Проект</th>
-          <th>Клиент</th>
-        </tr>
-      </thead>
+      {rows.length > 0 &&
+        <thead>
+          <tr>
+            <th>SiteID</th>
+            <th>Проект</th>
+            <th>Клиент</th>
+          </tr>
+        </thead>
+      }
       <tbody>{rows}</tbody>
     </table>
   );
@@ -159,6 +156,7 @@ class ModalChangeRow extends React.PureComponent {
   handleFocusBlur() {
     this.setState({
       searchFocus: false,
+      searchText: ``,
     });
   }
   
@@ -198,7 +196,7 @@ class ModalChangeRow extends React.PureComponent {
                       placeholder="Поиск в ServiceDesk по SiteID"
                       value={searchText}
                       autoComplete="off"
-                      ref={this.searchRef}
+                      // ref={this.searchRef}
                       onChange={this.handleChangeItem}
                       onFocus={this.handleFocus}
                       onBlur={this.handleFocusBlur}

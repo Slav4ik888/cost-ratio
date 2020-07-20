@@ -16,8 +16,10 @@
   align-items: flex-start; /*Выравнивание текста по вертикали */
   justify-items: center;
   height: 600px;
-  scroll-behavior: smooth;
-  overflow-y: scroll;
+  /* overflow: hidden;  */
+  /* text-overflow: clip; */
+  /* scroll-behavior: smooth;
+  overflow-y: scroll; */
   
 }
 
@@ -33,10 +35,13 @@
 
 }
 
+/* ------ ТАБЛИЦА ------- */
+
 .capt {
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
   font-size: 24px;
-	font-weight: 400;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
 
 .table {
@@ -56,6 +61,7 @@
   text-align: center;
 
 } 
+/* ------ КОНЕЦ ТАБЛИЦЫ ------- */
 
 .tdProject {
   width: 100px;
@@ -76,4 +82,43 @@
 
   text-align: right;
 
+}
+
+/* ------ ТАБЛИЦА С ЗАКРЕПЛЁННЫМ ЗАГОЛОВКОМ------- */
+
+.tableFixedHead {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  /* height: 100vh; */
+}
+
+.tableFixedHead th,
+.tableFixedHead td {
+  padding: 5px;
+  text-align: center;
+  /* width: 33.333vw; */
+}
+
+.tableFixedHead thead {
+  background-color: #d2e0e4;
+  color: #263a3f;
+  font-weight: 800;
+}
+
+.tableFixedHead thead tr {
+  display: block;
+  position: relative;
+}
+
+.tableFixedHead tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: calc(100vh - 220px);
+
+}
+
+.tableFixedHead tbody tr:nth-child(even) {
+  background-color: #f4f8f8;
 }
