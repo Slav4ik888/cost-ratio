@@ -2,9 +2,15 @@ import React from 'react';
 import s from './modal-change-row.module.css';
 import cl from 'classnames';
 
-const GoogleRow = ({item}) => {
+const GoogleRow = ({item, callback}) => {
+  const handleCallBack = () => {
+    callback(item);
+  };
+
   return (
-    <tr>
+    <tr className={s.tableSearch}
+      onClick={handleCallBack}
+    >
       <td>{item.siteID}</td>
       <td>{item.project}</td>
       <td>{item.organization}</td>
@@ -12,7 +18,7 @@ const GoogleRow = ({item}) => {
   );
 }
 
-const GoogleTable = ({searchText, arr}) => {
+const GoogleTable = ({searchText, arr, callback}) => {
   const rows = [];
 
   arr.forEach((item, i) => {
@@ -26,6 +32,7 @@ const GoogleTable = ({searchText, arr}) => {
     rows.push(
       <GoogleRow
         item={item}
+        callback={callback}
         key={item.siteID + i}
       />
     );
@@ -56,6 +63,7 @@ class ModalChangeRow extends React.PureComponent {
     this.handleKeyPressed = this.handleKeyPressed.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleFocusBlur = this.handleFocusBlur.bind(this);
+    this.setItem = this.setItem.bind(this);
 
     this.state = {
       element: this.props.element,
@@ -173,6 +181,20 @@ class ModalChangeRow extends React.PureComponent {
 
       default: return;
     }
+  };
+
+  setItem(obj) {
+    const newElement = {};
+    newElement.siteID = obj.siteID;
+    newElement.project = obj.project;
+    newElement.organization = obj.organization;
+    newElement.mbCostServicies = 0;
+
+    
+
+    this.setState({
+      element: newElement,
+    })
   }
 
   render() {
@@ -199,13 +221,13 @@ class ModalChangeRow extends React.PureComponent {
                       // ref={this.searchRef}
                       onChange={this.handleChangeItem}
                       onFocus={this.handleFocus}
-                      onBlur={this.handleFocusBlur}
+                      // onBlur={this.handleFocusBlur}
                     />
                   </div>
 
                   <div className={s.search}>
                     {searchFocus &&
-                      <GoogleTable searchText={searchText} arr={arrayOfProject}/>
+                      <GoogleTable searchText={searchText} arr={arrayOfProject} callback={this.setItem}/>
                     }
                   </div>    
                   <table className={s.table}>

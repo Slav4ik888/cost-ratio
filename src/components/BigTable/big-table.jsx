@@ -140,15 +140,15 @@ class BigTable extends PureComponent {
 
 	// Сортировка "Таблицы"
 	handleSortTabl = sortField => {
-		const {tableArr, sortType} = this.state;
+		const {tableArrFiltred, sortType} = this.state;
 		sortField = getTitle(sortField.item, BIG_TITLE, BIG_SORT);
-		const cloneData = tableArr.concat();
+		const cloneData = tableArrFiltred.concat();
 		// Проверяем что у нас сейчас в сортировке
 		const sortT = sortType === 'asc' ? 'desc' : 'asc';
 		// Сортируем
 		const orderedData = _.orderBy(cloneData, sortField, sortT);
 		this.setState({
-			tableArr: orderedData,
+			tableArrFiltred: orderedData,
 			sortType: sortT,
 			sortField: sortField,
 		});
@@ -190,6 +190,19 @@ class BigTable extends PureComponent {
 
 	// Обрабатываем закрытие модального окна
 	handleModalOut(obj) {
+		let newObj = {};
+		newObj.siteID = obj.siteID;
+		newObj.project = obj.project;
+		newObj.organization = obj.organization;
+		newObj.mbPrice = this.props.mbPrice;
+		newObj.mbTraffic = 0;
+		newObj.mbCostServicies = obj.mbCostServicies;
+		newObj.mbCostTraffic = 0;
+		newObj.mbCostCorrect = 0;
+		newObj.spTraffic = 0;
+		newObj.spCostTraffic = 0;
+		newObj.result = 0;
+
 		if (obj) {
 			const {tableArr} = this.state;
 			let newArr = [];
@@ -198,10 +211,10 @@ class BigTable extends PureComponent {
 			console.log('result: ', result);
 			if (result !== -1) {
 				console.log(`Old Row`);
-				newArr = [...tableArr.slice(0, result), obj, ...tableArr.slice(result + 1)];
+				newArr = [...tableArr.slice(0, result), newObj, ...tableArr.slice(result + 1)];
 			} else {
 				console.log(`New Row`);
-				newArr = [obj, ...tableArr.slice(1)];
+				newArr = [newObj, ...tableArr.slice(1)];
 			}
 
 			this.setState({
