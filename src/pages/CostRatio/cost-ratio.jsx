@@ -66,7 +66,7 @@ class CostRatio extends React.PureComponent {
 
   // Читаем данные из Гугл
   async getArrFromGoogle() {
-    const url = process.env.REACT_APP_GOOGLE_SHEET_URL_OLD;
+    const url = process.env.REACT_APP_GOOGLE_SHEET_URL;
     const arrayOfProject = await getFromGoogleData(url);
     this.setState({
       arrayOfProject,
