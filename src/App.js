@@ -15,7 +15,7 @@ class App extends Component {
         return (
             <>
                 <CostRatio />
-                <Footer style={{ textAlign: 'center' }}> © 2020 Created by Slav4ik888 - version 2020-07-22 14:44</Footer>
+                <Footer style={{ textAlign: 'center' }}> © 2020 Created by Slav4ik888 - version 2020-08-7 13:27</Footer>
             </>
         );
     }
