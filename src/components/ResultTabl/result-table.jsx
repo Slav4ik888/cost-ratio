@@ -7,6 +7,7 @@ export const ResultTabl = ({ arr }) => {
 		// console.log('BigTable', arr);
 		
 		const arrTh = [
+			`Организация`,
 			`Проект`,
 			`Затраты итого`,
 		];
@@ -29,6 +30,7 @@ export const ResultTabl = ({ arr }) => {
 										
 											{arr.map( (item, i) => (
 												<tr key={item.result+i}>
+														<td>{item.organization}</td>
 														<td>{item.project}</td>
 														<td>{item.result}</td>
 												</tr>
