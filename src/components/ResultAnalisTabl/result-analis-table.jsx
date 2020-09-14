@@ -52,12 +52,12 @@ class ResultAnalisTabl extends PureComponent {
 
 	// Устанавливаем выбранную строку
   handleRowSelect = (row, i) => {
-		console.log(row);
+		// console.log(row);
 		const {bigArr} = this.state;
 
 		let arr = bigArr.concat();
 		let result = arr.filter(item => item.project === row.project);
-		console.log('result: ', result);
+		// console.log('result: ', result);
 
 		this.setState({
 			row,

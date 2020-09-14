@@ -98,7 +98,7 @@ class ModalAnalisBlock extends React.PureComponent {
                         <tr key={item.result+i}>
                           <td className={s.tdOrganization}>{item.organization}</td>
                           <td className={s.tdSiteID}>{item.siteID}</td>
-                          <td className={s.tdMbCostTraffic}>{addSpaceToNumber(item.mbCostTraffic, 2, `,`)} р.</td>
+                          <td className={s.tdMbCostCorrect}>{addSpaceToNumber(item.mbCostCorrect, 2, `,`)} р.</td>
                           <td className={s.tdSpCostTraffic}>{item.spCostTraffic ? addSpaceToNumber(item.spCostTraffic, 2, `,`) + ` р.` : `-`}</td>
                           <td className={s.tdResult}>{item.result} р.</td>
                         </tr>

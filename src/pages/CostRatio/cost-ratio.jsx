@@ -59,7 +59,7 @@ class CostRatio extends React.PureComponent {
 
 
   componentDidMount() {
-    // this.getArrFromGoogle();
+    this.getArrFromGoogle();
   }
 
 

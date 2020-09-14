@@ -172,6 +172,7 @@ input:focus::placeholder {
 }
 
 .tdMbCostTraffic,
+.tdMbCostCorrect,
 .tdSpCostTraffic,
 .tdResult {
     width: 120px;

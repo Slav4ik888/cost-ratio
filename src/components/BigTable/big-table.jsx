@@ -73,8 +73,6 @@ class BigTable extends PureComponent {
 			searchText: value,
 			tableArrFiltred: arr, 
 		});
-
-		console.log(value);
 	};
 
 	// При выходе из Search поле очищается
