@@ -2,6 +2,17 @@ import React, { PureComponent } from 'react';
 import s from './header.module.css';
 
 
+const correctValid = (str) =>{
+  let newStr = str.replace(/,/,'.');
+  const idx = newStr.indexOf(`.`);
+  if (idx !== -1) {
+    let endStr = newStr.slice(idx + 1);
+    const e = endStr.replace(/\./,'');
+    newStr = [...newStr.slice(0, idx + 1), ...e].join(``);
+  }
+  return newStr;
+};
+
 // Верхнее меню для ввода данных
 export class Header extends PureComponent {
 
@@ -23,12 +34,12 @@ export class Header extends PureComponent {
 
   handleOnChange = event => {
     const target = event.target;
-    const value = target.value;
+    const value = correctValid(target.value);
     const name = target.name;
-
+    
     this.setState({
-      [name]: value,
-    });
+          [name]: value,
+        });
 
     this.setState((state) => ({
       mbSum: (state.allSum - state.spriteSum).toFixed(2),
@@ -64,7 +75,7 @@ export class Header extends PureComponent {
                     <td>Общая сумма:</td>
                     <td>
                       <input 
-                        type="number"
+                        type="text"
                         name="allSum"
                         value={allSum}
                         onChange={this.handleOnChange}
@@ -84,7 +95,7 @@ export class Header extends PureComponent {
                     <td>За полосу:</td>
                     <td>
                       <input 
-                        type="number"
+                        type="text"
                         name="spriteSum"
                         value={spriteSum}
                         onChange={this.handleOnChange}

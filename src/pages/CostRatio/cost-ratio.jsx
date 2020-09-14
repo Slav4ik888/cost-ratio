@@ -29,7 +29,7 @@ class CostRatio extends React.PureComponent {
       // this.calcFinishTabl = this.calcFinishTabl.bind(this);
 
       this.state = {
-          isLoading: false,  // загрузились данные из Google - service desk
+          isLoading: true,  // загрузились данные из Google - service desk
           isMadeArr: false,  // получены данные от Алтегры
 
           arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
@@ -59,7 +59,7 @@ class CostRatio extends React.PureComponent {
 
 
   componentDidMount() {
-    this.getArrFromGoogle();
+    // this.getArrFromGoogle();
   }
 
 
