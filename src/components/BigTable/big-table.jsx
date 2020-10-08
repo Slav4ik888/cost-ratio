@@ -188,20 +188,19 @@ class BigTable extends PureComponent {
 
 	// Обрабатываем закрытие модального окна
 	handleModalOut(obj) {
-		console.log('obj: ', obj);
 		if (obj) {
 			let newObj = {};
 			newObj.siteID = obj.siteID || '';
 			newObj.project = obj.project || '';
 			newObj.organization = obj.organization || '';
 			newObj.mbPrice = this.props.mbPrice;
-			newObj.mbTraffic = obj.mbTraffic || 0;
-			newObj.mbCostServicies = obj.mbCostServicies || 0;
-			newObj.mbCostTraffic = obj.mbCostTraffic || 0;
-			newObj.mbCostCorrect = obj.mbCostCorrect || 0;
-			newObj.spTraffic = obj.spTraffic || 0;
-			newObj.spCostTraffic = obj.spCostTraffic || 0;
-			newObj.result = obj.result || 0;
+			newObj.mbTraffic = +obj.mbTraffic || 0;
+			newObj.mbCostServicies = +obj.mbCostServicies || 0;
+			newObj.mbCostTraffic = +obj.mbCostTraffic || 0;
+			newObj.mbCostCorrect = +obj.mbCostCorrect || 0;
+			newObj.spTraffic = +obj.spTraffic || 0;
+			newObj.spCostTraffic = +obj.spCostTraffic || 0;
+			newObj.result = +obj.result || 0;
 
 			const {tableArr} = this.state;
 			let newArr = [];
