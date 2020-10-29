@@ -17,7 +17,7 @@ export const getFromGoogleData = (url) => {
   
                 for(let item of res.result) {
                     obj.siteID = item[0];
-                    obj.siteID = obj.siteID.split(' ').join('');
+                    // obj.siteID = obj.siteID.split(' ').join('');
                     obj.project = item[2];
                     obj.organization = item[1];
                     arr.push(obj);
