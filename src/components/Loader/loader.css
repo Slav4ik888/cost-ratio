@@ -3,8 +3,8 @@
   height: 64px;
   margin: auto;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: calc(50% - 24px);
 }
 .lds-dual-ring:after {
   content: " ";
@@ -25,4 +25,3 @@
     transform: rotate(360deg);
   }
 }
-

@@ -1,5 +1,4 @@
 import React from 'react';
-// import s from './cost-ratio.module.css';
 import Loader from '../../components/Loader/loader.js';
 import Section from '../../components/Section/section.jsx';
 import TextareaFromAltegra from '../../components/TextareaFromAltegra/textarea-from-altegra.jsx';
@@ -9,56 +8,57 @@ import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-proces
 import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table.js';
 import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
   makeDataForBigTable, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
-
 import {getFromGoogleData} from '../../utils/get-from-google-data.js';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-table.jsx';
 import {Header} from '../../components/Header/header.jsx';
+import s from './cost-ratio.module.css';
 
 
 
 class CostRatio extends React.PureComponent {
 
   constructor (props) {
-      super(props);
-      this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
-      this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
-      this.handleSetArr = this.handleSetArr.bind(this);
-      this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
-      this.handleSetFactura = this.handleSetFactura.bind(this);
-      // this.calcBigTabl = this.calcBigTabl.bind(this);
-      // this.calcFinishTabl = this.calcFinishTabl.bind(this);
+    super(props);
+    this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
+    this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
+    this.handleSetArr = this.handleSetArr.bind(this);
+    this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
+    this.handleSetFactura = this.handleSetFactura.bind(this);
+    // this.calcBigTabl = this.calcBigTabl.bind(this);
+    // this.calcFinishTabl = this.calcFinishTabl.bind(this);
 
-      this.state = {
-          isLoading: true,  // загрузились данные из Google - service desk
-          isMadeArr: false,  // получены данные от Алтегры
+    this.state = {
+      isLoading: false,
+      isMadeArr: false,   // получены данные от Алтегры
 
-          arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
-          arrayOfProject: [], // загруженны массив с service desk
-          arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
-          arrResult:[], // конечный массив (по Project)
+      arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
+      arrayOfProject: [], // загруженны массив с service desk
+      arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
+      arrResult:[], // конечный массив (по Project)
 
-          mbSiteId: [], // массив помегабатного трафика
-          striteSiteId: [],  // массив полосного трафика
+      mbSiteId: [], // массив помегабатного трафика
+      striteSiteId: [],  // массив полосного трафика
 
-          mbPrice: 0.132, // Базовая стоимость Мб
+      mbPrice: 0.132, // Базовая стоимость Мб
 
-          factura: { // Данные со счёт-фактуры
-            // value: 779797.3,
-            // sprite: 205887.1,
-            // mb: 573910.2,
-            value: '', //779797.3,
-            sprite: '', // 205887.1,
-            mb: '', // 573910.2,
-          },
-          // isFactura: false, //Заполнены ли данные из сч/ф
-          mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
-          spTrafficAll: 0,// Общий трафик в полосе
-      };
+      factura: { // Данные со счёт-фактуры
+        // value: 779797.3,
+        // sprite: 205887.1,
+        // mb: 573910.2,
+        value: '', //779797.3,
+        sprite: '', // 205887.1,
+        mb: '', // 573910.2,
+      },
+      // isFactura: false, //Заполнены ли данные из сч/ф
+      mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
+      spTrafficAll: 0,// Общий трафик в полосе
+    };
   }
 
 
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     this.getArrFromGoogle();
   }
 
@@ -68,10 +68,11 @@ class CostRatio extends React.PureComponent {
   async getArrFromGoogle() {
     const url = process.env.REACT_APP_GOOGLE_SHEET_URL;
     const arrayOfProject = await getFromGoogleData(url);
-    console.log('arrayOfProject: ', arrayOfProject);
+    console.log(arrayOfProject);
+
     this.setState({
       arrayOfProject,
-      isLoading: true, // Убираем "загрузку"
+      isLoading: false, // Убираем "загрузку"
     });
   };
 
@@ -80,15 +81,14 @@ class CostRatio extends React.PureComponent {
   // Обновляем все данные при повторном запроосе к Google
   async handleUpdateFromGoogle(arr) {
     this.setState({
-      isLoading: false, // Выставляем "загрузку"
+      isLoading: true, // Выставляем "загрузку"
     });
+
     await this.getArrFromGoogle()
-    .then(() => {
-
-      let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
-      this.handleUpdateBigArr(newArrForBigTable);
-
-    });
+      .then(() => {
+        let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
+        this.handleUpdateBigArr(newArrForBigTable);
+      });
   }
 
 
@@ -222,8 +222,11 @@ class CostRatio extends React.PureComponent {
             mbPrice,
     } = this.state;
 
-    if (!isLoading) {
-      return <Loader />
+    if (isLoading) {
+      return <>
+        <div className={s.loading}>Загрузка...</div>
+        <Loader />
+      </>
     }
 
     return (

@@ -10,3 +10,5 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+// git add . && git commit -m "fixed loading" && git push -u origin master
