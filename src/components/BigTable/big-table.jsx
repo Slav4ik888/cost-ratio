@@ -267,64 +267,64 @@ class BigTable extends PureComponent {
 							/>
 						</div>
 
-							{/* Редактирование строки */}
-							{isModal && <ModalChangeRow callback={this.handleModalOut} element={row} arrayOfProject={arrayOfProject}/>}
+						{/* Редактирование строки */}
+						{isModal && <ModalChangeRow callback={this.handleModalOut} element={row} arrayOfProject={arrayOfProject}/>}
 
 							
 
-							<table className={s.tableFixedHead}>
-								<thead>
-									<tr>
-										{BIG_TITLE.map( (item, i) => <th key={item+i} 
-											onClick={this.handleSortTabl.bind(null, {item})}
-											className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
-											>
-												{item} 
-												{sortField === BIG_SORT[i] ? 
-													sortType === 'asc'  ? ' ▲' : 
-													sortType === 'desc' ? ' ▼' : null : null}
-											</th> )}
-									</tr>
-								</thead>
+						<table className={s.tableFixedHead}>
+							<thead>
+								<tr>
+									{BIG_TITLE.map( (item, i) => <th key={item+i} 
+										onClick={this.handleSortTabl.bind(null, {item})}
+										className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
+										>
+											{item} 
+											{sortField === BIG_SORT[i] ? 
+												sortType === 'asc'  ? ' ▲' : 
+												sortType === 'desc' ? ' ▼' : null : null}
+										</th> )}
+								</tr>
+							</thead>
 								
-								<tbody>
-										{tableArrFiltred.map( (item, i) => (
-											<tr key={item.siteID + i}	>
-													<td className={s.widthSiteId}
-														onClick={this.handleRowSelect.bind(null, item)}>
-														{item.siteID}
-													</td>
-													<td className={s.widthProject}
-														onClick={this.handleRowSelect.bind(null, item)}>
-															{item.project}
-													</td>
-													<td className={cl(s.tdOrganization, s.widthOrganization)}
-														onClick={this.handleRowSelect.bind(null, item)}
-													>
-														{item.organization}
-													</td>
-													<td className={s.widthMbPrice}>{item.mbPrice}</td>
-													<td className={s.widthFactura}>
-														<input 
-															className={s.inpMbCostServicies}
-															type="number"
-															name="mbCostServicies"
-															value={item.mbCostServicies}
-															onChange={this.handleChangeItem}
-															onBlur={this.handleSearchClear}
-															id={i}
-														/>
-													</td>
-													<td className={s.widthMbTraffic}>{item.mbTraffic}</td>
-													<td className={s.widthMbTrafficCost}>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
-													<td className={s.widthCostCorrect}>{item.mbCostCorrect}</td>
-													<td className={s.widthSpTraffic}>{item.spTraffic}</td>
-													<td className={s.widthSpTrafficCost}>{item.spCostTraffic}</td>
-													<td className={s.widthCostResult}>{item.result || 0}</td>
-											</tr>
-											))}
-								</tbody>
-							</table>
+							<tbody>
+									{tableArrFiltred.map( (item, i) => (
+										<tr key={item.siteID + i}	>
+												<td className={s.widthSiteId}
+													onClick={this.handleRowSelect.bind(null, item)}>
+													{item.siteID}
+												</td>
+												<td className={s.widthProject}
+													onClick={this.handleRowSelect.bind(null, item)}>
+														{item.project}
+												</td>
+												<td className={cl(s.tdOrganization, s.widthOrganization)}
+													onClick={this.handleRowSelect.bind(null, item)}
+												>
+													{item.organization}
+												</td>
+												<td className={s.widthMbPrice}>{item.mbPrice}</td>
+												<td className={s.widthFactura}>
+													<input 
+														className={s.inpMbCostServicies}
+														type="number"
+														name="mbCostServicies"
+														value={item.mbCostServicies}
+														onChange={this.handleChangeItem}
+														onBlur={this.handleSearchClear}
+														id={i}
+													/>
+												</td>
+												<td className={s.widthMbTraffic}>{item.mbTraffic}</td>
+												<td className={s.widthMbTrafficCost}>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
+												<td className={s.widthCostCorrect}>{item.mbCostCorrect}</td>
+												<td className={s.widthSpTraffic}>{item.spTraffic}</td>
+												<td className={s.widthSpTrafficCost}>{item.spCostTraffic}</td>
+												<td className={s.widthCostResult}>{item.result || 0}</td>
+										</tr>
+										))}
+							</tbody>
+						</table>
 						{/* </form> */}
 					</div>
 				</div>

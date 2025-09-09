@@ -22,7 +22,7 @@ class CostRatio extends React.PureComponent {
       super(props);
       this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
       this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
-      this.handleSetArr = this.handleSetArr.bind(this); 
+      this.handleSetArr = this.handleSetArr.bind(this);
       this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
       this.handleSetFactura = this.handleSetFactura.bind(this);
       // this.calcBigTabl = this.calcBigTabl.bind(this);
@@ -49,7 +49,7 @@ class CostRatio extends React.PureComponent {
             value: '', //779797.3,
             sprite: '', // 205887.1,
             mb: '', // 573910.2,
-          }, 
+          },
           // isFactura: false, //Заполнены ли данные из сч/ф
           mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
           spTrafficAll: 0,// Общий трафик в полосе
@@ -68,6 +68,7 @@ class CostRatio extends React.PureComponent {
   async getArrFromGoogle() {
     const url = process.env.REACT_APP_GOOGLE_SHEET_URL;
     const arrayOfProject = await getFromGoogleData(url);
+    console.log('arrayOfProject: ', arrayOfProject);
     this.setState({
       arrayOfProject,
       isLoading: true, // Убираем "загрузку"
@@ -76,7 +77,7 @@ class CostRatio extends React.PureComponent {
 
 
 
-  // Обновляем все данные при повторном запроосе к Google 
+  // Обновляем все данные при повторном запроосе к Google
   async handleUpdateFromGoogle(arr) {
     this.setState({
       isLoading: false, // Выставляем "загрузку"
@@ -86,18 +87,18 @@ class CostRatio extends React.PureComponent {
 
       let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
       this.handleUpdateBigArr(newArrForBigTable);
-      
+
     });
   }
 
 
   /**
    * Принимаем массив из обработанной таблицы от Алтегры
-   * Объединяем входящий и исходящий трафик 
+   * Объединяем входящий и исходящий трафик
    *
    * @param {array} arr - массив из обработанной таблицы от Алтегры
-   * 
-   * @return {array} arrFromAltegra  
+   *
+   * @return {array} arrFromAltegra
    */
 
   handleSetArr = arrFromAltegra => {
@@ -114,18 +115,18 @@ class CostRatio extends React.PureComponent {
 
       // Подсчёт общих затрат по Мб трафику + сч/ф
       const mbCostAll = calcMbCostAll(arr);
-      // console.log('Общие затраты по трафику рассчитанные: ', mbCostAll);
+      //
 
       // Подсчёт общего трафика полосы
       const spTrafficAll = calcSpTrafficAll(arr);
-      // console.log('Общий трафик в полосе рассчитанный: ', spTrafficAll);
+      //
 
       // Рассчитываем Затраты скорректированные
       let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
 
       // Обновляем arrForBigTable, данными из массива от Гугл
       newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
-  
+
       this.setState({
         arrFromAltegra, mbSiteId, striteSiteId,
         isMadeArr: true,
@@ -147,7 +148,7 @@ class CostRatio extends React.PureComponent {
     }, 0);
   };
 
-  
+
 
   // Меняем значения на пришедшие из таблицы и пересчитываем итоговые значения
   handleUpdateBigArr(arr) {
@@ -170,7 +171,7 @@ class CostRatio extends React.PureComponent {
         arrResult,
     });
   };
-  
+
   // Присвоение значений сч/фактуры
   handleSetFactura(factura) {
     setTimeout(() => {
@@ -187,7 +188,7 @@ class CostRatio extends React.PureComponent {
 
       // Обновляем newArrForBigTable, данными из массива от Гугл
       newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
-  
+
       this.setState({
         arrForBigTable: newArrForBigTable,
         isMadeArr: true,
@@ -210,14 +211,14 @@ class CostRatio extends React.PureComponent {
     }, 0);
   }
 
-  
+
   render() {
     const { isLoading, isMadeArr,
             arrForBigTable, factura,
             arrayOfProject,
-            // mbSiteId, striteSiteId, 
+            // mbSiteId, striteSiteId,
             mbCostAll, spTrafficAll,
-            arrResult, 
+            arrResult,
             mbPrice,
     } = this.state;
 
@@ -235,33 +236,33 @@ class CostRatio extends React.PureComponent {
             spTrafficAll={spTrafficAll}
           />
         </Section>
-        
 
-        {!isMadeArr && 
+
+        {!isMadeArr &&
           <Section>
             <TextareaFromAltegra onHandleSetArr={this.handleSetArr}/>
           </Section>
         }
 
         {/* формируем таблицы и выводим Помегабайтный и Полосной */}
-        {/* {isMadeArr && 
+        {/* {isMadeArr &&
           <Section>
             <TwoServicies arrThMb={mbSiteId} arrThSprite={striteSiteId}/>
           </Section>
         } */}
 
         {/* формируем таблицы и выводим Большую таблицу */}
-        {isMadeArr && 
+        {isMadeArr &&
             <BigTable
               mbPrice={mbPrice}
-              arr={arrForBigTable} 
+              arr={arrForBigTable}
               onHandleUpdateBigArr={this.handleUpdateBigArr}
               arrayOfProject={arrayOfProject}
               onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
             />
         }
-        
-        
+
+
         {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
         {isMadeArr &&
             <Section>
