@@ -14,7 +14,7 @@ import {Header} from '../../components/Header/header.jsx';
 import s from './cost-ratio.module.css';
 
 
-const DEV = true; // На время разработки
+const DEV = false; // На время разработки
 
 
 
@@ -162,7 +162,7 @@ class CostRatio extends React.PureComponent {
         arrForBigTable: lastBigStore,
         arrResult,
       });
-    }, 0);
+    }, 100);
   };
 
 
