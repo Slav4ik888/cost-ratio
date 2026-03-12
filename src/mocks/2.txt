@@ -1,0 +1,21 @@
+[
+    {
+        "siteID": "RTA5CS10047",
+        "trafficType": "Интернет (вход)",
+        "trafficMb": "46988.90",
+        "price": "0.00 RUR"
+    },
+    {
+        "siteID": "RTA5CS10047",
+        "project": "",
+        "organization": "",
+        "mbPrice": 0.132,
+        "mbCostServicies": "",
+        "mbTraffic": "46988.90",
+        "mbCostTraffic": "6202.53",
+        "mbCostCorrect": "",
+        "spTraffic": "7737.34",
+        "spCostTraffic": "0.00",
+        "result": "0,00"
+    },
+]

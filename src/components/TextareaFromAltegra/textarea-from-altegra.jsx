@@ -17,7 +17,7 @@ class TextareaFromAltegra extends React.PureComponent {
 
     this.state = {
       // strFromAltegra: mockAltegra, //  mock принятый текст для создания массива слов
-      strFromAltegra: [], //  принятый текст для создания массива слов
+      strFromAltegra: '', //  принятый текст для создания массива слов
       arrFromAltegra: [], // созданный массив 
     };
   }
@@ -33,7 +33,7 @@ class TextareaFromAltegra extends React.PureComponent {
 
   handleChange(event) {
     this.setState({
-      strFromAltegra: event.target.value,
+      strFromAltegra: event.target.value || '',
     });
   }
 
@@ -58,10 +58,10 @@ class TextareaFromAltegra extends React.PureComponent {
     
     let arr = [];
     let obj = {
-        siteID: ``,
-        trafficType: ``, 
-        trafficMb: ``, 
-        price: ``,
+        siteID: '',
+        trafficType: '', 
+        trafficMb: '', 
+        price: '',
     }
   
     while (true) {
@@ -89,6 +89,7 @@ class TextareaFromAltegra extends React.PureComponent {
         arr.push(obj); // результат obj добавляем в массив
         obj = {};
     };
+    
     return arr
 }
 

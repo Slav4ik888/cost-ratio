@@ -97,7 +97,6 @@ export const calcSpTrafficAll = arr => {
  */
 
 export const makeDataForBigTable = (arrForBigTable, factura, mbCostAll, spTrafficAll) => {
-
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
     if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb) {

@@ -14,6 +14,9 @@ import {Header} from '../../components/Header/header.jsx';
 import s from './cost-ratio.module.css';
 
 
+const DEV = true; // На время разработки
+
+
 
 class CostRatio extends React.PureComponent {
 
@@ -66,10 +69,22 @@ class CostRatio extends React.PureComponent {
 
   // Читаем данные из Гугл
   async getArrFromGoogle() {
-    const url = process.env.REACT_APP_GOOGLE_SHEET_URL;
-    const arrayOfProject = await getFromGoogleData(url);
-    console.log(arrayOfProject);
-
+    const fromLS = JSON.parse(localStorage.getItem('arrayOfProject'));
+    let arrayOfProject = [];
+    
+    if (DEV) {
+      console.log('fromLS: ');
+      console.log(fromLS);
+      arrayOfProject = fromLS || [];
+    }
+    else {
+      const url = process.env.REACT_APP_GOOGLE_SHEET_URL;
+      arrayOfProject = await getFromGoogleData(url);
+      
+      console.log(arrayOfProject);
+      localStorage.setItem('arrayOfProject', JSON.stringify(arrayOfProject));
+    }
+    
     this.setState({
       arrayOfProject,
       isLoading: false, // Убираем "загрузку"
@@ -125,6 +140,8 @@ class CostRatio extends React.PureComponent {
       let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
 
       // Обновляем arrForBigTable, данными из массива от Гугл
+      // console.log('!!!arrayOfProject: ', arrayOfProject);
+      
       newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
 
       this.setState({

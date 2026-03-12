@@ -60,13 +60,25 @@ class BigTable extends PureComponent {
 		const value = event.target.value;
 		const arr = [];
 
+		// this.state.tableArr.forEach((item, i) => {
+		// 	if ((item.siteID.indexOf(value.toUpperCase()) === -1) &&
+		// 		// (item.project.indexOf(value) === -1) &&
+		// 		(item.organization.indexOf(value) === -1)) {
+		// 			return
+		// 	}
+		// 	arr.push(item);
+		// });
+		
 		this.state.tableArr.forEach((item, i) => {
-			if ((item.siteID.indexOf(value.toUpperCase()) === -1) &&
-				// (item.project.indexOf(value) === -1) &&
-				(item.organization.indexOf(value) === -1)) {
-					return
+			const searchValue = value.toLowerCase();
+			
+			const siteIDMatch = item.siteID && item.siteID.toLowerCase().includes(searchValue);
+			const organizationMatch = item.organization && item.organization.toLowerCase().includes(searchValue);
+			// const projectMatch = item.project && item.project.toLowerCase().includes(searchValue); // если нужно включить project
+			
+			if (siteIDMatch || organizationMatch) {
+				arr.push(item);
 			}
-			arr.push(item);
 		});
 	
 		this.setState({
@@ -78,7 +90,7 @@ class BigTable extends PureComponent {
 	// При выходе из Search поле очищается
 	handleSearchClear = () => {
 		this.setState({
-			searchText: ``,
+			searchText: '',
 			tableArrFiltred: this.state.tableArr, // Возвращаем целый  массив
 		});
 	};

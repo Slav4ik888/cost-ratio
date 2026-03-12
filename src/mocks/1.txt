@@ -1,0 +1,5462 @@
+[
+    {
+        "siteID": "RTA5DD744",
+        "project": 257,
+        "organization": "ООО АСМ"
+    },
+    {
+        "siteID": "RTA5CS14233",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS14189",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Енисейстроймаш"
+    },
+    {
+        "siteID": "",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS14245",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5DD1418",
+        "project": 1530,
+        "organization": "АГЭ Иркутскгеофизика"
+    },
+    {
+        "siteID": "RTA5CS29667",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS24624",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS14240 ",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS10116",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5DD1089",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5DD1113",
+        "project": 38,
+        "organization": "ООО Навигатор"
+    },
+    {
+        "siteID": "RTA5CS14234",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5CS14221",
+        "project": 2022,
+        "organization": "ООО Раритет"
+    },
+    {
+        "siteID": "RTA5CS14203",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5DD1271",
+        "project": 500,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "был АСМ"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5CS14196",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5CS14207",
+        "project": 38,
+        "organization": "ООО Навигатор"
+    },
+    {
+        "siteID": "",
+        "project": 2853,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5DD1422",
+        "project": "",
+        "organization": "ООО Гелиос"
+    },
+    {
+        "siteID": "RTA5CS10115",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "",
+        "project": 1400,
+        "organization": "ООО ЛКТ"
+    },
+    {
+        "siteID": "RTA5CS29667",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "",
+        "project": 795,
+        "organization": "ООО Фирма Никалид"
+    },
+    {
+        "siteID": "RTA5CS33803",
+        "project": 3722,
+        "organization": "ИЭРП"
+    },
+    {
+        "siteID": "",
+        "project": 1828,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5DD7696",
+        "project": 792,
+        "organization": "ООО Фирма Адис"
+    },
+    {
+        "siteID": "RTA5DD1701",
+        "project": 257,
+        "organization": "ООО АСМ"
+    },
+    {
+        "siteID": "RTA5CS14255",
+        "project": 2947,
+        "organization": "Спецтрансавто"
+    },
+    {
+        "siteID": "RTA5CS18594",
+        "project": 777,
+        "organization": "ООО \"НПФ Завод \"Измерон"
+    },
+    {
+        "siteID": "",
+        "project": 643,
+        "organization": "ООО МК-152"
+    },
+    {
+        "siteID": "RTA5DD6404",
+        "project": 406,
+        "organization": "АО МеталлАктивгрупп"
+    },
+    {
+        "siteID": "RTA5DD848",
+        "project": 954,
+        "organization": "ФГБУ «Заповедное Прибайкалье»"
+    },
+    {
+        "siteID": "VSATKA0014",
+        "project": "",
+        "organization": "ООО \"Спецмонтажстрой\""
+    },
+    {
+        "siteID": "",
+        "project": 959,
+        "organization": "ООО \"Ленавудсервис\""
+    },
+    {
+        "siteID": "VSATKA0023",
+        "project": "",
+        "organization": "ООО Фирма \"Сервисгазавтоматика\""
+    },
+    {
+        "siteID": "RTA5CS14198",
+        "project": 2247,
+        "organization": "ООО ПМК 24 Аносово"
+    },
+    {
+        "siteID": "VSATKA0024",
+        "project": "",
+        "organization": "ООО \"Спецмонтажстрой\""
+    },
+    {
+        "siteID": "VSATKA0028",
+        "project": "",
+        "organization": "ООО \"АвтоТрансСиб\""
+    },
+    {
+        "siteID": "RTA5CS17033",
+        "project": 3146,
+        "organization": "ООО АЙЭФСИЭМ"
+    },
+    {
+        "siteID": "",
+        "project": 661,
+        "organization": "Была сила сибири, умер у них микрот"
+    },
+    {
+        "siteID": "RTA5CS14216",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": 217,
+        "organization": "ООО Нафтабурсервис"
+    },
+    {
+        "siteID": "RTA5CS10330",
+        "project": 1282,
+        "organization": "ООО УМИД"
+    },
+    {
+        "siteID": "RTA5CS14225",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "VSATKA0003AM6",
+        "project": "",
+        "organization": "ООО Енисейэнергострой"
+    },
+    {
+        "siteID": "",
+        "project": 1340,
+        "organization": "ООО Енисейэнергострой"
+    },
+    {
+        "siteID": "",
+        "project": 1184,
+        "organization": "ООО СП-Инвест"
+    },
+    {
+        "siteID": "",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "RTA5CS11809",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS14206",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS14192",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5DD3808",
+        "project": 811,
+        "organization": "ЗАО Новые дороги"
+    },
+    {
+        "siteID": "RTA5DD3809",
+        "project": 1141,
+        "organization": "ООО Сибирская геологическая компания"
+    },
+    {
+        "siteID": "RTA5DD4149",
+        "project": 1099,
+        "organization": "ООО Сибна"
+    },
+    {
+        "siteID": "RTA5CS12421",
+        "project": 3738,
+        "organization": "ООО Сибна"
+    },
+    {
+        "siteID": "RTA5CS12891",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS14222",
+        "project": 3719,
+        "organization": "ПолиЭко КП32"
+    },
+    {
+        "siteID": "",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5DD4694",
+        "project": 1234,
+        "organization": "ООО Глинки"
+    },
+    {
+        "siteID": "RTA5DD5175",
+        "project": 1151,
+        "organization": "ООО Закаменск ЖКХ"
+    },
+    {
+        "siteID": "RTA5CS14300",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5DD5176",
+        "project": 1214,
+        "organization": "ООО Кристалл"
+    },
+    {
+        "siteID": "RTA5DD5177",
+        "project": 1214,
+        "organization": "ООО Кристалл"
+    },
+    {
+        "siteID": "RTA5DD5178",
+        "project": 1214,
+        "organization": "ООО Кристалл"
+    },
+    {
+        "siteID": "RTA5CS21696",
+        "project": 1644,
+        "organization": "ООО Кундат"
+    },
+    {
+        "siteID": "RTA5DD5221",
+        "project": 930,
+        "organization": "ООО Фирма Сервисгазавтоматика"
+    },
+    {
+        "siteID": "RTA6DD5385",
+        "project": 1745,
+        "organization": "ООО Сервис-Строй"
+    },
+    {
+        "siteID": "RTA5CS11662",
+        "project": 1282,
+        "organization": "ООО УМИД"
+    },
+    {
+        "siteID": "RTA5CS14224",
+        "project": 811,
+        "organization": "ЗАО Новые дороги"
+    },
+    {
+        "siteID": "RTA5DD5381",
+        "project": 1304,
+        "organization": "ООО Горизонт "
+    },
+    {
+        "siteID": "RTA5CS14201",
+        "project": 1300,
+        "organization": "ООО СК Интеграл"
+    },
+    {
+        "siteID": "RTA5CS14243",
+        "project": 1419,
+        "organization": "ООО СибТрансСтрой (АСМ)"
+    },
+    {
+        "siteID": "RTA5CS10048",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "",
+        "project": 1284,
+        "organization": "ООО Стройконтракт"
+    },
+    {
+        "siteID": "RTA5CS10319",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS14251",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "",
+        "project": 1465,
+        "organization": "ОГКУСО Центр помощи детям оставшимся без попечения родителей"
+    },
+    {
+        "siteID": "",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "",
+        "project": 1745,
+        "organization": "ООО Сервис-Строй"
+    },
+    {
+        "siteID": "",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5DD6407",
+        "project": 525,
+        "organization": "ООО Востокэлектромонтаж"
+    },
+    {
+        "siteID": "RTA5CS14194",
+        "project": 3146,
+        "organization": "ООО АЙЭФСИЭМ"
+    },
+    {
+        "siteID": "RTA5CS14253",
+        "project": 2834,
+        "organization": "СФ Даниловка Сибцем"
+    },
+    {
+        "siteID": "RTA5CS14213",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS9304",
+        "project": "-",
+        "organization": "ЦСС офис демостенд"
+    },
+    {
+        "siteID": "RTA5DD7054",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS14229",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5DD7689",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS14250 ",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS11765",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS14202",
+        "project": 811,
+        "organization": "ЗАО Новые дороги"
+    },
+    {
+        "siteID": "RTA5CS10596",
+        "project": 2637,
+        "organization": "ООО Автопроект"
+    },
+    {
+        "siteID": "",
+        "project": 1727,
+        "organization": "ООО Востсибтех-Инжиниринг"
+    },
+    {
+        "siteID": "",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "RTA5CS16471",
+        "project": 3719,
+        "organization": "Полиэко КП87"
+    },
+    {
+        "siteID": "RTA5CS10320",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "RTA5CS10221",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5DD7992",
+        "project": 1467,
+        "organization": "ООО Предприятие буровых работ"
+    },
+    {
+        "siteID": "RTA5SS15713",
+        "project": 525,
+        "organization": "ООО Востокэлектромонтаж ПРИОСТАНОВЛЕН ЗА НЕУПЛАТУ"
+    },
+    {
+        "siteID": "RTA5CS14252",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": 643,
+        "organization": "ООО МК-152"
+    },
+    {
+        "siteID": "RTA5CS21506",
+        "project": 3146,
+        "organization": "ООО «АЙЭФСИЭМ ГРУПП»"
+    },
+    {
+        "siteID": "RTA5CS10047",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS32278",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS18592",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS10744 удалена в Алтегро",
+        "project": 2166,
+        "organization": "ИЭРП"
+    },
+    {
+        "siteID": "RTA5CS14195",
+        "project": 1563,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS30946",
+        "project": 555,
+        "organization": "ЦСС Чаянда КП36"
+    },
+    {
+        "siteID": "RTA5CS10823",
+        "project": 3710,
+        "organization": "ООО АСБ"
+    },
+    {
+        "siteID": "RTA5CS21692",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "",
+        "project": 1662,
+        "organization": "ООО Импульс"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "ООО Минерал"
+    },
+    {
+        "siteID": "RTA5CS14223",
+        "project": 728,
+        "organization": "ООО Геоконтроль-Восток"
+    },
+    {
+        "siteID": "радиомост из Саянска",
+        "project": "",
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": 1742,
+        "organization": "ООО РАСТАМ - Экология"
+    },
+    {
+        "siteID": "RTA5CS15873",
+        "project": 903,
+        "organization": "УМИД"
+    },
+    {
+        "siteID": "RTA5CS15878",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Ирпи"
+    },
+    {
+        "siteID": "",
+        "project": 251,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14246",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": 480,
+        "organization": "ООО Лена Золото"
+    },
+    {
+        "siteID": "RTA5CS10824",
+        "project": 3710,
+        "organization": "ООО АСБ"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Стройконтракт"
+    },
+    {
+        "siteID": "RTA5CS16410",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "RTA6KS15875 ",
+        "project": 1893,
+        "organization": "ООО СТК Велес"
+    },
+    {
+        "siteID": "RTA5CS29668",
+        "project": 3250,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS16409",
+        "project": 1912,
+        "organization": "ООО БМК"
+    },
+    {
+        "siteID": "RTA5CS16411",
+        "project": 1828,
+        "organization": "ООО Сигма-Гео"
+    },
+    {
+        "siteID": "RTA5CS16412",
+        "project": 2633,
+        "organization": "ООО Киренга-Энерго"
+    },
+    {
+        "siteID": "RTA5CS32159",
+        "project": 2947,
+        "organization": "Кп 16и ИгнялинскийЛУ СКД"
+    },
+    {
+        "siteID": "RTA5CS16470",
+        "project": 2888,
+        "organization": "Якутия/ИгнялинскийЛУ/КП8И"
+    },
+    {
+        "siteID": "RTA5CS32275",
+        "project": 3306,
+        "organization": "ООО \"Байкал Трейд Инжиниринг\" (ООО \"БТИ\")"
+    },
+    {
+        "siteID": "RTA5CS12898",
+        "project": 2990,
+        "organization": "Универсал"
+    },
+    {
+        "siteID": "RTA5CS14273",
+        "project": 1282,
+        "organization": "ООО УМИД"
+    },
+    {
+        "siteID": "RTA5CS17034",
+        "project": 1975,
+        "organization": "ООО Инвестмашсервис"
+    },
+    {
+        "siteID": "LTE",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS32160",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS15876",
+        "project": 555,
+        "organization": "КП 206 Тымпучаканский ЛУ Чаянда"
+    },
+    {
+        "siteID": "vmarkovo",
+        "project": "",
+        "organization": "ООО РСП ТОПКА (Новые дороги)"
+    },
+    {
+        "siteID": "",
+        "project": 257,
+        "organization": "ООО АСМ (куюмба)"
+    },
+    {
+        "siteID": "RTA5CS14218",
+        "project": 661,
+        "organization": "Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS22590",
+        "project": 1300,
+        "organization": "ООО СК Интеграл"
+    },
+    {
+        "siteID": "RTA5CS18582",
+        "project": 2888,
+        "organization": "ООО ТСК"
+    },
+    {
+        "siteID": "RTA5CS14244",
+        "project": 555,
+        "organization": "Подзембургаз Чаянда КП52"
+    },
+    {
+        "siteID": "RTA5CS18585",
+        "project": 555,
+        "organization": "ООО Русгазбурение"
+    },
+    {
+        "siteID": "RTA5CS18587",
+        "project": 555,
+        "organization": "Чаянда КП 52"
+    },
+    {
+        "siteID": "RTA5CS18588",
+        "project": 555,
+        "organization": "ООО Русгазбурение"
+    },
+    {
+        "siteID": "RTA5CS18589",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS18590",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "",
+        "project": 2101,
+        "organization": "ТД Ангара"
+    },
+    {
+        "siteID": "RTA5CS18971",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS18972",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS18973",
+        "project": 2521,
+        "organization": "Мостотряд-97"
+    },
+    {
+        "siteID": "RTA5CS17036",
+        "project": 555,
+        "organization": "ООО РусГазБурение"
+    },
+    {
+        "siteID": "RTA5CS14239",
+        "project": 2154,
+        "organization": "МКУК ИДЦ \"Радуга\""
+    },
+    {
+        "siteID": "RTA5CS17063",
+        "project": 1373,
+        "organization": "ЗАО СП Мекаминефть"
+    },
+    {
+        "siteID": "RTA5CS21505",
+        "project": 2213,
+        "organization": "ОГАУ ИТЦИО"
+    },
+    {
+        "siteID": "RTA5CS17035",
+        "project": 3146,
+        "organization": "ООО АЙЭФСИЭМ"
+    },
+    {
+        "siteID": "RTA5CS24619",
+        "project": 2237,
+        "organization": "Администрация Заморского СП"
+    },
+    {
+        "siteID": "RTA5CS10656",
+        "project": 2947,
+        "organization": "Спецтрансавто"
+    },
+    {
+        "siteID": "RTA5CS21509",
+        "project": 3694,
+        "organization": "Техресурс"
+    },
+    {
+        "siteID": "00:A0:AC:27:35:A7  Gilat ID 16",
+        "project": 2947,
+        "organization": "Спецтрансавто"
+    },
+    {
+        "siteID": "RTA5CS32163",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS24623",
+        "project": "",
+        "organization": "ГИС нефтесервис КП105"
+    },
+    {
+        "siteID": "RTA5CS24621",
+        "project": 3624,
+        "organization": "Универсал-Сервис"
+    },
+    {
+        "siteID": "RTA5CS14214",
+        "project": 555,
+        "organization": "Литона КП213"
+    },
+    {
+        "siteID": "RTA5CS14215",
+        "project": 3710,
+        "organization": "ООО АСБ"
+    },
+    {
+        "siteID": "",
+        "project": 2298,
+        "organization": "ООО\"РЖДстрой\""
+    },
+    {
+        "siteID": "RTA5CS14242",
+        "project": 661,
+        "organization": "Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS24620",
+        "project": 2359,
+        "organization": "(ООО\"Рус-Майнинг Сервис\") ООО Дизель с 1.08.2022"
+    },
+    {
+        "siteID": "RTA5CS14274",
+        "project": 2658,
+        "organization": "Инком"
+    },
+    {
+        "siteID": "RTA5CS26806",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "RTA5CS12632",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "00-A0-AC-2B-61-1F",
+        "project": 3694,
+        "organization": "ООО Техресурс"
+    },
+    {
+        "siteID": "Gilat ID 2",
+        "project": "",
+        "organization": "ЗАО Приисковое"
+    },
+    {
+        "siteID": "RTA5CS24724",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "RTA5CS32276",
+        "project": 2336,
+        "organization": "ООО СибЭкоСервис"
+    },
+    {
+        "siteID": "RTA5CS26020",
+        "project": 728,
+        "organization": "ООО Геоконтроль-восток"
+    },
+    {
+        "siteID": "RTA5CS21695",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS26021",
+        "project": 2447,
+        "organization": "ООО Фирма КГПА"
+    },
+    {
+        "siteID": "RTA5DD1069",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "RTA5CS14275",
+        "project": 3146,
+        "organization": "ООО АЙЭФСИЭМ"
+    },
+    {
+        "siteID": "RTA5CS21079",
+        "project": 2745,
+        "organization": "ООО Алгома-Голд"
+    },
+    {
+        "siteID": "RTA5CS18584",
+        "project": 555,
+        "organization": "ГПРУ 1ЮК (Первая Южно-Ковыктинская). Бригада КРС41"
+    },
+    {
+        "siteID": "RTA5CS14230",
+        "project": 555,
+        "organization": "ООО Русгазбурение"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Gilat ID 9",
+        "project": "",
+        "organization": "АО КАГП"
+    },
+    {
+        "siteID": "RTA5CS21693",
+        "project": 3669,
+        "organization": "ООО ГЕОПРОМАЛЬЯНС"
+    },
+    {
+        "siteID": "RTA5CS14248",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "00-A0-AC-2B-61-15",
+        "project": 1828,
+        "organization": "Сигма-Гео"
+    },
+    {
+        "siteID": "Gilat ID12",
+        "project": "",
+        "organization": "ОБЛКОММУНЭНЕРГО-СБЫТ, ООО Онгурен"
+    },
+    {
+        "siteID": "Gilat ID 8",
+        "project": 3340,
+        "organization": "Приисковое, в место К100185 на замену "
+    },
+    {
+        "siteID": "RTA5CS27487",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS27488",
+        "project": 903,
+        "organization": "ООО ЭСК \"Энергомост\""
+    },
+    {
+        "siteID": "RTA5CS27489",
+        "project": 903,
+        "organization": "ООО ЭСК \"Энергомост\""
+    },
+    {
+        "siteID": "RTA5CS29672",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "RTA5CS29663",
+        "project": 1130,
+        "organization": "ООО Нергеопром"
+    },
+    {
+        "siteID": "",
+        "project": 1828,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS29670",
+        "project": 903,
+        "organization": "ООО ЭСК \"Энергомост\""
+    },
+    {
+        "siteID": "RTA5CS22590",
+        "project": 903,
+        "organization": "ООО ЭСК \"Энергомост\""
+    },
+    {
+        "siteID": "Gilat ID 14",
+        "project": "",
+        "organization": "АО Ай Ти Джи "
+    },
+    {
+        "siteID": "RTA5CS29671",
+        "project": 3703,
+        "organization": "ЦГБ"
+    },
+    {
+        "siteID": "RTA5CS14208",
+        "project": 3623,
+        "organization": "ООО Экспресссервис"
+    },
+    {
+        "siteID": "Gilat ID 20",
+        "project": 2616,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14191",
+        "project": 2755,
+        "organization": "ООО \"ТехВэб\""
+    },
+    {
+        "siteID": "RTA5CS14236",
+        "project": 3273,
+        "organization": "Транспортно-Строительная Компания (ТСК) КП27"
+    },
+    {
+        "siteID": "RTA5CS14200",
+        "project": 2755,
+        "organization": "ООО \"ТехВэб\""
+    },
+    {
+        "siteID": "RTA5CS30950",
+        "project": 2755,
+        "organization": "ООО \"ТехВэб\""
+    },
+    {
+        "siteID": "RTA5CS30951",
+        "project": 2755,
+        "organization": "ООО \"ТехВэб\""
+    },
+    {
+        "siteID": "RTA5CS14276",
+        "project": 2791,
+        "organization": "Мыс Манорский СКД"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Nedra-K100221_lte Усолье"
+    },
+    {
+        "siteID": "Gilat ID 5",
+        "project": 555,
+        "organization": "Сибмедцентр"
+    },
+    {
+        "siteID": "RTA5CS29664",
+        "project": 555,
+        "organization": "Литона КП404"
+    },
+    {
+        "siteID": "RTA5CS14190",
+        "project": 3719,
+        "organization": "ООО ПолиЭко КП90 Чаянда"
+    },
+    {
+        "siteID": "RTA5CS21080",
+        "project": 2791,
+        "organization": "Мостотряд-69 (залив Манорский)"
+    },
+    {
+        "siteID": "RTA5CS30947",
+        "project": 555,
+        "organization": "ПО Радиан / Энергоальянс"
+    },
+    {
+        "siteID": "RTA5CS14228",
+        "project": 2865,
+        "organization": "ИК Энергия"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Gilat ID 17",
+        "project": 2900,
+        "organization": "Спецавтохозяйство"
+    },
+    {
+        "siteID": "Gilat ID 19",
+        "project": 2834,
+        "organization": "СФ Даниловка Сибцем"
+    },
+    {
+        "siteID": "RTA5CS31129",
+        "project": 555,
+        "organization": "Якутия Чаянда  игнялинский лу кп6.1 СКД"
+    },
+    {
+        "siteID": "00-A0-AC-2B-5D-6F",
+        "project": 3603,
+        "organization": "ООО \"СоюзДриллингСервис\""
+    },
+    {
+        "siteID": "",
+        "project": 555,
+        "organization": "Газстройпром"
+    },
+    {
+        "siteID": "RTA5CS31132",
+        "project": 2888,
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS31133",
+        "project": 444,
+        "organization": "Тасс-Юрях менеджмент (для нашего контроля)"
+    },
+    {
+        "siteID": "RTA5CS31134",
+        "project": 2947,
+        "organization": "СпецТрансАвто ООО (тымпучикан)"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS31135",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS31137",
+        "project": 3289,
+        "organization": "Стройгруппинжиниринг"
+    },
+    {
+        "siteID": "RTA5CS31138",
+        "project": 2947,
+        "organization": "СпецТрансАвто ООО Окунайский"
+    },
+    {
+        "siteID": "00:A0:AC:27:35:4D",
+        "project": 555,
+        "organization": "КП109 (ООО \"ЦСС\")"
+    },
+    {
+        "siteID": "RTA5CS29669",
+        "project": 2791,
+        "organization": "Мостотряд-69"
+    },
+    {
+        "siteID": "RTA5CS10234",
+        "project": 2791,
+        "organization": "Мостотряд-69"
+    },
+    {
+        "siteID": "00-A0-AC-27-D7-BC",
+        "project": 2900,
+        "organization": "Спецавтохозяйство"
+    },
+    {
+        "siteID": "00-A0-AC-27-D7-8D",
+        "project": 555,
+        "organization": "КП 106  (ООО \"ЦСС\")"
+    },
+    {
+        "siteID": "Gilat ID 18",
+        "project": 555,
+        "organization": "Партнеры Ноябрьск"
+    },
+    {
+        "siteID": "RTA5CS17867",
+        "project": 2980,
+        "organization": "ООО СТАКЕР"
+    },
+    {
+        "siteID": "RTA5CS10049",
+        "project": 251,
+        "organization": "ООО ГПК Недра"
+    },
+    {
+        "siteID": "Gilat ID 23",
+        "project": 3295,
+        "organization": " АО \"Байкалкварцсамоцветы\""
+    },
+    {
+        "siteID": "Gilat ID 24",
+        "project": 304,
+        "organization": "ООО Коал-Консалтинг"
+    },
+    {
+        "siteID": "RTA5CS10822",
+        "project": 3623,
+        "organization": "Экспресссервис"
+    },
+    {
+        "siteID": "Gilat ID 2 под Западный хаб",
+        "project": 3324,
+        "organization": " Газстройпром АО"
+    },
+    {
+        "siteID": "RTA5CS16473",
+        "project": 3273,
+        "organization": "ООО ТСК КП254 Тымпучиканское НГКМ"
+    },
+    {
+        "siteID": "RTA5CS29665",
+        "project": 3061,
+        "organization": "Россыпь ООО (Компания Байкал Онлайн)"
+    },
+    {
+        "siteID": "RTA5CS10050",
+        "project": 2990,
+        "organization": "Универсал (Яракта)"
+    },
+    {
+        "siteID": "RTA5CS30948",
+        "project": 3066,
+        "organization": "Сигма"
+    },
+    {
+        "siteID": "RTA5CS14241",
+        "project": 111,
+        "organization": "КП 27 СКД Окунай"
+    },
+    {
+        "siteID": "RTA5CS26805",
+        "project": 251,
+        "organization": "ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS15877",
+        "project": 3146,
+        "organization": "АЙЭФСИЭМ ГРУПП"
+    },
+    {
+        "siteID": "RTA5CS21690",
+        "project": 2336,
+        "organization": "Сибэкосервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS32161",
+        "project": 3273,
+        "organization": "Чаянда СКД КП32"
+    },
+    {
+        "siteID": "RTA5CS32162",
+        "project": 2791,
+        "organization": "Мостотряд-69"
+    },
+    {
+        "siteID": "Gilat ID 26",
+        "project": 2966,
+        "organization": "ООО \"ГСП-6\" 12й этап ПХЛ 3"
+    },
+    {
+        "siteID": "",
+        "project": 2881,
+        "organization": "Газстройпром"
+    },
+    {
+        "siteID": "RTA5CS32268",
+        "project": 251,
+        "organization": "ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS10821 ",
+        "project": 2881,
+        "organization": "Газстройпром"
+    },
+    {
+        "siteID": "RTA5CS32266",
+        "project": 251,
+        "organization": "ГПК Недра"
+    },
+    {
+        "siteID": "RTA5CS32267",
+        "project": 3694,
+        "organization": "Техресурс"
+    },
+    {
+        "siteID": "00:A0:AC:2A:72:33",
+        "project": 555,
+        "organization": "на ковыкте"
+    },
+    {
+        "siteID": "00:A0:AC:2A:72:65",
+        "project": 3167,
+        "organization": "ООО Байкал Инсталл"
+    },
+    {
+        "siteID": "00:A0:AC:2A:72:82",
+        "project": 3167,
+        "organization": "ООО Байкал Инсталл"
+    },
+    {
+        "siteID": "00:A0:AC:27:D7:65",
+        "project": "",
+        "organization": "Ковыкта Зип"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14232",
+        "project": 661,
+        "organization": "ООО Сила Сибири"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS31130",
+        "project": 3146,
+        "organization": "АЙЭФСИЭМ ГРУПП"
+    },
+    {
+        "siteID": "00-A0-AC-26-C7-65",
+        "project": 3217,
+        "organization": "ООО Север Минералс"
+    },
+    {
+        "siteID": "RTA5CS31136",
+        "project": 555,
+        "organization": "Вымпелком Алдан (ГСП-1)"
+    },
+    {
+        "siteID": "RTA5CS32279",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS31139",
+        "project": 111,
+        "organization": "СКД Новая Артель Тас-Юрях"
+    },
+    {
+        "siteID": "RTA5CS32277",
+        "project": 3714,
+        "organization": "ООО Магистральлогистик (сбросил 04.03.2026,сборс трафика 1 раз в месяц)"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14199",
+        "project": 903,
+        "organization": "ООО ЭСК Энергомост"
+    },
+    {
+        "siteID": "RTA5CS21687",
+        "project": 3623,
+        "organization": "ООО Экспресссервис"
+    },
+    {
+        "siteID": "RTA5CS10321",
+        "project": 3710,
+        "organization": "ООО АСБ"
+    },
+    {
+        "siteID": "RTA5CS31131",
+        "project": 3654,
+        "organization": "Северэкосервис ООО (Русэкотех ООО)"
+    },
+    {
+        "siteID": "00A0AC2B6121",
+        "project": 1828,
+        "organization": "Сигма-Гео"
+    },
+    {
+        "siteID": "00:A0:AC:2B:61:13 ",
+        "project": 2947,
+        "organization": "ООО \"СпецТрансАвто\""
+    },
+    {
+        "siteID": "RTA5CS29666",
+        "project": 3729,
+        "organization": "ООО СТС (СпецТехСервис)"
+    },
+    {
+        "siteID": "RTA5CS14237",
+        "project": 2947,
+        "organization": "ООО СпецТрансАвто"
+    },
+    {
+        "siteID": "RTA5CS14210",
+        "project": 3719,
+        "organization": "Полиэко"
+    },
+    {
+        "siteID": "00:A0:AC:2B:26:51",
+        "project": 3722,
+        "organization": "ИЭРП"
+    },
+    {
+        "siteID": "00:A0:AC:2B:61:B7",
+        "project": 1828,
+        "organization": "Сигма Гео"
+    },
+    {
+        "siteID": "RTA5CS33622",
+        "project": 111,
+        "organization": "Якутия/Чаянда/ИгнялинскийЛУ/КП 2И СКД"
+    },
+    {
+        "siteID": "RTA5CS33620",
+        "project": 661,
+        "organization": "Сигма Гео"
+    },
+    {
+        "siteID": "RTA5CS14211",
+        "project": 2658,
+        "organization": "Инком"
+    },
+    {
+        "siteID": "RTA5CS24723",
+        "project": 3624,
+        "organization": "Универсал-Сервис"
+    },
+    {
+        "siteID": "RTA5CS21691",
+        "project": 3760,
+        "organization": "ЕКХ -- УБРАЛИ МИКРОТИК - ОГРАНИЧЕНЫ 128к/128к"
+    },
+    {
+        "siteID": "RTA5CS21765",
+        "project": 3762,
+        "organization": "УниверсалСпецТранс"
+    },
+    {
+        "siteID": "RTA5CS18591",
+        "project": 555,
+        "organization": "ПодземБургаз КП36"
+    },
+    {
+        "siteID": "RTA5CS34441",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS34442",
+        "project": 3623,
+        "organization": "Экспресссервис"
+    },
+    {
+        "siteID": "RTA5CS34443",
+        "project": 3772,
+        "organization": "ООО ДОК"
+    },
+    {
+        "siteID": "RTA5CS34440",
+        "project": 3719,
+        "organization": "Полиэко Освоение на кп36"
+    },
+    {
+        "siteID": "00-A0-AC-27-38-F7",
+        "project": "",
+        "organization": "ИЭРП"
+    },
+    {
+        "siteID": "00:A0:AC:2B:60:F9",
+        "project": "",
+        "organization": "Волгаэнергопром КП103"
+    },
+    {
+        "siteID": "RTA5CS14231",
+        "project": 3719,
+        "organization": "Полиэко КП52"
+    },
+    {
+        "siteID": "00-A0-AC-2B-61-16",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "00-A0-AC-2B-61-1A",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14247 ",
+        "project": 3815,
+        "organization": "Юграэнергострой"
+    },
+    {
+        "siteID": "00-A0-AC-24-71-4D",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS21507",
+        "project": 1828,
+        "organization": "Сигма гео"
+    },
+    {
+        "siteID": "00-A0-AC-2B-61-D8",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "00-A0-AC-25-4D-09",
+        "project": "",
+        "organization": " АО ИЭРП"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "до 320 яща сертификаты сгенерированы "
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "CSS-008-164677",
+        "project": "",
+        "organization": "ООО АСБ - idirect"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": 903,
+        "organization": "Энергомост"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Ворота Восток ООО (Дорожник)"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-45 Нач.промысла ГДИ",
+        "project": "",
+        "organization": "УКПГ-45 Нач.промысла ГДИ"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Газтройпром",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-3",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Газрегион",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС 2-1 ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Абоненты КОВЫКТЫ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Новые Технологии-ГЕОФИЗИКА\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП-2 ТАас Юрях",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Русгазбурение радио!!!!",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП414",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП109",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "Русгазбурение осв 12-13"
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 9"
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 5"
+    },
+    {
+        "siteID": "КП208",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 7-8"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "Русгазбурение освоение"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 2"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП504",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП303",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 3"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 1"
+    },
+    {
+        "siteID": "КП117",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП117",
+        "project": "",
+        "organization": "Русгазбурение освоение звено 17"
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": "Русгазбурение осв"
+    },
+    {
+        "siteID": "КП428",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП321",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "База Чикан",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП428 звено 9",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "Русгазбурение"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Газпром",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП206",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "СБМ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "БАза Прайм",
+        "project": "",
+        "organization": "СБМ"
+    },
+    {
+        "siteID": "КП321 (находятся на расстоянии 6км)",
+        "project": "",
+        "organization": "Сервисный центр СБМ"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Столовые \"Литона\" Ковыкта радио",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП414",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП509",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП201",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": "Литона "
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП205",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП 212",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП404",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП504",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП304",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП508",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП114",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП321",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП428",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "Прайм база",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "База Бурения-2",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": "ООО Азурит"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП502",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "2П",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "КП214",
+        "project": "",
+        "organization": "Литона"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Сервисная транспортная компания (СТК)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "ООО Спецрегионсервис"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "ООО Сервисная транспортная компания (СТК)"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "НИПЦ ГНТ им.Губкина",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП414",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП508",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП212освоение",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП307 (77-р)",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП316 Освоение",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП109",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП201",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП304 (с-вайзер по освоению)",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП204",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП104",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП117 Освоение",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП103 Освоение",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП504",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП117",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП304 (с-вайзер по освоению)",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП305 освоение",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП309",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП321 супервайзер",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП313",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП314",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП315 (с-вайзер по освоению)",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП315 освоение (мантбокс КП305)",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП309",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП306 освоение",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП313 освоениен",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "КП109",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "НИПЦ ГНТ им.Губкина"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Газпром подземремонт Уренгой\".",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КРС104",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КРС15",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "КРС11",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КРС9",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "КРС 23",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП201",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "КРС-9 Ямбург",
+        "project": "",
+        "organization": "ООО \"Газпром подземремонт Уренгой\"."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Спецтрансавто",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "ООО Спецтрансавто"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП404",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП107",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП504",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП313",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП321",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП109",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП428",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП504",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "ООО Центр горизонтального бурения"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП114",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП212",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП509",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП414",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП213",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП214",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "КП404",
+        "project": "",
+        "organization": "ООО Центр Горизонтального Бурения"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Левитек",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": "Левитек"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГНС",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": "ГНС ООО  3/3"
+    },
+    {
+        "siteID": "КП117",
+        "project": "",
+        "organization": "ГНС ООО  4/4"
+    },
+    {
+        "siteID": "КП214",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"УТТиСТ-Бурсервис\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС 2-2",
+        "project": "",
+        "organization": "ООО \"УТТиСТ-Бурсервис\""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Центр Цементирования Скважин",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП202",
+        "project": "",
+        "organization": "Центр Цементирования Скважин"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "МосНефтьСервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП 101",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 101",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 108",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 109",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 117",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 207.",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 111",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 301",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 321",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП313",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП316",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП502",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 414",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 403",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП 5 Тасс-Юрях",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП 8 Тасс-Юрях",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП114",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "КП509",
+        "project": "",
+        "organization": " МосНефтьСервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Газпром-Бурение",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП201",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП202",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП203",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП104",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП107",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП206",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП207",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП208",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП209",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП302",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП303",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП304",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП305",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП309",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП310",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП314",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "КП315",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": "BEELINE //// Ковыкта БС Гора ~~ Газпром бурение "
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Чикан",
+        "project": "",
+        "organization": "Ямалстройавто ООО"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "РустехОйл",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Заброшка 24",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП 6",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТяжПрессМаш",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП201",
+        "project": "",
+        "organization": "ТяжПрессМаш"
+    },
+    {
+        "siteID": "Чаянда ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГИС Нефтесервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП107",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП202",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП306",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП104",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП305",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП305",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП307-2 (78 разведочная)",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": "ГИС НефтеСервис 307 супервайзер"
+    },
+    {
+        "siteID": "ПКФ \"Гис Нефтесервис",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "ПКФ ГИС Нефтесервис",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "КП8",
+        "project": "",
+        "organization": "ГИС Нефтесервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Предприятие буровых работ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": "Предприятние буровых работ (ПБР)"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЧ-групп",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": "Билайн ВЛАН 1325"
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": "Снабинжиниринг магазин - VLAN1335"
+    },
+    {
+        "siteID": "ГСП Дороги мост с БИЧ03",
+        "project": "",
+        "organization": "ГСП Дороги"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АО Новая Сервисная Компания НСК",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП117",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП107",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП303",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП306",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП428",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП5 Тас-юрях",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП414",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "КП8",
+        "project": "",
+        "organization": "АО Новая Сервисная Компания НСК"
+    },
+    {
+        "siteID": "ПодземБурГаз",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП306",
+        "project": "",
+        "organization": "бригада 36"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "50 бригада"
+    },
+    {
+        "siteID": "КП305",
+        "project": "",
+        "organization": "51 бригада"
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": "52 бригада"
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": "34 бригада"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": "Бригада 53"
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": "офис1"
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": "Бригада 45"
+    },
+    {
+        "siteID": "КП77Р",
+        "project": "",
+        "organization": "Бригада 44"
+    },
+    {
+        "siteID": "КП117",
+        "project": "",
+        "organization": "Бригада 37"
+    },
+    {
+        "siteID": "КП77Р",
+        "project": "",
+        "organization": "Бригада 46"
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": "Бригада 43"
+    },
+    {
+        "siteID": "КП5 Тас - Юрях",
+        "project": "",
+        "organization": "Бригада 59"
+    },
+    {
+        "siteID": "КП 32 Чаянда",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП36 Чаянда",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КСМП",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП",
+        "project": "",
+        "organization": "КСМП"
+    },
+    {
+        "siteID": "КП109 (возле КП144)",
+        "project": "",
+        "organization": "КСМП"
+    },
+    {
+        "siteID": "1П",
+        "project": "",
+        "organization": "КСМП 88"
+    },
+    {
+        "siteID": "Вч-Групп",
+        "project": "",
+        "organization": "КСМП"
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": "КСМП"
+    },
+    {
+        "siteID": "Взис 2-5",
+        "project": "",
+        "organization": "КСМП"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "СибЭкоСервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Тэксвязьинжиниринг (Нючакан)",
+        "project": "",
+        "organization": "СибЭкоСервис"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Газпром Газобезопасность"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Газпром Газобезопасность"
+    },
+    {
+        "siteID": "ООО Петровайзер",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП 303",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 304",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 305",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 306",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 313",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 306",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 310",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "КП 302",
+        "project": "",
+        "organization": "ООО Петровайзер"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Тэксвязьинжиниринг",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": "ООО Тэксвязьинжиниринг"
+    },
+    {
+        "siteID": "Гора",
+        "project": "",
+        "organization": "ООО Тэксвязьинжиниринг"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Энергетические технологии",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "база Тэксвязьинжиниринг",
+        "project": "",
+        "organization": "Энергетические технологии"
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": "Энергетические технологии"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Газпромстрой",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "VLAN1990 (был 1530)"
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": "VLAN1531"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ 3 СоюзСтройЭнерго",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ 3  ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГПК Недра (Ковыкта через радио)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП203",
+        "project": "",
+        "organization": "КП203 - от SXT подключено 2 вагона последовательно "
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "база ФракДжет-Волга"
+    },
+    {
+        "siteID": "ФракДжет-Волга-2",
+        "project": "",
+        "organization": "база ФракДжет-Волга"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "КП424"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "9 бригада"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "15 бригада"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "16 бригада"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "19 бригада"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "база ФракДжет-Волга"
+    },
+    {
+        "siteID": "ФракДжет-Волга",
+        "project": "",
+        "organization": "КП508"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Универсал",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Универсал",
+        "project": "",
+        "organization": "с бич03"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"\"Партнеры Ноябрьск\"\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Партнеры Ноябрьск\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО ПолиЭко",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Прайм",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Тас-Юрях КП5",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Бурэнерго",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": "ООО Бурэнерго"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Лайт",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурэнерго",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП ТЮ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Гранд Строй",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": "ВЗИС2-2"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Сибмедцентр",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-3 пункт экстренной помощи",
+        "project": "",
+        "organization": "СибМедцентр"
+    },
+    {
+        "siteID": "ВЗИС2-3 пункт предрейсового осмотра",
+        "project": "",
+        "organization": "СибМедцентр"
+    },
+    {
+        "siteID": "КП5 Тас Юрях",
+        "project": "",
+        "organization": "СибМедцентр"
+    },
+    {
+        "siteID": "Тас-Юрях РРС24",
+        "project": "",
+        "organization": "СибМедцентр"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"АВАС ГРУПП\" (10026400) Цистерна",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Чикан",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТСГ-Магистральный",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТСГ-Магистральный столовая РСУ 92",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Авас групп (Типуй) вагон строителей",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Авас групп (Типуй) магазин",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "(Магазин) Авас Групп ООО Нючакан",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Магистраль/Ипигаз",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АВАС Чикан Магазин ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АВАС Чикан Склад",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АВАС Чикан Прачечная",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АВАС Чикан АДК",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АВАС Типуй (столовая)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "АВАС Типуй комендант",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Авас Групп ООО (База Фракджет Волги)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Авас Групп (Типуй ) - КЭМП_Левое Крыло 1эт",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Авас Групп (Типуй ) - КЭМП_Левое Крыло 1эт рядом комната 308",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "цистерна",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Алеткан Дриллинг",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП212",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Томмедцентр",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-3",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Стандарт Ойл Инжиниринг",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП403",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ИП Пятанин - СнабМаркет",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП105",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП308",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Сибиряк (был Пятанин)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Бирель (94й км)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП № 170км",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГСП-6",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "А331-Вилюй дорога км1279",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Уттист-Бурсервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП144",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Финко\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-3",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Фрис\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Газпром питание\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-3",
+        "project": "",
+        "organization": "Работают через LTE 10.172.0.75"
+    },
+    {
+        "siteID": "Окунайский",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Магистарльный",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Объект УКПГ-1 СЭБ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП102 (СЭБ)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Точка-М",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТД НКМЗ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурения",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО ВСК",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": 212,
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "СТНГ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-1",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-2",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС2-5",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Сервисно-Бытовая Компания\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "СБК",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГСП-Механизация",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "13й этап",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО ГСП-6",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "13й этап",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Типуй Дом",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ШТАБ с Бича03",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Типуй ГСП",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО УМиАТ ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База СБК (рядом с кп505)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО О\"СРП\" (ООО Объединение \"Содействие Развитию Предпринимательства\")",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "с БИЧ03",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"МЭСИ\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП144",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"ДАЙМОНДТРЕЙД\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП № 424",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО \"Геопромальянс\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Транснефтьресурс ООО",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Бирель",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Газпром Питание",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-2",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Корвет Плюс",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Типуй",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ОСРП",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "мост с Горы",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Геопромальянс\"",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП307",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО КУБ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "С Горы",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "\"Неруд Трейд Групп\"  ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "С Гранд БИЧА(СОМ)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Комтэк",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП110",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП101",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП102",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП111",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП214",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП108",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП109",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП428",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП424",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП414",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "кп404",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП508",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП213",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Снабфарм",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Нючакан",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО АСБ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП106",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП301",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП509",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП504",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП5",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП8",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП5 ГПНЗ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Стройтехинвест (СТИ)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Магистраль 168км",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Этап 5.1 (Координаты: 55.241171, 106.158822)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Энергопотенциал М",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП509",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП212",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП502",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП428",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП510",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Экспресссервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Тас Юрях",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Транспортно-Строительная Компания (ТСК)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Чаянда ВЗИС 73км",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Чаянда ВЗИС 73км",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП8",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "СпецАвтоХозяйство",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "база БурЭнерго Ковыкта",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Бурэнерго",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Бурэнерго Чаянда",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Аксиома-Сервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "База Бурения Чаянда",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Предприятие Буровых работ ПБР",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС 1279 и Алроса РРС23. Подключены с ретранслятора Заброшка 23",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Мостотряд-97",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Тас-Юрях",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Макуха Светлана Григорьевна, ИП",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-45",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Сибвышкамонтаж",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП505",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП103",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГСП-Центр / СТНГ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Подстанция 220кВ Газпром-Энерго",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ4-5 Ковыкта",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Вилитех",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Типуй",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО «СпецТранс-Север»",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП144",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО ЛегендаСтрой",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП214",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Трио ресурс (бывший Вэллтим)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Тас Юрях с заброшки 24. (тер. РусТехОйл)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП 6",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП6 Рустехойл",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП2",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Строительно-Сервисная Компания",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ с Полупилара",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Стратек Групп",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП2 (Алроса газ) с заброшки 24.",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП6АлросаГаз ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Сервисная логистическая компания",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "городок Авас (с заброшки24)",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Ветеран",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ТЮ КП-8",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Якутия/Чнгкм/105км/ООО Ветеран",
+        "project": "через ТалТел",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "СТК",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП-8",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО СК «НефтеГазМонтаж»",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "УКПГ-45",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ЧОО Интеллект",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ВЗИС отдельный мост ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ООО Уралгазсервис",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Заброшка24",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Волгаэнергопром.",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "КП213",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "ГСП Центр (АО СТНГ).",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": " БВХ 70 км КГКМ",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": 2005,
+        "organization": "АО Деловая Сеть-Иркутск"
+    },
+    {
+        "siteID": "RTA5CS17868",
+        "project": 2005,
+        "organization": "АО Деловая Сеть-Иркутск"
+    },
+    {
+        "siteID": "RTA5CS17870",
+        "project": 2005,
+        "organization": "АО Деловая Сеть-Иркутск"
+    },
+    {
+        "siteID": "",
+        "project": 2005,
+        "organization": "АО Деловая Сеть-Иркутск"
+    },
+    {
+        "siteID": "RTA5CS17869",
+        "project": 2005,
+        "organization": "АО Деловая Сеть-Иркутск"
+    },
+    {
+        "siteID": "RTA5CS18593",
+        "project": 2005,
+        "organization": "АО Деловая Сеть-Иркутск"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Телефония через Геоконтроль-восток, но провайдер инета не мы"
+    },
+    {
+        "siteID": "Школа Тальники",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5DD850",
+        "project": "",
+        "organization": "не понятно что за станция но в КЭ в Алтегро"
+    },
+    {
+        "siteID": "RTA5CS11566",
+        "project": "",
+        "organization": "был 149 - непонятно что, может модем и сдох уже"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14212",
+        "project": "",
+        "organization": "модем продан как ЗИП - ГПК Недра"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14209 ",
+        "project": "s/n: 10796777",
+        "organization": "Геоконтроль-восток"
+    },
+    {
+        "siteID": "RTA5CS10046",
+        "project": "ЦСС",
+        "organization": "ЦСС удалена в Алтегро"
+    },
+    {
+        "siteID": "RTA5CS12888",
+        "project": "",
+        "organization": "неизвестно что за модем"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14272",
+        "project": "s/n: 10631074",
+        "organization": "хз где этот модем HT1100"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный Site ID "
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный Site ID Для 1100."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный Site ID Для 1100."
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный Site ID Для 1100"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "не проходит инсталляция на нем"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный сайт ИД для 2000"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный сайт ИД для 2000"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный сайт ИД для 2000"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный сайт ИД для 2000"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "свободный сайт ИД для 2000"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "RTA5CS14249 ",
+        "project": 661,
+        "organization": "ООО Сила Сибири (ЗИП)"
+    },
+    {
+        "siteID": "RTA5CS26022",
+        "project": "",
+        "organization": "ООО Сила Сибири (ЗИП)"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": "Подать заявку в Алтегро на замену модема"
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "в эксплуатации",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "на инсталляцию",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "услуги приостановлены",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "тестируется",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "демостэнд",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Станции под АМ6",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "Искровские станции",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "HT2000",
+        "project": "",
+        "organization": ""
+    },
+    {
+        "siteID": "резерв (другое)",
+        "project": "",
+        "organization": ""
+    }
+]
