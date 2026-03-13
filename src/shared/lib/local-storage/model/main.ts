@@ -44,14 +44,14 @@ export const setStorageData = (
 
       // Сохраняем важное
       const cookie = h.getAcceptedCookie();
-      const hintsDontShowAgain = h.getHintsDontShowAgain();
+      // const hintsDontShowAgain = h.getHintsDontShowAgain();
 
       if (! companyId) {
         localStorage.clear();
 
         // Восстанавливаем важное
         if (cookie) h.setAcceptedCookie();
-        h.setHintsDontShowAgain(hintsDontShowAgain);
+        // h.setHintsDontShowAgain(hintsDontShowAgain);
 
         // eslint-disable-next-line no-alert
         if (confirm('Необходимо обновить страницу')) {
@@ -59,31 +59,8 @@ export const setStorageData = (
         }
       }
 
-      const userState                        = h.getUserState(companyId);
-      const lastCompanyId                    = h.getLastCompanyId();
-      const companyState                     = h.getCompanyState(companyId);
-      const paramsCompanyState               = h.getParamsCompanyState();
-      const uIConfiguratorState              = h.getUIConfiguratorState();
-      const dashboardTemplates               = h.getTemplates();
-      const dashboardTemplatesBunchesUpdated = h.getTemplatesBunchesUpdated();
-      const dashboardDataState               = h.getDataState(companyId);
-      const dashboardBunches                 = h.getBunches(companyId);
-      const dashboardViewBunchesUpdated      = h.getViewBunchesUpdated(companyId);
-
       localStorage.clear();
-
       if (cookie) h.setAcceptedCookie();
-      if (userState) h.setUserState(companyId, userState);
-      if (lastCompanyId) h.setLastCompanyId(lastCompanyId);
-      if (companyState) h.setCompanyState(companyId, companyState);
-      if (paramsCompanyState) h.setParamsCompanyState(paramsCompanyState);
-      if (uIConfiguratorState) h.setUIConfiguratorState(uIConfiguratorState);
-      h.setTemplates(dashboardTemplates);
-      h.setTemplatesBunchesUpdated(dashboardTemplatesBunchesUpdated);
-      if (dashboardDataState) h.setDataState(companyId, dashboardDataState);
-      h.setBunches(companyId, dashboardBunches);
-      h.setViewBunchesUpdated(companyId, dashboardViewBunchesUpdated);
-      h.setHintsDontShowAgain(hintsDontShowAgain);
     }
     else {
       console.error('Ошибка LocalStorage:', e);

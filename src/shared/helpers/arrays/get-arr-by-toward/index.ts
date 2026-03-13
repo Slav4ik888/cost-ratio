@@ -1,6 +1,5 @@
-import { TowardType } from 'shared/ui/configurators-components';
 
-
+type TowardType = 'up' | 'down'
 
 /**
  * Расчёт нового ордер при перемещении chart между собой.
