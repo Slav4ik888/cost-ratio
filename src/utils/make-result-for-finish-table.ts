@@ -6,11 +6,13 @@
  * @return {array} newStorage  
  */
 
-export const makeResultForFinishTable = arrForBigTable => {
-  let arrResult = [];
+import { MainItem } from 'entities/altegra';
+
+export const makeResultForFinishTable = (arrForBigTable: any[]) => {
+  let arrResult = [] as MainItem[];
   
   for(let i=0; i<arrForBigTable.length; i++) {
-    let obj = {};
+    let obj = {} as MainItem;
     obj.project = arrForBigTable[i].project;
     obj.organization = arrForBigTable[i].organization; // Название организации берём только первое
 
@@ -33,7 +35,7 @@ export const makeResultForFinishTable = arrForBigTable => {
       obj.result = sumResult.toFixed(2);
 
       arrResult.push(obj);
-      obj = {};
+      obj = {} as MainItem;
     }
   }
   
@@ -57,7 +59,7 @@ export const makeResultForFinishTable = arrForBigTable => {
  * @return {array} newArr  
  */
 
-export const changePointToComma = (arr, attribute) => {
+export const changePointToComma = (arr: any[], attribute: string) => {
 
 
   arr.forEach( item => item.result = item[attribute].replace(/\./g,','));

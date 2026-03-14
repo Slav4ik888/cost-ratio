@@ -2,17 +2,28 @@ import React, {PureComponent} from 'react';
 import s from './result-analis-table.module.css'; 
 import cl from 'classnames';
 // import {DetailRowView} from '../DetailRowView/detail-row-view.jsx';
-import ModalAnalisBlock from './ModalAnalisBlock/modal-analis-block.jsx';
-import {getTitle} from '../../utils/untils.js';
-import {addSpaceToNumber} from '../../utils/untils.js';
-
-import {ANALIS_TITLE, ANALIS_TITLE_CLASS, ANALIS_SORT} from '../../consts/consts.js';
+import ModalAnalisBlock from './ModalAnalisBlock/index.js';
+import {getTitle, addSpaceToNumber} from '../../utils/untils';
+import {ANALIS_TITLE, ANALIS_TITLE_CLASS, ANALIS_SORT} from '../../consts';
 import _ from 'lodash';
 
 
+interface Props {
+	arr: any[]
+	arrBig: any[]
+}
 
-class ResultAnalisTabl extends PureComponent {
-	constructor (props) {
+interface State {
+	tableArr: any[],
+	bigArr: any[],
+	sortType: string,
+	sortField: string,
+	row: any,
+	rowResult: any,
+}
+
+class ResultAnalisTabl extends PureComponent<Props> {
+	constructor (props: Props) {
 		super(props);
 		this.handleModalOut = this.handleModalOut.bind(this);
 		this.handleRowSelect = this.handleRowSelect.bind(this); 
@@ -26,10 +37,10 @@ class ResultAnalisTabl extends PureComponent {
 			sortField: 'siteID', // поле по умолчанию
 			row: null, // нажатая выбранная строка
 			rowResult: null, // результат фильтра
-		}
+		} as State
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps: Props) {
 		if (this.props.arr !== prevProps.arr) {
 			const {arr, arrBig} = this.props;
 
@@ -51,11 +62,13 @@ class ResultAnalisTabl extends PureComponent {
 	}
 
 	// Устанавливаем выбранную строку
-  handleRowSelect = (row, i) => {
+  handleRowSelect = (row: any, i: any) => {
 		// console.log(row);
+		// @ts-ignore
 		const {bigArr} = this.state;
 
 		let arr = bigArr.concat();
+		// @ts-ignore
 		let result = arr.filter(item => item.project === row.project);
 		// console.log('result: ', result);
 
@@ -66,7 +79,9 @@ class ResultAnalisTabl extends PureComponent {
 	}
 
 	// Сортировка "Таблицы"
+		// @ts-ignore
   handleSortTabl = sortField => {
+		// @ts-ignore
 		const {tableArr, sortType} = this.state;
 
 		sortField = getTitle(sortField.item, ANALIS_TITLE, ANALIS_SORT);
@@ -86,6 +101,7 @@ class ResultAnalisTabl extends PureComponent {
 
 
 	// Обрабатываем закрытие модального окна
+		// @ts-ignore
 	handleModalOut(obj) {
 		this.setState({
 			row: null,
@@ -94,6 +110,7 @@ class ResultAnalisTabl extends PureComponent {
 	};
 
 	render() {
+		// @ts-ignore
 		const {tableArr, sortType, sortField, row, rowResult} = this.state;
 
 		return (
@@ -101,7 +118,8 @@ class ResultAnalisTabl extends PureComponent {
 				{/* выводим модалку нажатой строки */}
 				{
 					rowResult &&
-					row ? 
+						row ? 
+						// @ts-ignore
 						<ModalAnalisBlock callback={this.handleModalOut} result={rowResult} /> : null
 				}
 				<div className={s.centerBox}>
@@ -145,6 +163,7 @@ class ResultAnalisTabl extends PureComponent {
 								<tbody>
 									
 									
+		{/* @ts-ignore */}
 									{tableArr.map( (item, i) => (
 										<tr key={item.result+i}
 											onClick={this.handleRowSelect.bind(null, item, i)}

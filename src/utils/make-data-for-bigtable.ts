@@ -2,6 +2,8 @@
 /*  ПЕРВОНАЧАЛЬНАЯ ПОДГОТОВКА ДАННЫХ ДЛЯ "СВОДНОЙ ТАБЛИЦЫ"  */
 /************************************************************/
 
+import { MainItem } from 'entities/altegra';
+
 /**
  * Создаём первоначальную "Сводную таблицу", наполняем её данными
  *
@@ -17,17 +19,17 @@
 
 
 // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
-export const pushArrBmAndStriteTraffic = (mbSiteId, striteSiteId, mbPrice) => {
+export const pushArrBmAndStriteTraffic = (mbSiteId: any[], striteSiteId: any[], mbPrice: number) => {
 
   let newArr = [];
-  let objSiteID = {};
+  let objSiteID = {} as MainItem;
   // Заполняем основной массив данными по  Мб трафик
   for(let obj of mbSiteId) {
     objSiteID.siteID = obj.siteID;
     objSiteID.project = '';
     objSiteID.organization = '';
     objSiteID.mbPrice = mbPrice;
-    objSiteID.mbCostServicies = '';
+    objSiteID.mbCostServicies = 0;
     objSiteID.mbTraffic = obj.trafficMb;
     objSiteID.mbCostTraffic = (objSiteID.mbTraffic * objSiteID.mbPrice).toFixed(2);
     objSiteID.mbCostCorrect = '';
@@ -36,23 +38,24 @@ export const pushArrBmAndStriteTraffic = (mbSiteId, striteSiteId, mbPrice) => {
     objSiteID.result = '';
 
     newArr.push(objSiteID);
-    objSiteID = {};
+    objSiteID = {} as MainItem;
   }
 
   // Заполняем данными по трафику в полосе
   for(let obj of striteSiteId) {
-    objSiteID = {};
+    objSiteID = {} as MainItem;
     let result = newArr.find( it => it.siteID === obj.siteID);
     if (result) {
       result.spTraffic = obj.trafficMb;
-    } else {
-      objSiteID = {};
+    }
+    else {
+      objSiteID = {} as MainItem;
       objSiteID.siteID = obj.siteID;
       objSiteID.project = '';
       objSiteID.organization = '';
       objSiteID.mbPrice = mbPrice;
-      objSiteID.mbCostServicies = '';
-      objSiteID.mbTraffic = '';
+      objSiteID.mbCostServicies = 0;
+      objSiteID.mbTraffic = 0;
       objSiteID.mbCostTraffic = '';
       objSiteID.mbCostCorrect = '';
       objSiteID.spTraffic = obj.trafficMb;
@@ -68,14 +71,14 @@ export const pushArrBmAndStriteTraffic = (mbSiteId, striteSiteId, mbPrice) => {
 
 
 // Подсчёт общих затрат по Мб трафику + сч/ф
-export const calcMbCostAll = arr => {
+export const calcMbCostAll = (arr: any[]) => {
   let mbCostAll = arr.reduce((sum, obj) => sum + +obj.mbCostTraffic + (+obj.mbCostServicies || 0), 0);
   mbCostAll = mbCostAll.toFixed(2);
   return mbCostAll;
 };
 
 // Подсчёт общего трафика полосы
-export const calcSpTrafficAll = arr => {
+export const calcSpTrafficAll = (arr: any[]) => {
   let spTrafficAll = arr.reduce((sum, obj) => sum + +obj.spTraffic, 0);
   spTrafficAll = spTrafficAll.toFixed(2);
   return spTrafficAll;
@@ -96,7 +99,7 @@ export const calcSpTrafficAll = arr => {
  * @return {array} newArr  
  */
 
-export const makeDataForBigTable = (arrForBigTable, factura, mbCostAll, spTrafficAll) => {
+export const makeDataForBigTable = (arrForBigTable: any[], factura: any, mbCostAll: number, spTrafficAll: number) => {
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
     if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb) {
@@ -123,7 +126,7 @@ export const makeDataForBigTable = (arrForBigTable, factura, mbCostAll, spTraffi
 
 
 // Обновляем полученный массив, данными из массива от Гугл
-export const makeDataFromGoogle = (arrForBigTable, arrayOfProject) => {
+export const makeDataFromGoogle = (arrForBigTable: any[], arrayOfProject: any[]) => {
   let arr = arrForBigTable.concat();
   // siteId в arrayOfProject (Это данные по организациям и проектам)
   if (arrayOfProject) {

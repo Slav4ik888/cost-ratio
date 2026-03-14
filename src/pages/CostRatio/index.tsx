@@ -1,18 +1,18 @@
 import React from 'react';
-import Loader from '../../components/Loader/loader.js';
-import Section from '../../components/Section/section.jsx';
-import TextareaFromAltegra from '../../components/TextareaFromAltegra/textarea-from-altegra.jsx';
-import BigTable from '../../components/BigTable/big-table.jsx';
-import {ResultTabl} from '../../components/ResultTabl/result-table.jsx';
-import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-processing-from-alterga.js';
-import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table.js';
+import Loader from '../../components/Loader';
+import Section from '../../components/Section';
+import TextareaFromAltegra from '../../components/TextareaFromAltegra';
+import BigTable from '../../components/BigTable';
+import {ResultTabl} from '../../components/ResultTabl';
+import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-processing-from-alterga';
+import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table';
 import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
-  makeDataForBigTable, makeDataFromGoogle} from '../../utils/make-data-for-bigtable.js';
-import {getFromGoogleData} from '../../utils/get-from-google-data.js';
-import ResultAnalisTabl from '../../components/ResultAnalisTabl/result-analis-table.jsx';
-import {Header} from '../../components/Header/header.jsx';
+  makeDataForBigTable, makeDataFromGoogle} from '../../utils/make-data-for-bigtable';
+import {getFromGoogleData} from '../../utils/get-from-google-data';
+import ResultAnalisTabl from '../../components/ResultAnalisTabl';
+import {Header} from '../../components/Header/index';
 import s from './cost-ratio.module.css';
-import { cfg } from 'app/config/index.js';
+import { cfg } from 'app/config';
 
 
 
@@ -259,6 +259,7 @@ class CostRatio extends React.PureComponent {
       <>
         <Section>
           <Header
+    // @ts-ignore
             factura={factura}
             onSetFactura={this.handleSetFactura}
             mbCostAll={mbCostAll}
@@ -282,7 +283,8 @@ class CostRatio extends React.PureComponent {
 
         {/* формируем таблицы и выводим Большую таблицу */}
         {isMadeArr &&
-            <BigTable
+          <BigTable
+          // @ts-ignore
               mbPrice={mbPrice}
               arr={arrForBigTable}
               onHandleUpdateBigArr={this.handleUpdateBigArr}

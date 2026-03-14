@@ -1,4 +1,4 @@
-import cfg from 'app/config';
+import { cfg } from 'app/config';
 import axios from 'axios';
 
 
@@ -7,7 +7,7 @@ export const api = axios.create({
   timeout         : 1000 * 60 * 5,  //  Увеличил до 5х минут чтобы с гугл успевало прогрузиться, иногда задерживается
   withCredentials : true, // Если с куки,
   headers: {
-    'X-Client-Version': cfg.VERSION,
+    'X-Client-Version': cfg.ASSEMBLY_DATE,
   }
 });
 

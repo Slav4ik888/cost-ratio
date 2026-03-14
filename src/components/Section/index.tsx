@@ -3,7 +3,7 @@ import s from './section1.module.css';
 
 
 // children это деструктурированный ...props 
-const Section = ({ children }) => {
+const Section: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
     return (
         <>

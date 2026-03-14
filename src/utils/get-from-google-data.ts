@@ -6,10 +6,11 @@
  * @return {array} arr  
  */
 
-export const getFromGoogleData = (url) => {
+
+export const getFromGoogleData = (url: string) => {
   
-    let arr = [];
-    let obj = {};
+    let arr = [] as any[];
+    let obj = {} as any;
   
     return fetch(url)
         .then(response => response.json())
@@ -26,4 +27,4 @@ export const getFromGoogleData = (url) => {
                 }
                 return arr
             });
-  }
+}

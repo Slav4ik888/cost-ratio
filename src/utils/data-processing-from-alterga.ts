@@ -6,9 +6,9 @@
  * @return {array} arrNew -  
  */
 
-export const joinTraffic = arrFromAltegra => {
+export const joinTraffic = (arrFromAltegra: any[]) => {
   let arr = arrFromAltegra;
-  let arrNew = [];
+  let arrNew: any[] = [];
   let sum = 0;
   let obj = {};
 
@@ -20,6 +20,7 @@ export const joinTraffic = arrFromAltegra => {
         if (arr[i].siteID === arr[j].siteID) sum += +arr[j].trafficMb;
       }
       obj = arr[i];
+      // @ts-ignore
       obj.trafficMb = sum.toFixed(2);
       arrNew.push(obj);
       obj = {};
@@ -37,7 +38,7 @@ export const joinTraffic = arrFromAltegra => {
  * @return {array} mbSiteId - массив помегабайтного трафика
  */
 
-export const returnArrMb = arrFromAltegra => {
+export const returnArrMb = (arrFromAltegra: any[]) => {
   let arr = arrFromAltegra;
   let newArr = [];
 
@@ -56,7 +57,7 @@ export const returnArrMb = arrFromAltegra => {
  * @return {array} striteSiteId - массив полосного трафика
  */
 
-export const returnArrSprite = arrFromAltegra => {
+export const returnArrSprite = (arrFromAltegra: any[]) => {
   let arr = arrFromAltegra;
   let newArr = [];
 

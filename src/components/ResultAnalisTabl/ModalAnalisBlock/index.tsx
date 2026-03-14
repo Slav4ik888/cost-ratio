@@ -1,11 +1,19 @@
 import React from 'react';
 import s from './modal-analis-block.module.css';
 import cl from 'classnames';
-import {TITLE_DETAIL_ROW_TABLE} from '../../../consts/consts.js';
-import {addSpaceToNumber} from '../../../utils/untils.js';
+import {TITLE_DETAIL_ROW_TABLE} from '../../../consts';
+import { addSpaceToNumber } from '../../../utils/untils';
 
-class ModalAnalisBlock extends React.PureComponent {
-  constructor (props) {
+
+interface ModalAnalisBlockProps {
+  element: any
+  result: any[]
+  children: React.ReactNode
+  callback: () => void
+}
+
+class ModalAnalisBlock extends React.PureComponent<ModalAnalisBlockProps, { element: any, visible: boolean }> {
+  constructor (props: ModalAnalisBlockProps) {
 		super(props);
     this.handleOk = this.handleOk.bind(this); 
     this.handleCancel = this.handleCancel.bind(this);
@@ -30,7 +38,7 @@ class ModalAnalisBlock extends React.PureComponent {
     document.removeEventListener("keydown", this.handleKeyPressed);
   } 
 
-  handleOk = (e) => {
+  handleOk = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     // e.preventDefault();
     document.body.style.overflow = '';
 
@@ -41,7 +49,7 @@ class ModalAnalisBlock extends React.PureComponent {
     if (this.props.callback) this.props.callback();
   }
 
-  handleCancel = (e) => {
+  handleCancel = (e: KeyboardEvent) => {
     // e.preventDefault();
     document.body.style.overflow = '';
 
@@ -53,17 +61,16 @@ class ModalAnalisBlock extends React.PureComponent {
   }
   
   // Обработка нажатий клавиш
-  handleKeyPressed(e) {
-    console.log(e.keyCode);
-    switch (e.keyCode) {
-      case 27:
-        this.handleCancel();
-        break;
-      case 13:
-        this.handleOk();
-        break;
+  handleKeyPressed(e: KeyboardEvent) {
+    console.log(e.key);
+    const keyHandlers = {
+      'Escape': () => this.handleCancel(e),
+      'Enter': () => this.handleOk(e as unknown as React.MouseEvent<HTMLButtonElement, MouseEvent>)
+    };
 
-      default: return;
+    const handler = keyHandlers[e.key as keyof typeof keyHandlers];
+    if (handler) {
+      handler();
     }
   }
 
@@ -74,13 +81,11 @@ class ModalAnalisBlock extends React.PureComponent {
 
     return (
       <>
-        <div 
-          className={cl(s.modal, {[s.isOpen]: visible})}
-          
-        >
+        <div className={cl(s.modal, {[s.isOpen]: visible})}>
           <div className={cl(s.modalDialog, s.modalDialogAuth)}> 
             <div className={s.modalBody}>
               <div className={s.modalTitle}>Станции в проекте</div>
+              {/* @ts-ignore */}
               <div className={s.child} onKeyDown={this.handleKeyPressed}>              
                 <div>
                   <table className={s.table} >
@@ -92,8 +97,6 @@ class ModalAnalisBlock extends React.PureComponent {
                       </tr>
                     </thead>
                     <tbody>
-                      
-                      
                       {result.map( (item, i) => (
                         <tr key={item.result+i}>
                           <td className={s.tdOrganization}>{item.organization}</td>

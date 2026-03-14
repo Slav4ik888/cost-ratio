@@ -1,0 +1,1 @@
+export { MainItem } from './types'

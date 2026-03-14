@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import s from './modal-change-row.module.css';
 import cl from 'classnames';
+import { MainItem } from 'entities/altegra';
 
-const GoogleRow = ({item, callback}) => {
+
+
+interface GoogleRowProps {
+  item: MainItem
+  callback: (item: MainItem) => void
+}
+
+const GoogleRow: FC<GoogleRowProps> = ({item, callback}) => {
   const handleCallBack = () => {
     callback(item);
   };
@@ -18,8 +26,15 @@ const GoogleRow = ({item, callback}) => {
   );
 }
 
-const GoogleTable = ({searchText, arr, callback}) => {
-  const rows = [];
+
+interface GoogleTableProps {
+  searchText: string
+  arr: MainItem[]
+  callback: (item: MainItem) => void
+}
+
+const GoogleTable: FC<GoogleTableProps> = ({ searchText, arr, callback }) => {
+  const rows: JSX.Element[] = [];
 
   arr.forEach((item, i) => {
     
@@ -31,9 +46,9 @@ const GoogleTable = ({searchText, arr, callback}) => {
     
     rows.push(
       <GoogleRow
-        item={item}
-        callback={callback}
-        key={item.siteID + i}
+        item     = {item}
+        callback = {callback}
+        key      = {item.siteID + i}
       />
     );
   });
@@ -54,8 +69,14 @@ const GoogleTable = ({searchText, arr, callback}) => {
   );
 }
 
-class ModalChangeRow extends React.PureComponent {
-  constructor (props) {
+interface ModalChangeRowProps {
+  element: any
+  arrayOfProject: any
+  callback: (element?: any) => void
+}
+
+class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element: any; visible: boolean; searchText: string; searchFocus: boolean }> {
+  constructor (props: ModalChangeRowProps) {
 		super(props);
     this.handleChangeItem = this.handleChangeItem.bind(this); 
     this.handleOk = this.handleOk.bind(this); 
@@ -86,7 +107,7 @@ class ModalChangeRow extends React.PureComponent {
     document.removeEventListener("keydown", this.handleKeyPressed);
   } 
 
-  handleOk = (e) => {
+  handleOk() {
     // e.preventDefault();
     document.body.style.overflow = '';
 
@@ -97,7 +118,7 @@ class ModalChangeRow extends React.PureComponent {
     if (this.props.callback) this.props.callback(this.state.element);
   }
 
-  handleCancel = (e) => {
+  handleCancel() {
     // e.preventDefault();
     document.body.style.overflow = '';
 
@@ -108,11 +129,11 @@ class ModalChangeRow extends React.PureComponent {
   }
 
   // Изменение индивидуальных значений сч/ф
-	handleChangeItem = (event) => {
+	handleChangeItem = (event: React.MouseEvent<HTMLButtonElement>) => {
 		const {element} = this.state;
     let obj = Object.assign({}, element);
 
-    const target = event.target;
+    const target = event.target as HTMLInputElement;
     let value;
     let newSearch;
 
@@ -169,22 +190,22 @@ class ModalChangeRow extends React.PureComponent {
   }
   
   // Обработка нажатий клавиш
-  handleKeyPressed(e) {
-    console.log(e.keyCode);
-    switch (e.keyCode) {
-      case 27:
-        this.handleCancel();
-        break;
-      case 13:
-        this.handleOk();
-        break;
+  handleKeyPressed(e: KeyboardEvent) {
+    console.log(e.key);
+    const keyHandlers = {
+      'Escape': this.handleCancel,
+      'Enter': this.handleOk
+    };
 
-      default: return;
+    const handler = keyHandlers[e.key as keyof typeof keyHandlers];
+    if (handler) {
+      handler();
     }
   };
 
-  setItem(obj) {
-    const newElement = {};
+
+  setItem(obj: any) {
+    const newElement = {} as MainItem;
     newElement.siteID = obj.siteID;
     newElement.project = obj.project;
     newElement.organization = obj.organization;
@@ -199,6 +220,7 @@ class ModalChangeRow extends React.PureComponent {
 
   render() {
     const {element, visible, searchText, searchFocus} = this.state;
+                      // @ts-ignore
     const {children, arrayOfProject} = this.props;
     // console.log('arrayOfProject: ', arrayOfProject);
 
@@ -219,6 +241,7 @@ class ModalChangeRow extends React.PureComponent {
                       value={searchText}
                       autoComplete="off"
                       // ref={this.searchRef}
+                      // @ts-ignore
                       onChange={this.handleChangeItem}
                       onFocus={this.handleFocus}
                       // onBlur={this.handleFocusBlur}
@@ -244,6 +267,7 @@ class ModalChangeRow extends React.PureComponent {
                             placeholder="SiteID"
                             autoComplete="off"
                             value={element.siteID}
+                      // @ts-ignore
                             onChange={this.handleChangeItem}
                           />
                         </td>
@@ -258,6 +282,7 @@ class ModalChangeRow extends React.PureComponent {
                             placeholder="Проект"
                             autoComplete="off"
                             value={element.project}
+                      // @ts-ignore
                             onChange={this.handleChangeItem}
                           /> 
                         </td>
@@ -272,6 +297,7 @@ class ModalChangeRow extends React.PureComponent {
                             autoComplete="off"
                             placeholder="Название клиента"
                             value={element.organization}
+                      // @ts-ignore
                             onChange={this.handleChangeItem}
                           />
                         </td>
@@ -286,6 +312,7 @@ class ModalChangeRow extends React.PureComponent {
                             autoComplete="off"
                             placeholder="Данные из счёт фактуры"
                             value={element.mbCostServicies}
+                      // @ts-ignore
                             onChange={this.handleChangeItem}
                           />
                         </td>

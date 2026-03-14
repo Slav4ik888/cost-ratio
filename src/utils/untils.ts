@@ -5,14 +5,14 @@
 //
 // возвращает значение заголовка
 //
-export const getTitle = (field, title, titleValue) => {
-  return  titleValue[title.indexOf(field)];
+export const getTitle = (field: string, titles: string[], titleValues: string[]) => {
+  return  titleValues[titles.indexOf(field)];
 };
 
 
 // Обрезает и оставляет нужное кол-во знаков после запятой
 // Если знаков не хватает добавляет 0
-export const addNullToNumber = (numberStr, cut) => {
+export const addNullToNumber = (numberStr: string, cut: number) => {
   let result = numberStr;
 
   if (cut <= 0) {return ''}
@@ -29,7 +29,7 @@ export const addNullToNumber = (numberStr, cut) => {
 }
 
 // Возвращает строку с разделением тысяч пробелом
-export const addSpaceToNumber = (number, cut, char) => {
+export const addSpaceToNumber = (number: number | string, cut: number, char: string) => {
   let newNumber = number;
 
   if (typeof(newNumber) === "number") {
@@ -39,10 +39,10 @@ export const addSpaceToNumber = (number, cut, char) => {
 
   if (typeof(newNumber) === "string") {
     // Является ли вообще числом
-    if (!isFinite(newNumber)) {
+    if (!isFinite(newNumber as unknown as number)) {
       // Если , то пробуем заменить на . и перепроверить
       newNumber = newNumber.replace(/,/g,'.');
-      if (!isFinite(newNumber)) {
+      if (!isFinite(newNumber as unknown as number)) {
         console.log(newNumber, " - не число");
         return newNumber;
       }
@@ -91,4 +91,3 @@ export const addSpaceToNumber = (number, cut, char) => {
   let result = (beforeChar + afterChar);
   return result;
 };
-

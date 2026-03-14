@@ -17,6 +17,7 @@ root.render(
 // git add . && git commit -m "fixed some 2" && git push -u origin master
 // git add . && git commit -m "some fixed" && git push -u origin migrate-to-ts
 
+
 // создать и сразу переключиться:
 // git checkout -b название-ветки
 
@@ -55,3 +56,9 @@ root.render(
 // git branch -a       # список всех веток (включая удаленные)
 // git log --oneline   # история коммитов
 // git status          # текущее состояние
+
+
+// После добавления деклараций VS Code иногда не сразу подхватывает изменения. Перезапустите сервер TypeScript:
+// 1. Откройте любой .ts или .tsx файл.
+// 2. Откройте палитру команд (Ctrl+Shift+P или Cmd+Shift+P).
+// 3. Выполните команду: "TypeScript: Restart TS server".

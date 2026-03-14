@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 // import { NavigateOptions, To } from 'react-router-dom';
 import { Action, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
-import { StateSchemaUI } from 'enitities/ui';
+import { StateSchemaUI } from 'entities/ui';
 
 
 
