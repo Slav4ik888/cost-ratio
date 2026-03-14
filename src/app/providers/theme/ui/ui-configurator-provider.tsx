@@ -14,10 +14,7 @@ import { SIDEBAR_FULL_WIDTH } from '../consts';
 
 
 
-const fromLS = LS.getUIConfiguratorState();
-
-const isSidebar   = isNotUndefined(fromLS?.isSidebar) ? Boolean(fromLS?.isSidebar) : true;
-const sidebarMini = fromLS?.sidebarMini || false;
+const fromLS = {} as UIConfiguratorProviderState; // LS.getUIConfiguratorState();
 
 const initialState: UIConfiguratorProviderState = {
   mode                   : fromLS?.mode                   || 'system',
@@ -25,12 +22,12 @@ const initialState: UIConfiguratorProviderState = {
   navbarFixed            : fromLS?.navbarFixed            || true,
   navbarTransparent      : fromLS?.navbarTransparent      || false,
   navbarColor            : fromLS?.navbarColor            || 'navbar_white',
-  isSidebar,
+  isSidebar              : true,
   isMobileOpenSidebar    : false,
   sidebarWidth           : fromLS?.sidebarWidth           || SIDEBAR_FULL_WIDTH,
-  sidebarMini,
+  sidebarMini            : false,
   sidebarColor           : fromLS?.sidebarColor           || 'sidebar_black',
-  leftOffsetScrollButton : calcLeftOffsetScrollButton(isSidebar, sidebarMini), // При монтировании ScrollableWorkspace рассчитается
+  leftOffsetScrollButton : calcLeftOffsetScrollButton(true, false), // При монтировании ScrollableWorkspace рассчитается
 };
 
 

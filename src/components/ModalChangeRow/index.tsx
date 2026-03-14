@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import s from './modal-change-row.module.css';
+import './modal-change-row.scss';
 import cl from 'classnames';
 import { MainItem } from 'entities/altegra';
 
@@ -16,7 +16,7 @@ const GoogleRow: FC<GoogleRowProps> = ({item, callback}) => {
   };
 
   return (
-    <tr className={s.tableSearch}
+    <tr className="tableSearch"
       onClick={handleCallBack}
     >
       <td>{item.siteID}</td>
@@ -226,15 +226,15 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
 
     return (
       <>
-        <div className={cl(s.modal, {[s.isOpen]: visible})}>
-          <div className={cl(s.modalDialog, s.modalDialogAuth)}> 
-            <div className={s.modalBody}>
-              <div className={s.modalTitle}>Внесение изменений</div>
-              <div className={s.child}>              
+        <div className={`modal, ${visible && "isOpen"}`}>
+          <div className="modalDialog modalDialogAuth"> 
+            <div className="modalBody">
+              <div className="modalTitle">Внесение изменений</div>
+              <div className="child">              
                 <form onSubmit={this.handleOk}>
                   <div >
                     <input
-                      className={s.inputSearch}
+                      className="inputSearch"
                       type="text"
                       name="search"
                       placeholder="Поиск в ServiceDesk по SiteID"
@@ -248,20 +248,20 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
                     />
                   </div>
 
-                  <div className={s.search}>
+                  <div className="search">
                     {searchFocus &&
                       <GoogleTable searchText={searchText} arr={arrayOfProject} callback={this.setItem}/>
                     }
                   </div>    
-                  <table className={s.table}>
+                  <table className="table">
                     <tbody>
                       
                       
-                      <tr className={s.trInput}>
-                        <td className={s.tdTitle}>SiteID</td>
+                      <tr className="trInput">
+                        <td className="tdTitle">SiteID</td>
                         <td>
                           <input
-                            className={s.tdInputValue}
+                            className="tdInputValue"
                             type="text"
                             name="siteID"
                             placeholder="SiteID"
@@ -272,11 +272,11 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
                           />
                         </td>
                       </tr>
-                      <tr className={s.trInput}>
+                      <tr className="trInput">
                         <td>Проект</td>
                         <td>
                           <input 
-                            className={s.tdInputValue}
+                            className="tdInputValue"
                             type="text" 
                             name="project"
                             placeholder="Проект"
@@ -287,11 +287,11 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
                           /> 
                         </td>
                       </tr>
-                      <tr className={s.trInput}>
+                      <tr className="trInput">
                         <td>Клиент</td>
                         <td>
                           <input 
-                            className={s.tdInputValue}
+                            className="tdInputValue"
                             type="text" 
                             name="organization"
                             autoComplete="off"
@@ -302,11 +302,11 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
                           />
                         </td>
                       </tr>
-                      <tr className={s.trInput}>
+                      <tr className="trInput">
                         <td>Затраты из счёт фактуры</td>
                         <td>
                           <input 
-                            className={s.tdInputValue}
+                            className="tdInputValue"
                             type="number" 
                             name="mbCostServicies"
                             autoComplete="off"
@@ -322,10 +322,10 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
                 </form>
                 {children}
               </div>
-              <div className={s.modalFooter}>
-                <div className={s.footerButtons}>
-                  <button className={cl(s.button)} onClick={this.handleCancel}>Отмена</button>
-                  <button className={cl(s.button, s.buttonPrimary)} onClick={this.handleOk}>Ok</button>
+              <div className="modalFooter">
+                <div className="footerButtons">
+                  <button className="button" onClick={this.handleCancel}>Отмена</button>
+                  <button className="button buttonPrimary" onClick={this.handleOk}>Ok</button>
                 </div>
               </div>
               

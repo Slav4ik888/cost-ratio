@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
-import s from './result-analis-table.module.css'; 
+import './result-analis-table.scss'; 
 import cl from 'classnames';
 // import {DetailRowView} from '../DetailRowView/detail-row-view.jsx';
-import ModalAnalisBlock from './ModalAnalisBlock/index.js';
+import ModalAnalisBlock from './ModalAnalisBlock';
 import {getTitle, addSpaceToNumber} from '../../utils/untils';
 import {ANALIS_TITLE, ANALIS_TITLE_CLASS, ANALIS_SORT} from '../../consts';
 import _ from 'lodash';
@@ -122,17 +122,17 @@ class ResultAnalisTabl extends PureComponent<Props> {
 						// @ts-ignore
 						<ModalAnalisBlock callback={this.handleModalOut} result={rowResult} /> : null
 				}
-				<div className={s.centerBox}>
-					<div className={s.result}>
-						<div className={s.resultCard}>
+				<div className="centerBox">
+					<div className="result">
+						<div className="resultCard">
 									
-							<div className={s.capt}>Итоговая таблица для анализа</div>
-							<table className={s.tableFixedHead}>
+							<div className="capt">Итоговая таблица для анализа</div>
+							<table className="tableFixedHead">
 								<thead>
 									<tr>
 										{ANALIS_TITLE.map( (item, i) => <th key={item+i}
 										onClick={this.handleSortTabl.bind(null, {item})}
-										className={cl({[s.active]: sortField === ANALIS_SORT[i]}, s[ANALIS_TITLE_CLASS[i]])}
+										// className={cl({[s.active]: sortField === ANALIS_SORT[i]}, s[ANALIS_TITLE_CLASS[i]])}
 
 										>
 											{item}
@@ -168,11 +168,11 @@ class ResultAnalisTabl extends PureComponent<Props> {
 										<tr key={item.result+i}
 											onClick={this.handleRowSelect.bind(null, item, i)}
 										>
-											<td className={s.tdProject}>{item.project}</td>
-											<td className={s.tdOrganization}>{item.organization}</td>
-											<td className={s.tdSumMbCost}>{addSpaceToNumber(item.sumMbCost, 0, ',')} p.</td>
-											<td className={s.tdSumSpCost}>{addSpaceToNumber(item.sumSpCost, 0, ',')} p.</td>
-											<td className={s.tdResult}>{addSpaceToNumber(item.result, 0, ',')} p.</td>
+											<td className="tdProject">{item.project}</td>
+											<td className="tdOrganization">{item.organization}</td>
+											<td className="tdSumMbCost">{addSpaceToNumber(item.sumMbCost, 0, ',')} p.</td>
+											<td className="tdSumSpCost">{addSpaceToNumber(item.sumSpCost, 0, ',')} p.</td>
+											<td className="tdResult">{addSpaceToNumber(item.result, 0, ',')} p.</td>
 										</tr>
 										))}
 									

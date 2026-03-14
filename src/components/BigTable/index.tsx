@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import s from './big-table.module.css'; 
+import './big-table.scss'; 
 import cl from 'classnames';
 import {getTitle} from '../../utils/untils';
 import {BIG_TITLE, BIG_TITLE_CLASS, BIG_SORT} from '../../consts';
@@ -290,20 +290,20 @@ class BigTable extends PureComponent {
 
 		return (
 			<>
-				<	div className={s.section}>
-					<div className={s.centerBox}>
+				<	div className="section">
+					<div className="centerBox">
 						{/* <form> */}
-						<div className={s.capt}>Сводная таблица</div>
+						<div className="capt">Сводная таблица</div>
 
-						<div className={s.buttonsSprite}>
-							<input className={s.butAdd} type="button" value="+ строку" 
+						<div className="buttonsSprite">
+							<input className="butAdd" type="button" value="+ строку" 
 								onClick={this.handleAddRow}
 							/>
-							<input className={s.butUpdate} type="button" value="Пересчитать" 
+							<input className="butUpdate" type="button" value="Пересчитать" 
 								onClick={this.handleUpdate}
 							/>
 							<input
-								className={s.butSearch}
+								className="butSearch"
 								type="text" 
 								name="search"
 								placeholder="Поиск по SiteID"
@@ -313,7 +313,7 @@ class BigTable extends PureComponent {
 								// onBlur={this.handleSearchBlur}
 
 							/>
-							<input className={s.butUpdate} type="button" value="Синхронизировать данные с ServiceDesk"
+							<input className="butUpdate" type="button" value="Синхронизировать данные с ServiceDesk"
 								onClick={this.handleGoogleUpdate}
 							/>
 						</div>
@@ -323,12 +323,12 @@ class BigTable extends PureComponent {
 
 							
 
-						<table className={s.tableFixedHead}>
+						<table className="tableFixedHead">
 							<thead>
 								<tr>
 									{BIG_TITLE.map( (item, i) => <th key={item+i} 
 										onClick={this.handleSortTabl.bind(null, {item})}
-										className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
+										// className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
 										>
 											{item} 
 											{sortField === BIG_SORT[i] ? 
@@ -342,23 +342,23 @@ class BigTable extends PureComponent {
   {/* @ts-ignore */}
 									{tableArrFiltred.map( (item, i) => (
 										<tr key={item.siteID + i}	>
-												<td className={s.widthSiteId}
+												<td className="widthSiteId"
 													onClick={this.handleRowSelect.bind(null, item)}>
 													{item.siteID}
 												</td>
-												<td className={s.widthProject}
+												<td className="widthProject"
 													onClick={this.handleRowSelect.bind(null, item)}>
 														{item.project}
 												</td>
-												<td className={cl(s.tdOrganization, s.widthOrganization)}
+												<td className="tdOrganization widthOrganization"
 													onClick={this.handleRowSelect.bind(null, item)}
 												>
 													{item.organization}
 												</td>
-												<td className={s.widthMbPrice}>{item.mbPrice}</td>
-												<td className={s.widthFactura}>
+												<td className="widthMbPrice">{item.mbPrice}</td>
+												<td className="widthFactura">
 													<input 
-														className={s.inpMbCostServicies}
+														className="inpMbCostServicies"
 														type="number"
 														name="mbCostServicies"
 														value={item.mbCostServicies}
@@ -367,12 +367,12 @@ class BigTable extends PureComponent {
 														id={i}
 													/>
 												</td>
-												<td className={s.widthMbTraffic}>{item.mbTraffic}</td>
-												<td className={s.widthMbTrafficCost}>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
-												<td className={s.widthCostCorrect}>{item.mbCostCorrect}</td>
-												<td className={s.widthSpTraffic}>{item.spTraffic}</td>
-												<td className={s.widthSpTrafficCost}>{item.spCostTraffic}</td>
-												<td className={s.widthCostResult}>{item.result || 0}</td>
+												<td className="widthMbTraffic">{item.mbTraffic}</td>
+												<td className="widthMbTrafficCost">{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
+												<td className="widthCostCorrect">{item.mbCostCorrect}</td>
+												<td className="widthSpTraffic">{item.spTraffic}</td>
+												<td className="widthSpTrafficCost">{item.spCostTraffic}</td>
+												<td className="widthCostResult">{item.result || 0}</td>
 										</tr>
 										))}
 							</tbody>

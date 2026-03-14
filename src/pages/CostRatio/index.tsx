@@ -11,7 +11,7 @@ import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
 import {getFromGoogleData} from '../../utils/get-from-google-data';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl';
 import {Header} from '../../components/Header/index';
-import s from './cost-ratio.module.css';
+import './cost-ratio.scss';
 import { cfg } from 'app/config';
 
 
@@ -250,7 +250,7 @@ class CostRatio extends React.PureComponent {
 
     if (isLoading) {
       return <>
-        <div className={s.loading}>Загрузка...</div>
+        <div className="loading">Загрузка...</div>
         <Loader />
       </>
     }

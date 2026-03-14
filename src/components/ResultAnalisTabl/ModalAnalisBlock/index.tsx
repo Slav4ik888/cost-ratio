@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './modal-analis-block.module.css';
+import './modal-analis-block.scss';
 import cl from 'classnames';
 import {TITLE_DETAIL_ROW_TABLE} from '../../../consts';
 import { addSpaceToNumber } from '../../../utils/untils';
@@ -81,17 +81,17 @@ class ModalAnalisBlock extends React.PureComponent<ModalAnalisBlockProps, { elem
 
     return (
       <>
-        <div className={cl(s.modal, {[s.isOpen]: visible})}>
-          <div className={cl(s.modalDialog, s.modalDialogAuth)}> 
-            <div className={s.modalBody}>
-              <div className={s.modalTitle}>Станции в проекте</div>
+        <div className={`modal, ${visible && "isOpen"}`}>
+          <div className="modalDialog modalDialogAuth"> 
+            <div className="modalBody">
+              <div className="modalTitle">Станции в проекте</div>
               {/* @ts-ignore */}
-              <div className={s.child} onKeyDown={this.handleKeyPressed}>              
+              <div className="child" onKeyDown={this.handleKeyPressed}>              
                 <div>
-                  <table className={s.table} >
+                  <table className="table" >
                     <thead>
                       <tr>
-                        {TITLE_DETAIL_ROW_TABLE.map( (item, i) => <th key={item+i} className={s.thTitle}>
+                        {TITLE_DETAIL_ROW_TABLE.map( (item, i) => <th key={item+i} className="thTitle">
                           {item}
                         </th> )}
                       </tr>
@@ -99,11 +99,11 @@ class ModalAnalisBlock extends React.PureComponent<ModalAnalisBlockProps, { elem
                     <tbody>
                       {result.map( (item, i) => (
                         <tr key={item.result+i}>
-                          <td className={s.tdOrganization}>{item.organization}</td>
-                          <td className={s.tdSiteID}>{item.siteID}</td>
-                          <td className={s.tdMbCostCorrect}>{addSpaceToNumber(item.mbCostCorrect, 2, `,`)} р.</td>
-                          <td className={s.tdSpCostTraffic}>{item.spCostTraffic ? addSpaceToNumber(item.spCostTraffic, 2, `,`) + ` р.` : `-`}</td>
-                          <td className={s.tdResult}>{item.result} р.</td>
+                          <td className="tdOrganization">{item.organization}</td>
+                          <td className="tdSiteID">{item.siteID}</td>
+                          <td className="tdMbCostCorrect">{addSpaceToNumber(item.mbCostCorrect, 2, `,`)} р.</td>
+                          <td className="tdSpCostTraffic">{item.spCostTraffic ? addSpaceToNumber(item.spCostTraffic, 2, `,`) + ` р.` : `-`}</td>
+                          <td className="tdResult">{item.result} р.</td>
                         </tr>
                       ))}
                       
@@ -112,10 +112,10 @@ class ModalAnalisBlock extends React.PureComponent<ModalAnalisBlockProps, { elem
                 </div>
                 {children}
               </div>
-              <div className={s.modalFooter}>
-                <div className={s.footerButtons}>
+              <div className="modalFooter">
+                <div className="footerButtons">
                   {/* <button className={cl(s.button)} onClick={this.handleCancel}>Отмена</button> */}
-                  <button className={cl(s.button, s.buttonPrimary)} onClick={this.handleOk}>Ok</button>
+                  <button className="button buttonPrimary" onClick={this.handleOk}>Ok</button>
                 </div>
               </div>
               

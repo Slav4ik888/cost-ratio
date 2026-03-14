@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import 'regenerator-runtime/runtime';
 import { cfg } from 'app/config';
 import { App } from './app';
@@ -6,8 +6,12 @@ import { App } from './app';
 import './index.css';
 // import 'antd/dist/antd.css';
 
-// @ts-ignore
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById('root');
+
+if (! container) {
+  throw new Error('Failed to find the root element');
+}
+const root = createRoot(container);
 
 root.render(
   <App />
@@ -15,7 +19,7 @@ root.render(
 
 
 // git add . && git commit -m "fixed some 2" && git push -u origin master
-// git add . && git commit -m "some fixed" && git push -u origin migrate-to-ts
+// git add . && git commit -m "removed module from scss" && git push -u origin migrate-to-ts
 
 
 // создать и сразу переключиться:

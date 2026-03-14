@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './two-servicies.module.css'; 
+import './two-servicies.scss'; 
 import { CreateTable } from '../CreateTable';
 
 interface TwoServiciesProps {
@@ -12,13 +12,13 @@ const TwoServicies: React.FC<TwoServiciesProps> = ({arrThMb, arrThSprite}) => {
 
 	return (
 		<>
-			<div className={s.centerBox}>
-				<div className={s.result}>
-					<div className={s.resultCard}>
+			<div className="centerBox">
+				<div className="result">
+					<div className="resultCard">
 						<CreateTable arr={arrThMb} arrTitle={`Помегабайтный`} arrTh={arrTitle}/>
 					</div>
 					
-					<div className={s.resultCard}>
+					<div className="resultCard">
 						<CreateTable arr={arrThSprite} arrTitle={`Полосная`} arrTh={arrTitle}/>
 					</div>
 				</div>

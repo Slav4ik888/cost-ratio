@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import s from './header.module.css';
+import './header.scss';
 
 
 const correctValid = (str: string) =>{
@@ -63,20 +63,20 @@ export class Header extends PureComponent {
 
     return (
       <>
-        <div className={s.centerBox}>
-          <div className={s.result}>
+        <div className="centerBox">
+          <div className="result">
             <form onSubmit={this.handleSubmit}>
-              {/* <div className={s.capt}></div> */}
-              <table className={s.table}>
+              {/* <div className="capt"></div> */}
+              <table className="table">
                 <thead>
                   <tr>
-                    <th className={s.facturaTitle} scope="col">Данные из сч./фактуры</th> 
-                    <th className={s.facturaTitleValue} scope="col"></th>
+                    <th className="facturaTitle" scope="col">Данные из сч./фактуры</th> 
+                    <th className="facturaTitleValue" scope="col"></th>
 
-                    <th className={s.trafficTitle} scope="col">Расчётные данные</th> 
-                    <th className={s.trafficTitleValue} scope="col"></th>
-                    <th className={s.trafficTitle} scope="col"></th>
-                    <th className={s.trafficTitleValue} scope="col"></th>
+                    <th className="trafficTitle" scope="col">Расчётные данные</th> 
+                    <th className="trafficTitleValue" scope="col"></th>
+                    <th className="trafficTitle" scope="col"></th>
+                    <th className="trafficTitleValue" scope="col"></th>
 
                   </tr>
                 </thead>
@@ -139,7 +139,7 @@ export class Header extends PureComponent {
                 </tbody>
               </table>
 
-              <input className={s.button} type="submit" value="Обновить значения" />
+              <input className="button" type="submit" value="Обновить значения" />
             </form>
           </div>
         </div>

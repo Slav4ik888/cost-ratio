@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './section1.module.css'; 
+import './section1.scss'; 
 
 
 // children это деструктурированный ...props 
@@ -7,8 +7,8 @@ const Section: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
     return (
         <>
-        <div className={s.container}>
-            <div className={s.section}>
+        <div className="container">
+            <div className="section">
                 {children}
             </div>
         </div>

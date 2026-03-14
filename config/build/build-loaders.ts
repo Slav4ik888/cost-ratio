@@ -12,9 +12,9 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     exclude : /node_modules/
   };
 
-  const babelLoader = buildBabelLoader(isDev);
-  const cssLoader   = buildCssLoaders(isDev);
-  const svgLoader   = buildSvgLoader();
+  const babelLoader     = buildBabelLoader(isDev);
+  const cssLoader       = buildCssLoaders(isDev);
+  const svgLoader       = buildSvgLoader();
 
   const imagesLoader = {
     test : /\.(png|jpe?g|gif|woff|woff2)$/i,
@@ -31,6 +31,6 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     typescriptLoader,
     cssLoader,
     svgLoader,
-    imagesLoader
+    imagesLoader,
   ]
 }

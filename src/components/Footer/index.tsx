@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import s from './footer.module.css';
+import './footer.scss';
 
 
 interface Props {
@@ -8,8 +8,8 @@ interface Props {
 
 export const Footer: FC<Props> = ({ children }) => {
   return (
-    <div className={s.cover}>
-      <div className={s.wrap}>
+    <div className="cover">
+      <div className="wrap">
         {children}
       </div>
     </div>

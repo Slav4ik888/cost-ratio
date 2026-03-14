@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import s from './result-table.module.css'; 
+import './result-table.scss'; 
 
 interface ResultItem {
 	organization: string;
@@ -21,12 +21,12 @@ export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {
 	];
 	
 	return (
-		<div className={s.centerBox}>
-			<div className={s.result}>
-				<div className={s.resultCard}>
+		<div className="centerBox">
+			<div className="result">
+				<div className="resultCard">
 
-					<div className={s.capt}>Итоговая таблица для 1С</div>
-					<table className={s.table}>
+					<div className="capt">Итоговая таблица для 1С</div>
+					<table className="table">
 						<thead>
 							<tr>
 								{arrTh.map( (item, i) => <th key={item+i}>{item}</th> )}

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import s from './create-table.module.css'; 
+import './create-table.scss'; 
 
 
 interface Props {
@@ -14,8 +14,8 @@ export const CreateTable: FC<Props> = ({ arr, arrTitle, arrTh }) => {
 	
 	return (
 		<>
-			<div className={s.capt}>{arrTitle}</div>
-			<table className={s.table}>
+			<div className="capt">{arrTitle}</div>
+			<table className="table">
 				<thead>
 					<tr>
 						{arrTh.map( (item, i) => <th key={item+i}>{item}</th> )}
