@@ -7,3 +7,7 @@ export const setAcceptedCookie = () => setStorageData('acceptedCookie', { isAcce
 export const getAcceptedCookie = (): string => getStorageData<{ isAccepted: string }>(
   'acceptedCookie'
 )?.isAccepted || 'false';
+
+/** Auth */
+export const setServiceDeskData = (data: string[]) => setStorageData('serviceDeskData', data);
+export const getServiceDeskData = (): string[] => getStorageData<string[]>('serviceDeskData') || [];

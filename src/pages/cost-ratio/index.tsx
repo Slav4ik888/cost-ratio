@@ -66,28 +66,28 @@ class CostRatio extends React.PureComponent {
 
 
   // Читаем данные из Гугл
-  async getArrFromGoogle() {
-    const fromLS = JSON.parse(localStorage.getItem('arrayOfProject') || '');
-    let arrayOfProject = [];
+  // async getArrFromGoogle() {
+  //   const fromLS = JSON.parse(localStorage.getItem('arrayOfProject') || '');
+  //   let arrayOfProject = [];
     
-    if (cfg.IS_DEV) {
-      console.log('fromLS: ');
-      console.log(fromLS);
-      arrayOfProject = fromLS || [];
-    }
-    else {
-      const url = process.env.REACT_APP_GOOGLE_SHEET_URL || '';
-      arrayOfProject = await getFromGoogleData(url);
+  //   if (cfg.IS_DEV) {
+  //     console.log('fromLS: ');
+  //     console.log(fromLS);
+  //     arrayOfProject = fromLS || [];
+  //   }
+  //   else {
+  //     const url = process.env.REACT_APP_GOOGLE_SHEET_URL || '';
+  //     arrayOfProject = await getFromGoogleData(url);
       
-      console.log(arrayOfProject);
-      localStorage.setItem('arrayOfProject', JSON.stringify(arrayOfProject));
-    }
+  //     console.log(arrayOfProject);
+  //     localStorage.setItem('arrayOfProject', JSON.stringify(arrayOfProject));
+  //   }
     
-    this.setState({
-      arrayOfProject,
-      isLoading: false, // Убираем "загрузку"
-    });
-  };
+  //   this.setState({
+  //     arrayOfProject,
+  //     isLoading: false, // Убираем "загрузку"
+  //   });
+  // };
 
 
 

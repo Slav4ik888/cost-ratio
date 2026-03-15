@@ -3,6 +3,7 @@ import { reducerUI } from 'entities/ui';
 import { StateSchema } from './state';
 import { createReducerManager } from './reducer-manager';
 import { api } from 'shared/api';
+import { reducerServiceDesk } from 'entities/service-desk';
 
 
 export function createReduxStore(
@@ -15,6 +16,7 @@ export function createReduxStore(
 
       // Entities
       ui           : reducerUI,
+      serviceDesk  : reducerServiceDesk
     },
     reducerManager = createReducerManager(rootReducers),
     extraArg = {

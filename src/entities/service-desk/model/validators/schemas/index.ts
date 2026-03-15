@@ -1,0 +1,7 @@
+export { defsUser, defsFIO, defsPhone, defsPerson } from './definitions'
+export * from './keywords'
+export { schema as schemaPerson } from './person'
+export { schema as schemaPhoneNumber } from './phone-number'
+export { schema as schemaPosition } from './position'
+export { schema as schemaSettings } from './settings'
+export { schema as schemaUser } from './user'

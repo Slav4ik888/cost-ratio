@@ -7,24 +7,22 @@
  */
 
 
-export const getFromGoogleData = (url: string) => {
+export const getFromGoogleData = async (url: string) => {
   
     let arr = [] as any[];
     let obj = {} as any;
   
-    return fetch(url)
-        .then(response => response.json())
-            .then( res => {
-  
-                for(let item of res.result) {
-                    obj.siteID = item[0];
-                    // obj.siteID = obj.siteID.split(' ').join('');
-                    obj.project = item[2];
-                    obj.organization = item[1];
-                    arr.push(obj);
-                    
-                    obj = {};
-                }
-                return arr
-            });
+    const response = await fetch(url);
+    const res = await response.json();
+    
+    for (let item of res.result) {
+        obj.siteID = item[0];
+        // obj.siteID = obj.siteID.split(' ').join('');
+        obj.project = item[2];
+        obj.organization = item[1];
+        arr.push(obj);
+
+        obj = {};
+    }
+    return arr;
 }
