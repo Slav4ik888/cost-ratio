@@ -1,18 +1,17 @@
 import React from 'react';
-import Loader from '../../components/Loader';
-import Section from '../../components/Section';
+import { Section } from 'shared/ui/section';
 import TextareaFromAltegra from '../../components/TextareaFromAltegra';
 import BigTable from '../../components/BigTable';
-import {ResultTabl} from '../../components/ResultTabl';
-import {joinTraffic, returnArrMb, returnArrSprite} from '../../utils/data-processing-from-alterga';
-import {makeResultForFinishTable, changePointToComma} from '../../utils/make-result-for-finish-table';
-import {pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
-  makeDataForBigTable, makeDataFromGoogle} from '../../utils/make-data-for-bigtable';
-import {getFromGoogleData} from '../../utils/get-from-google-data';
+import { ResultTabl } from '../../components/ResultTabl';
+import { joinTraffic, returnArrMb, returnArrSprite } from '../../utils/data-processing-from-alterga';
+import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
+import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
+  makeDataForBigTable, makeDataFromGoogle } from '../../utils/make-data-for-bigtable';
+import { getFromGoogleData } from '../../utils/get-from-google-data';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl';
-import {Header} from '../../components/Header/index';
-import './cost-ratio.scss';
+import { FacturaData } from 'widgets/factura-data';
 import { cfg } from 'app/config';
+import { PageLoader } from 'widgets/page-loader';
 
 
 
@@ -248,17 +247,14 @@ class CostRatio extends React.PureComponent {
             mbPrice,
     } = this.state;
 
-    if (isLoading) {
-      return <>
-        <div className="loading">Загрузка...</div>
-        <Loader />
-      </>
-    }
+    
+    if (isLoading) return <PageLoader />
+    
 
     return (
       <>
         <Section>
-          <Header
+          <FacturaData
     // @ts-ignore
             factura={factura}
             onSetFactura={this.handleSetFactura}

@@ -1,22 +1,13 @@
-.centerBox {
-  font-size: 10pt;
-  /*border: 1px solid #dfe2e5;*/
+.factura-data {
+  display: flex;
+  align-items: flex-start;
+  justify-items: center;
+  // flex-wrap: wrap;
+  // scroll-behavior: smooth;
+  // overflow-y: scroll;
   border-radius: 3px;
-  /*background: #fdfcea;*/
-
   padding: 10px;
   min-height: 100px;
-  display: block;
-}
-
-.result {
-  display: flex;
-  flex-wrap: wrap; /* не в столбик */
-  align-items: flex-start; /*Выравнивание текста по вертикали */
-  justify-items: center;
-  scroll-behavior: smooth;
-  overflow-y: scroll;
-  
 }
 
 .resultCard {
