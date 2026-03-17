@@ -1,3 +1,4 @@
+import { ServiceDeskType } from 'entities/service-desk';
 import { setStorageData, getStorageData, removeStorageData } from './main';
 
 
@@ -8,6 +9,6 @@ export const getAcceptedCookie = (): string => getStorageData<{ isAccepted: stri
   'acceptedCookie'
 )?.isAccepted || 'false';
 
-/** Auth */
-export const setServiceDeskData = (data: string[]) => setStorageData('serviceDeskData', data);
-export const getServiceDeskData = (): string[] => getStorageData<string[]>('serviceDeskData') || [];
+/** ServiceDesk */
+export const setServiceDeskData = (data: ServiceDeskType[]) => setStorageData('serviceDeskData', data);
+export const getServiceDeskData = (): ServiceDeskType[] => getStorageData<ServiceDeskType[]>('serviceDeskData') || [];

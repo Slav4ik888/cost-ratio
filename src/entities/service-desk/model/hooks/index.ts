@@ -1,1 +1,1 @@
-export { useUser } from './use-user';
+export { useServiceDesk } from './use-service-desk';

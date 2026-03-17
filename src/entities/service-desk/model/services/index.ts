@@ -1,1 +1,1 @@
-export { getAuth, ReqGetAuth } from './get-service-desk-data'
+export { getServiceDeskData } from './get-service-desk-data'

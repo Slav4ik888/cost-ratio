@@ -1,10 +1,9 @@
 import { Errors } from 'shared/lib/validators';
-import { User } from '../../types/user';
+import { ServiceDeskType } from '../../types';
 
 
 export interface StateSchemaServiceDesk {
-  auth      : boolean
-  user      : User
+  data      : ServiceDeskType[]
   loading   : boolean
   errors    : Errors
   _isLoaded : boolean // Вернулся ответ от сервера, чтобы не загружать повторно (в бесконечном цикле)

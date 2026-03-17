@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BuildOptions } from './types';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import Dotenv from 'dotenv-webpack';
 
 
 export function buildPlugins({ paths, isDev, isAnal, apiUrl, project }: BuildOptions): WebpackPluginInstance[] {
@@ -21,7 +22,8 @@ export function buildPlugins({ paths, isDev, isAnal, apiUrl, project }: BuildOpt
       __IS_DEV__  : JSON.stringify(isDev),
       __API_URL__ : JSON.stringify(apiUrl),
       __PROJECT__ : JSON.stringify(project)
-    })
+    }),
+    new Dotenv()
   ];
 
   if (isDev) {

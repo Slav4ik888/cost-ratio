@@ -1,8 +1,8 @@
-// v.2025-10-05
+// v.2026-03-17
 import * as h from './helpers';
 import { __devLog } from '../../tests/__dev-log';
 
-export const PREFIX = 'Rhythm-';
+export const PREFIX = 'CSS-';
 
 /** Вывод ошибки в консоль */
 const showError = (text: string, fieldName: string) => __devLog('LS showError', `${text}: ${fieldName}`);

@@ -12,10 +12,10 @@ interface Props {
 
 export const PageLoader: FC<Props> = ({ loading }) => {
   if (isUndefined(loading) || isNotUndefined(loading) && loading) {
-    return <>
+    return <div className='page-loader'>
       <div className='loading'>Загрузка...</div>
       <Loader />
-    </>
+    </div>
   }
   else return <></>;
 }

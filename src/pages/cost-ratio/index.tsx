@@ -3,15 +3,15 @@ import { Section } from 'shared/ui/section';
 import TextareaFromAltegra from '../../components/TextareaFromAltegra';
 import BigTable from '../../components/BigTable';
 import { ResultTabl } from '../../components/ResultTabl';
-import { joinTraffic, returnArrMb, returnArrSprite } from '../../utils/data-processing-from-alterga';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
 import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
   makeDataForBigTable, makeDataFromGoogle } from '../../utils/make-data-for-bigtable';
-import { getFromGoogleData } from '../../utils/get-from-google-data';
+import { getFromGoogleData } from '../../entities/service-desk/model/services/get-service-desk-data/get-from-google-data';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl';
 import { FacturaData } from 'widgets/factura-data';
 import { cfg } from 'app/config';
 import { PageLoader } from 'widgets/page-loader';
+import { AltergaItem, joinTraffic, returnArrMb, returnArrSprite } from 'entities/altegra';
 
 
 
@@ -20,7 +20,7 @@ class CostRatio extends React.PureComponent {
   // @ts-ignore
   constructor (props) {
     super(props);
-    this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
+    // this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
     this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
     this.handleSetArr = this.handleSetArr.bind(this);
     this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
@@ -33,7 +33,7 @@ class CostRatio extends React.PureComponent {
       isMadeArr: false,   // получены данные от Алтегры
 
       arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
-      arrayOfProject: [], // загруженны массив с service desk
+      // arrayOfProject: [], // загруженны массив с service desk
       arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
       arrResult:[], // конечный массив (по Project)
 
@@ -58,10 +58,10 @@ class CostRatio extends React.PureComponent {
 
 
 
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    this.getArrFromGoogle();
-  }
+  // componentDidMount() {
+  //   this.setState({ isLoading: true });
+  //   this.getArrFromGoogle();
+  // }
 
 
 
@@ -97,32 +97,29 @@ class CostRatio extends React.PureComponent {
       isLoading: true, // Выставляем "загрузку"
     });
 
-    await this.getArrFromGoogle()
-      .then(() => {
-  // @ts-ignore
-        let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
-        this.handleUpdateBigArr(newArrForBigTable);
-      });
+    // await this.getArrFromGoogle()
+    //   .then(() => {
+    //     // @ts-ignore
+    //     let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
+    //     this.handleUpdateBigArr(newArrForBigTable);
+    //   });
   }
 
 
   /**
    * Принимаем массив из обработанной таблицы от Алтегры
    * Объединяем входящий и исходящий трафик
-   *
-   * @param {array} arr - массив из обработанной таблицы от Алтегры
-   *
-   * @return {array} arrFromAltegra
+   * @param {AltergaItem[]} arr - массив из обработанной таблицы от Алтегры
    */
 
-  handleSetArr = (arrFromAltegra: any[]) => {
+  handleSetArr = (arrFromAltegra: AltergaItem[]) => {
     setTimeout(() => {
-      arrFromAltegra = joinTraffic(arrFromAltegra);
-      const mbSiteId = returnArrMb(arrFromAltegra);
-      const striteSiteId = returnArrSprite(arrFromAltegra);
+      const arrFromAltegraTransformed = joinTraffic(arrFromAltegra);
+      const mbSiteId = returnArrMb(arrFromAltegraTransformed);
+      const striteSiteId = returnArrSprite(arrFromAltegraTransformed);
 
       // Рассчитываем данные для "Сводной таблицы"
-  // @ts-ignore
+      // @ts-ignore
       const { arrayOfProject, factura, mbPrice } = this.state;
 
       // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
@@ -137,7 +134,7 @@ class CostRatio extends React.PureComponent {
       //
 
       // Рассчитываем Затраты скорректированные
-      let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
+      let { newArrForBigTable } = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
 
       // Обновляем arrForBigTable, данными из массива от Гугл
       // console.log('!!!arrayOfProject: ', arrayOfProject);
@@ -145,7 +142,9 @@ class CostRatio extends React.PureComponent {
       newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
 
       this.setState({
-        arrFromAltegra, mbSiteId, striteSiteId,
+        arrFromAltegra: arrFromAltegraTransformed,
+        mbSiteId,
+        striteSiteId,
         isMadeArr: true,
         mbCostAll,
         spTrafficAll,
@@ -156,7 +155,7 @@ class CostRatio extends React.PureComponent {
       const {arrResult} = makeResultForFinishTable(newArrForBigTable);
 
       // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-      const lastBigStore = changePointToComma(newArrForBigTable, `result`);
+      const lastBigStore = changePointToComma(newArrForBigTable, 'result');
 
       this.setState({
         arrForBigTable: lastBigStore,
@@ -255,7 +254,7 @@ class CostRatio extends React.PureComponent {
       <>
         <Section>
           <FacturaData
-    // @ts-ignore
+            // @ts-ignore
             factura={factura}
             onSetFactura={this.handleSetFactura}
             mbCostAll={mbCostAll}

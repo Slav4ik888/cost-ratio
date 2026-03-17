@@ -1,6 +1,8 @@
-.root {
+.main-root {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
   font-size: 12pt;
   font-family: 'Tahoma', 'Verdana', 'Arial', 'Roboto';
 }

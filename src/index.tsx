@@ -1,10 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import 'regenerator-runtime/runtime';
-import { cfg } from 'app/config';
 import { App } from './app';
+import './app/styles/index.scss';
+import { StoreProvider } from 'app/providers/store';
+import { ErrorBoundary } from 'app/providers/error-boundary';
 
-import './index.css';
-// import 'antd/dist/antd.css';
+
 
 const container = document.getElementById('root');
 
@@ -14,12 +15,16 @@ if (! container) {
 const root = createRoot(container);
 
 root.render(
-  <App />
+  <StoreProvider>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </StoreProvider>
 );
 
 
 // git add . && git commit -m "fixed some 2" && git push -u origin master
-// git add . && git commit -m "start ServiceDesk entity" && git push -u origin migrate-to-ts
+// git add . && git commit -m "continue ServiceDesk entity" && git push -u origin migrate-to-ts
 
 
 // создать и сразу переключиться:
