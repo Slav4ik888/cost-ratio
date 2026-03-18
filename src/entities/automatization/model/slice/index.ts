@@ -7,18 +7,20 @@ import { getServiceDeskData } from '../services';
 import { StateSchemaAutomatization } from './state-schema';
 import { cfg } from 'app/config';
 import { AltergaItem } from 'entities/altegra';
+import { Factura } from 'entities/factura';
 
 
 
 const initialState: StateSchemaAutomatization = {
+  loading     : false,
+  errors      : {},
   altegraData : [],
-  loading   : false,
-  errors    : {},
+  facturaData : { value: 0, sprite: 0, mb: 0 }
 };
 
 
 export const slice = createSlice({
-  name: 'entities/serviceDesk',
+  name: 'entities/automatization',
   initialState,
   reducers: {
     setErrors: (state, { payload }: PayloadAction<Errors>) => {
@@ -30,7 +32,9 @@ export const slice = createSlice({
     setAltegraData: (state, { payload }: PayloadAction<AltergaItem[]>) => {
       state.altegraData = payload || [];
     },
-    
+    setFacturaData: (state, { payload }: PayloadAction<Factura>) => {
+      state.facturaData = payload;
+    },
   },
 
   extraReducers: builder => {

@@ -4,6 +4,7 @@ import { Action, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/tool
 import { StateSchemaUI } from 'entities/ui';
 import { StateSchemaServiceDesk } from 'entities/service-desk';
 import { StateSchemaAutomatization } from 'entities/automatization';
+// import { StateSchemaFactura } from 'entities/factura';
 
 
 
@@ -12,6 +13,7 @@ export interface StateSchema {
   ui             : StateSchemaUI
   serviceDesk    : StateSchemaServiceDesk
   automatization : StateSchemaAutomatization
+  // factura        : StateSchemaFactura
   
   // Async reducer
   // signupPage?         : StateSchemaSignupPage

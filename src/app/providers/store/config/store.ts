@@ -5,6 +5,7 @@ import { createReducerManager } from './reducer-manager';
 import { api } from 'shared/api';
 import { reducerServiceDesk } from 'entities/service-desk';
 import { reducerAutomatization } from 'entities/automatization';
+// import { reducerFactura } from 'entities/factura';
 
 
 export function createReduxStore(
@@ -18,7 +19,8 @@ export function createReduxStore(
       // Entities
       ui             : reducerUI,
       serviceDesk    : reducerServiceDesk,
-      automatization : reducerAutomatization
+      automatization : reducerAutomatization,
+      // factura        : reducerFactura
     },
     reducerManager = createReducerManager(rootReducers),
     extraArg = {

@@ -3,6 +3,7 @@
 /************************************************************/
 
 import { MainItem } from 'entities/altegra';
+import { Factura } from 'entities/factura';
 
 /**
  * Создаём первоначальную "Сводную таблицу", наполняем её данными
@@ -99,7 +100,7 @@ export const calcSpTrafficAll = (arr: any[]) => {
  * @return {array} newArr  
  */
 
-export const makeDataForBigTable = (arrForBigTable: any[], factura: any, mbCostAll: number, spTrafficAll: number) => {
+export const makeDataForBigTable = (arrForBigTable: any[], factura: Factura, mbCostAll: number, spTrafficAll: number) => {
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
     if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb) {
