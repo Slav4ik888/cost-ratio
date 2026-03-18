@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Section } from 'shared/ui/section';
 import TextareaFromAltegra from '../../components/TextareaFromAltegra';
 import BigTable from '../../components/BigTable';
@@ -12,15 +12,26 @@ import { FacturaData } from 'widgets/factura-data';
 import { cfg } from 'app/config';
 import { PageLoader } from 'widgets/page-loader';
 import { AltergaItem, joinTraffic, returnArrMb, returnArrSprite } from 'entities/altegra';
-import { useAutomatization } from 'entities/automatization';
 
 
 
-export const CostRatio: FC = () => {
-  const { isAltegra } = useAutomatization();
+class CostRatio extends React.PureComponent {
 
-    
-  const state = {
+  // @ts-ignore
+  constructor (props) {
+    super(props);
+    // this.getArrFromGoogle = this.getArrFromGoogle.bind(this);
+    this.handleUpdateFromGoogle = this.handleUpdateFromGoogle.bind(this);
+    this.handleSetArr = this.handleSetArr.bind(this);
+    this.handleUpdateBigArr = this.handleUpdateBigArr.bind(this);
+    this.handleSetFactura = this.handleSetFactura.bind(this);
+    // this.calcBigTabl = this.calcBigTabl.bind(this);
+    // this.calcFinishTabl = this.calcFinishTabl.bind(this);
+
+    this.state = {
+      isLoading: false,
+      isMadeArr: false,   // получены данные от Алтегры
+
       arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
       // arrayOfProject: [], // загруженны массив с service desk
       arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
@@ -134,7 +145,7 @@ export const CostRatio: FC = () => {
         arrFromAltegra: arrFromAltegraTransformed,
         mbSiteId,
         striteSiteId,
-        isAltegra: true,
+        isMadeArr: true,
         mbCostAll,
         spTrafficAll,
       });
@@ -198,7 +209,7 @@ export const CostRatio: FC = () => {
 
       this.setState({
         arrForBigTable: newArrForBigTable,
-        isAltegra: true,
+        isMadeArr: true,
         mbCostAll,
         spTrafficAll,
         factura,
@@ -221,7 +232,7 @@ export const CostRatio: FC = () => {
 
   render() {
   // @ts-ignore
-    const { isLoading, isAltegra,
+    const { isLoading, isMadeArr,
   // @ts-ignore
             arrForBigTable, factura,
   // @ts-ignore
@@ -239,61 +250,64 @@ export const CostRatio: FC = () => {
     if (isLoading) return <PageLoader />
     
 
-  return (
-    <>
-      <Section>
-        <FacturaData
+    return (
+      <>
+        <Section>
+          <FacturaData
+            // @ts-ignore
+            factura={factura}
+            onSetFactura={this.handleSetFactura}
+            mbCostAll={mbCostAll}
+            spTrafficAll={spTrafficAll}
+          />
+        </Section>
+
+
+        {!isMadeArr &&
+          <Section>
+            <TextareaFromAltegra onHandleSetArr={this.handleSetArr}/>
+          </Section>
+        }
+
+        {/* формируем таблицы и выводим Помегабайтный и Полосной */}
+        {/* {isMadeArr &&
+          <Section>
+            <TwoServicies arrThMb={mbSiteId} arrThSprite={striteSiteId}/>
+          </Section>
+        } */}
+
+        {/* формируем таблицы и выводим Большую таблицу */}
+        {isMadeArr &&
+          <BigTable
           // @ts-ignore
-          factura={factura}
-          onSetFactura={this.handleSetFactura}
-          mbCostAll={mbCostAll}
-          spTrafficAll={spTrafficAll}
-        />
-      </Section>
+              mbPrice={mbPrice}
+              arr={arrForBigTable}
+              onHandleUpdateBigArr={this.handleUpdateBigArr}
+              arrayOfProject={arrayOfProject}
+              onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
+            />
+        }
 
 
-      {! isAltegra &&
-        <Section>
-          <TextareaFromAltegra onHandleSetArr={this.handleSetArr}/>
-        </Section>
-      }
+        {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
+        {isMadeArr &&
+            <Section>
+                <ResultAnalisTabl
+                  arr={arrResult}
+                  arrBig={arrForBigTable}/>
+            </Section>
+        }
 
-      {/* формируем таблицы и выводим Помегабайтный и Полосной */}
-      {/* {isAltegra &&
-        <Section>
-          <TwoServicies arrThMb={mbSiteId} arrThSprite={striteSiteId}/>
-        </Section>
-      } */}
-
-      {/* формируем таблицы и выводим Большую таблицу */}
-      {isAltegra &&
-        <BigTable
-        // @ts-ignore
-            mbPrice={mbPrice}
-            arr={arrForBigTable}
-            onHandleUpdateBigArr={this.handleUpdateBigArr}
-            arrayOfProject={arrayOfProject}
-            onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
-          />
-      }
-
-
-      {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
-      {isAltegra &&
-        <Section>
-          <ResultAnalisTabl
-            arr={arrResult}
-            arrBig={arrForBigTable}
-          />
-        </Section>
-      }
-
-      {/* формируем таблицы и выводим Итоговую таблицу для 1С */}
-      {isAltegra &&
-        <Section>
-          <ResultTabl arr={arrResult} />
-        </Section>
-      }
-    </>
-  )
+        {/* формируем таблицы и выводим Итоговую таблицу для 1С */}
+        {isMadeArr &&
+            <Section>
+                <ResultTabl arr={arrResult}/>
+            </Section>
+        }
+      </>
+    )
+  }
 }
+
+
+export default CostRatio;

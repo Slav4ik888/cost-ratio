@@ -3,13 +3,16 @@ import { AxiosInstance } from 'axios';
 import { Action, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchemaUI } from 'entities/ui';
 import { StateSchemaServiceDesk } from 'entities/service-desk';
+import { StateSchemaAutomatization } from 'entities/automatization';
 
 
 
 export interface StateSchema {
   // Entities
-  ui          : StateSchemaUI
-  serviceDesk : StateSchemaServiceDesk
+  ui             : StateSchemaUI
+  serviceDesk    : StateSchemaServiceDesk
+  automatization : StateSchemaAutomatization
+  
   // Async reducer
   // signupPage?         : StateSchemaSignupPage
 }

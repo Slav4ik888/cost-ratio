@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import CostRatio from '../pages/cost-ratio';
+import { CostRatio } from '../pages/cost-ratio';
 import { Footer } from 'widgets/footer';
 import './index.scss';
 import { cfg } from './config';

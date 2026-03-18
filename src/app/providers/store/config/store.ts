@@ -4,6 +4,7 @@ import { StateSchema } from './state';
 import { createReducerManager } from './reducer-manager';
 import { api } from 'shared/api';
 import { reducerServiceDesk } from 'entities/service-desk';
+import { reducerAutomatization } from 'entities/automatization';
 
 
 export function createReduxStore(
@@ -15,8 +16,9 @@ export function createReduxStore(
       ...asyncReducers,
 
       // Entities
-      ui           : reducerUI,
-      serviceDesk  : reducerServiceDesk
+      ui             : reducerUI,
+      serviceDesk    : reducerServiceDesk,
+      automatization : reducerAutomatization
     },
     reducerManager = createReducerManager(rootReducers),
     extraArg = {
