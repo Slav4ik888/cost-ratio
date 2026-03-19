@@ -8,10 +8,15 @@ import { Factura } from 'entities/factura';
 
 
 const initialState: StateSchemaAutomatization = {
-  loading     : false,
-  errors      : {},
-  altegraData : [],
-  facturaData : { value: undefined, sprite: undefined, mb: undefined }
+  loading      : false,
+  errors       : {},
+  altegraData  : [],
+  facturaData  : { value: undefined, sprite: undefined, mb: undefined },
+  mbPrice      : 0.132, // Базовая стоимость Мб
+  mbSiteId     : [],    // массив помегабатного трафика
+  striteSiteId : [],    // массив полосного трафика
+  mbCostAll    : 0,     // Общие затраты по трафику рассчитанные + доп услуги
+  spTrafficAll : 0,     // Общий трафик в полосе
 };
 
 
@@ -30,6 +35,18 @@ export const slice = createSlice({
     },
     setFacturaData: (state, { payload }: PayloadAction<Factura>) => {
       state.facturaData = payload;
+    },
+    setMbSiteId: (state, { payload }: PayloadAction<any[]>) => {
+      state.mbSiteId = payload;
+    },
+    setStriteSiteId: (state, { payload }: PayloadAction<any[]>) => {
+      state.mbSiteId = payload;
+    },
+    setMbCostAll: (state, { payload }: PayloadAction<number>) => {
+      state.mbCostAll = payload;
+    },
+    setSpTrafficAll: (state, { payload }: PayloadAction<number>) => {
+      state.spTrafficAll = payload;
     },
   },
 

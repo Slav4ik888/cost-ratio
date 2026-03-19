@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Section } from 'shared/ui/section';
-import TextareaFromAltegra from '../../components/TextareaFromAltegra';
+import { TextareaFromAltegra } from 'features/textarea-from-altegra';
 import BigTable from '../../components/BigTable';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
@@ -11,7 +11,7 @@ import ResultAnalisTabl from '../../components/ResultAnalisTabl';
 import { FacturaData } from 'widgets/factura-data';
 import { cfg } from 'app/config';
 import { PageLoader } from 'widgets/page-loader';
-import { AltergaItem, joinTraffic, returnArrMb, returnArrSprite } from 'entities/altegra';
+import { AltergaItem } from 'entities/altegra';
 import { useAutomatization } from 'entities/automatization';
 import { Factura } from 'entities/factura';
 
@@ -27,13 +27,10 @@ export const CostRatio: FC = () => {
     arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
     arrResult:[], // конечный массив (по Project)
 
-    mbSiteId: [], // массив помегабатного трафика
-    striteSiteId: [],  // массив полосного трафика
-
-    mbPrice: 0.132, // Базовая стоимость Мб
-
-    mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
-    spTrafficAll: 0,// Общий трафик в полосе
+    // mbSiteId: [], // массив помегабатного трафика
+    // striteSiteId: [],  // массив полосного трафика
+    // mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
+    // spTrafficAll: 0,// Общий трафик в полосе
   };
 
   // Читаем данные из Гугл
@@ -61,53 +58,7 @@ export const CostRatio: FC = () => {
 
   function handleSetArr (arrFromAltegra: AltergaItem[]) {
     setTimeout(() => {
-      const arrFromAltegraTransformed = joinTraffic(arrFromAltegra);
-      const mbSiteId = returnArrMb(arrFromAltegraTransformed);
-      const striteSiteId = returnArrSprite(arrFromAltegraTransformed);
-
-      // Рассчитываем данные для "Сводной таблицы"
-      // @ts-ignore
-      const { arrayOfProject, factura, mbPrice } = this.state;
-
-      // Первоначальное наполнение пустого массива данными по трафику Мб и полосному
-      const arr = pushArrBmAndStriteTraffic(mbSiteId, striteSiteId, mbPrice);
-
-      // Подсчёт общих затрат по Мб трафику + сч/ф
-      const mbCostAll = calcMbCostAll(arr);
-      //
-
-      // Подсчёт общего трафика полосы
-      const spTrafficAll = calcSpTrafficAll(arr);
-      //
-
-      // Рассчитываем Затраты скорректированные
-      let { newArrForBigTable } = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
-
-      // Обновляем arrForBigTable, данными из массива от Гугл
-      // console.log('!!!arrayOfProject: ', arrayOfProject);
       
-      newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
-
-      // this.setState({
-      //   arrFromAltegra: arrFromAltegraTransformed,
-      //   mbSiteId,
-      //   striteSiteId,
-      //   isAltegra: true,
-      //   mbCostAll,
-      //   spTrafficAll,
-      // });
-
-
-      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      const {arrResult} = makeResultForFinishTable(newArrForBigTable);
-
-      // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-      const lastBigStore = changePointToComma(newArrForBigTable, 'result');
-
-      // this.setState({
-      //   arrForBigTable: lastBigStore,
-      //   arrResult,
-      // });
     }, 100);
   };
 
@@ -178,17 +129,15 @@ export const CostRatio: FC = () => {
     <>
       <Section>
         <FacturaData
-          // factura={factura}
-          // onSetFactura={handleSetFactura}
-          mbCostAll    = {100} // mbCostAll} // Общие затраты по трафику рассчитанные + доп услуги
-          spTrafficAll = {200} // spTrafficAll} // Общий трафик в полосе
+          mbCostAll    = {state.mbCostAll} // Общие затраты по трафику рассчитанные + доп услуги
+          spTrafficAll = {state.spTrafficAll} // Общий трафик в полосе
         />
       </Section>
 
 
       {! isAltegra &&
         <Section>
-          <TextareaFromAltegra onHandleSetArr={handleSetArr}/>
+          <TextareaFromAltegra />
         </Section>
       }
 

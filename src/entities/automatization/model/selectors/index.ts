@@ -9,10 +9,15 @@ export const selectModule = createSelector([(state: StateSchema) => state.automa
   (state: StateSchemaAutomatization) => state);
 
 
-export const selectLoading  = createSelector(selectModule, (state: StateSchemaAutomatization) => state.loading);
-export const selectErrors   = createSelector(selectModule, (state: StateSchemaAutomatization) => state.errors);
+export const selectLoading      = createSelector(selectModule, (state: StateSchemaAutomatization) => state.loading);
+export const selectErrors       = createSelector(selectModule, (state: StateSchemaAutomatization) => state.errors);
 
-export const selectAltegraData = createSelector(selectModule, (state: StateSchemaAutomatization) => state.altegraData);
-export const selectIsAltegra   = createSelector(selectAltegraData, (data: AltergaItem[]) => Boolean(data.length));
+export const selectAltegraData  = createSelector(selectModule, (state: StateSchemaAutomatization) => state.altegraData);
+export const selectIsAltegra    = createSelector(selectAltegraData, (data: AltergaItem[]) => Boolean(data.length));
 
-export const selectFacturaData = createSelector(selectModule, (state: StateSchemaAutomatization) => state.facturaData);
+export const selectFacturaData  = createSelector(selectModule, (state: StateSchemaAutomatization) => state.facturaData);
+export const selectMbPrice      = createSelector(selectModule, (state: StateSchemaAutomatization) => state.mbPrice);
+export const selectMbSiteId     = createSelector(selectModule, (state: StateSchemaAutomatization) => state.mbSiteId);
+export const selectStriteSiteId = createSelector(selectModule, (state: StateSchemaAutomatization) => state.striteSiteId);
+export const selectMbCostAll    = createSelector(selectModule, (state: StateSchemaAutomatization) => state.mbCostAll);
+export const selectSpTrafficAll = createSelector(selectModule, (state: StateSchemaAutomatization) => state.spTrafficAll);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from 'shared/ui/section';
-import TextareaFromAltegra from '../../components/TextareaFromAltegra';
+import TextareaFromAltegra from '../../features/textarea-from-altegra';
 import BigTable from '../../components/BigTable';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';

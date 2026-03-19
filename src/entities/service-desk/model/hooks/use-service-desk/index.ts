@@ -14,7 +14,7 @@ export const useServiceDesk = () => {
   const _isLoaded          = useSelector(s.selectIsLoaded);
   const loading            = useSelector(s.selectLoading);
   const errors             = useSelector(s.selectErrors);
-  const data               = useSelector(s.selectData);
+  const serviceDeskData    = useSelector(s.selectData);
 
 
   const api = useMemo(() => ({
@@ -30,7 +30,8 @@ export const useServiceDesk = () => {
     _isLoaded,
     loading,
     errors,
-
+    serviceDeskData,
+    
     ...api
   }
 };

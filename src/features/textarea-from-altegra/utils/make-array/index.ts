@@ -1,4 +1,4 @@
-import { AltergaItem } from '../../types';
+import { AltergaItem } from 'entities/altegra';
 
 
 
@@ -6,7 +6,7 @@ import { AltergaItem } from '../../types';
  * Преобразовываем полученные от Алтегра данные в массив объектов
  */
 export const makeArray = (str: string): AltergaItem[] => {
-  console.log('111 str: ', str);
+  console.log('makeArray str: ', str);
   str = str.replace(/\n/g,'*'); // добавляем * в конце строки
   
   let arr: AltergaItem[] = [];
