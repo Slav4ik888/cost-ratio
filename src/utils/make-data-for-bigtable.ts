@@ -4,6 +4,7 @@
 
 import { MainItem } from 'entities/altegra';
 import { Factura } from 'entities/factura';
+import { getValueOrZero } from 'shared/helpers/numbers';
 
 /**
  * Создаём первоначальную "Сводную таблицу", наполняем её данными
@@ -103,14 +104,14 @@ export const calcSpTrafficAll = (arr: any[]) => {
 export const makeDataForBigTable = (arrForBigTable: any[], factura: Factura, mbCostAll: number, spTrafficAll: number) => {
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
-    if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb) {
+    if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * getValueOrZero(factura.mb)) {
     //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
-      obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * factura.mb).toFixed(2);
+      obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * getValueOrZero(factura.mb)).toFixed(2);
     }
   }
 
   // Стоимость пропорционально общей сумме затрат за полосу
-  arrForBigTable.forEach(obj => obj.spCostTraffic = (+obj.spTraffic / spTrafficAll * factura.sprite).toFixed(2));
+  arrForBigTable.forEach(obj => obj.spCostTraffic = (+obj.spTraffic / spTrafficAll * getValueOrZero(factura.sprite)).toFixed(2));
   // for(let obj of arr) {
   //   if (obj.spTraffic / spTrafficAll * factura.sprite) {
   //     obj.spCostTraffic = (+obj.spTraffic / spTrafficAll * factura.sprite).toFixed(2);

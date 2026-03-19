@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getPayloadError as getError } from 'shared/lib/errors';
-import { LS } from 'shared/lib/local-storage';
 import { Errors } from 'shared/lib/validators';
-import { getServiceDeskData } from '../services';
-// import { ServiceDeskType } from '../../types';
 import { StateSchemaAutomatization } from './state-schema';
-import { cfg } from 'app/config';
 import { AltergaItem } from 'entities/altegra';
 import { Factura } from 'entities/factura';
 
@@ -15,7 +11,7 @@ const initialState: StateSchemaAutomatization = {
   loading     : false,
   errors      : {},
   altegraData : [],
-  facturaData : { value: 0, sprite: 0, mb: 0 }
+  facturaData : { value: undefined, sprite: undefined, mb: undefined }
 };
 
 

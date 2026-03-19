@@ -1,52 +1,43 @@
 import { useAutomatization } from 'entities/automatization';
 import { Factura } from 'entities/factura';
 import { FC, useCallback, useState } from 'react';
+import { getValueOrZero } from 'shared/helpers/numbers';
+import { commaToDot } from 'shared/helpers/strings';
 import './index.scss';
 
 
 
-const correctValid = (str: string) =>{
-  let newStr = str.replace(/,/, '.');
-  const idx = newStr.indexOf('.');
-  
-  if (idx !== -1) {
-    let endStr = newStr.slice(idx + 1);
-    const e = endStr.replace(/\./, '');
-    newStr = newStr.slice(0, idx + 1) + e;
-  }
-  return newStr;
-};
-
-
 interface Props {
-  mbCostAll    : number,
-  spTrafficAll : number,
+  mbCostAll    : number
+  spTrafficAll : number
 }
 
 // Верхнее меню для ввода данных
-export const FacturaData: FC<Props> = () => {
+export const FacturaData: FC<Props> = ({ mbCostAll, spTrafficAll }) => {
   const { factura, setFacturaData } = useAutomatization();
-  const [facturaUpdate, setFacturaUpdate] = useState<Factura>(factura);
+  const [isChanged, setIsChanged] = useState<boolean>();
+  const [update, setUpdate] = useState<Factura>(factura);
 
+  
   // Отправка значений введённых значений
   const handleSubmit = useCallback((event: React.FormEvent) => {
     event.preventDefault();
-    setFacturaData(factura);
+    setIsChanged(false);
+    setFacturaData(update);
   },
-    [setFacturaData]
+    [update, setFacturaData]
   );
 
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
-    const newValue = correctValid(target.value);
+    const newValue = commaToDot(target.value);
     const name = target.name;
-    console.log('name: ', name);
-      
-    setFacturaUpdate((prev) => {
-      const value = name === 'value' ? +newValue : +prev.value;
-      console.log('value: ', value);
-      const sprite = name === 'sprite' ? +newValue : +prev.sprite;
-      console.log('sprite: ', sprite);
+    
+    setIsChanged(true);
+    
+    setUpdate((prev) => {
+      const value = name === 'value' ? +newValue : getValueOrZero(prev.value);
+      const sprite = name === 'sprite' ? +newValue : getValueOrZero(prev.sprite);
       
       return {
         value,
@@ -54,8 +45,11 @@ export const FacturaData: FC<Props> = () => {
         mb: Number((value - sprite).toFixed(2)),
       }
     });
-  }
+  },
+    [factura, setUpdate]
+  );
 
+  
   return (
     <div className='factura-data'>
       <form onSubmit={handleSubmit}>
@@ -79,7 +73,7 @@ export const FacturaData: FC<Props> = () => {
                 <input 
                   type     = 'text'
                   name     = 'value'
-                  value    = {facturaUpdate.value}
+                  value    = {update.value || ''}
                   onChange = {handleOnChange}
                 />
               </td>
@@ -95,7 +89,7 @@ export const FacturaData: FC<Props> = () => {
                 <input 
                   type     = 'text'
                   name     = 'sprite'
-                  value    = {facturaUpdate.sprite}
+                  value    = {update.sprite || ''}
                   onChange = {handleOnChange}
                   />
               </td>
@@ -107,7 +101,7 @@ export const FacturaData: FC<Props> = () => {
 
             <tr>
               <td>Помегабайтно:</td>
-              <td>{mbSum}</td>
+              <td>{update.mb}</td>
               <td></td>
               <td>{}</td>
               <td></td>
@@ -116,7 +110,12 @@ export const FacturaData: FC<Props> = () => {
           </tbody>
         </table>
 
-        <input className='button' type='submit' value='Обновить значения' />
+        <input
+          className = 'button'
+          disabled  = {! isChanged}
+          type      = 'submit'
+          value     = 'Обновить значения'
+        />
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 
 export interface Factura {
-  value  : number // 779797.36
-  sprite : number // 205887.1
-  mb     : number // 573910.2
+  value  : number | undefined // 779797.36
+  sprite : number | undefined // 205887.1
+  mb     : number | undefined // 573910.2
 }

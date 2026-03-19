@@ -24,7 +24,7 @@ root.render(
 
 
 // git add . && git commit -m "fixed some 2" && git push -u origin master
-// git add . && git commit -m "start refact FacturaData" && git push -u origin migrate-to-ts
+// git add . && git commit -m "refacted FacturaData" && git push -u origin migrate-to-ts
 
 
 // создать и сразу переключиться:

@@ -180,15 +180,15 @@ export const CostRatio: FC = () => {
         <FacturaData
           // factura={factura}
           // onSetFactura={handleSetFactura}
-          mbCostAll    = {mbCostAll} // Общие затраты по трафику рассчитанные + доп услуги
-          spTrafficAll = {spTrafficAll} // Общий трафик в полосе
+          mbCostAll    = {100} // mbCostAll} // Общие затраты по трафику рассчитанные + доп услуги
+          spTrafficAll = {200} // spTrafficAll} // Общий трафик в полосе
         />
       </Section>
 
 
       {! isAltegra &&
         <Section>
-          <TextareaFromAltegra onHandleSetArr={this.handleSetArr}/>
+          <TextareaFromAltegra onHandleSetArr={handleSetArr}/>
         </Section>
       }
 
@@ -204,9 +204,13 @@ export const CostRatio: FC = () => {
         <BigTable
         // @ts-ignore
             mbPrice={mbPrice}
+        // @ts-ignore
             arr={arrForBigTable}
+        // @ts-ignore
             onHandleUpdateBigArr={this.handleUpdateBigArr}
+        // @ts-ignore
             arrayOfProject={arrayOfProject}
+        // @ts-ignore
             onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
           />
       }
@@ -216,7 +220,9 @@ export const CostRatio: FC = () => {
       {isAltegra &&
         <Section>
           <ResultAnalisTabl
+        // @ts-ignore
             arr={arrResult}
+        // @ts-ignore
             arrBig={arrForBigTable}
           />
         </Section>
@@ -225,6 +231,7 @@ export const CostRatio: FC = () => {
       {/* формируем таблицы и выводим Итоговую таблицу для 1С */}
       {isAltegra &&
         <Section>
+{/* @ts-ignore */}
           <ResultTabl arr={arrResult} />
         </Section>
       }

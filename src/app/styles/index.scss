@@ -58,6 +58,36 @@ p {
   padding: 0;
 }
 
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #d6dcdd;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.0015);
+  border-radius: 2px;
+  color: #595959;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.button:hover {
+  background: #d1e5e9;
+  /* border: 1px solid #708f94; */
+  color: rgb(97, 97, 97);
+}
+
+.button[disabled],
+.button[disabled]:hover {
+  cursor: not-allowed;
+  opacity: 0.5;
+  color: rgb(74, 74, 74);
+  background: rgb(182, 182, 182);
+}
+
+
 @keyframes hint-appear {
   from {
     opacity: 0;
