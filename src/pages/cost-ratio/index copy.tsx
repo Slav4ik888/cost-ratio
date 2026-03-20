@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from 'shared/ui/section';
-import TextareaFromAltegra from '../../features/textarea-from-altegra';
+import {TextareaFromAltegra} from '../../features/textarea-from-altegra';
 import BigTable from '../../components/BigTable';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
@@ -11,7 +11,8 @@ import ResultAnalisTabl from '../../components/ResultAnalisTabl';
 import { FacturaData } from 'widgets/factura-data';
 import { cfg } from 'app/config';
 import { PageLoader } from 'widgets/page-loader';
-import { AltergaItem, joinTraffic, returnArrMb, returnArrSprite } from 'entities/altegra';
+import { AltergaItem } from 'entities/altegra';
+import { joinTraffic, returnArrMb, returnArrSprite } from 'features/textarea-from-altegra/utils/data-processing-from-alterga';
 
 
 
@@ -265,6 +266,7 @@ class CostRatio extends React.PureComponent {
 
         {!isMadeArr &&
           <Section>
+            {/* @ts-ignore */}
             <TextareaFromAltegra onHandleSetArr={this.handleSetArr}/>
           </Section>
         }

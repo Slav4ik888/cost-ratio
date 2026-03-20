@@ -6,7 +6,6 @@ import { AltergaItem } from 'entities/altegra';
  * Преобразовываем полученные от Алтегра данные в массив объектов
  */
 export const makeArray = (str: string): AltergaItem[] => {
-  console.log('makeArray str: ', str);
   str = str.replace(/\n/g,'*'); // добавляем * в конце строки
   
   let arr: AltergaItem[] = [];
@@ -43,7 +42,6 @@ export const makeArray = (str: string): AltergaItem[] => {
     arr.push(obj); // результат obj добавляем в массив
     obj = {} as AltergaItem;
   };
-  console.log('111 arr: ', arr);
   
   return arr
 }

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useCallback } from 'react';
+import { FC, FormEvent, useCallback } from 'react';
 import MOCK_ALTEGRA from '../../mocks/arr-from-altegra-2026-02';
 import { cfg } from 'app/config';
 import { AltergaItem } from 'entities/altegra';
@@ -8,25 +8,19 @@ import { joinTraffic, returnArrMb, returnArrSprite } from './utils/data-processi
 import { useServiceDesk } from 'entities/service-desk';
 import { calcMbCostAll, calcSpTrafficAll, makeDataForBigTable, makeDataFromGoogle, pushArrBmAndStriteTraffic } from 'utils/make-data-for-bigtable';
 import { changePointToComma, makeResultForFinishTable } from 'utils/make-result-for-finish-table';
+import { Section } from 'shared/ui/section';
 
 
 
 /**
  * ПРИНИМАЕМ ТАБЛИЦУ ДАННЫХ АЛТЕГРЫ И СОЗДАЁМ МАССИВ НУЖНЫХ НАМ ДАННЫХ
- * 
- * @return {array} arrFromAltegra  
  */
-
 export const TextareaFromAltegra: FC = () => {
   const {
-    factura, mbPrice, setMbCostAll, setSpTrafficAll, setMbSiteId, setStriteSiteId, setAltegraData
+    factura, mbPrice,
+    setMbCostAll, setSpTrafficAll, setMbSiteId, setStriteSiteId, setAltegraData, setArrForBigTable, setArrResult
   } = useAutomatization();
   const { serviceDeskData } = useServiceDesk();
-  // const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-  //   this.setState({
-  //     strFromAltegra: e.target.value || '',
-  //   });
-  // }
 
   // принимаем данные из формы
   const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
@@ -70,43 +64,46 @@ export const TextareaFromAltegra: FC = () => {
     newArrForBigTable = makeDataFromGoogle(newArrForBigTable, serviceDeskData);
     console.log('newArrForBigTable 2: ', newArrForBigTable);
 
+    // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
+    console.log('arrResult: ', arrResult);
+
+    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+    const lastBigStore = changePointToComma(newArrForBigTable, 'result');
+    console.log('lastBigStore: ', lastBigStore);
+
     
     setAltegraData(arrFromAltegraTransformed);
     setMbSiteId(mbSiteId);
     setStriteSiteId(striteSiteId);
     setMbCostAll(mbCostAll);
     setSpTrafficAll(spTrafficAll);
-
-
-    // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
-
-    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable, 'result');
-
-    // this.setState({
-    //   arrForBigTable: lastBigStore,
-    //   arrResult,
-    // });
+    setArrForBigTable(lastBigStore);
+    setArrResult(arrResult);
   },
-    [factura, mbPrice, setMbCostAll, setSpTrafficAll, setMbSiteId, setStriteSiteId, setAltegraData]
+    [
+      factura, mbPrice,
+      setMbCostAll, setSpTrafficAll, setMbSiteId, setStriteSiteId, setAltegraData, setArrForBigTable, setArrResult
+    ]
   );
 
   
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <div>Данные от Алтегры:</div>
-        <textarea
-          rows        = {10}
-          cols        = {85}
-          name        = 'text'
-          placeholder = 'Вставьте скопированные данные от Алтегры' 
-          // onChange    = {handleChange}
-          value       = {cfg.IS_DEV ? MOCK_ALTEGRA : ''}
-        />
-      </label>
-      <input type='submit' value='Обработать' />
-    </form>
+    <Section>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <div>Данные от Алтегры:</div>
+          <textarea
+            rows        = {10}
+            cols        = {85}
+            name        = 'text'
+            placeholder = 'Вставьте скопированные данные от Алтегры' 
+            // onChange    = {handleChange}
+            defaultValue = {cfg.IS_DEV ? MOCK_ALTEGRA : ''}
+          />
+        </label>
+        <input type='submit' value='Обработать' />
+      </form>
+    </Section>
   )
 }

@@ -1,16 +1,14 @@
+import { useAutomatization } from 'entities/automatization';
+import { TextareaFromAltegra } from 'features/textarea-from-altegra';
 import { FC } from 'react';
 
 
-interface Props {
-}
-
-export const FromAltegra: FC<Props> = (props) => {
+export const FromAltegra: FC = () => {
+  const { isAltegra } = useAutomatization();
   
+  if (isAltegra) return null;
   
   return (
-    <div>
-      <div>From Altegra</div>
-      {/* <div>{props.name}</div> */}
-    </div>
+    <TextareaFromAltegra />
   );
 };

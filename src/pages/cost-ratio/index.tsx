@@ -1,12 +1,9 @@
 import { FC } from 'react';
 import { Section } from 'shared/ui/section';
-import { TextareaFromAltegra } from 'features/textarea-from-altegra';
 import BigTable from '../../components/BigTable';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
-import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
-  makeDataForBigTable, makeDataFromGoogle } from '../../utils/make-data-for-bigtable';
-import { getFromGoogleData } from '../../entities/service-desk/model/services/get-service-desk-data/get-from-google-data';
+import { calcMbCostAll, makeDataForBigTable } from '../../utils/make-data-for-bigtable';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl';
 import { FacturaData } from 'widgets/factura-data';
 import { cfg } from 'app/config';
@@ -14,24 +11,24 @@ import { PageLoader } from 'widgets/page-loader';
 import { AltergaItem } from 'entities/altegra';
 import { useAutomatization } from 'entities/automatization';
 import { Factura } from 'entities/factura';
+import { FromAltegra } from 'widgets/from-altegra';
 
 
 
 export const CostRatio: FC = () => {
   const { isAltegra } = useAutomatization();
 
-    
-  const state = {
-    arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
+  // const state = {
+    // arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
     // arrayOfProject: [], // загруженны массив с service desk
-    arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
-    arrResult:[], // конечный массив (по Project)
+    // arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
+    // arrResult:[], // конечный массив (по Project)
 
     // mbSiteId: [], // массив помегабатного трафика
     // striteSiteId: [],  // массив полосного трафика
     // mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
     // spTrafficAll: 0,// Общий трафик в полосе
-  };
+  // };
 
   // Читаем данные из Гугл
   // async getArrFromGoogle() {};
@@ -85,61 +82,13 @@ export const CostRatio: FC = () => {
     // });
   };
 
-  // Присвоение значений сч/фактуры
-  function handleSetFactura(factura: Factura) {
-    setTimeout(() => {
-      // const {arrForBigTable, arrayOfProject} = this.state;
-      // Рассчитываем данные для "Сводной таблицы"
-
-      // Подсчёт общих затрат по Мб трафику + сч/ф
-      // const mbCostAll = calcMbCostAll(arrForBigTable);
-      // Подсчёт общего трафика полосы
-      // const spTrafficAll = calcSpTrafficAll(arrForBigTable);
-
-      // Рассчитываем Затраты скорректированные
-      // let {newArrForBigTable} = makeDataForBigTable(arrForBigTable, factura, mbCostAll, spTrafficAll);
-
-      // Обновляем newArrForBigTable, данными из массива от Гугл
-      // newArrForBigTable = makeDataFromGoogle(newArrForBigTable, arrayOfProject);
-
-      // this.setState({
-      //   arrForBigTable: newArrForBigTable,
-      //   isAltegra: true,
-      //   mbCostAll,
-      //   spTrafficAll,
-      //   factura,
-      // });
-
-
-      // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      // const {arrResult} = makeResultForFinishTable(arrForBigTable);
-
-      // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-      // const lastBigStore = changePointToComma(arrForBigTable, `result`);
-
-      // this.setState({
-      //   arrForBigTable: lastBigStore,
-      //   arrResult,
-      // });
-    }, 0);
-  }
 
 
   return (
     <>
-      <Section>
-        <FacturaData
-          mbCostAll    = {state.mbCostAll} // Общие затраты по трафику рассчитанные + доп услуги
-          spTrafficAll = {state.spTrafficAll} // Общий трафик в полосе
-        />
-      </Section>
+      <FacturaData />
 
-
-      {! isAltegra &&
-        <Section>
-          <TextareaFromAltegra />
-        </Section>
-      }
+      {! isAltegra && <FromAltegra />}
 
       {/* формируем таблицы и выводим Помегабайтный и Полосной */}
       {/* {isAltegra &&
@@ -151,17 +100,9 @@ export const CostRatio: FC = () => {
       {/* формируем таблицы и выводим Большую таблицу */}
       {isAltegra &&
         <BigTable
-        // @ts-ignore
-            mbPrice={mbPrice}
-        // @ts-ignore
-            arr={arrForBigTable}
-        // @ts-ignore
-            onHandleUpdateBigArr={this.handleUpdateBigArr}
-        // @ts-ignore
-            arrayOfProject={arrayOfProject}
-        // @ts-ignore
-            onHandleUpdateFromGoogle={this.handleUpdateFromGoogle}
-          />
+          onHandleUpdateBigArr={handleUpdateBigArr}
+          onHandleUpdateFromGoogle={handleUpdateFromGoogle}
+        />
       }
 
 
