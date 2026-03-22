@@ -10,11 +10,11 @@ export interface MainItem {
   mbCostServicies : number | undefined
   mbPrice         : number
   mbTraffic       : number
-  mbCostTraffic   : number
-  mbCostCorrect   : string
-  spTraffic       : string
-  spCostTraffic   : string
-  result          : number
-  sumMbCost       : string
-  sumSpCost       : string
+  mbCostTraffic   : number | undefined
+  mbCostCorrect   : number | undefined
+  spTraffic       : number | undefined
+  spCostTraffic   : number | undefined
+  result          : number | undefined
+  sumMbCost       : number | undefined
+  sumSpCost       : number | undefined
 }

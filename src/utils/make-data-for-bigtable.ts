@@ -2,7 +2,7 @@
 /*  ПЕРВОНАЧАЛЬНАЯ ПОДГОТОВКА ДАННЫХ ДЛЯ "СВОДНОЙ ТАБЛИЦЫ"  */
 /************************************************************/
 
-import { MainItem } from 'entities/altegra';
+import { MainItem } from 'entities/automatization';
 import { Factura } from 'entities/factura';
 import { getValueOrZero } from 'shared/helpers/numbers';
 
@@ -33,11 +33,11 @@ export const pushArrBmAndStriteTraffic = (mbSiteId: any[], striteSiteId: any[], 
     objSiteID.mbPrice = mbPrice;
     objSiteID.mbCostServicies = 0;
     objSiteID.mbTraffic = obj.trafficMb;
-    objSiteID.mbCostTraffic = (objSiteID.mbTraffic * objSiteID.mbPrice).toFixed(2);
-    objSiteID.mbCostCorrect = '';
-    objSiteID.spTraffic = '';
-    objSiteID.spCostTraffic = '';
-    objSiteID.result = '';
+    objSiteID.mbCostTraffic = Number((objSiteID.mbTraffic * objSiteID.mbPrice).toFixed(2));
+    objSiteID.mbCostCorrect = undefined;
+    objSiteID.spTraffic = undefined;
+    objSiteID.spCostTraffic = undefined;
+    objSiteID.result = undefined;
 
     newArr.push(objSiteID);
     objSiteID = {} as MainItem;
@@ -58,11 +58,11 @@ export const pushArrBmAndStriteTraffic = (mbSiteId: any[], striteSiteId: any[], 
       objSiteID.mbPrice = mbPrice;
       objSiteID.mbCostServicies = 0;
       objSiteID.mbTraffic = 0;
-      objSiteID.mbCostTraffic = '';
-      objSiteID.mbCostCorrect = '';
+      objSiteID.mbCostTraffic = undefined;
+      objSiteID.mbCostCorrect = undefined;
       objSiteID.spTraffic = obj.trafficMb;
-      objSiteID.spCostTraffic = '';
-      objSiteID.result = '';
+      objSiteID.spCostTraffic = undefined;
+      objSiteID.result = undefined;
 
       newArr.push(objSiteID);
     }

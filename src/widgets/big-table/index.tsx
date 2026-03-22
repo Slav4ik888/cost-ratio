@@ -3,17 +3,17 @@ import './big-table.scss';
 import cl from 'classnames';
 import {getTitle} from '../../utils/untils';
 import {BIG_TITLE, BIG_TITLE_CLASS, BIG_SORT} from '../../consts';
-import ModalChangeRow from '../ModalChangeRow';
+import ModalChangeRow from '../../components/ModalChangeRow';
 import _ from 'lodash';
 import { MainItem, useAutomatization } from 'entities/automatization';
 import { useServiceDesk } from 'entities/service-desk';
 import { emptyIfUndefined } from 'shared/helpers/strings';
+import { calcMbCostAll, makeDataForBigTable, makeDataFromGoogle } from 'utils/make-data-for-bigtable';
+import { changePointToComma, makeResultForFinishTable } from 'utils/make-result-for-finish-table';
 
 
 
 interface Sorted {
-	isModal    : boolean
-	searchText : ''  		  			 					// Поиск по SiteID
 	sortType   : 'asc' | 'desc'
 	sortField  : typeof BIG_TITLE[number] // поле по умолчанию
 	row        : MainItem | null 					// нажатая выбранная строка
@@ -21,16 +21,16 @@ interface Sorted {
 
 export const BigTable: FC = () => {
 	const {
-    factura, mbPrice, arrForBigTable,
+    factura, mbPrice, arrForBigTable, spTrafficAll,
     setMbCostAll, setSpTrafficAll, setMbSiteId, setStriteSiteId, setAltegraData, setArrForBigTable, setArrResult
 	} = useAutomatization();
-	const { serviceDeskData } = useServiceDesk();
+	const { serviceDeskData, serviceGetServiceDeskData } = useServiceDesk();
 	
 	const [tableArr, setTableArr] = useState(arrForBigTable);
 	const [tableArrFiltred, setTableArrFiltred] = useState(arrForBigTable);
+	const [isModal, setIsModal] = useState(false);
+	const [searchText, setSearchText] = useState(''); // Поиск по SiteID
 	const [sorted, setSorted] = useState<Sorted>({
-		isModal    : false,
-		searchText : '',  		 // Поиск по SiteID
 		sortType   : 'asc',    // 'desc'
 		sortField  : 'siteID', // поле по умолчанию
 		row        : null 	   // нажатая выбранная строка
@@ -44,26 +44,43 @@ export const BigTable: FC = () => {
 	);
 	
 	
-	// componentDidUpdate(prevProps) {
-	// 	if (this.props.arr !== prevProps.arr) {
-	// 		const {arr} = this.props;
-	// 		this.setState({
-	// 			tableArr: arr, // переданный массив
-	// 			tableArrFiltred: arr, // массив для вывода отфильтрованных значений
-	// 		});
-	// 	}
-	// }
+	/**
+	 * Обновляем все данные по нажатию кнопки
+	 * Меняем значения на обновлённые и пересчитываем итоговые значения
+	 */
+  const handleUpdate = useCallback(() => {
+    // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
+    let mbCostAll = calcMbCostAll(tableArr);
+    // Рассчитываем Затраты скорректированные
+    let {newArrForBigTable} = makeDataForBigTable(tableArr, factura, mbCostAll, spTrafficAll);
 
+    // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
 
-	// Обновляем все данные по нажатию кнопки
-	const handleUpdate = () => {
-		onHandleUpdateBigArr(tableArr);
-	}
+    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+    const lastBigStore = changePointToComma(newArrForBigTable, 'result');
+
+		setArrForBigTable(lastBigStore);
+		setArrResult(arrResult);
+		setMbCostAll(mbCostAll);
+	},
+		[tableArr, spTrafficAll, setArrForBigTable, setArrResult, setMbCostAll]
+	);
+
 
 	// Обновляем с гугл таблицы по нажатию кнопки
-	const handleGoogleUpdate = () => {
-		onHandleUpdateFromGoogle(tableArr);
-	}
+	// Обновляем все данные при повторном запроосе к Google
+	const handleUpdateFromGoogle = useCallback(async () => {
+		serviceGetServiceDeskData();
+		
+		await getArrFromGoogle()
+			.then(() => {
+				let newArrForBigTable = makeDataFromGoogle(tableArr, serviceDeskData);
+				this.handleUpdateBigArr(newArrForBigTable);
+			});
+	},
+		[serviceDeskData, serviceGetServiceDeskData]
+	);
 
 	// Поиск в таблице по SiteID
 	const handleSearchItem = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,16 +115,16 @@ export const BigTable: FC = () => {
 	};
 
 	// При выходе из Search поле очищается
-	const handleSearchClear = () => {
-		// this.setState({
-		// 	searchText: '',
-		// 	tableArrFiltred: tableArr, // Возвращаем целый  массив
-		// });
-	};
+	const handleSearchClear = useCallback(() => {
+		setSearchText('');
+		setTableArrFiltred(tableArr); // Возвращаем целый  массив
+	},
+		[tableArr, setSearchText, setTableArrFiltred]
+	);
 
 	// Изменение индивидуальных значений сч/ф
 	// Меняем в tableArr но ищем пришедший ID из tableArrFiltred
-	const handleChangeItem = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChangeItem = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
 		let arr = tableArr.concat();
 
 		const target = event.target;
@@ -117,7 +134,9 @@ export const BigTable: FC = () => {
 		}
 		const filtredSiteId = tableArrFiltred[filtredIndex].siteID;
 		const id = arr.findIndex(item => item.siteID === filtredSiteId);
-		if (id === -1) {return}
+		if (id === -1) {
+			return
+		}
 
 		let value;
 
@@ -144,29 +163,32 @@ export const BigTable: FC = () => {
 	
 			default: break;
 		};
-	}
+	},
+		[tableArr, tableArrFiltred]
+	);
 
 
 	// Устанавливаем выбранную строку
-	const handleRowSelect = (row: MainItem) => {
+	const handleRowSelect = useCallback((row: MainItem) => {
 		console.log(row);
-		setSorted({
-			...sorted,
-			isModal: true,
-			row
-		});
-	};
+		setSorted({ ...sorted, row });
+		setIsModal(true);
+	},
+		[sorted, setSorted, setIsModal]
+	);
 
 
 	// Сортировка "Таблицы"
-	const handleSortTabl = (sortField: string) => {
+	const handleSortTabl = useCallback((e: any, sortField: string) => {
 		console.log('sortField: ', sortField);
 		const title = getTitle(sortField, BIG_TITLE, BIG_SORT);
 		const orderedData = _.orderBy(tableArrFiltred, title, sorted.sortType);
 		
 		setSorted({ ...sorted, sortField: title });
 		setTableArrFiltred(orderedData);
-	};
+	},
+		[tableArrFiltred, sorted, setSorted, setTableArrFiltred]
+	);
 
 	// Добавляем новую строку
 	const handleAddRow = useCallback(() => {
@@ -178,51 +200,44 @@ export const BigTable: FC = () => {
 			mbTraffic: 0,
 			mbCostServicies: undefined,
 			mbCostTraffic: 0,
-			mbCostCorrect: '0',
-			spTraffic: '0',
-			spCostTraffic: '0',
+			mbCostCorrect: 0,
+			spTraffic: 0,
+			spCostTraffic: 0,
 			result: 0,
 			image: '',
 			title: '',
 			description: '',
 			price: '',
-			sumMbCost: '',
-			sumSpCost: ''
+			sumMbCost: undefined,
+			sumSpCost: undefined
 		}, ...tableArr];
 
 		setTableArr(newArr);
 		setTableArrFiltred(newArr);
 	},
-		[mbPrice, tableArr]
+		[mbPrice, tableArr, setTableArr, setTableArrFiltred]
 	);
-
 	
 	// Открываем модальное окно
-	const handleModalInfo = () => {
-		this.setState({
-			isModal: true,
-		});
-	};
+	const handleModalInfo = useCallback(() => setIsModal(true), [setIsModal]);
 
-	
 
 	// Обрабатываем закрытие модального окна
-	const handleModalOut = useCallback((obj) => {
+	const handleModalOut = useCallback((obj: MainItem) => {
 		if (obj) {
-			let newObj = {};
-			newObj.siteID = obj.siteID || '';
-			newObj.project = obj.project || '';
-			newObj.organization = obj.organization || '';
-			newObj.mbPrice = mbPrice;
-			newObj.mbTraffic = +obj.mbTraffic || 0;
-			newObj.mbCostServicies = +obj.mbCostServicies || 0;
-			newObj.mbCostTraffic = +obj.mbCostTraffic || 0;
-			newObj.mbCostCorrect = +obj.mbCostCorrect || 0;
-			newObj.spTraffic = +obj.spTraffic || 0;
-			newObj.spCostTraffic = +obj.spCostTraffic || 0;
-			newObj.result = +obj.result || 0;
+			let newObj = {} as MainItem;
+			newObj.siteID          = obj.siteID   		  || '';
+			newObj.project         = obj.project  		  || '';
+			newObj.organization    = obj.organization   || '';
+			newObj.mbPrice         = mbPrice;
+			newObj.mbTraffic       = +obj.mbTraffic     || 0;
+			newObj.mbCostServicies = obj.mbCostServicies !== undefined ? +obj.mbCostServicies || 0 : 0;
+			newObj.mbCostTraffic   = +obj.mbCostTraffic || 0;
+			newObj.mbCostCorrect   = +obj.mbCostCorrect || 0;
+			newObj.spTraffic       = +obj.spTraffic     || 0;
+			newObj.spCostTraffic   = +obj.spCostTraffic || 0;
+			newObj.result          = +obj.result        || 0;
 
-			const {tableArr} = this.state;
 			let newArr = [];
 			// Проверяем внесли ли изменения в существующий SiteID
 			let result = tableArr.findIndex(item => item.siteID.toUpperCase() === obj.siteID.toUpperCase());
@@ -236,20 +251,15 @@ export const BigTable: FC = () => {
 				newArr = [newObj, ...tableArr.slice(1)];
 			}
 
-			this.setState({
-				tableArr: newArr,
-			});
+			setTableArr(newArr);
 		};
-		this.setState({
-			isModal: false,
-		});
-		setTimeout(() => this.handleSearchClear(),0); // Очищаем строку поиска
+		
+		setIsModal(false);
+		setTimeout(() => handleSearchClear(), 0); // Очищаем строку поиска
 	},
-		[mbPrice]
+		[tableArr, mbPrice, setIsModal, setTableArr]
 	);
 
-
-	const { sortType, sortField, row, searchText, isModal } = sorted;
 
 	return (
 		<div className='section'>
@@ -302,9 +312,9 @@ export const BigTable: FC = () => {
 									// className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
 								>
 									{titleField} 
-									{sortField === BIG_SORT[i] ? 
-										sortType === 'asc'  ? ' ▲' : 
-										sortType === 'desc' ? ' ▼' : null : null}
+									{sorted.sortField === BIG_SORT[i] ? 
+										sorted.sortType === 'asc'  ? ' ▲' : 
+										sorted.sortType === 'desc' ? ' ▼' : null : null}
 								</th> )}
 						</tr>
 					</thead>

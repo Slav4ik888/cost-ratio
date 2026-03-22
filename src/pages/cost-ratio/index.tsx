@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Section } from 'shared/ui/section';
-import { BigTable } from '../../components/BigTable';
+import { BigTable } from 'widgets/big-table';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
 import { calcMbCostAll, makeDataForBigTable } from '../../utils/make-data-for-bigtable';
@@ -33,19 +33,6 @@ export const CostRatio: FC = () => {
   // Читаем данные из Гугл
   // async getArrFromGoogle() {};
 
-  // Обновляем все данные при повторном запроосе к Google
-  function handleUpdateFromGoogle(arr: any[]) {
-    // this.setState({
-    //   isLoading: true, // Выставляем "загрузку"
-    // });
-
-    // await this.getArrFromGoogle()
-    //   .then(() => {
-    //     // @ts-ignore
-    //     let newArrForBigTable = makeDataFromGoogle(arr, this.state.arrayOfProject);
-    //     this.handleUpdateBigArr(newArrForBigTable);
-    //   });
-  }
 
   /**
    * Принимаем массив из обработанной таблицы от Алтегры
@@ -59,35 +46,12 @@ export const CostRatio: FC = () => {
     }, 100);
   };
 
-  // Меняем значения на пришедшие из таблицы и пересчитываем итоговые значения
-  function handleUpdateBigArr(arr: any[]) {
-  // @ts-ignore
-    const {factura, spTrafficAll} = this.state;
-
-    // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
-    let mbCostAll = calcMbCostAll(arr);
-    // Рассчитываем Затраты скорректированные
-    let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
-
-    // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
-
-    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable, `result`);
-
-    // this.setState({
-    //     arrForBigTable: lastBigStore,
-    //     mbCostAll,
-    //     arrResult,
-    // });
-  };
-
+  
 
 
   return (
     <>
       <FacturaData />
-
       {! isAltegra && <FromAltegra />}
 
       {/* формируем таблицы и выводим Помегабайтный и Полосной */}
@@ -98,13 +62,7 @@ export const CostRatio: FC = () => {
       } */}
 
       {/* формируем таблицы и выводим Большую таблицу */}
-      {isAltegra &&
-        <BigTable
-          onHandleUpdateBigArr={handleUpdateBigArr}
-          onHandleUpdateFromGoogle={handleUpdateFromGoogle}
-        />
-      }
-
+      {isAltegra && <BigTable />}
 
       {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
       {isAltegra &&
