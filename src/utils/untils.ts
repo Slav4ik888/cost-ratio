@@ -1,11 +1,14 @@
-// 
-// field - полученный title 
-// title - массив заголовков
-// titleValue - массив значений этих заголовков
-//
-// возвращает значение заголовка
-//
-export const getTitle = (field: string, titles: string[], titleValues: string[]) => {
+/**
+ * Возвращает значение заголовка
+ * @param field       - полученный заголовок
+ * @param titles      - массив заголовков
+ * @param titleValues - массив значений заголовков
+ */
+export const getTitle = (
+  field       : string,
+  titles      : string[],
+  titleValues : string[]
+): string => {
   return  titleValues[titles.indexOf(field)];
 };
 

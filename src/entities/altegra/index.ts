@@ -1,1 +1,1 @@
-export type { MainItem, AltergaItem } from './types'
+export type { AltergaItem } from './types'

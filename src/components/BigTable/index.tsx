@@ -1,13 +1,23 @@
-import React, {FC, PureComponent, useCallback, useState} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import './big-table.scss'; 
 import cl from 'classnames';
 import {getTitle} from '../../utils/untils';
 import {BIG_TITLE, BIG_TITLE_CLASS, BIG_SORT} from '../../consts';
 import ModalChangeRow from '../ModalChangeRow';
 import _ from 'lodash';
-import { useAutomatization } from 'entities/automatization';
+import { MainItem, useAutomatization } from 'entities/automatization';
 import { useServiceDesk } from 'entities/service-desk';
+import { emptyIfUndefined } from 'shared/helpers/strings';
 
+
+
+interface Sorted {
+	isModal    : boolean
+	searchText : ''  		  			 					// Поиск по SiteID
+	sortType   : 'asc' | 'desc'
+	sortField  : typeof BIG_TITLE[number] // поле по умолчанию
+	row        : MainItem | null 					// нажатая выбранная строка
+}
 
 export const BigTable: FC = () => {
 	const {
@@ -16,20 +26,24 @@ export const BigTable: FC = () => {
 	} = useAutomatization();
 	const { serviceDeskData } = useServiceDesk();
 	
-	const [isModal, setIsModal] = useState(false);
+	const [tableArr, setTableArr] = useState(arrForBigTable);
+	const [tableArrFiltred, setTableArrFiltred] = useState(arrForBigTable);
+	const [sorted, setSorted] = useState<Sorted>({
+		isModal    : false,
+		searchText : '',  		 // Поиск по SiteID
+		sortType   : 'asc',    // 'desc'
+		sortField  : 'siteID', // поле по умолчанию
+		row        : null 	   // нажатая выбранная строка
+	});
 	
-	const state = {
-		tableArr: [], 
-
-		// Поиск по SiteID
-		searchText: ``,
-		tableArrFiltred: [],
-
-		sortType: 'asc',  // 'desc'
-		sortField: 'siteID', // поле по умолчанию
-		row: null, // нажатая выбранная строка
-	}
-
+	useEffect(() => {
+		setTableArr(arrForBigTable);
+		setTableArrFiltred(arrForBigTable);
+	},
+		[arrForBigTable]
+	);
+	
+	
 	// componentDidUpdate(prevProps) {
 	// 	if (this.props.arr !== prevProps.arr) {
 	// 		const {arr} = this.props;
@@ -43,12 +57,12 @@ export const BigTable: FC = () => {
 
 	// Обновляем все данные по нажатию кнопки
 	const handleUpdate = () => {
-		onHandleUpdateBigArr(state.tableArr);
+		onHandleUpdateBigArr(tableArr);
 	}
 
 	// Обновляем с гугл таблицы по нажатию кнопки
 	const handleGoogleUpdate = () => {
-		onHandleUpdateFromGoogle(state.tableArr);
+		onHandleUpdateFromGoogle(tableArr);
 	}
 
 	// Поиск в таблице по SiteID
@@ -56,7 +70,7 @@ export const BigTable: FC = () => {
 		const value = event.target.value;
 		const arr = [] as any[];
 
-		// this.state.tableArr.forEach((item, i) => {
+		// tableArr.forEach((item, i) => {
 		// 	if ((item.siteID.indexOf(value.toUpperCase()) === -1) &&
 		// 		// (item.project.indexOf(value) === -1) &&
 		// 		(item.organization.indexOf(value) === -1)) {
@@ -65,7 +79,7 @@ export const BigTable: FC = () => {
 		// 	arr.push(item);
 		// });
 		
-		state.tableArr.forEach((item, i) => {
+		tableArr.forEach((item, i) => {
 			const searchValue = value.toLowerCase();
 			
 			const siteIDMatch = item.siteID && item.siteID.toLowerCase().includes(searchValue);
@@ -87,18 +101,21 @@ export const BigTable: FC = () => {
 	const handleSearchClear = () => {
 		// this.setState({
 		// 	searchText: '',
-		// 	tableArrFiltred: this.state.tableArr, // Возвращаем целый  массив
+		// 	tableArrFiltred: tableArr, // Возвращаем целый  массив
 		// });
 	};
 
 	// Изменение индивидуальных значений сч/ф
 	// Меняем в tableArr но ищем пришедший ID из tableArrFiltred
-	const handleChangeItem = (event) => {
-		const {tableArr} = state;
+	const handleChangeItem = (event: React.ChangeEvent<HTMLInputElement>) => {
 		let arr = tableArr.concat();
 
 		const target = event.target;
-		const filtredSiteId = state.tableArrFiltred[event.target.id].siteID;
+		const filtredIndex = parseInt(event.target.id, 10);
+		if (isNaN(filtredIndex)) {
+			return;
+		}
+		const filtredSiteId = tableArrFiltred[filtredIndex].siteID;
 		const id = arr.findIndex(item => item.siteID === filtredSiteId);
 		if (id === -1) {return}
 
@@ -127,62 +144,56 @@ export const BigTable: FC = () => {
 	
 			default: break;
 		};
-
-		// this.setState({
-		// 	tableArr: arr,
-		// });
 	}
 
 
 	// Устанавливаем выбранную строку
-	const handleRowSelect = (row) => {
+	const handleRowSelect = (row: MainItem) => {
 		console.log(row);
-		// this.setState({
-		// 	row,
-		// 	isModal: true,
-		// });
+		setSorted({
+			...sorted,
+			isModal: true,
+			row
+		});
 	};
 
 
 	// Сортировка "Таблицы"
-	const handleSortTabl = sortField => {
-		const {tableArrFiltred, sortType} = state;
-		sortField = getTitle(sortField.item, BIG_TITLE, BIG_SORT);
-		const cloneData = tableArrFiltred.concat();
-		// Проверяем что у нас сейчас в сортировке
-		const sortT = sortType === 'asc' ? 'desc' : 'asc';
-		// Сортируем
-		const orderedData = _.orderBy(cloneData, sortField, sortT);
-		// this.setState({
-		// 	tableArrFiltred: orderedData,
-		// 	sortType: sortT,
-		// 	sortField: sortField,
-		// });
+	const handleSortTabl = (sortField: string) => {
+		console.log('sortField: ', sortField);
+		const title = getTitle(sortField, BIG_TITLE, BIG_SORT);
+		const orderedData = _.orderBy(tableArrFiltred, title, sorted.sortType);
+		
+		setSorted({ ...sorted, sortField: title });
+		setTableArrFiltred(orderedData);
 	};
 
 	// Добавляем новую строку
 	const handleAddRow = useCallback(() => {
-		const { tableArr } = state;
-		let newArr = [{
+		const newArr: MainItem[] = [{
 			siteID: '',
 			project: '',
 			organization: '',
 			mbPrice,
 			mbTraffic: 0,
-			mbCostServicies: '',
+			mbCostServicies: undefined,
 			mbCostTraffic: 0,
-			mbCostCorrect: 0,
-			spTraffic: 0,
-			spCostTraffic: 0,
+			mbCostCorrect: '0',
+			spTraffic: '0',
+			spCostTraffic: '0',
 			result: 0,
+			image: '',
+			title: '',
+			description: '',
+			price: '',
+			sumMbCost: '',
+			sumSpCost: ''
 		}, ...tableArr];
 
-		// this.setState({
-		// 	tableArr: newArr,
-		// 	tableArrFiltred: newArr,
-		// });
+		setTableArr(newArr);
+		setTableArrFiltred(newArr);
 	},
-		[mbPrice, state.tableArr]
+		[mbPrice, tableArr]
 	);
 
 	
@@ -238,7 +249,7 @@ export const BigTable: FC = () => {
 	);
 
 
-	const { tableArrFiltred, sortType, sortField, row, searchText	} = state;
+	const { sortType, sortField, row, searchText, isModal } = sorted;
 
 	return (
 		<div className='section'>
@@ -247,10 +258,16 @@ export const BigTable: FC = () => {
 				<div className='capt'>Сводная таблица</div>
 
 				<div className='buttonsSprite'>
-					<input className='butAdd' type='button' value='+ строку' 
+					<input
+						className='butAdd'
+						type='button'
+						value='+ строку' 
 						onClick={handleAddRow}
 					/>
-					<input className='butUpdate' type='button' value='Пересчитать' 
+					<input
+						className='butUpdate'
+						type='button'
+						value='Пересчитать' 
 						onClick={handleUpdate}
 					/>
 					<input
@@ -263,7 +280,10 @@ export const BigTable: FC = () => {
 						onChange={handleSearchItem}
 						// onBlur={handleSearchBlur}
 					/>
-					<input className='butUpdate' type='button' value='Синхронизировать данные с ServiceDesk'
+					<input
+						className='butUpdate'
+						type='button'
+						value='Синхронизировать данные с ServiceDesk'
 						onClick={handleGoogleUpdate}
 					/>
 				</div>
@@ -276,11 +296,12 @@ export const BigTable: FC = () => {
 				<table className='tableFixedHead'>
 					<thead>
 						<tr>
-							{BIG_TITLE.map( (item, i) => <th key={item+i} 
-								onClick={handleSortTabl.bind(null, {item})}
-								// className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
+							{BIG_TITLE.map((titleField, i) => <th
+									key={titleField + i} 
+									onClick={(е) => handleSortTabl(е, titleField)}
+									// className={cl({[s.active]: sortField === BIG_SORT[i]}, s[BIG_TITLE_CLASS[i]])}
 								>
-									{item} 
+									{titleField} 
 									{sortField === BIG_SORT[i] ? 
 										sortType === 'asc'  ? ' ▲' : 
 										sortType === 'desc' ? ' ▼' : null : null}
@@ -289,41 +310,46 @@ export const BigTable: FC = () => {
 					</thead>
 						
 					<tbody>
-							{tableArrFiltred.map( (item, i) => (
-								<tr key={item.siteID + i}	>
-										<td className='widthSiteId'
-											onClick={handleRowSelect.bind(null, item)}>
-											{item.siteID}
-										</td>
-										<td className='widthProject'
-											onClick={handleRowSelect.bind(null, item)}>
-												{item.project}
-										</td>
-										<td className='tdOrganization widthOrganization'
-											onClick={handleRowSelect.bind(null, item)}
-										>
-											{item.organization}
-										</td>
-										<td className='widthMbPrice'>{item.mbPrice}</td>
-										<td className='widthFactura'>
-											<input 
-												className='inpMbCostServicies'
-												type='number'
-												name='mbCostServicies'
-												value={item.mbCostServicies}
-												onChange={handleChangeItem}
-												onBlur={handleSearchClear}
-												id={i}
-											/>
-										</td>
-										<td className='widthMbTraffic'>{item.mbTraffic}</td>
-										<td className='widthMbTrafficCost'>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
-										<td className='widthCostCorrect'>{item.mbCostCorrect}</td>
-										<td className='widthSpTraffic'>{item.spTraffic}</td>
-										<td className='widthSpTrafficCost'>{item.spCostTraffic}</td>
-										<td className='widthCostResult'>{item.result || 0}</td>
-								</tr>
-								))}
+						{tableArrFiltred.map( (item, i) => (
+							<tr key={item.siteID + i}>
+								<td
+									className='widthSiteId'
+									onClick={() => handleRowSelect(item)}
+								>
+									{item.siteID}
+								</td>
+								<td
+									className='widthProject'
+									onClick={() => handleRowSelect(item)}
+								>
+									{item.project}
+								</td>
+								<td
+									className='tdOrganization widthOrganization'
+									onClick={() => handleRowSelect(item)}
+								>
+									{item.organization}
+								</td>
+								<td className='widthMbPrice'>{item.mbPrice}</td>
+								<td className='widthFactura'>
+									<input 
+										id 				= {String(i)}
+										className = 'inpMbCostServicies'
+										type      = 'number'
+										name      = 'mbCostServicies'
+										value     = {emptyIfUndefined(item.mbCostServicies)}
+										onChange  = {handleChangeItem}
+										onBlur    = {handleSearchClear}
+									/>
+								</td>
+								<td className='widthMbTraffic'>{item.mbTraffic}</td>
+								<td className='widthMbTrafficCost'>{item.mbCostTraffic ? item.mbCostTraffic : 0}</td>
+								<td className='widthCostCorrect'>{item.mbCostCorrect}</td>
+								<td className='widthSpTraffic'>{item.spTraffic}</td>
+								<td className='widthSpTrafficCost'>{item.spCostTraffic}</td>
+								<td className='widthCostResult'>{item.result || 0}</td>
+							</tr>
+							))}
 					</tbody>
 				</table>
 				{/* </form> */}

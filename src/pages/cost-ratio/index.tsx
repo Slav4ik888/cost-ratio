@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Section } from 'shared/ui/section';
-import BigTable from '../../components/BigTable';
+import { BigTable } from '../../components/BigTable';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
 import { calcMbCostAll, makeDataForBigTable } from '../../utils/make-data-for-bigtable';

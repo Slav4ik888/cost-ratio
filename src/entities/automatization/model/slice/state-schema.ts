@@ -1,7 +1,8 @@
 import { AltergaItem } from 'entities/altegra';
 import { Factura } from 'entities/factura';
 import { Errors } from 'shared/lib/validators';
-import {  } from '../../types';
+import { MainItem } from '../../types';
+
 
 
 export interface StateSchemaAutomatization {
@@ -9,7 +10,7 @@ export interface StateSchemaAutomatization {
   errors         : Errors
   facturaData    : Factura
   altegraData    : AltergaItem[] // Полученные данные от Алтегры
-  arrForBigTable : any[], // массив для "Сводной таблицы" (по SiteID)
+  arrForBigTable : MainItem[], // массив для "Сводной таблицы" (по SiteID)
   arrResult      : any[], // конечный массив (по Project)
   mbPrice        : number        // Базовая стоимость Мб - 0.132
   mbSiteId       : any[]         // Массив помегабатного трафика
