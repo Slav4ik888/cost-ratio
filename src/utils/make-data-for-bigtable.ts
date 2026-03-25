@@ -12,7 +12,7 @@ import { getValueOrZero } from 'shared/helpers/numbers';
  * @param {array} mbSiteId - массив помегаб трафика
  * @param {array} striteSiteId - массив полосного трафика
  * @param {number} mbPrice - базовая стоимость трафика
- * @param {array} arrayOfProject - массив из Гугл service desk
+ * @param {array} arrayServiceDesk - массив из Гугл service desk
  * @param {object} factura - данные счёт фактуры
  * 
  * 
@@ -94,13 +94,12 @@ export const calcSpTrafficAll = (arr: any[]) => {
  * @param {array} mbSiteId - массив помегаб трафика
  * @param {array} striteSiteId - массив полосного трафика
  * @param {number} mbPrice - базовая стоимость трафика
- * @param {array} arrayOfProject - массив из Гугл service desk
+ * @param {array} arrayServiceDesk - массив из Гугл service desk
  * @param {object} factura - данные счёт фактуры
  * 
  * 
  * @return {array} newArr  
  */
-
 export const makeDataForBigTable = (arrForBigTable: any[], factura: Factura, mbCostAll: number, spTrafficAll: number) => {
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
@@ -127,14 +126,18 @@ export const makeDataForBigTable = (arrForBigTable: any[], factura: Factura, mbC
 
 
 
-// Обновляем полученный массив, данными из массива от Гугл
-export const makeDataFromGoogle = (arrForBigTable: any[], arrayOfProject: any[]) => {
+/** 
+ * Обновляем полученный массив, данными из массива от Гугл
+ *   obj.project = result.project;
+ *   obj.organization = result.organization;
+ */
+export const makeDataFromGoogle = (arrForBigTable: any[], arrayServiceDesk: any[]) => {
   let arr = arrForBigTable.concat();
-  // siteId в arrayOfProject (Это данные по организациям и проектам)
-  if (arrayOfProject) {
+  // siteId в arrayServiceDesk (Это данные по организациям и проектам)
+  if (arrayServiceDesk) {
     for(let obj of arr) {
 
-      let result = arrayOfProject.find( it => it.siteID === obj.siteID);
+      let result = arrayServiceDesk.find( it => it.siteID === obj.siteID);
       
       if (result) {
         obj.project = result.project;

@@ -10,6 +10,7 @@ import { useServiceDesk } from 'entities/service-desk';
 import { emptyIfUndefined } from 'shared/helpers/strings';
 import { calcMbCostAll, makeDataForBigTable, makeDataFromGoogle } from 'utils/make-data-for-bigtable';
 import { changePointToComma, makeResultForFinishTable } from 'utils/make-result-for-finish-table';
+import { getValueOrZero } from 'shared/helpers/numbers';
 
 
 
@@ -44,6 +45,30 @@ export const BigTable: FC = () => {
 	);
 	
 	
+	useEffect(() => {
+		console.log('BigTable useEffect!!!');
+
+    // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
+    let mbCostAll = calcMbCostAll(serviceDeskData);
+    // Рассчитываем Затраты скорректированные
+    const { newArrForBigTable } = makeDataForBigTable(serviceDeskData, factura, mbCostAll, spTrafficAll);
+
+		const newArrForBigTable_2 = makeDataFromGoogle(tableArr, newArrForBigTable);
+		
+    // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
+    const { arrResult } = makeResultForFinishTable(newArrForBigTable_2);
+
+    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
+    const lastBigStore = changePointToComma(newArrForBigTable_2, 'result');
+
+		setArrForBigTable(lastBigStore);
+    setMbCostAll(mbCostAll);
+    setArrResult(arrResult);
+	},
+		[factura, spTrafficAll, serviceDeskData, setArrForBigTable, setArrResult, setMbCostAll]
+	);
+	
+	
 	/**
 	 * Обновляем все данные по нажатию кнопки
 	 * Меняем значения на обновлённые и пересчитываем итоговые значения
@@ -72,12 +97,6 @@ export const BigTable: FC = () => {
 	// Обновляем все данные при повторном запроосе к Google
 	const handleUpdateFromGoogle = useCallback(async () => {
 		serviceGetServiceDeskData();
-		
-		await getArrFromGoogle()
-			.then(() => {
-				let newArrForBigTable = makeDataFromGoogle(tableArr, serviceDeskData);
-				this.handleUpdateBigArr(newArrForBigTable);
-			});
 	},
 		[serviceDeskData, serviceGetServiceDeskData]
 	);
@@ -231,12 +250,12 @@ export const BigTable: FC = () => {
 			newObj.organization    = obj.organization   || '';
 			newObj.mbPrice         = mbPrice;
 			newObj.mbTraffic       = +obj.mbTraffic     || 0;
-			newObj.mbCostServicies = obj.mbCostServicies !== undefined ? +obj.mbCostServicies || 0 : 0;
-			newObj.mbCostTraffic   = +obj.mbCostTraffic || 0;
-			newObj.mbCostCorrect   = +obj.mbCostCorrect || 0;
-			newObj.spTraffic       = +obj.spTraffic     || 0;
-			newObj.spCostTraffic   = +obj.spCostTraffic || 0;
-			newObj.result          = +obj.result        || 0;
+			newObj.mbCostServicies = getValueOrZero(obj.mbCostServicies);
+			newObj.mbCostTraffic   = getValueOrZero(obj.mbCostTraffic);
+			newObj.mbCostCorrect   = getValueOrZero(obj.mbCostCorrect);
+			newObj.spTraffic       = getValueOrZero(obj.spTraffic);
+			newObj.spCostTraffic   = getValueOrZero(obj.spCostTraffic);
+			newObj.result          = getValueOrZero(obj.result);
 
 			let newArr = [];
 			// Проверяем внесли ли изменения в существующий SiteID
@@ -294,14 +313,16 @@ export const BigTable: FC = () => {
 						className='butUpdate'
 						type='button'
 						value='Синхронизировать данные с ServiceDesk'
-						onClick={handleGoogleUpdate}
+						onClick={handleUpdateFromGoogle}
 					/>
 				</div>
 
 				{/* Редактирование строки */}
-				{isModal && <ModalChangeRow callback={handleModalOut} element={row} arrayOfProject={serviceDeskData}/>}
-
-					
+				{isModal && <ModalChangeRow
+					element   		  = {sorted.row}
+					serviceDeskData = {serviceDeskData}
+					callback  		  = {handleModalOut}
+				/>}
 
 				<table className='tableFixedHead'>
 					<thead>

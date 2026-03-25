@@ -1,7 +1,7 @@
 import React from 'react';
 import { Section } from 'shared/ui/section';
 import {TextareaFromAltegra} from '../../features/textarea-from-altegra';
-import BigTable from '../../widgets/big-table';
+import {BigTable} from '../../widgets/big-table';
 import { ResultTabl } from '../../components/ResultTabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
 import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,

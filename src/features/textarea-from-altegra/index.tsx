@@ -57,19 +57,19 @@ export const TextareaFromAltegra: FC = () => {
     console.log('spTrafficAll: ', spTrafficAll);
 
     // Рассчитываем Затраты скорректированные
-    let { newArrForBigTable } = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
+    const { newArrForBigTable } = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
     console.log('newArrForBigTable 1: ', newArrForBigTable);
 
     // Обновляем arrForBigTable, данными из массива от Гугл 
-    newArrForBigTable = makeDataFromGoogle(newArrForBigTable, serviceDeskData);
-    console.log('newArrForBigTable 2: ', newArrForBigTable);
+    const newArrForBigTable_2 = makeDataFromGoogle(newArrForBigTable, serviceDeskData);
+    console.log('newArrForBigTable 2: ', newArrForBigTable_2);
 
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
+    const { arrResult } = makeResultForFinishTable(newArrForBigTable_2);
     console.log('arrResult: ', arrResult);
 
     // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable, 'result');
+    const lastBigStore = changePointToComma(newArrForBigTable_2, 'result');
     console.log('lastBigStore: ', lastBigStore);
 
     

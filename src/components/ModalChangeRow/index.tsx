@@ -1,13 +1,13 @@
 import React, { FC, ReactNode } from 'react';
 import './modal-change-row.scss';
 import cl from 'classnames';
-import { MainItem } from 'entities/altegra';
+import { MainItem } from 'entities/automatization';
 
 
 
 interface GoogleRowProps {
-  item: MainItem
-  callback: (item: MainItem) => void
+  item     : MainItem
+  callback : (item: MainItem) => void
 }
 
 const GoogleRow: FC<GoogleRowProps> = ({item, callback}) => {
@@ -28,9 +28,9 @@ const GoogleRow: FC<GoogleRowProps> = ({item, callback}) => {
 
 
 interface GoogleTableProps {
-  searchText: string
-  arr: MainItem[]
-  callback: (item: MainItem) => void
+  searchText : string
+  arr        : MainItem[]
+  callback   : (item: MainItem) => void
 }
 
 const GoogleTable: FC<GoogleTableProps> = ({ searchText, arr, callback }) => {
@@ -69,10 +69,11 @@ const GoogleTable: FC<GoogleTableProps> = ({ searchText, arr, callback }) => {
   );
 }
 
+
 interface ModalChangeRowProps {
-  element: any
-  arrayOfProject: any
-  callback: (element?: any) => void
+  element         : any
+  serviceDeskData : any
+  callback        : (element?: any) => void
 }
 
 class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element: any; visible: boolean; searchText: string; searchFocus: boolean }> {
@@ -211,8 +212,6 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
     newElement.organization = obj.organization;
     newElement.mbCostServicies = 0;
 
-    
-
     this.setState({
       element: newElement,
     })
@@ -220,9 +219,8 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
 
   render() {
     const {element, visible, searchText, searchFocus} = this.state;
-                      // @ts-ignore
-    const {children, arrayOfProject} = this.props;
-    // console.log('arrayOfProject: ', arrayOfProject);
+    const {children, serviceDeskData} = this.props;
+    // console.log('serviceDeskData: ', serviceDeskData);
 
     return (
       <>
@@ -250,7 +248,7 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
 
                   <div className="search">
                     {searchFocus &&
-                      <GoogleTable searchText={searchText} arr={arrayOfProject} callback={this.setItem}/>
+                      <GoogleTable searchText={searchText} arr={serviceDeskData} callback={this.setItem}/>
                     }
                   </div>    
                   <table className="table">
