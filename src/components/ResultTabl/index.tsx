@@ -1,32 +1,28 @@
-import React, { FC } from 'react';
+import { ResultItem } from 'entities/result';
+import { FC } from 'react';
 import './result-table.scss'; 
 
-interface ResultItem {
-	organization: string;
-	project: string;
-	result: string | number; 
-}
+
 
 interface ResultTableProps {
 	arr: ResultItem[];
 }
 
 export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {
-	// console.log('BigTable', arr);
+	console.log('ResultTabl', arr);
 	
 	const arrTh = [
-		`Организация`,
-		`Проект`,
-		`Затраты итого`,
+		'Организация',
+		'Проект',
+		'Затраты итого',
 	];
 	
 	return (
-		<div className="centerBox">
-			<div className="result">
-				<div className="resultCard">
-
-					<div className="capt">Итоговая таблица для 1С</div>
-					<table className="table">
+		<div className='centerBox'>
+			<div className='result'>
+				<div className='resultCard'>
+					<div className='capt'>Итоговая таблица для 1С</div>
+					<table className='table'>
 						<thead>
 							<tr>
 								{arrTh.map( (item, i) => <th key={item+i}>{item}</th> )}
@@ -35,13 +31,12 @@ export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {
 						<tbody>
 							
 							{arr.map((item, i) => (
-									// @ts-ignore
-									<tr key={item.result+i}>
-											<td>{item.organization}</td>
-											<td>{item.project}</td>
-											<td>{item.result}</td>
-									</tr>
-								))}
+								<tr key={`${item.result}-${i}`}>
+									<td>{item.organization}</td>
+									<td>{item.project}</td>
+									<td>{item.result}</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>

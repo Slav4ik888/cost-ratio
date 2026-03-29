@@ -48,10 +48,11 @@ export const BigTable: FC = () => {
 	useEffect(() => {
 		console.log('BigTable useEffect!!!');
 
-    // Обновляем "Сводную таблицу"  обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
-    let mbCostAll = calcMbCostAll(serviceDeskData);
+    // Обновляем "Сводную таблицу" обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
+		let mbCostAll = calcMbCostAll(serviceDeskData);
+
     // Рассчитываем Затраты скорректированные
-    const { newArrForBigTable } = makeDataForBigTable(serviceDeskData, factura, mbCostAll, spTrafficAll);
+    const { newArrForBigTable } = makeDataForBigTable(serviceDeskData as MainItem[], factura, mbCostAll, spTrafficAll);
 
 		const newArrForBigTable_2 = makeDataFromGoogle(tableArr, newArrForBigTable);
 		
@@ -167,7 +168,7 @@ export const BigTable: FC = () => {
 
 			case 'project':
 				value = target.value;
-				arr[id].project = value;
+				arr[id].project = Number(value);
 				break;
 
 			case 'organization':
@@ -213,7 +214,7 @@ export const BigTable: FC = () => {
 	const handleAddRow = useCallback(() => {
 		const newArr: MainItem[] = [{
 			siteID: '',
-			project: '',
+			project: 0,
 			organization: '',
 			mbPrice,
 			mbTraffic: 0,
@@ -246,7 +247,7 @@ export const BigTable: FC = () => {
 		if (obj) {
 			let newObj = {} as MainItem;
 			newObj.siteID          = obj.siteID   		  || '';
-			newObj.project         = obj.project  		  || '';
+			newObj.project         = obj.project  		  || 0;
 			newObj.organization    = obj.organization   || '';
 			newObj.mbPrice         = mbPrice;
 			newObj.mbTraffic       = +obj.mbTraffic     || 0;

@@ -1,12 +1,11 @@
+import { ServiceDeskType } from 'entities/service-desk';
+
 /**  */
-export interface MainItem {
-  siteID          : string
+export interface MainItem extends ServiceDeskType {
   title           : string
   description     : string
   price           : string
   image           : string
-  project         : string
-  organization    : string
   mbCostServicies : number | undefined
   mbPrice         : number
   mbTraffic       : number

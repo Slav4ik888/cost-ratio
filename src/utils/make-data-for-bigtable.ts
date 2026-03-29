@@ -4,7 +4,8 @@
 
 import { MainItem } from 'entities/automatization';
 import { Factura } from 'entities/factura';
-import { getValueOrZero } from 'shared/helpers/numbers';
+import { ServiceDeskType } from 'entities/service-desk';
+import { getValueOrZero as gv } from 'shared/helpers/numbers';
 
 /**
  * Создаём первоначальную "Сводную таблицу", наполняем её данными
@@ -28,7 +29,7 @@ export const pushArrBmAndStriteTraffic = (mbSiteId: any[], striteSiteId: any[], 
   // Заполняем основной массив данными по  Мб трафик
   for(let obj of mbSiteId) {
     objSiteID.siteID = obj.siteID;
-    objSiteID.project = '';
+    objSiteID.project = 0;
     objSiteID.organization = '';
     objSiteID.mbPrice = mbPrice;
     objSiteID.mbCostServicies = 0;
@@ -53,7 +54,7 @@ export const pushArrBmAndStriteTraffic = (mbSiteId: any[], striteSiteId: any[], 
     else {
       objSiteID = {} as MainItem;
       objSiteID.siteID = obj.siteID;
-      objSiteID.project = '';
+      objSiteID.project = 0;
       objSiteID.organization = '';
       objSiteID.mbPrice = mbPrice;
       objSiteID.mbCostServicies = 0;
@@ -79,6 +80,7 @@ export const calcMbCostAll = (arr: any[]) => {
   return mbCostAll;
 };
 
+
 // Подсчёт общего трафика полосы
 export const calcSpTrafficAll = (arr: any[]) => {
   let spTrafficAll = arr.reduce((sum, obj) => sum + +obj.spTraffic, 0);
@@ -87,41 +89,39 @@ export const calcSpTrafficAll = (arr: any[]) => {
 };
 
 
+interface Result {
+  newArrForBigTable: MainItem[];
+}
 
-/**
- * Рассчитываем Затраты скорректированные для "Сводной таблицы
- *
- * @param {array} mbSiteId - массив помегаб трафика
- * @param {array} striteSiteId - массив полосного трафика
- * @param {number} mbPrice - базовая стоимость трафика
- * @param {array} arrayServiceDesk - массив из Гугл service desk
- * @param {object} factura - данные счёт фактуры
- * 
- * 
- * @return {array} newArr  
- */
-export const makeDataForBigTable = (arrForBigTable: any[], factura: Factura, mbCostAll: number, spTrafficAll: number) => {
+/** Рассчитываем Затраты скорректированные для "Сводной таблицы */
+export const makeDataForBigTable = (
+  arrForBigTable : MainItem[], // массив из Алтегры или из гугл service desk
+  factura        : Factura,    // данные счёт фактуры
+  mbCostAll      : number,
+  spTrafficAll   : number
+): Result => {
   // Рассчитываем Затраты скорректированные
   for(let obj of arrForBigTable) {
-    if ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * getValueOrZero(factura.mb)) {
-    //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
-      obj.mbCostCorrect = ((+obj.mbCostTraffic + +obj.mbCostServicies) / mbCostAll * getValueOrZero(factura.mb)).toFixed(2);
+    if ((gv(obj.mbCostTraffic) + gv(obj.mbCostServicies)) / mbCostAll * gv(factura.mb)) {
+      //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
+      obj.mbCostCorrect = Number(((gv(obj.mbCostTraffic) + gv(obj.mbCostServicies)) / mbCostAll * gv(factura.mb)).toFixed(2));
     }
   }
 
-  // Стоимость пропорционально общей сумме затрат за полосу
-  arrForBigTable.forEach(obj => obj.spCostTraffic = (+obj.spTraffic / spTrafficAll * getValueOrZero(factura.sprite)).toFixed(2));
-  // for(let obj of arr) {
-  //   if (obj.spTraffic / spTrafficAll * factura.sprite) {
-  //     obj.spCostTraffic = (+obj.spTraffic / spTrafficAll * factura.sprite).toFixed(2);
-  //     console.log('obj.spCostTraffic: ', obj.spCostTraffic);
-  //   }
-  // }
+  const afbt = [] as MainItem[];
+  arrForBigTable.forEach(item => {
+    let obj = {} as MainItem;
+    obj = { ...item };
+    // Стоимость пропорционально общей сумме затрат за полосу
+    obj.spCostTraffic = Number((gv(obj.spTraffic) / spTrafficAll * gv(factura.sprite)).toFixed(2));
+    
+    // Итоговые затраты
+    obj.result = Number((gv(obj.spCostTraffic) + gv(obj.mbCostCorrect)).toFixed(2));
+    
+    afbt.push(obj);
+  });
   
-  // Итоговые затраты
-  arrForBigTable.forEach( obj => obj.result = (+obj.spCostTraffic + +obj.mbCostCorrect).toFixed(2));
-  const newArrForBigTable = arrForBigTable.concat();
-  return {newArrForBigTable};
+  return { newArrForBigTable: afbt };
 };
 
 
@@ -131,18 +131,22 @@ export const makeDataForBigTable = (arrForBigTable: any[], factura: Factura, mbC
  *   obj.project = result.project;
  *   obj.organization = result.organization;
  */
-export const makeDataFromGoogle = (arrForBigTable: any[], arrayServiceDesk: any[]) => {
-  let arr = arrForBigTable.concat();
+export const makeDataFromGoogle = (arrForBigTable: MainItem[], arrayServiceDesk: ServiceDeskType[]): MainItem[] => {
+  let arr = [] as MainItem[];
+  
   // siteId в arrayServiceDesk (Это данные по организациям и проектам)
   if (arrayServiceDesk) {
-    for(let obj of arr) {
+    for(let obj of arrForBigTable) {
+      let newObj = { ...obj } as MainItem;
 
       let result = arrayServiceDesk.find( it => it.siteID === obj.siteID);
       
       if (result) {
-        obj.project = result.project;
-        obj.organization = result.organization;
+        newObj.project = result.project;
+        newObj.organization = result.organization;
       }
+      
+      arr.push(newObj);
     }
   }
   return arr;

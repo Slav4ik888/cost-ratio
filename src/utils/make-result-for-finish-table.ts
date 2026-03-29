@@ -6,7 +6,8 @@
  * @return {array} newStorage  
  */
 
-import { MainItem } from 'entities/altegra';
+import { MainItem } from 'entities/automatization';
+
 
 export const makeResultForFinishTable = (arrForBigTable: any[]) => {
   let arrResult = [] as MainItem[];
@@ -30,9 +31,9 @@ export const makeResultForFinishTable = (arrForBigTable: any[]) => {
         }
       }
 
-      obj.sumMbCost = sumMbCost.toFixed(2);
-      obj.sumSpCost = sumSpCost.toFixed(2);
-      obj.result = sumResult.toFixed(2);
+      obj.sumMbCost = Number(sumMbCost.toFixed(2));
+      obj.sumSpCost = Number(sumSpCost.toFixed(2));
+      obj.result    = Number(sumResult.toFixed(2));
 
       arrResult.push(obj);
       obj = {} as MainItem;
@@ -49,21 +50,21 @@ export const makeResultForFinishTable = (arrForBigTable: any[]) => {
 }
 
 
-/**
- * Меняем точку на запятую в переданном свойстве объекта
- *
- * @param {array} arr - массив объектов
- * @param {string} attribute - свойство объекта
- * 
- * 
- * @return {array} newArr  
- */
+/** Меняем точку на запятую в переданном свойстве объекта */
 
-export const changePointToComma = (arr: any[], attribute: string) => {
+export const changePointToComma = (
+  arr       : MainItem[],
+  attribute : keyof MainItem // свойство объекта
+) => {
+  const arrResult = [] as MainItem[];
+  arr.forEach(item => {
+    let obj = {} as MainItem;
+    obj = { ...item };
+    // @ts-ignore
+    obj.result = String(item[attribute]).replace(/\./g, ',');
+    
+    arrResult.push(obj);
+  });
 
-
-  arr.forEach( item => item.result = item[attribute].replace(/\./g,','));
-
-
-  return arr;
+  return arrResult;
 };

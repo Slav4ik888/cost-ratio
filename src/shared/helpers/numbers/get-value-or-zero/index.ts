@@ -3,6 +3,6 @@
  * Возвращает цифру или 0, если undefined
  * НЕ ПРОВЕРЯЕТ на строку с символами
  */
-export const getValueOrZero = (value: number | undefined) => {
+export const getValueOrZero = (value: number | undefined): number => {
   return value ? +value : 0;
 };

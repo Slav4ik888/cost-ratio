@@ -6,20 +6,23 @@ import ModalAnalisBlock from './ModalAnalisBlock';
 import {getTitle, addSpaceToNumber} from '../../utils/untils';
 import {ANALIS_TITLE, ANALIS_TITLE_CLASS, ANALIS_SORT} from '../../consts';
 import _ from 'lodash';
+import { MainItem } from 'entities/automatization';
+import { ResultItem } from 'entities/result';
+
 
 
 interface Props {
-	arr: any[]
-	arrBig: any[]
+	arr    : ResultItem[]
+	arrBig : MainItem[]
 }
 
 interface State {
-	tableArr: any[],
-	bigArr: any[],
-	sortType: string,
-	sortField: string,
-	row: any,
-	rowResult: any,
+	tableArr  : ResultItem[]
+	bigArr    : MainItem[]
+	sortType  : string
+	sortField : string
+	row       : any
+	rowResult : any
 }
 
 class ResultAnalisTabl extends PureComponent<Props> {
@@ -30,8 +33,8 @@ class ResultAnalisTabl extends PureComponent<Props> {
 		this.handleSortTabl = this.handleSortTabl.bind(this); 
 		
 		this.state = {
-			tableArr: [], 
-			bigArr: [],
+			tableArr: [] as ResultItem[], 
+			bigArr: [] as MainItem[],
 
 			sortType: 'asc',  // 'desc'
 			sortField: 'siteID', // поле по умолчанию
@@ -45,17 +48,17 @@ class ResultAnalisTabl extends PureComponent<Props> {
 			const {arr, arrBig} = this.props;
 
 			// Переводим в цифры
-			let newArr = arr.concat();
-			newArr.forEach(item => {
-				return (
-				item.result = +item.result,
-				item.sumMbCost = +item.sumMbCost,
-				item.sumSpCost = +item.sumSpCost
-				);
+			const tableArr = [] as ResultItem[];
+			
+			arr.forEach(item => {
+				const obj = { ...item };
+				obj.result    = Number(item.result);
+				obj.sumMbCost = Number(item.sumMbCost);
+				obj.sumSpCost = Number(item.sumSpCost);
 			});
 
 			this.setState({
-				tableArr: arr, // переданный массив
+				tableArr,
 				bigArr: arrBig,
 			});
 		}

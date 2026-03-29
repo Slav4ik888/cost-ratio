@@ -30,6 +30,7 @@ const GoogleRow: FC<GoogleRowProps> = ({item, callback}) => {
 interface GoogleTableProps {
   searchText : string
   arr        : MainItem[]
+  children?  : ReactNode  // Make children optional since it's not used in GoogleTable
   callback   : (item: MainItem) => void
 }
 
@@ -74,6 +75,7 @@ interface ModalChangeRowProps {
   element         : any
   serviceDeskData : any
   callback        : (element?: any) => void
+  children?       : ReactNode
 }
 
 class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element: any; visible: boolean; searchText: string; searchFocus: boolean }> {
@@ -248,7 +250,7 @@ class ModalChangeRow extends React.PureComponent<ModalChangeRowProps, { element:
 
                   <div className="search">
                     {searchFocus &&
-                      <GoogleTable searchText={searchText} arr={serviceDeskData} callback={this.setItem}/>
+                      <GoogleTable searchText={searchText} arr={serviceDeskData} callback={this.setItem} />
                     }
                   </div>    
                   <table className="table">
