@@ -1,7 +1,7 @@
 import { useAutomatization } from 'entities/automatization';
 import { Factura } from 'entities/factura';
 import { FC, useCallback, useState } from 'react';
-import { getValueOrZero } from 'shared/helpers/numbers';
+import { addSpaceBetweenNumbers, getValueOrZero } from 'shared/helpers/numbers';
 import { commaToDot } from 'shared/helpers/strings';
 import { Section } from 'shared/ui/section';
 import './index.scss';
@@ -77,7 +77,7 @@ export const FacturaData: FC = () => {
                 <td>Общий трафик Мб (помегаб):</td>
                 <td>{}</td>
                 <td>Общие затраты по трафику:</td>
-                <td>{mbCostAll}</td>
+                <td>{addSpaceBetweenNumbers(mbCostAll)}</td>
               </tr>
 
               <tr>
@@ -91,14 +91,14 @@ export const FacturaData: FC = () => {
                     />
                 </td>
                 <td>Общий трафик Мб (в полосе):</td>
-                <td>{spTrafficAll}</td>
+                <td>{addSpaceBetweenNumbers(spTrafficAll)}</td>
                 <td>Общие затраты по трафику:</td>
                 <td>{}</td>
               </tr>
 
               <tr>
                 <td>Помегабайтно:</td>
-                <td>{update.mb}</td>
+                <td>{addSpaceBetweenNumbers(update.mb || 0)}</td>
                 <td></td>
                 <td>{}</td>
                 <td></td>

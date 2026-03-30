@@ -4,6 +4,7 @@ import { Errors } from 'shared/lib/validators';
 import { StateSchemaAutomatization } from './state-schema';
 import { AltergaItem } from 'entities/altegra';
 import { Factura } from 'entities/factura';
+import { cfg } from 'app/config';
 
 
 
@@ -13,7 +14,11 @@ const initialState: StateSchemaAutomatization = {
   altegraData    : [],
   arrForBigTable : [],    // массив для "Сводной таблицы" (по SiteID)
   arrResult      : [],    // конечный массив (по Project)
-  facturaData    : { value: undefined, sprite: undefined, mb: undefined },
+  facturaData: {
+    value  : cfg.IS_DEV ? 1000000 : undefined,
+    sprite : cfg.IS_DEV ? 200000 : undefined,
+    mb     : cfg.IS_DEV ? 800000 : undefined
+  },
   mbPrice        : 0.132, // Базовая стоимость Мб
   mbSiteId       : [],    // массив помегабатного трафика
   striteSiteId   : [],    // массив полосного трафика

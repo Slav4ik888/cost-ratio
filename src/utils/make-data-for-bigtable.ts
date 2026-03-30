@@ -74,18 +74,18 @@ export const pushArrBmAndStriteTraffic = (mbSiteId: any[], striteSiteId: any[], 
 
 
 // Подсчёт общих затрат по Мб трафику + сч/ф
-export const calcMbCostAll = (arr: any[]) => {
-  let mbCostAll = arr.reduce((sum, obj) => sum + +obj.mbCostTraffic + (+obj.mbCostServicies || 0), 0);
-  mbCostAll = mbCostAll.toFixed(2);
-  return mbCostAll;
+export const calcMbCostAll = (arr: MainItem[]): number => {
+  let mbCostAll = arr.reduce((sum, obj) => sum + gv(obj.mbCostTraffic) + gv(obj.mbCostServicies), 0);
+
+  return Number(mbCostAll.toFixed(2));
 };
 
 
 // Подсчёт общего трафика полосы
-export const calcSpTrafficAll = (arr: any[]) => {
-  let spTrafficAll = arr.reduce((sum, obj) => sum + +obj.spTraffic, 0);
-  spTrafficAll = spTrafficAll.toFixed(2);
-  return spTrafficAll;
+export const calcSpTrafficAll = (arr: MainItem[]): number => {
+  let spTrafficAll = arr.reduce((sum, obj) => sum + gv(obj.spTraffic), 0);
+  
+  return Number(spTrafficAll.toFixed(2));
 };
 
 

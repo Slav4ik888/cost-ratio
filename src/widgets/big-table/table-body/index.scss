@@ -1,0 +1,107 @@
+
+
+.widthSiteId{
+  width: 120px;
+}
+
+.widthProject{
+  width: 80px;
+}
+.widthOrganization{
+  width: 240px;
+}
+.widthMbPrice{
+  width: 80px;
+}
+.widthFactura{
+  width: 100px;
+}
+.widthMbTraffic{
+  width: 100px;
+}
+.widthMbTrafficCost{
+  width: 100px;
+}
+.widthCostCorrect{
+  width: 100px;
+}
+.widthSpTraffic{
+  width: 100px;
+}
+.widthSpTrafficCost{
+  width: 100px;
+}
+.widthCostResult{
+  width: 100px;
+}
+
+
+.inpProject,
+.inpMbCostServicies {
+  width: 80px;
+  border: 0px;
+  background-color: unset;
+
+}
+.inpSiteID {
+  /* width: 120px; */
+  border: 0px;
+  background-color: unset;
+
+}
+
+.inpOrganization {
+  border: 0px;
+  background-color: unset;
+  
+}
+
+.tdOrganization {
+  /* width: 400px; */
+}
+
+
+
+/* ------ ТАБЛИЦА С ЗАКРЕПЛЁННЫМ ЗАГОЛОВКОМ------- */
+
+.tableFixedHead {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  /* height: 100vh; */
+
+}
+
+.tableFixedHead th,
+.tableFixedHead td {
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tableFixedHead thead {
+  background-color: #d9ecf3;
+  color: #263a3f;
+  font-weight: 800;
+}
+
+.tableFixedHead thead tr {
+  display: block;
+  position: relative;
+}
+
+.tableFixedHead tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  /* height: 80vh; */
+  height: calc(100vh - 260px);
+}
+
+.tableFixedHead tbody tr:nth-child(even) {
+  background-color: #f4f8f8;
+}
+
+.tableFixedHead tbody tr:hover{
+  background-color: #f1feff;
+}
