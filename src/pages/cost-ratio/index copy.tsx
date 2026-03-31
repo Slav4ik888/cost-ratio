@@ -6,10 +6,8 @@ import { ResultTabl } from '../../widgets/result-tabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
 import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
   makeDataForBigTable, makeDataFromGoogle } from '../../utils/make-data-for-bigtable';
-import { getFromGoogleData } from '../../entities/service-desk/model/services/get-service-desk-data/get-from-google-data';
-import ResultAnalisTabl from '../../components/ResultAnalisTabl';
+import { ResultAnalisTabl } from '../../widgets/result-analis-tabl';
 import { FacturaData } from 'widgets/factura-data';
-import { cfg } from 'app/config';
 import { PageLoader } from 'widgets/page-loader';
 import { AltergaItem } from 'entities/altegra';
 import { joinTraffic, returnArrMb, returnArrSprite } from 'features/textarea-from-altegra/utils/data-processing-from-alterga';

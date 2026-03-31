@@ -100,18 +100,17 @@ export const makeDataForBigTable = (
   mbCostAll      : number,
   spTrafficAll   : number
 ): Result => {
-  // Рассчитываем Затраты скорректированные
-  for(let obj of arrForBigTable) {
-    if ((gv(obj.mbCostTraffic) + gv(obj.mbCostServicies)) / mbCostAll * gv(factura.mb)) {
-      //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
-      obj.mbCostCorrect = Number(((gv(obj.mbCostTraffic) + gv(obj.mbCostServicies)) / mbCostAll * gv(factura.mb)).toFixed(2));
-    }
-  }
-
+  
   const afbt = [] as MainItem[];
   arrForBigTable.forEach(item => {
     let obj = {} as MainItem;
     obj = { ...item };
+    
+    // Рассчитываем Затраты скорректированные
+    if ((gv(obj.mbCostTraffic) + gv(obj.mbCostServicies)) / mbCostAll * gv(factura.mb)) {
+      //Затраты скорректир-е = (Вх. затраты по трафику + Затраты из сч/ф) / Общ.затрМб * сч.ф Мб
+      obj.mbCostCorrect = Number(((gv(obj.mbCostTraffic) + gv(obj.mbCostServicies)) / mbCostAll * gv(factura.mb)).toFixed(2));
+    }
     // Стоимость пропорционально общей сумме затрат за полосу
     obj.spCostTraffic = Number((gv(obj.spTraffic) / spTrafficAll * gv(factura.sprite)).toFixed(2));
     

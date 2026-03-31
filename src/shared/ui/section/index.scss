@@ -5,10 +5,11 @@
 .section-root {
   margin: 24px auto;
   padding: 30px;
-  width: 960px;
+  width: 1200px;
   color: #000000;
-  background: #ffffff;
+  background: linear-gradient(#f6fcff, #d7e9f0);
+  // background: #ffffff;
   border: 1px solid #dfe2e5;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .3);
-  /* border-radius: 3px; */
+  // /* border-radius: 3px; */
 }

@@ -1,20 +1,19 @@
 import { FC, useCallback, Dispatch, SetStateAction, memo } from 'react';
 import _ from 'lodash';
 import { MainItem } from 'entities/automatization';
-import { Sorted } from '..';
 import { emptyIfUndefined, removeLeadingZeros } from 'shared/helpers/strings';
+import { Sorted } from 'shared/types';
+import { BIG_TITLE } from 'consts';
 import './index.scss'; 
-import { remap } from './remap';
-import { cloneObj } from 'shared/helpers/objects';
 
 
 
 interface Props {
-	sorted 				       : Sorted
+	sorted 				       : Sorted<typeof BIG_TITLE[number], MainItem | null>
 	tableArr 			       : MainItem[]
 	tableArrFiltred      : MainItem[]
 	onSetIsModal         : (isModal: boolean) => void
-	onSetSorted          : (sorted: Sorted) => void
+	onSetSorted          : (sorted: Sorted<typeof BIG_TITLE[number], MainItem | null>) => void
 	onSetTableArr        : Dispatch<SetStateAction<MainItem[]>>
 	onSetTableArrFiltred : Dispatch<SetStateAction<MainItem[]>>
 	onSetSearchText      : (text: string) => void
@@ -71,14 +70,8 @@ export const BigTableTableBody: FC<Props> = memo(({
 			default: break;
 		};
 		
-		onSetTableArr(cloneObj([...tableArr.slice(0, idx), obj, ...tableArr.slice(idx + 1)]));
-		onSetTableArrFiltred(cloneObj([...tableArrFiltred.slice(0, idxFiltred), obj, ...tableArrFiltred.slice(idxFiltred + 1)]));
-		
-		// onSetTableArr((prev: MainItem[]) => remap(prev, idx, obj));
-		// onSetTableArrFiltred((prev: MainItem[]) => remap(prev, idxFiltred, obj));
-	
-		// onSetTableArr((prev: MainItem[]) => prev.map((item: MainItem, i: number) => i === idx ? obj as MainItem : item));
-		// onSetTableArrFiltred((prev: MainItem[]) => prev.map((item: MainItem, i: number) => i === idxFiltred ? obj as MainItem : item));
+		onSetTableArr([...tableArr.slice(0, idx), obj, ...tableArr.slice(idx + 1)]);
+		onSetTableArrFiltred([...tableArrFiltred.slice(0, idxFiltred), obj, ...tableArrFiltred.slice(idxFiltred + 1)]);
 	},
 		[tableArr, tableArrFiltred, onSetTableArr, onSetTableArrFiltred]
 	);
@@ -122,7 +115,10 @@ export const BigTableTableBody: FC<Props> = memo(({
 							className = 'inpMbCostServicies'
 							type      = 'number'
 							name      = 'mbCostServicies'
-							value     = {emptyIfUndefined(item.mbCostServicies)}
+							value 		= {emptyIfUndefined(item.mbCostServicies)}
+							onFocus   = {(e) => {
+								e.target.select(); // Выделяем весь текст при фокусе
+							}}
 							onChange  = {handleChangeItem}
 							onBlur    = {handleSearchClear}
 						/>

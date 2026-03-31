@@ -1,18 +1,18 @@
 import { FC, useCallback } from 'react';
-import './index.scss'; 
 import cl from 'classnames';
 import { getTitle } from '../../../utils/untils';
 import { BIG_TITLE, BIG_TITLE_CLASS, BIG_SORT } from '../../../consts';
 import _ from 'lodash';
 import { MainItem } from 'entities/automatization';
-import { Sorted } from '..';
+import { Sorted } from 'shared/types';
+import './index.scss'; 
 
 
 
 interface Props {
-	sorted 						   : Sorted
+	sorted 						   : Sorted<typeof BIG_TITLE[number], MainItem | null>
 	tableArrFiltred      : MainItem[]
-	onSetSorted          : (sorted: Sorted) => void
+	onSetSorted          : (sorted: Sorted<typeof BIG_TITLE[number], MainItem | null>) => void
 	onSetTableArrFiltred : (arr: MainItem[]) => void
 }
 

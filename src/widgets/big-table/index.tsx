@@ -11,14 +11,10 @@ import { BigTableHeader as Header } from './header';
 import { BigTableTableHead } from './table-head';
 import { BigTableTableBody } from './table-body';
 import './big-table.scss'; 
+import { Sorted } from 'shared/types';
+import { Section } from 'shared/ui/section';
 
 
-
-export interface Sorted {
-	sortType   : 'asc' | 'desc'
-	sortField  : typeof BIG_TITLE[number] // поле по умолчанию
-	row        : MainItem | null 					// нажатая выбранная строка
-}
 
 export const BigTable: FC = () => {
 	const { factura, mbPrice, arrForBigTable, spTrafficAll, setMbCostAll, setArrForBigTable, setArrResult } = useAutomatization();
@@ -28,7 +24,7 @@ export const BigTable: FC = () => {
 	const [tableArrFiltred, setTableArrFiltred] = useState(arrForBigTable);
 	const [isModal, setIsModal] = useState(false);
 	const [searchText, setSearchText] = useState(''); // Поиск по SiteID
-	const [sorted, setSorted] = useState<Sorted>({
+	const [sorted, setSorted] = useState<Sorted<typeof BIG_TITLE[number], MainItem | null>>({
 		sortType   : 'asc',    // 'desc'
 		sortField  : 'siteID', // поле по умолчанию
 		row        : null 	   // нажатая выбранная строка
@@ -110,11 +106,11 @@ export const BigTable: FC = () => {
 	},
 		[tableArr, mbPrice, setIsModal, setTableArr, setTableArrFiltred]
 	);
-
+		
 
 	return (
-		<div className='section'>
-			<div className='centerBox'>
+		<Section>
+			<div className='center-box'>
 				{/* <form> */}
 				<Header
 					tableArr  				   = {tableArr}
@@ -126,6 +122,7 @@ export const BigTable: FC = () => {
 
 				{/* Редактирование строки */}
 				{isModal && <ModalChangeRow
+					isModal  			  = {isModal}
 					row   		      = {sorted.row}
 					serviceDeskData = {serviceDeskData}
 					callback  		  = {handleModalOut}
@@ -151,6 +148,6 @@ export const BigTable: FC = () => {
 				</table>
 				{/* </form> */}
 			</div>
-		</div>
+		</Section>
 	)
 }

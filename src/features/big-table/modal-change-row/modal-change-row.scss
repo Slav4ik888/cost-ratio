@@ -1,28 +1,4 @@
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 900;
-}
 
-.modalDialog {
-    max-width: 780px;
-    width: 95%;
-    background: #ffffff;
-    border-radius: 5px;
-    margin: auto;
-    padding: 40px 45px;
-    box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.5);
-}
-
-.modalDialogAuth {
-    width: auto;
-    position: relative;
-}
 
 .closeAuth {
     font-size: 36px;
@@ -33,16 +9,6 @@
     right: 20px;
 }
 
-.modalBody {
-    margin-bottom: 22px;
-}
-
-.modalTitle {
-    margin: 0;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 42px;
-}
 
 
 .child {
@@ -57,19 +23,12 @@
 }
 
 
-.modalFooter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.modal .modalFooter {
-    justify-content: flex-end;
-}
 
 .footerButtons {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 button {
@@ -78,7 +37,6 @@ button {
 }
 
 .button {
-    
     display: flex;
     align-items: center;
     padding: 8px 16px;
@@ -90,7 +48,7 @@ button {
     color: #595959;
     font-size: 16px;
     line-height: 24px;
-    margin: 0 20px 0 0;
+    margin: 20px 20px 0 0;
 }
 
 .button:hover {
@@ -104,7 +62,6 @@ button {
     background: #708f94;
     border: 1px solid #446a70;
     color: #fff;
-    margin-right: 10px;
 }
 
 .buttonPrimary:hover {
@@ -113,9 +70,9 @@ button {
     color: #595959;
 }
 
-.isOpen {
-    display: flex;
-}
+// .isOpen {
+//     display: flex;
+// }
 
 /* ----------------------- */
 

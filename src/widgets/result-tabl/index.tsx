@@ -17,7 +17,7 @@ interface ResultTableProps {
 
 export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {	
 	return (
-		<div className='centerBox'>
+		<div className='center-box'>
 			<div className='result'>
 				<div className='resultCard'>
 					<div className='capt'>Итоговая таблица для 1С</div>

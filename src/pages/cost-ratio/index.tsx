@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Section } from 'shared/ui/section';
 import { BigTable } from 'widgets/big-table';
 import { ResultTabl } from '../../widgets/result-tabl';
-import ResultAnalisTabl from '../../components/ResultAnalisTabl';
+import { ResultAnalisTabl } from '../../widgets/result-analis-tabl';
 import { FacturaData } from 'widgets/factura-data';
 import { useAutomatization } from 'entities/automatization';
 import { FromAltegra } from 'widgets/from-altegra';
@@ -42,12 +42,10 @@ export const CostRatio: FC = () => {
 
       {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
       {isAltegra &&
-        <Section>
-          <ResultAnalisTabl
-            arr    = {arrResult}
-            arrBig = {arrForBigTable}
-          />
-        </Section>
+        <ResultAnalisTabl
+          arr    = {arrResult}
+          arrBig = {arrForBigTable}
+        />
       }
 
       {/* формируем таблицы и выводим Итоговую таблицу для 1С */}

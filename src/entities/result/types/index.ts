@@ -2,7 +2,7 @@
 
 export interface ResultItem {
 	organization : string
-	project      : string
+	project      : number
 	result       : string | number 
 	sumMbCost    : number
 	sumSpCost    : number
