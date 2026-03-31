@@ -1,11 +1,11 @@
 import path from 'path';
 import { Configuration } from 'webpack';
 import { buildWebpackConfig } from './config/build/build-webpack-config';
-import { BuildEnv, BuildPaths, BuildProject } from './config/build/types';
+// import { BuildEnv, BuildPaths, BuildProject } from './config/build/types';
 
 
-export default (env: BuildEnv) => {
-  const paths: BuildPaths = {
+export default (env) => {
+  const paths = {
     entry   : path.resolve(__dirname, 'src', 'index.tsx'),
     build   : path.resolve(__dirname, 'build'),
     html    : path.resolve(__dirname, 'public', 'index.html'),
@@ -17,7 +17,7 @@ export default (env: BuildEnv) => {
   const isDev = mode === 'development';
   const project = BuildProject.FRONTEND;
 
-  const config: Configuration = buildWebpackConfig({
+  const config = buildWebpackConfig({
     mode,
     paths,
     isDev,
