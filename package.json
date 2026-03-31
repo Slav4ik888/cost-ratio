@@ -1,6 +1,6 @@
 {
   "name": "da-tele-automatization",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -9,6 +9,9 @@
   "license": "ISC",
   "author": "Vyacheslav",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "dev": "npm run client",
     "client": "NODE_OPTIONS=--max-old-space-size=4096 webpack serve --env mode=development port=3000 apiUrl=http://localhost:7575 --hot",
