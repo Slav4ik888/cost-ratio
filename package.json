@@ -12,6 +12,7 @@
   "engines": {
     "node": "18.x"
   },
+  "type": "module",
   "scripts": {
     "dev": "npm run client",
     "client": "NODE_OPTIONS=--max-old-space-size=4096 webpack serve --env mode=development port=3000 apiUrl=http://localhost:7575 --hot",
