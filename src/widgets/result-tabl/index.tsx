@@ -1,22 +1,21 @@
 import { ResultItem } from 'entities/result';
 import { FC } from 'react';
+import { addSpaceBetweenNumbers } from 'shared/helpers/numbers';
 import './result-table.scss'; 
 
 
+const arrTh = [
+	'Организация',
+	'Проект',
+	'Затраты итого',
+];
+	
 
 interface ResultTableProps {
 	arr: ResultItem[];
 }
 
-export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {
-	console.log('ResultTabl', arr);
-	
-	const arrTh = [
-		'Организация',
-		'Проект',
-		'Затраты итого',
-	];
-	
+export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {	
 	return (
 		<div className='centerBox'>
 			<div className='result'>
@@ -33,8 +32,8 @@ export const ResultTabl: FC<ResultTableProps> = ({ arr }) => {
 							{arr.map((item, i) => (
 								<tr key={`${item.result}-${i}`}>
 									<td>{item.organization}</td>
-									<td>{item.project}</td>
-									<td>{item.result}</td>
+									<td className='td-result'>{item.project}</td>
+									<td className='td-result'>{addSpaceBetweenNumbers(item.result)}</td>
 								</tr>
 							))}
 						</tbody>

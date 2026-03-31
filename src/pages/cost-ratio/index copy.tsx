@@ -2,7 +2,7 @@ import React from 'react';
 import { Section } from 'shared/ui/section';
 import {TextareaFromAltegra} from '../../features/textarea-from-altegra';
 import {BigTable} from '../../widgets/big-table';
-import { ResultTabl } from '../../components/ResultTabl';
+import { ResultTabl } from '../../widgets/result-tabl';
 import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
 import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
   makeDataForBigTable, makeDataFromGoogle } from '../../utils/make-data-for-bigtable';

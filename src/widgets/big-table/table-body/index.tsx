@@ -1,9 +1,11 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, Dispatch, SetStateAction, memo } from 'react';
 import _ from 'lodash';
 import { MainItem } from 'entities/automatization';
 import { Sorted } from '..';
-import { emptyIfUndefined } from 'shared/helpers/strings';
+import { emptyIfUndefined, removeLeadingZeros } from 'shared/helpers/strings';
 import './index.scss'; 
+import { remap } from './remap';
+import { cloneObj } from 'shared/helpers/objects';
 
 
 
@@ -13,15 +15,23 @@ interface Props {
 	tableArrFiltred      : MainItem[]
 	onSetIsModal         : (isModal: boolean) => void
 	onSetSorted          : (sorted: Sorted) => void
-	onSetTableArr        : (arr: MainItem[]) => void
-	onSetTableArrFiltred : (arr: MainItem[]) => void
-	onSearchClear        : () => void
+	onSetTableArr        : Dispatch<SetStateAction<MainItem[]>>
+	onSetTableArrFiltred : Dispatch<SetStateAction<MainItem[]>>
+	onSetSearchText      : (text: string) => void
 }
 
-export const BigTableTableBody: FC<Props> = ({
-	sorted, tableArr, tableArrFiltred, onSetIsModal, onSetSorted, onSetTableArr, onSearchClear, onSetTableArrFiltred
+export const BigTableTableBody: FC<Props> = memo(({
+	sorted, tableArr, tableArrFiltred, onSetIsModal, onSetSorted, onSetTableArr, onSetTableArrFiltred, onSetSearchText
 }) => {
 
+	// При выходе из Search поле очищается
+	const handleSearchClear = useCallback(() => {
+		onSetSearchText('');
+		// onSetTableArrFiltred(tableArr); // Возвращаем целый  массив
+	},
+		[tableArr, onSetSearchText]
+	);
+	
 	// Изменение индивидуальных значений сч/ф
 	// Меняем в tableArr но ищем пришедший ID из tableArrFiltred
 	const handleChangeItem = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,14 +65,20 @@ export const BigTableTableBody: FC<Props> = ({
 				break;
 
 			case 'mbCostServicies':
-				obj.mbCostServicies = Number(target.value);
+				obj.mbCostServicies = Number(removeLeadingZeros(target.value));
 				break;
 	
 			default: break;
 		};
 		
-		onSetTableArr([...tableArr.slice(0, idx), obj, ...tableArr.slice(idx + 1)]);
-		onSetTableArrFiltred([...tableArrFiltred.slice(0, idxFiltred), obj, ...tableArrFiltred.slice(idxFiltred + 1)]);
+		onSetTableArr(cloneObj([...tableArr.slice(0, idx), obj, ...tableArr.slice(idx + 1)]));
+		onSetTableArrFiltred(cloneObj([...tableArrFiltred.slice(0, idxFiltred), obj, ...tableArrFiltred.slice(idxFiltred + 1)]));
+		
+		// onSetTableArr((prev: MainItem[]) => remap(prev, idx, obj));
+		// onSetTableArrFiltred((prev: MainItem[]) => remap(prev, idxFiltred, obj));
+	
+		// onSetTableArr((prev: MainItem[]) => prev.map((item: MainItem, i: number) => i === idx ? obj as MainItem : item));
+		// onSetTableArrFiltred((prev: MainItem[]) => prev.map((item: MainItem, i: number) => i === idxFiltred ? obj as MainItem : item));
 	},
 		[tableArr, tableArrFiltred, onSetTableArr, onSetTableArrFiltred]
 	);
@@ -108,7 +124,7 @@ export const BigTableTableBody: FC<Props> = ({
 							name      = 'mbCostServicies'
 							value     = {emptyIfUndefined(item.mbCostServicies)}
 							onChange  = {handleChangeItem}
-							onBlur    = {onSearchClear}
+							onBlur    = {handleSearchClear}
 						/>
 					</td>
 					<td className='widthMbTraffic'>{item.mbTraffic}</td>
@@ -121,4 +137,4 @@ export const BigTableTableBody: FC<Props> = ({
 				))}
 		</tbody>
 	)
-}
+})

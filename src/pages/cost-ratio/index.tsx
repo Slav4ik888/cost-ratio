@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Section } from 'shared/ui/section';
 import { BigTable } from 'widgets/big-table';
-import { ResultTabl } from '../../components/ResultTabl';
+import { ResultTabl } from '../../widgets/result-tabl';
 import ResultAnalisTabl from '../../components/ResultAnalisTabl';
 import { FacturaData } from 'widgets/factura-data';
 import { useAutomatization } from 'entities/automatization';

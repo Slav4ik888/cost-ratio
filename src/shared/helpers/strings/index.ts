@@ -1,4 +1,4 @@
-// v.2026-03-22
+// v.2026-03-31
 export * from './capitalize'
 export * from './capitalize-first'
 export * from './comma-to-dot'
@@ -8,6 +8,7 @@ export * from './get-mock-str-length'
 export { getSlug } from './get-slug'
 export * from './get-value-if-not-undefined'
 export * from './parse'
+export * from './remove-first-zero'
 export { russianToEnglish } from './russian-to-english'
 export * from './show-if-not-undefined'
 export * from './slice-str'

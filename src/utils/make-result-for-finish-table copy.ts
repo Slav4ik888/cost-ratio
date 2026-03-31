@@ -1,5 +1,4 @@
 import { MainItem } from 'entities/automatization';
-import { getValueOrZero as gv } from 'shared/helpers/numbers';
 
 
 
@@ -11,23 +10,22 @@ export const makeResultForFinishTable = (
 ): { arrResult: MainItem[] } => {
   let arrResult = [] as MainItem[];
   
-  arrForBigTable.forEach((item: any, i) => {
+  for (let i = 0; i < arrForBigTable.length; i++) {
     let obj = {} as MainItem;
-    obj.project = item.project;
-    obj.organization = item.organization; // Название организации берём только первое
+    obj.project = arrForBigTable[i].project;
+    obj.organization = arrForBigTable[i].organization; // Название организации берём только первое
 
-    let sumMbCost = gv(item.mbCostCorrect);
-    let sumSpCost = gv(item.spCostTraffic);
-    let sumResult = gv(item.result);
+    let sumMbCost = +arrForBigTable[i].mbCostCorrect;
+    let sumSpCost = +arrForBigTable[i].spCostTraffic;
+    let sumResult = +arrForBigTable[i].result;
 
-    // Если в новом массиве нет такого проекта, то добавляем
-    if (item.project && ! arrResult.find(it => it.project === item.project)) {
-      
+    if (! arrResult.find( it => it.project === arrForBigTable[i].project)) {
       for (let j = i + 1; j < arrForBigTable.length; j++) {
-        if (item.project === arrForBigTable[j].project) {
-          sumMbCost += gv(arrForBigTable[j].mbCostCorrect);
-          sumSpCost += gv(arrForBigTable[j].spCostTraffic);
-          sumResult += gv(arrForBigTable[j].result);
+        if (arrForBigTable[i].project === arrForBigTable[j].project) {
+
+          sumMbCost += +arrForBigTable[j].mbCostCorrect;
+          sumSpCost += +arrForBigTable[j].spCostTraffic;
+          sumResult += +arrForBigTable[j].result;
         }
       }
 
@@ -38,8 +36,14 @@ export const makeResultForFinishTable = (
       arrResult.push(obj);
       obj = {} as MainItem;
     }
-  });
+  }
   
+  // arrResult.forEach( item => {
+  //   item.sumMbCost = item.sumMbCost.replace(/\./g,',');
+  //   item.sumSpCost = item.sumSpCost.replace(/\./g,',');
+  //   item.result = item.result.replace(/\./g,',');
+  // });
+
   return { arrResult }
 }
 

@@ -1,7 +1,6 @@
 import { FC, useCallback, useEffect, useState } from 'react';
-import './big-table.scss'; 
 import { BIG_TITLE } from '../../consts';
-import ModalChangeRow from '../../components/ModalChangeRow';
+import { ModalChangeRow } from 'features/big-table';
 import _ from 'lodash';
 import { MainItem, useAutomatization } from 'entities/automatization';
 import { useServiceDesk } from 'entities/service-desk';
@@ -11,6 +10,7 @@ import { getValueOrZero } from 'shared/helpers/numbers';
 import { BigTableHeader as Header } from './header';
 import { BigTableTableHead } from './table-head';
 import { BigTableTableBody } from './table-body';
+import './big-table.scss'; 
 
 
 
@@ -34,6 +34,7 @@ export const BigTable: FC = () => {
 		row        : null 	   // нажатая выбранная строка
 	});
 	
+	// При обновлении в сторе arrForBigTable
 	useEffect(() => {
 		setTableArr(arrForBigTable);
 		setTableArrFiltred(arrForBigTable);
@@ -41,10 +42,17 @@ export const BigTable: FC = () => {
 		[arrForBigTable]
 	);
 	
+	// При очистке фильтра
+	useEffect(() => {
+		if (! searchText) {
+			setTableArrFiltred(tableArr);
+		}
+	},
+		[searchText]
+	);
+	
 	
 	useEffect(() => {
-		console.log('BigTable useEffect!!!');
-
     // Обновляем "Сводную таблицу" обновлёнными значениями из данных сч/ф mbCostServicies - пересчитываем
 		let mbCostAll = calcMbCostAll(serviceDeskData as MainItem[]);
 
@@ -66,14 +74,6 @@ export const BigTable: FC = () => {
 		[factura, spTrafficAll, serviceDeskData, setArrForBigTable, setArrResult, setMbCostAll]
 	);
 	
-	
-	// При выходе из Search поле очищается
-	const handleSearchClear = useCallback(() => {
-		setSearchText('');
-		setTableArrFiltred(tableArr); // Возвращаем целый  массив
-	},
-		[tableArr, setSearchText, setTableArrFiltred]
-	);
 
 	// Обрабатываем закрытие модального окна
 	const handleModalOut = useCallback((obj: MainItem) => {
@@ -94,23 +94,21 @@ export const BigTable: FC = () => {
 			let newArr = [];
 			// Проверяем внесли ли изменения в существующий SiteID
 			let result = tableArr.findIndex(item => item.siteID.toUpperCase() === obj.siteID.toUpperCase());
-			// console.log('result: ', result);
+
 			if (result !== -1) {
-				// console.log(`Old Row`);
 				newArr = [...tableArr.slice(0, result), newObj, ...tableArr.slice(result + 1)];
 			}
 			else {
-				// console.log(`New Row`);
 				newArr = [newObj, ...tableArr.slice(1)];
 			}
 
 			setTableArr(newArr);
+			setTableArrFiltred(newArr);
 		};
 		
 		setIsModal(false);
-		setTimeout(() => handleSearchClear(), 0); // Очищаем строку поиска
 	},
-		[tableArr, mbPrice, setIsModal, setTableArr]
+		[tableArr, mbPrice, setIsModal, setTableArr, setTableArrFiltred]
 	);
 
 
@@ -128,7 +126,7 @@ export const BigTable: FC = () => {
 
 				{/* Редактирование строки */}
 				{isModal && <ModalChangeRow
-					element   		  = {sorted.row}
+					row   		      = {sorted.row}
 					serviceDeskData = {serviceDeskData}
 					callback  		  = {handleModalOut}
 				/>}
@@ -145,9 +143,9 @@ export const BigTable: FC = () => {
 						tableArr          	 = {tableArr}
 						tableArrFiltred   	 = {tableArrFiltred}
 						onSetIsModal      	 = {setIsModal}
+						onSetSearchText      = {setSearchText}
 						onSetSorted       	 = {setSorted}
 						onSetTableArr     	 = {setTableArr}
-						onSearchClear     	 = {handleSearchClear}
 						onSetTableArrFiltred = {setTableArrFiltred}
 					/>
 				</table>
