@@ -1,6 +1,6 @@
-[build]
-  command = "npm run build:prod"
-  publish = "build"
+# [build]
+#  command = "npm run build:prod"
+#  publish = "build"
 
 [build.environment]
   NODE_VERSION = "18"  # or your preferred version
