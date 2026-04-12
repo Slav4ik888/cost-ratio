@@ -23,7 +23,7 @@ root.render(
 );
 
 
-// git add . && git commit -m "added deploy.sh" && git push -u origin master
+// git add . && git commit -m "fixed deploy.sh" && git push -u origin master
 // git add . && git commit -m "ended refact" && git push -u origin migrate-to-ts
  
 

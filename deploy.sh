@@ -37,7 +37,7 @@ run_command() {
 # Функция деплоя фронтенда
 deploy_frontend() {
   log "🎨 Деплой клиентской части..."
-  run_command "cd /var/www/vtempe/data/rhythm"
+  run_command "cd /var/www/vtempe/data/cost-ratio"
   run_command "git pull"
   run_command "npm run build:prod"
 }
