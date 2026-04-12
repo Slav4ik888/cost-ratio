@@ -75,6 +75,16 @@ export const ANALIS_SORT = [
   'result',
 ];
 
+
+// Название классов для заголовка
+export const TITLE_DETAIL_ROW_TABLE_CLASS = [
+  'dOrganization',
+  'dSiteId',
+  'dSumMbCost',
+  'dSumSpCost',
+  'dResult',
+];
+
 // Заголовки внутренней таблицы
 export const TITLE_DETAIL_ROW_TABLE = [
   'Клиент',

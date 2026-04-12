@@ -21,7 +21,7 @@ export const BigTableTableHead: FC<Props> = ({ sorted, tableArrFiltred, onSetSor
 	const handleSortTabl = useCallback((e: any, sortField: string) => {
 		const title         = getTitle(sortField, BIG_TITLE, BIG_SORT);
 		const newSortedType = sorted.sortField === title ? (sorted.sortType === 'asc' ? 'desc' : 'asc') : 'asc';
-		const orderedData   = _.orderBy(tableArrFiltred, title, newSortedType);
+		const orderedData = _.orderBy(tableArrFiltred, title, newSortedType);
 		
 		onSetSorted({
 			...sorted,
@@ -35,7 +35,7 @@ export const BigTableTableHead: FC<Props> = ({ sorted, tableArrFiltred, onSetSor
 
 
 	return (
-		<thead>
+		<thead className='bt-sticky-header'>
 			<tr>
 				{BIG_TITLE.map((titleField, i) => <th
 					key={titleField + i} 

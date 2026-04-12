@@ -10,20 +10,7 @@ import { FromAltegra } from 'widgets/from-altegra';
 
 
 export const CostRatio: FC = () => {
-  const { isAltegra, arrResult, arrForBigTable } = useAutomatization();
-
-  // const state = {
-    // arrFromAltegra: [], // созданный массив из полученных данных от Алтегры
-    // arrayOfProject: [], // загруженны массив с service desk
-    // arrForBigTable: [], // массив для "Сводной таблицы" (по SiteID)
-    // arrResult:[], // конечный массив (по Project)
-
-    // mbSiteId: [], // массив помегабатного трафика
-    // striteSiteId: [],  // массив полосного трафика
-    // mbCostAll: 0,// Общие затраты по трафику рассчитанные + доп услуги
-    // spTrafficAll: 0,// Общий трафик в полосе
-  // };
-
+  const { isAltegra, arrResult } = useAutomatization();
 
   return (
     <>
@@ -42,10 +29,7 @@ export const CostRatio: FC = () => {
 
       {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
       {isAltegra &&
-        <ResultAnalisTabl
-          arr    = {arrResult}
-          arrBig = {arrForBigTable}
-        />
+        <ResultAnalisTabl />
       }
 
       {/* формируем таблицы и выводим Итоговую таблицу для 1С */}

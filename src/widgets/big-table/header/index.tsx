@@ -2,7 +2,7 @@ import React, {FC, useCallback} from 'react';
 import { MainItem, useAutomatization } from 'entities/automatization';
 import { useServiceDesk } from 'entities/service-desk';
 import { calcMbCostAll, makeDataForBigTable } from 'utils/make-data-for-bigtable';
-import { changePointToComma, makeResultForFinishTable } from 'utils/make-result-for-finish-table';
+import { makeResultForFinishTable } from 'utils/make-result-for-finish-table';
 import './index.scss'; 
 
 
@@ -30,12 +30,9 @@ export const BigTableHeader: FC<Props> = ({ tableArr, onSearchText, onSetTableAr
     let {newArrForBigTable} = makeDataForBigTable(tableArr, factura, mbCostAll, spTrafficAll);
 
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
+    const arrResult = makeResultForFinishTable(newArrForBigTable);
 
-    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable, 'result');
-
-		setArrForBigTable(lastBigStore);
+		setArrForBigTable(newArrForBigTable);
 		setArrResult(arrResult);
 		setMbCostAll(mbCostAll);
 	},

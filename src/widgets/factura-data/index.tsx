@@ -26,19 +26,22 @@ export const FacturaData: FC = () => {
 
   const handleOnChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target;
+    
     const newValue = commaToDot(target.value);
     const name = target.name;
     
     setIsChanged(true);
     
+    // @ts-ignore
     setUpdate((prev) => {
-      const value = name === 'value' ? +newValue : getValueOrZero(prev.value);
-      const sprite = name === 'sprite' ? +newValue : getValueOrZero(prev.sprite);
+      // Оставляем строкой иначе при переводе в число введённая точка удаляется
+      const value = name === 'value' ? newValue : getValueOrZero(prev.value);
+      const sprite = name === 'sprite' ? newValue : getValueOrZero(prev.sprite);
       
       return {
         value,
         sprite,
-        mb: Number((value - sprite).toFixed(2)),
+        mb: Number((Number(value) - Number(sprite)).toFixed(2)),
       }
     });
   },

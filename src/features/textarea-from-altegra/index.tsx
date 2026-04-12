@@ -6,7 +6,7 @@ import { useAutomatization } from 'entities/automatization';
 import { joinTraffic, returnArrMb, returnArrSprite } from './utils/data-processing-from-alterga';
 import { useServiceDesk } from 'entities/service-desk';
 import { calcMbCostAll, calcSpTrafficAll, makeDataForBigTable, makeDataFromGoogle, pushArrBmAndStriteTraffic } from 'utils/make-data-for-bigtable';
-import { changePointToComma, makeResultForFinishTable } from 'utils/make-result-for-finish-table';
+import { makeResultForFinishTable } from 'utils/make-result-for-finish-table';
 import { Section } from 'shared/ui/section';
 
 
@@ -54,18 +54,14 @@ export const TextareaFromAltegra: FC = () => {
     const newArrForBigTable_2 = makeDataFromGoogle(newArrForBigTable, serviceDeskData);
 
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable_2);
+    const arrResult = makeResultForFinishTable(newArrForBigTable_2);
 
-    // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable_2, 'result');
-
-    
     setAltegraData(arrFromAltegraTransformed);
     setMbSiteId(mbSiteId);
     setStriteSiteId(striteSiteId);
     setMbCostAll(mbCostAll);
     setSpTrafficAll(spTrafficAll);
-    setArrForBigTable(lastBigStore);
+    setArrForBigTable(newArrForBigTable_2);
     setArrResult(arrResult);
   },
     [
@@ -85,7 +81,6 @@ export const TextareaFromAltegra: FC = () => {
             cols        = {85}
             name        = 'text'
             placeholder = 'Вставьте скопированные данные от Алтегры' 
-            // onChange    = {handleChange}
             defaultValue = {cfg.IS_DEV ? MOCK_ALTEGRA : ''}
           />
         </label>

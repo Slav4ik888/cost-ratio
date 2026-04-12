@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {TITLE_DETAIL_ROW_TABLE} from '../../../consts';
+import {TITLE_DETAIL_ROW_TABLE, TITLE_DETAIL_ROW_TABLE_CLASS} from '../../../consts';
 import { addSpaceToNumber } from '../../../utils/untils';
 import { Modal } from 'shared/ui/modal';
 import { MainItem } from 'entities/automatization';
@@ -22,26 +22,31 @@ export const ModalAnalisBlock: FC<Props> = ({ isModal, filtred, onCancel, onOk }
       onCancel = {onCancel}
       onOk     = {onOk}
     >
-      <table className='table' >
-        <thead>
-          <tr>
-            {TITLE_DETAIL_ROW_TABLE.map( (item, i) => <th key={item+i} className='thTitle'>
-              {item}
-            </th> )}
-          </tr>
-        </thead>
-        <tbody>
-          {filtred.map( (item, i) => (
-            <tr key={`${item.result}-${i}`}>
-              <td className='tdOrganization'>{item.organization}</td>
-              <td className='tdSiteID'>{item.siteID}</td>
-              <td className='tdMbCostCorrect'>{addSpaceToNumber(item.mbCostCorrect || 0, 2, ',')} р.</td>
-              <td className='tdSpCostTraffic'>{item.spCostTraffic ? addSpaceToNumber(item.spCostTraffic, 2, ',') + ' р.' : '-'}</td>
-              <td className='tdResult'>{item.result} р.</td>
+      <div className='tableWrapper'>
+        <table className='tableFixedHead'>
+          <thead className='bt-sticky-header'>
+            <tr>
+              {TITLE_DETAIL_ROW_TABLE.map((item, i) => <th
+                key={item + i}
+                className={TITLE_DETAIL_ROW_TABLE_CLASS[i]}
+              >
+                {item}
+              </th> )}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filtred.map( (item, i) => (
+              <tr key={`${item.result}-${i}`}>
+                <td className='dOrganization'>{item.organization}</td>
+                <td className='dSiteId'>{item.siteID}</td>
+                <td className='dSumMbCost'>{addSpaceToNumber(item.mbCostCorrect || 0, 2, ',')} р.</td>
+                <td className='dSumSpCost'>{item.spCostTraffic ? addSpaceToNumber(item.spCostTraffic, 2, ',') + ' р.' : '-'}</td>
+                <td className='dResult'>{item.result} р.</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Modal>
   )
 }

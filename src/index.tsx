@@ -23,9 +23,9 @@ root.render(
 );
 
 
-// git add . && git commit -m "fixed webpack config 2" && git push -u origin master
+// git add . && git commit -m "fixed styles" && git push -u origin master
 // git add . && git commit -m "ended refact" && git push -u origin migrate-to-ts
-
+ 
 
 // создать и сразу переключиться:
 // git checkout -b название-ветки

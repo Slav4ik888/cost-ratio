@@ -1,4 +1,8 @@
+.tableWrapper {
+  overflow-y: auto;
+  min-height: calc(100% - 50px);
 
+}
 /* ------ ТАБЛИЦА С ЗАКРЕПЛЁННЫМ ЗАГОЛОВКОМ------- */
 
 .tableFixedHead {

@@ -62,8 +62,8 @@ export const Modal: FC<Props> = ({ isModal, title, children, onCancel, onOk }) =
         <div className='modal-dialog'> 
           <div className='modal-body'>
             <div className='modal-title'>{title}</div>
-            <div className='child'>              
-              <form onSubmit={handleOk}>
+            <div className='modal-child'>              
+              <form onSubmit={handleOk} className='form'>
                 {children}
               </form>
             </div>

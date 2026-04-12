@@ -5,7 +5,7 @@
 import { MainItem } from 'entities/automatization';
 import { Factura } from 'entities/factura';
 import { ServiceDeskType } from 'entities/service-desk';
-import { getValueOrZero as gv } from 'shared/helpers/numbers';
+import { getValueOrZero as gv, toNumber } from 'shared/helpers/numbers';
 
 /**
  * Создаём первоначальную "Сводную таблицу", наполняем её данными
@@ -136,7 +136,11 @@ export const makeDataFromGoogle = (arrForBigTable: MainItem[], arrayServiceDesk:
   // siteId в arrayServiceDesk (Это данные по организациям и проектам)
   if (arrayServiceDesk) {
     for(let obj of arrForBigTable) {
-      let newObj = { ...obj } as MainItem;
+      let newObj = {
+        ...obj,
+        spTraffic: toNumber(obj.spTraffic),
+        mbTraffic: toNumber(obj.mbTraffic),
+      } as MainItem;
 
       let result = arrayServiceDesk.find( it => it.siteID === obj.siteID);
       

@@ -5,14 +5,14 @@ import _ from 'lodash';
 import { MainItem, useAutomatization } from 'entities/automatization';
 import { useServiceDesk } from 'entities/service-desk';
 import { calcMbCostAll, makeDataForBigTable, makeDataFromGoogle } from 'utils/make-data-for-bigtable';
-import { changePointToComma, makeResultForFinishTable } from 'utils/make-result-for-finish-table';
+import { makeResultForFinishTable } from 'utils/make-result-for-finish-table';
 import { getValueOrZero } from 'shared/helpers/numbers';
 import { BigTableHeader as Header } from './header';
 import { BigTableTableHead } from './table-head';
 import { BigTableTableBody } from './table-body';
-import './big-table.scss'; 
 import { Sorted } from 'shared/types';
 import { Section } from 'shared/ui/section';
+import './big-table.scss'; 
 
 
 
@@ -58,12 +58,12 @@ export const BigTable: FC = () => {
 		const newArrForBigTable_2 = makeDataFromGoogle(tableArr, newArrForBigTable);
 		
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable_2);
+    const arrResult = makeResultForFinishTable(newArrForBigTable_2);
 
     // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable_2, 'result');
+    // const lastBigStore = changePointToComma(newArrForBigTable_2, 'result');
 
-		setArrForBigTable(lastBigStore);
+		setArrForBigTable(newArrForBigTable_2);
     setMbCostAll(mbCostAll);
     setArrResult(arrResult);
 	},
@@ -128,24 +128,26 @@ export const BigTable: FC = () => {
 					callback  		  = {handleModalOut}
 				/>}
 
-				<table className='tableFixedHead'>
-					<BigTableTableHead
-						sorted               = {sorted}
-						tableArrFiltred      = {tableArrFiltred}
-						onSetSorted          = {setSorted}
-						onSetTableArrFiltred = {setTableArrFiltred}
-					/>
-					<BigTableTableBody
-						sorted 				    	 = {sorted}
-						tableArr          	 = {tableArr}
-						tableArrFiltred   	 = {tableArrFiltred}
-						onSetIsModal      	 = {setIsModal}
-						onSetSearchText      = {setSearchText}
-						onSetSorted       	 = {setSorted}
-						onSetTableArr     	 = {setTableArr}
-						onSetTableArrFiltred = {setTableArrFiltred}
-					/>
-				</table>
+				<div className='tableWrapper'>
+					<table className='tableFixedHead'>
+						<BigTableTableHead
+							sorted               = {sorted}
+							tableArrFiltred      = {tableArrFiltred}
+							onSetSorted          = {setSorted}
+							onSetTableArrFiltred = {setTableArrFiltred}
+						/>
+						<BigTableTableBody
+							sorted 				    	 = {sorted}
+							tableArr          	 = {tableArr}
+							tableArrFiltred   	 = {tableArrFiltred}
+							onSetIsModal      	 = {setIsModal}
+							onSetSearchText      = {setSearchText}
+							onSetSorted       	 = {setSorted}
+							onSetTableArr     	 = {setTableArr}
+							onSetTableArrFiltred = {setTableArrFiltred}
+						/>
+					</table>
+				</div>
 				{/* </form> */}
 			</div>
 		</Section>

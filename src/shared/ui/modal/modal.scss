@@ -10,8 +10,9 @@
 
 .modal-dialog {
     position: relative;
-    max-width: 780px;
+    max-width: 880px;
     width: 95%;
+    height: 70vh;
     background: #ffffff;
     border-radius: 5px;
     margin: 10% auto;
@@ -20,7 +21,7 @@
 }
 
 .modal-body {
-    margin-bottom: 22px;
+    height: 100%;
 }
 
 .modal-title {
@@ -30,10 +31,15 @@
     line-height: 42px;
 }
 
-.child {
-    display: block;
+.form {
+    width: 100%;
+}
+
+.modal-child {
+    // display: block;
     font-size: 18px;
-    margin-bottom: 30px;
+    max-height: 55vh;
+    overflow-y: auto;
 }
 
 .child span {

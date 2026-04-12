@@ -1,4 +1,18 @@
 
+.bt-sticky-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+}
+
+/* Для Firefox */
+@supports (position: sticky) {
+  .bt-sticky-header {
+    position: sticky;
+    top: 0;
+  }
+}
 
 .widthSiteId{
   width: 120px;

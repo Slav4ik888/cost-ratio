@@ -3,7 +3,7 @@ import { Section } from 'shared/ui/section';
 import {TextareaFromAltegra} from '../../features/textarea-from-altegra';
 import {BigTable} from '../../widgets/big-table';
 import { ResultTabl } from '../../widgets/result-tabl';
-import { makeResultForFinishTable, changePointToComma } from '../../utils/make-result-for-finish-table';
+import { makeResultForFinishTable } from '../../utils/make-result-for-finish-table';
 import { pushArrBmAndStriteTraffic, calcMbCostAll, calcSpTrafficAll,
   makeDataForBigTable, makeDataFromGoogle } from '../../utils/make-data-for-bigtable';
 import { ResultAnalisTabl } from '../../widgets/result-analis-tabl';
@@ -151,13 +151,13 @@ class CostRatio extends React.PureComponent {
 
 
       // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      const {arrResult} = makeResultForFinishTable(newArrForBigTable);
+      const arrResult = makeResultForFinishTable(newArrForBigTable);
 
       // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-      const lastBigStore = changePointToComma(newArrForBigTable, 'result');
+      // const lastBigStore = changePointToComma(newArrForBigTable, 'result');
 
       this.setState({
-        arrForBigTable: lastBigStore,
+        arrForBigTable: newArrForBigTable,
         arrResult,
       });
     }, 100);
@@ -176,13 +176,13 @@ class CostRatio extends React.PureComponent {
     let {newArrForBigTable} = makeDataForBigTable(arr, factura, mbCostAll, spTrafficAll);
 
     // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-    const { arrResult } = makeResultForFinishTable(newArrForBigTable);
+    const arrResult = makeResultForFinishTable(newArrForBigTable);
 
     // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-    const lastBigStore = changePointToComma(newArrForBigTable, `result`);
+    // const lastBigStore = changePointToComma(newArrForBigTable, `result`);
 
     this.setState({
-        arrForBigTable: lastBigStore,
+        arrForBigTable: newArrForBigTable,
         mbCostAll,
         arrResult,
     });
@@ -216,13 +216,13 @@ class CostRatio extends React.PureComponent {
 
 
       // Рассчитываем данные для "Итоговой таблицы Анализа и 1C"
-      const {arrResult} = makeResultForFinishTable(arrForBigTable);
+      const arrResult = makeResultForFinishTable(arrForBigTable);
 
       // Меняем точку на запятую в итоговой ячейке "Сводной таблицы"
-      const lastBigStore = changePointToComma(arrForBigTable, `result`);
+      // const lastBigStore = changePointToComma(arrForBigTable, `result`);
 
       this.setState({
-        arrForBigTable: lastBigStore,
+        arrForBigTable,
         arrResult,
       });
     }, 0);
@@ -292,9 +292,9 @@ class CostRatio extends React.PureComponent {
         {/* формируем таблицы и выводим Итоговую таблицу для анализа */}
         {isMadeArr &&
             <Section>
-                <ResultAnalisTabl
+                {/* <ResultAnalisTabl
                   arr={arrResult}
-                  arrBig={arrForBigTable}/>
+                  arrBig={arrForBigTable}/> */}
             </Section>
         }
 

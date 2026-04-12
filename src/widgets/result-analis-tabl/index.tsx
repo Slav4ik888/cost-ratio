@@ -12,12 +12,7 @@ import './result-analis-table.scss';
 
 
 
-interface Props {
-	arr    : ResultItem[]
-	arrBig : MainItem[]
-}
-
-export const ResultAnalisTabl: FC<Props> = ({}) => {
+export const ResultAnalisTabl: FC = () => {
 	const { arrResult, arrForBigTable } = useAutomatization();
 	const [isModal, setIsModal] = useState(false);
 	const [tableArr, setTableArr] = useState<ResultItem[]>([]);
@@ -33,7 +28,7 @@ export const ResultAnalisTabl: FC<Props> = ({}) => {
 	useEffect(() => {
 		setTableArr(arrResult);
 	},
-		[arrResult]
+		[arrResult, setTableArr]
 	);
 
 	// Устанавливаем выбранную строку
@@ -43,7 +38,7 @@ export const ResultAnalisTabl: FC<Props> = ({}) => {
 		setSorted({ ...sorted, row });
 		setIsModal(true); // Открываем модальное окно
 	},
-		[sorted, setSorted, setIsModal, setFiltred]
+		[sorted, arrForBigTable, setSorted, setIsModal, setFiltred]
 	);
 
 	// Сортировка 'Таблицы'
@@ -90,55 +85,57 @@ export const ResultAnalisTabl: FC<Props> = ({}) => {
 				<div className='result'>
 					<div className='resultCard'>
 						<div className='capt'>Итоговая таблица для анализа</div>
-						<table className='tableFixedHead'>
-							<thead>
-								<tr>
-									{ANALIS_TITLE.map( (titleField, i) => <th key={titleField+i}
-										onClick={(e) => handleSortTabl(e, titleField)}
-										className={cl(
-											{ ['active']: sorted.sortField === ANALIS_SORT[i] },
-											ANALIS_TITLE_CLASS[i]
-										)}
-									>
-									{titleField}
-									{sorted.sortField === ANALIS_SORT[i] ? 
-										sorted.sortType === 'asc'  ? ' ▲' : 
-										sorted.sortType === 'desc' ? ' ▼' : null : null}
-									</th> )}
-								</tr>
-								{/* <tr>
-									<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[0]}, s[ANALIS_TITLE_CLASS[0]])}>
-										№ проекта
-									</th>
-									<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[1]}, s[ANALIS_TITLE_CLASS[1]])} >
-										Проект
-									</th>
-									<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[2]}, s[ANALIS_TITLE_CLASS[2]])} >
-										Затраты (Помегаб)
-									</th>
-									<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[3]}, s[ANALIS_TITLE_CLASS[3]])} >
-										Затраты (Полоса)	
-									</th>
-									<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[4]}, s[ANALIS_TITLE_CLASS[4]])} >
-										Затраты итого
-									</th>
-								</tr> */}
-							</thead>
-							<tbody>
-								{tableArr.map( (item, i) => (
-									<tr
-										key={`${item.result}-${i}`}
-										onClick={() => handleRowSelect(item)}
-									>
-										<td className='tdProject'>{item.project}</td>
-										<td className='tdOrganization'>{item.organization}</td>
-										<td className='tdSumMbCost'>{addSpaceToNumber(item.sumMbCost, 0, ',')} p.</td>
-										<td className='tdSumSpCost'>{addSpaceToNumber(item.sumSpCost, 0, ',')} p.</td>
-										<td className='tdResult'>{addSpaceToNumber(item.result, 0, ',')} p.</td>
+						<div className='tableWrapper'>
+							<table className='tableFixedHead'>
+								<thead className='bt-sticky-header'>
+									<tr>
+										{ANALIS_TITLE.map( (titleField, i) => <th key={titleField+i}
+											onClick={(e) => handleSortTabl(e, titleField)}
+											className={cl(
+												{ ['active']: sorted.sortField === ANALIS_SORT[i] },
+												ANALIS_TITLE_CLASS[i]
+											)}
+										>
+										{titleField}
+										{sorted.sortField === ANALIS_SORT[i] ? 
+											sorted.sortType === 'asc'  ? ' ▲' : 
+											sorted.sortType === 'desc' ? ' ▼' : null : null}
+										</th> )}
 									</tr>
-									))}
-							</tbody>
-						</table>
+									{/* <tr>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[0]}, s[ANALIS_TITLE_CLASS[0]])}>
+											№ проекта
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[1]}, s[ANALIS_TITLE_CLASS[1]])} >
+											Проект
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[2]}, s[ANALIS_TITLE_CLASS[2]])} >
+											Затраты (Помегаб)
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[3]}, s[ANALIS_TITLE_CLASS[3]])} >
+											Затраты (Полоса)	
+										</th>
+										<th className={cl({[s.active]: sortField === ANALIS_TITLE_SORT[4]}, s[ANALIS_TITLE_CLASS[4]])} >
+											Затраты итого
+										</th>
+									</tr> */}
+								</thead>
+								<tbody>
+									{tableArr.map( (item, i) => (
+										<tr
+											key={`${item.result}-${i}`}
+											onClick={() => handleRowSelect(item)}
+										>
+											<td className='tdProject'>{item.project}</td>
+											<td className='tdOrganization'>{item.organization}</td>
+											<td className='tdSumMbCost'>{addSpaceToNumber(item.sumMbCost, 0, ',')} p.</td>
+											<td className='tdSumSpCost'>{addSpaceToNumber(item.sumSpCost, 0, ',')} p.</td>
+											<td className='tdResult'>{addSpaceToNumber(item.result, 0, ',')} p.</td>
+										</tr>
+										))}
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
