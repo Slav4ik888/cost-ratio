@@ -51,7 +51,6 @@ frontend_only_deploy() {
 
 # Основной процесс
 main() {
-  parse_arguments "$@"
   frontend_only_deploy
   log "🎉 Деплой успешно завершен!"
 }
