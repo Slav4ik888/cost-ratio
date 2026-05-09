@@ -1,16 +1,16 @@
-import { createRoot } from 'react-dom/client';
-import 'regenerator-runtime/runtime';
-import { App } from './app';
-import './app/styles/index.scss';
-import { StoreProvider } from 'app/providers/store';
-import { ErrorBoundary } from 'app/providers/error-boundary';
+// src/index.tsx
 
+import { createRoot } from "react-dom/client";
+import "regenerator-runtime/runtime";
+import { App } from "./app";
+import "./app/styles/index.scss";
+import { StoreProvider } from "app/providers/store";
+import { ErrorBoundary } from "app/providers/error-boundary";
 
+const container = document.getElementById("root");
 
-const container = document.getElementById('root');
-
-if (! container) {
-  throw new Error('Failed to find the root element');
+if (!container) {
+  throw new Error("Failed to find the root element");
 }
 const root = createRoot(container);
 
@@ -19,13 +19,12 @@ root.render(
     <ErrorBoundary>
       <App />
     </ErrorBoundary>
-  </StoreProvider>
+  </StoreProvider>,
 );
 
-
-// git add . && git commit -m "fixed deploy.sh" && git push -u origin master
-// git add . && git commit -m "ended refact" && git push -u origin migrate-to-ts
- 
+// git push -u origin master
+// git add . && git commit -m "fixed babel/plugin" && git push origin
+// last git add . && git commit -m "ended refact" && git push -u origin migrate-to-ts
 
 // создать и сразу переключиться:
 // git checkout -b название-ветки
@@ -65,7 +64,6 @@ root.render(
 // git branch -a       # список всех веток (включая удаленные)
 // git log --oneline   # история коммитов
 // git status          # текущее состояние
-
 
 // После добавления деклараций VS Code иногда не сразу подхватывает изменения. Перезапустите сервер TypeScript:
 // 1. Откройте любой .ts или .tsx файл.
